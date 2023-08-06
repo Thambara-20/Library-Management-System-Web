@@ -2,3 +2,51 @@
     min-height: 13vh; 
   
 }  
+
+.link-css:hover {
+    border-color: yellow;
+}
+
+.container {
+    margin: 0px 0px;
+}
+
+.elements {
+    float: left;
+    align-items: left;
+}
+
+.d-flex {
+    float: center;
+}
+
+.nav-link {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.login-button {
+    margin-right: 10px;
+}
+
+.div-button-nav {
+    padding-top: 8px;
+    align-items: center;
+}
+
+.login-button-css {
+    margin-top: 5px;
+    height: 30px;
+    width: 70px;
+    border: none;
+    border-radius: 20px;
+    padding-bottom: 3px;
+}
+
+.login-button-css:hover {
+    background-color: #008080;
+}
+
+.padding-css {
+    margin-left: 10px;
+}
