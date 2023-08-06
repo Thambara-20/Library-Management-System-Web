@@ -1,8 +1,16 @@
 .navbar{
-    min-height: 13vh; 
+    min-height: 12vh; 
   
 }  
 
+
+@media screen and (max-width: 900px) {
+button{
+   margin-top:10px !important;
+   width: 90px !important;
+    
+}}
+=======
 .link-css:hover {
     border-color: yellow;
 }
@@ -50,3 +58,4 @@
 .padding-css {
     margin-left: 10px;
 }
+
