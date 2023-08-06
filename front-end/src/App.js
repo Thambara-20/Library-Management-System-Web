@@ -1,32 +1,33 @@
 
 import './App.css';
-import Home from './Containers/Home/Home';
-import Library from './Containers/Library/Library';
-import CustomerSupport from './Containers/CustomerSupport/CustomerSupport';
 import { Route, Routes } from 'react-router-dom';
-import NavBar from './Components/NavBar';
-import SignIn from './Containers/SignIn/SignIn';
-import SignUp from './Containers/SignUp/SignUp';
-import Footer from './Containers/Footer/FooterContainer';
-function App() {
-  return (
 
+import MainFooter from './Components/footer';
+import HomePage from './Containers/homePage';
+import CustomerSuppportPage from './Containers/customerSupportPage';
+import LibraryPage from './Containers/libraryPage';
+import NavbarComponent from './Components/navbarComponent';
+import { Component } from 'react';
+import { render } from 'react-dom';
+
+class App extends Component{
+  render(){
+    return(
     <div>
-      <NavBar style={{ backgroundColor: "black" }} />
+      <NavbarComponent/>
       <div>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Library" element={<Library />} />
-          <Route path="/Contact" element={<CustomerSupport />} />
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/Library" exact element={<LibraryPage/>} />
+          <Route path="/customer" element={<CustomerSuppportPage/>}/>
+          <Route path="/"   element ={<HomePage/>} />
         </Routes>
       </div>
-      <Footer/>
+
+      <MainFooter/>
     </div>
 
-
-  );
+    )
+  }
 }
 
 export default App;
