@@ -7,6 +7,7 @@ import HomePage from './Containers/homePage';
 import CustomerSuppportPage from './Containers/customerSupportPage';
 import LibraryPage from './Containers/libraryPage';
 import NavbarComponent from './Components/navbarComponent';
+import CustomerSupport from './Containers/CustomerSupport'
 import { Component } from 'react';
 import { render } from 'react-dom';
 
@@ -18,7 +19,7 @@ class App extends Component{
       <div>
         <Routes>
           <Route path="/Library" exact element={<LibraryPage/>} />
-          <Route path="/customer" element={<CustomerSuppportPage/>}/>
+          <Route path="/customer" element={<CustomerSupport/>}/>
           <Route path="/"   element ={<HomePage/>} />
         </Routes>
       </div>

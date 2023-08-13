@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../Styles/CustomerSupport.css"
+import "../Styles/CustomerSupport.css"
 import { useRef, useState } from 'react'
 // import emailjs from '@emailjs/browser';
 
