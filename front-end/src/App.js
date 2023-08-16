@@ -5,10 +5,10 @@ import { Route, Routes } from 'react-router-dom';
 import MainFooter from './Components/footer';
 import Home from '../src/Containers/Home/HomePage';
 import CustomerSuppportPage from '../src/Containers/CustomerSupport/CustomerSupport';
-import LibraryPage from '../src/Containers/Library/Library';
+import LibraryPage from '../src/Containers/Library/LibraryPage';
 import NavbarComponent from './Components/navbarComponent';
 import { Component } from 'react';
-import { render } from 'react-dom';
+
 
 class App extends Component{
   render(){
