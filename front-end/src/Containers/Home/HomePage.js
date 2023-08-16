@@ -1,4 +1,3 @@
-
 import "../../Styles/Home.css"
 import React from 'react'
 
