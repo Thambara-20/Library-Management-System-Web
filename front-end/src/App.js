@@ -3,9 +3,9 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
 import MainFooter from './Components/footer';
-import HomePage from './Containers/homePage';
-import CustomerSuppportPage from './Containers/customerSupportPage';
-import LibraryPage from './Containers/libraryPage';
+import Home from '../src/Containers/Home/HomePage';
+import CustomerSuppportPage from '../src/Containers/CustomerSupport/CustomerSupport';
+import LibraryPage from '../src/Containers/Library/Library';
 import NavbarComponent from './Components/navbarComponent';
 import { Component } from 'react';
 import { render } from 'react-dom';
@@ -19,7 +19,7 @@ class App extends Component{
         <Routes>
           <Route path="/Library" exact element={<LibraryPage/>} />
           <Route path="/customer" element={<CustomerSuppportPage/>}/>
-          <Route path="/"   element ={<HomePage/>} />
+          <Route path="/"   element ={<Home/>} />
         </Routes>
       </div>
 
