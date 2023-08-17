@@ -10,6 +10,7 @@ import NavbarComponent from './Components/navbarComponent';
 import { Component } from 'react';
 
 
+
 class App extends Component{
   render(){
     return(
@@ -17,8 +18,8 @@ class App extends Component{
       <NavbarComponent/>
       <div>
         <Routes>
-          <Route path="/Library" exact element={<LibraryPage/>} />
-          <Route path="/customer" element={<CustomerSuppportPage/>}/>
+          <Route path="/Library" element={<LibraryPage/>} />
+          <Route path="/contactUs"  element={<CustomerSuppportPage/>}/>
           <Route path="/"   element ={<Home/>} />
         </Routes>
       </div>
