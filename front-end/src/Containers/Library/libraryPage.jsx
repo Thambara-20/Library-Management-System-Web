@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import '../Styles/Library.css';
+import '../../Styles/Library.css';
 
 class LibraryPage extends Component {
   state = {};

@@ -5,37 +5,65 @@ import "../Styles/Navbar.css";
 import { Link } from "react-router-dom";
 import '../Styles/Navbar.css';
 
+
+
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
+
 class NavbarComponent extends Component {
+
+
 
   render() {
 
     return (
-      <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" >
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="">Navbar</Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-              <Link className="link-css nav-link" aria-current="page" to="/">Home</Link>
-              <Link className="nav-link" to="/Library">Library</Link>
-              <Link className="nav-link" to="/customer">About Us</Link>
-              <Link className="nav-link" to="/">Contact Us</Link>
-              <Link to="/signUP">
-              <button className="login-button-css" >Sign up</button>
-               
+
+      <Navbar bg="dark" variant="dark" expand="lg" className="navbar" w>
+        <Container className='container' >
+          <Navbar.Brand as={Link} className="nav-item na-link" to="/">LBMS</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Link to="/" className="nav-item nav-link">Home</Link>
+              <Nav.Link as={Link} className="nav-item nav-link" to="/Library">Library</Nav.Link>
+              
+
+              <NavDropdown title="Category" id="basic-nav-dropdown" >
+
+                <NavDropdown.Item href="/">Marvel</NavDropdown.Item>
+                <NavDropdown.Item href="/">Marvel</NavDropdown.Item>
+                <NavDropdown.Item href="/">Marvel</NavDropdown.Item>
+                <NavDropdown.Item href="/">Marvel</NavDropdown.Item>
+                <NavDropdown.Item href="/">Marvel</NavDropdown.Item>
+                <NavDropdown.Item href="/">Marvel</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/All">Separated link</NavDropdown.Item>
+              </NavDropdown>
+              
+
+            </Nav>
+            
+            <Nav.Link as={Link} className="nav-item nav-link" to="/customer" style={{color: "white"}}>Contact Us</Nav.Link>
+
+            <Link to="/signUP">
+                <button className="login-button-css" >Sign up</button>
               </Link>
-              <button className="login-button-css padding-css" >sign in</button>
-            </div>
-          </div>
-        </div>
-      </nav>
-    );
+                <button className="login-button-css padding-css" >sign in</button>
+
+              
+          </Navbar.Collapse>
+        </Container>
+
+
+      </Navbar>
+
+
+
+    )
   }
-
-
-
 }
 
 export default NavbarComponent;

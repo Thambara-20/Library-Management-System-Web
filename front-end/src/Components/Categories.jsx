@@ -42,7 +42,7 @@ const BookCategories = () => {
                 <div className='slider' id='sliderCategories'>
                     {booksDummy.map((book, id) => (
                         <div className='category-item' key={id}>
-                            <img src={book.img} />
+                            <img src={book.img} alt="im"/>
                             <p>{book.category}</p>
                         </div>
                     ))}

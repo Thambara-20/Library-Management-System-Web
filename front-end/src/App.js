@@ -3,11 +3,11 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
 import MainFooter from './Components/footer';
-import HomePage from './Containers/homePage';
-import CustomerSuppportPage from './Containers/customerSupportPage';
-import LibraryPage from './Containers/libraryPage';
+import HomePage from './Containers/Home/HomePage';
+import CustomerSuppportPage from './Containers/CustomerSupport/customerSupportPage';
+import LibraryPage from './Containers/Library/libraryPage';
 import NavbarComponent from './Components/navbarComponent';
-import CustomerSupport from './Containers/CustomerSupport'
+
 import { Component } from 'react';
 
 import Signup from './Containers/SignUP/Signup';
@@ -24,7 +24,7 @@ class App extends Component{
           <Route path="/Library" exact element={<LibraryPage/>} />
 
           <Route path="/customer" element={<CustomerSuppportPage/>}/>
-          <Route path="/"   element ={<Home/>} />
+          <Route path="/"   element ={<HomePage/>} />
           <Route path="/SignUP"   element ={<Signup/>} />
 
         </Routes>

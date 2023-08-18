@@ -1,12 +1,12 @@
 import React from 'react'
-import "../../Styles/CustomerSupport.css"
+import "../Styles/CustomerSupport.css"
 import { useRef, useState } from 'react'
 // import emailjs from '@emailjs/browser';
 
 
 const CustomerSupport = () => {
     const formRef = useRef();
-    const [done, setDone] = useState(false)
+     const [done, setDone] = useState(false)
 
 
     const handleSubmit = (e) => {
