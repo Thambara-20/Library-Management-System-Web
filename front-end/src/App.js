@@ -3,12 +3,15 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
 import MainFooter from './Components/footer';
-import Home from '../src/Containers/Home/HomePage';
-import CustomerSuppportPage from '../src/Containers/CustomerSupport/CustomerSupport';
-import LibraryPage from '../src/Containers/Library/LibraryPage';
+import HomePage from './Containers/homePage';
+import CustomerSuppportPage from './Containers/customerSupportPage';
+import LibraryPage from './Containers/libraryPage';
 import NavbarComponent from './Components/navbarComponent';
+import CustomerSupport from './Containers/CustomerSupport'
 import { Component } from 'react';
+
 import Signup from './Containers/SignUP/Signup';
+
 
 
 class App extends Component{
@@ -19,9 +22,11 @@ class App extends Component{
       <div>
         <Routes>
           <Route path="/Library" exact element={<LibraryPage/>} />
+
           <Route path="/customer" element={<CustomerSuppportPage/>}/>
           <Route path="/"   element ={<Home/>} />
           <Route path="/SignUP"   element ={<Signup/>} />
+
         </Routes>
       </div>
        <div  className='bottom-[120px] relative'>
