@@ -1,21 +1,18 @@
 import React from 'react'
 import "../Styles/CustomerSupport.css"
 import { useRef, useState } from 'react'
+import ContactDetails from '../../Components/userDetailsContactUs';
 // import emailjs from '@emailjs/browser';
 
 
 const CustomerSupport = () => {
-    const formRef = useRef();
-    const [done, setDone] = useState(false)
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-       
-    };
-
+    
     return (
-        <div className="c">
+        <div>   
+        <div></div>
+        <ContactDetails/>
+        </div>
+        /*<div className="c">
             <div className="c-bg"></div>
             <div className="c-wrapper">
                 <div className="c-left">
@@ -51,7 +48,7 @@ const CustomerSupport = () => {
                     </form>
                 </div>
             </div>
-        </div>
+        </div>*/
     );
 };
 

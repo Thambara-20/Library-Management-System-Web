@@ -3,13 +3,14 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
 import MainFooter from './Components/footer';
-import HomePage from './Containers/homePage';
-import CustomerSuppportPage from './Containers/customerSupportPage';
-import LibraryPage from './Containers/libraryPage';
+import Home from '../src/Containers/Home/HomePage';
+import CustomerSuppportPage from '../src/Containers/CustomerSupport/CustomerSupport';
+import LibraryPage from '../src/Containers/Library/LibraryPage';
 import NavbarComponent from './Components/navbarComponent';
 import CustomerSupport from './Containers/CustomerSupport'
 import { Component } from 'react';
-import { render } from 'react-dom';
+
+
 
 class App extends Component{
   render(){
@@ -18,9 +19,15 @@ class App extends Component{
       <NavbarComponent/>
       <div>
         <Routes>
+<<<<<<< HEAD
           <Route path="/Library" exact element={<LibraryPage/>} />
           <Route path="/customer" element={<CustomerSupport/>}/>
           <Route path="/"   element ={<HomePage/>} />
+=======
+          <Route path="/Library" element={<LibraryPage/>} />
+          <Route path="/contactUs"  element={<CustomerSuppportPage/>}/>
+          <Route path="/"   element ={<Home/>} />
+>>>>>>> 1a0ebba1aebbc6267b05a4aab93fd3995f89bfd1
         </Routes>
       </div>
 
