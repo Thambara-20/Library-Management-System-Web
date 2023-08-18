@@ -1,7 +1,9 @@
-.home{
-    background-image: url("../assets/banner.jpg");
-    height: 100vh;
-    background-repeat: no-repeat;
- 
-    
+.Homepage-wrapper{
+   
+    height: 150vh;
+    background-repeat: no-repeat; 
+
 }
+
+
+

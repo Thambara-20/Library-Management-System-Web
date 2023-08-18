@@ -8,6 +8,7 @@ import CustomerSuppportPage from '../src/Containers/CustomerSupport/CustomerSupp
 import LibraryPage from '../src/Containers/Library/LibraryPage';
 import NavbarComponent from './Components/navbarComponent';
 import { Component } from 'react';
+import Signup from './Containers/SignUP/Signup';
 
 
 class App extends Component{
@@ -20,10 +21,13 @@ class App extends Component{
           <Route path="/Library" exact element={<LibraryPage/>} />
           <Route path="/customer" element={<CustomerSuppportPage/>}/>
           <Route path="/"   element ={<Home/>} />
+          <Route path="/SignUP"   element ={<Signup/>} />
         </Routes>
       </div>
-
+       <div  className='bottom-[120px] relative'>
       <MainFooter/>
+        
+       </div>
     </div>
 
     )
