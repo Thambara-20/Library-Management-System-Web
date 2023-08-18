@@ -1,7 +1,7 @@
 .footer {
-    background: url(../assets/footer-bg.jpg);
-    padding-bottom: 35px;
-    background-size: 100% 100%;
+   background-color: grey;
+  padding-bottom: 35px;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center center;
    
@@ -43,16 +43,20 @@
   }
   
   .footer .Subscribe {
-  
-   padding: 10px 46px;
-  margin-left: -3px;
+    align-items: center !important;
+    text-align: center;
+    flex-direction: column;
+ margin-left: 10px;
+ width: 20vh;
+  padding: 8px 20px ;
+  border-radius: 10px;
   border: #0e0c0c solid 1px;
   background: #0e0c0c;
   color: #fff;
   
   }
   
-  
+
   .copyright {
     background-color: #fff;
     padding: 10px 0px;
@@ -80,4 +84,22 @@
   margin-top: 90px;
   }
   
+
+  @media screen and (max-width: 1500px) {
+    .footer .Subscribe {
+      margin-top: 10px;
+      margin-left: 0px ;
+      display: flex;
+     
+      width: 20vh;
+      padding: 8px 40px ;
+      border-radius: 10px;
+      border: #0e0c0c solid 1px;
+      background: #0e0c0c;
+      color: #fff;
+      
+      }
+ 
+      
+  }
   

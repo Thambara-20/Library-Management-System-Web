@@ -10,7 +10,7 @@ class NavbarComponent extends Component {
   render() {
 
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" >
+      <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" >
         <div className="container-fluid">
           <Link className="navbar-brand" to="">Navbar</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,15 +22,18 @@ class NavbarComponent extends Component {
               <Link className="nav-link" to="/Library">Library</Link>
               <Link className="nav-link" to="/customer">About Us</Link>
               <Link className="nav-link" to="/">Contact Us</Link>
-              <button className="login-button-css ">sign in</button>
-              <button className="login-button-css padding-css" >sign Up</button>
+              <Link to="/signUP">
+              <button className="login-button-css" >Sign up</button>
+               
+              </Link>
+              <button className="login-button-css padding-css" >sign in</button>
             </div>
           </div>
         </div>
       </nav>
     );
   }
-  
+
 
 
 }

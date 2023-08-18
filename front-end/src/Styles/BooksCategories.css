@@ -1,0 +1,91 @@
+
+.slider-container {
+  
+    justify-content: space-around;
+    position: relative;
+    overflow: hidden;
+    height: 55vh;
+    width: 90%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center horizontally */
+    display: flex;
+    align-items: center; /* Center vertically */
+}
+
+.categories-container {
+    display: flex;
+    align-items: center;
+    font-size: 5vh;
+    margin: 10px 10px 10px 10px;
+    padding:10px 10px 10px 10px ;
+    border-radius: 10px;
+    background-color: rgb(181, 192, 202)
+   
+}
+
+.categoriess-container p {
+    text-align: left;
+    margin: 0;
+    
+}
+
+.Explore {
+    margin-left: auto;
+
+    padding-bottom: 10px;
+}
+
+
+.Explore button {  
+    
+    width: 200px;
+    text-align:center;
+   
+   
+    
+}
+
+
+.Explor button svg {
+    margin-left: 5px; /* Add spacing between text and icon */
+}
+
+.slider {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth; /* Smooth scrolling behavior */
+}
+
+.category-item {
+    min-width: 180px;
+    max-width: 180px;
+    margin-right: 8px;
+}
+
+.category-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.arrow-buttons {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    bottom: 50%;
+    z-index: 10;
+}
+
+.arrow-button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 1.5rem;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.arrow-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+

@@ -9,7 +9,10 @@ import LibraryPage from './Containers/libraryPage';
 import NavbarComponent from './Components/navbarComponent';
 import CustomerSupport from './Containers/CustomerSupport'
 import { Component } from 'react';
-import { render } from 'react-dom';
+
+import Signup from './Containers/SignUP/Signup';
+
+
 
 class App extends Component{
   render(){
@@ -19,12 +22,17 @@ class App extends Component{
       <div>
         <Routes>
           <Route path="/Library" exact element={<LibraryPage/>} />
-          <Route path="/customer" element={<CustomerSupport/>}/>
-          <Route path="/"   element ={<HomePage/>} />
+
+          <Route path="/customer" element={<CustomerSuppportPage/>}/>
+          <Route path="/"   element ={<Home/>} />
+          <Route path="/SignUP"   element ={<Signup/>} />
+
         </Routes>
       </div>
-
+       <div  className='bottom-[120px] relative'>
       <MainFooter/>
+        
+       </div>
     </div>
 
     )
