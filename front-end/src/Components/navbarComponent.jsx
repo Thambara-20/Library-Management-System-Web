@@ -20,8 +20,8 @@ class NavbarComponent extends Component {
             <div className="navbar-nav">
               <Link className="link-css nav-link" aria-current="page" to="/">Home</Link>
               <Link className="nav-link" to="/Library">Library</Link>
-              <Link className="nav-link" to="/Library">About Us</Link>
-              <Link className="nav-link" to="/contactUs">Contact Us</Link>
+              <Link className="nav-link" to="/customer">About Us</Link>
+              <Link className="nav-link" to="/">Contact Us</Link>
               <button className="login-button-css ">sign in</button>
               <button className="login-button-css padding-css" >sign Up</button>
             </div>
