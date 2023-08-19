@@ -3,14 +3,12 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
 import MainFooter from './Components/footer';
-import HomePage from './Containers/Home/HomePage';
-import CustomerSuppportPage from './Containers/CustomerSupport/customerSupportPage';
-import LibraryPage from './Containers/Library/libraryPage';
+import Home from '../src/Containers/Home/HomePage';
+import CustomerSuppportPage from '../src/Containers/CustomerSupport/CustomerSupport';
+import LibraryPage from '../src/Containers/Library/LibraryPage';
 import NavbarComponent from './Components/navbarComponent';
-
 import { Component } from 'react';
-
-import Signup from './Containers/SignUP/Signup';
+import SignInPage from './Containers/SignInPage/SignInPage';
 
 
 
@@ -21,18 +19,14 @@ class App extends Component{
       <NavbarComponent/>
       <div>
         <Routes>
-          <Route path="/Library" exact element={<LibraryPage/>} />
-
-          <Route path="/customer" element={<CustomerSuppportPage/>}/>
-          <Route path="/"   element ={<HomePage/>} />
-          <Route path="/SignUP"   element ={<Signup/>} />
-
+          <Route path="/Library" element={<LibraryPage/>} />
+          <Route path="/contactUs"  element={<CustomerSuppportPage/>}/>
+          <Route path="/"   element ={<Home/>} />
+          <Route path="/signIn"   element ={<SignInPage/>} />
         </Routes>
       </div>
-       <div  className='bottom-[120px] relative'>
+
       <MainFooter/>
-        
-       </div>
     </div>
 
     )
