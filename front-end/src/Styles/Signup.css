@@ -1,0 +1,126 @@
+.frame {
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.frame .overlap-group-wrapper {
+  width: 50%;
+  max-width: 1200px;
+}
+
+.frame .overlap-group {
+  background-color: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0px 4px 15px #00000040;
+  padding: 40px;
+}
+
+.frame .text-wrapper {
+  color: #000000;
+  font-family: "Inter", Helvetica;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-shadow: -7px 10px 50px #58cd114c;
+}
+
+.frame .div {
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.frame .input-container {
+  margin-bottom: 20px;
+}
+
+.frame .input-label {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.frame .input-field {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Aligns buttons to the sides */
+  align-items: center;
+}
+
+.frame .button-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.frame .login-button,
+.frame .register-button {
+  background-color: #6f746c;
+  color: #ffffff;
+  border: none;
+  padding: 15px 80px; /* Increase padding for longer buttons */
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center; /* Aligns button text to the center */
+}
+
+
+/* Other styles... */
+
+/* Existing code... */
+
+@media (max-width: 768px) {
+  .frame .overlap-group {
+    padding: 20px;
+  }
+  .frame .overlap-group-wrapper {
+    width: 90%;
+    max-width: 1200px;
+  }
+  
+  .frame .text-wrapper {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .frame .login-page-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .frame .input-field {
+    font-size: 0.9rem;
+  }
+
+  .frame .login-button{
+    font-size: 0.9rem;
+    padding: 15px 80px 15px 40px;
+    text-align: center; /* Aligns button text to the center */
+  }
+  
+  
+  .frame .register-button {
+    font-size: 0.9rem;
+    padding: 15px 90px 15px 30px;
+    text-align: center; /* Aligns button text to the center */
+  }
+  
+  .frame .button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Aligns buttons to the center */
+    margin-top: 20px;
+  }
+}

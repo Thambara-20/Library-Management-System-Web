@@ -1,5 +1,206 @@
-.Library{
-    background-image: url("../assets/about-bg.jpg");
-    height: 100vh;
-    background-repeat: no-repeat;
-}
+.header {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    height: 95px;
+    padding: 0px 0px 1.53e-5px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .header .div-header-main {
+    align-items: flex-start;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 0.01px;
+    margin-right: -537px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .header .div-client-and {
+    align-items: flex-start;
+    background-color: #ffffff;
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: center;
+    padding: 15px 280px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .header .div-container {
+    align-items: center;
+    display: flex;
+    margin-left: -268.5px;
+    margin-right: -268.5px;
+    max-width: 1920px;
+    min-height: 56px;
+    padding: 0px 15px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .header .div-pull-left-margin {
+    align-items: flex-start;
+    display: inline-flex;
+    flex: 0 0 auto;
+    min-width: 474.5px;
+    padding: 0px 194.67px 0px 0px;
+    position: relative;
+  }
+  
+  .header .link-picture-logo {
+    height: 64.98px;
+    max-height: 65px;
+    max-width: 270.83px;
+    position: relative;
+    width: 270.83px;
+  }
+  
+  .header .div-header-search {
+    flex: 1;
+    flex-grow: 1;
+    height: 34.78px;
+    margin-left: -9px;
+    position: relative;
+  }
+  
+  .header .link-advanced-search {
+    color: #333333;
+    font-family: "Open Sans-Regular", Helvetica;
+    font-size: 11.9px;
+    font-weight: 400;
+    height: 18px;
+    left: 769px;
+    letter-spacing: 0;
+    line-height: 17.7px;
+    position: absolute;
+    top: 38px;
+    white-space: nowrap;
+  }
+  
+  .header .form {
+    height: 35px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 80%;
+  }
+  
+  .header .text-wrapper {
+    color: #333333;
+    font-family: "Open Sans-SemiBold", Helvetica;
+    font-size: 16.8px;
+    font-weight: 600;
+    height: 25px;
+    left: 10px;
+    letter-spacing: 0;
+    line-height: 24.9px;
+    position: absolute;
+    top: 1px;
+    white-space: nowrap;
+  }
+  
+  .header .div-btn-group {
+    background-color: #ffffff;
+    box-shadow: inset 0px 1px 1px #00000013;
+    height: 34px;
+    left: 103px;
+    position: absolute;
+    top: 0;
+    width: 112px;
+  }
+  
+  .header .button {
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #cccccc;
+    height: 35px;
+    position: relative;
+  }
+  
+  .header .span-filter-option {
+    align-items: flex-start;
+    display: inline-flex;
+    left: 13px;
+    padding: 0px 0px 0.78px;
+    position: absolute;
+    top: 6px;
+  }
+  
+  .header .div {
+    color: #666666;
+    font-family: "Open Sans-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 20.8px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .header .text-wrapper-2 {
+    color: #666666;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    height: 21px;
+    left: 74px;
+    letter-spacing: 0;
+    line-height: 20.8px;
+    position: absolute;
+    text-align: center;
+    top: 6px;
+    white-space: nowrap;
+    width: 13px;
+  }
+  
+  .header .overlap-group {
+    height: 35px;
+    left: 235px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  
+  .header .input {
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #c2c2c2;
+    box-shadow: inset 0px 1px 1px 1px #00000013;
+    height: 34px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  
+  .header .div-wrapper {
+    align-items: flex-start;
+    background-color: #425563;
+    border: 1px solid;
+    display: inline-flex;
+    left: 584px;
+    padding: 10px 15.7px 10.78px 15.89px;
+    position: absolute;
+    top: 0;
+  }
+  
+  .header .text-wrapper-3 {
+    color: #ffffff;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 14px;
+    margin-top: -1px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
