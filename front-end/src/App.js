@@ -9,6 +9,7 @@ import LibraryPage from '../src/Containers/Library/LibraryPage';
 import NavbarComponent from './Components/navbarComponent';
 import { Component } from 'react';
 import SignInPage from './Containers/SignInPage/SignInPage';
+import LibraryPage from './Containers/Library/libraryPage';
 
 
 
@@ -23,6 +24,7 @@ class App extends Component{
           <Route path="/contactUs"  element={<CustomerSuppportPage/>}/>
           <Route path="/"   element ={<Home/>} />
           <Route path="/signIn"   element ={<SignInPage/>} />
+          <Route path="/Test"   element ={<Testing/>} />
         </Routes>
       </div>
 

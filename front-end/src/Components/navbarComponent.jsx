@@ -22,6 +22,8 @@ class NavbarComponent extends Component {
               <Link className="nav-link" to="/Library">Library</Link>
               <Link className="nav-link" to="/Library">About Us</Link>
               <Link className="nav-link" to="/contactUs">Contact Us</Link>
+              {/* // This is a test link */}
+              <Link className="nav-link" to="/Test">Test</Link>  
               <Link to="/signUp"><button className="login-button-css ">sign up</button></Link>
               <button className="login-button-css padding-css" >sign in</button>
             </div>
