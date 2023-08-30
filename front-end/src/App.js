@@ -1,11 +1,9 @@
-
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
 import MainFooter from './Components/footer';
 import Home from '../src/Containers/Home/HomePage';
 import CustomerSuppportPage from '../src/Containers/CustomerSupport/CustomerSupport';
-import LibraryPage from '../src/Containers/Library/LibraryPage';
 import NavbarComponent from './Components/navbarComponent';
 import { Component } from 'react';
 import SignInPage from './Containers/SignInPage/SignInPage';
@@ -24,7 +22,7 @@ class App extends Component{
           <Route path="/contactUs"  element={<CustomerSuppportPage/>}/>
           <Route path="/"   element ={<Home/>} />
           <Route path="/signIn"   element ={<SignInPage/>} />
-          <Route path="/Test"   element ={<Testing/>} />
+          
         </Routes>
       </div>
 
