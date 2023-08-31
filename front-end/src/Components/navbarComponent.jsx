@@ -51,7 +51,9 @@ class NavbarComponent extends Component {
             <Link to="/signUP">
                 <button className="login-button-css" >Sign up</button>
               </Link>
+              <Link to = "/register-page">
                 <button className="login-button-css padding-css" >sign in</button>
+              </Link>
 
               
           </Navbar.Collapse>
