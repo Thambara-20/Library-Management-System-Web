@@ -1,16 +1,15 @@
-
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
-import MainFooter from './Components/footer';
-import HomePage from './Containers/Home/HomePage';
-import CustomerSuppportPage from './Containers/CustomerSupport/customerSupportPage';
-import LibraryPage from './Containers/Library/libraryPage';
-import NavbarComponent from './Components/navbarComponent';
-
+import MainFooter from './Components/Footer';
+import Home from '../src/Containers/Home/HomePage';
+import CustomerSuppportPage from '../src/Containers/CustomerSupport/CustomerSupport';
+import NavbarComponent from './Components/NavbarComponent';
 import { Component } from 'react';
+import SignInPage from './Containers/SignInPage/SignInPage';
+import LibraryPage from './Containers/Library/LibraryPage';
+//import Signup from './Containers/SignUp/SignUp';
 
-import Signup from './Containers/SignUP/Signup';
 
 
 
@@ -21,18 +20,14 @@ class App extends Component{
       <NavbarComponent/>
       <div>
         <Routes>
-          <Route path="/Library" exact element={<LibraryPage/>} />
-
-          <Route path="/customer" element={<CustomerSuppportPage/>}/>
-          <Route path="/"   element ={<HomePage/>} />
-          <Route path="/SignUP"   element ={<Signup/>} />
-
+          <Route path="/Library" element={<LibraryPage/>} />
+          <Route path="/contactUs"  element={<CustomerSuppportPage/>}/>
+          <Route path="/"   element ={<Home/>} />
+          <Route path="/SignInPage"   element ={<SignInPage/>} />
         </Routes>
       </div>
-       <div  className='bottom-[120px] relative'>
+
       <MainFooter/>
-        
-       </div>
     </div>
 
     )

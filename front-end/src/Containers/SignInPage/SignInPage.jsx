@@ -1,13 +1,12 @@
 import React from 'react'
-import "../../Styles/Signup.css"
-import checkMark from "../../assets/signup-page/check-mark-1.png"
-function Signup() {
+import "../../Styles/SignIn.css"
+
+function SignInPage() {
   return (
     <div className="frame">
       <div className="overlap-group-wrapper">
         <div className="overlap-group">
           <div className="text-wrapper">Login</div>
-          <p className="div">How do I become a member?</p>
           <div className="input-container">
             <label className="input-label">User ID</label>
             <input type="text" className="input-field" />
@@ -34,4 +33,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default SignInPage;
