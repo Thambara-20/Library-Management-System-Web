@@ -1,11 +1,11 @@
 import React from "react";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import reportWebVitals from "./ReportWebVitals";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import "./index.css";
+import "./Index.css";
 import "bootstrap/dist/css/bootstrap.css";
-import "./Components/searchBar";
+import "./Components/SearchBar"
 
 
 ReactDOM.render(

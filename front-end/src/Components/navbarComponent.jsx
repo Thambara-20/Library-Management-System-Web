@@ -22,9 +22,8 @@ class NavbarComponent extends Component {
               <Link className="nav-link" to="/Library">Library</Link>
               <Link className="nav-link" to="/Library">About Us</Link>
               <Link className="nav-link" to="/contactUs">Contact Us</Link>
+              <Link to="/SignInPage"><button className="login-button-css ">Sign In</button></Link>
               
-              <Link to="/signUp"><button className="login-button-css ">sign up</button></Link>
-              <button className="login-button-css padding-css" >sign in</button>
             </div>
           </div>
         </div>
