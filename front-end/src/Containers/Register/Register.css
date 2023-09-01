@@ -1,5 +1,5 @@
 
-.wrapper{
+.wrapper-reg {
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -9,7 +9,7 @@
     background-color: whitesmoke;
   }
   
-  .container {
+                .container-reg {
     margin-top:80px;
     margin-bottom: 100px;
     height: 900px;
@@ -43,7 +43,87 @@
   }
   .top-header{
     margin-top: 30px;
-    margin-left: 30px;
+    margin-left: 50px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
   }
+.form-control {
+  height: 1000px;
+  width: 300px;
+  line-height: 30px;
+}
+
+#exampleInputEmail1 {
+  height: 50px;
+  margin-top: 0px;
+}
+
+.mb-3 {
+  margin-top: 30px;
+  margin-left: 50px;
+}
+
+.form-label {
+  font-weight: 600;
+}
+
+.name-container {
+  display: flex;
+}
+
+.first-name {
+  margin-left: 50px;
+}
+
+.email-form {
+  width: 400px;
+}
+
+.email-Container {
+  display: flex;
+}
+
+#exampleInputPassword1 {
+  height: 50px;
+  margin-top: 0px;
+}
+
+.password-container {
+  display: flex;
+}
+
+#check-box {
+  margin-top: 3px;
+}
+
+.pss {
+  margin-top: 30px;
+}
+
+#pass-p #pass-c {
+  margin-top: 30px;
+}
+
+#register-btn {
+  height: 46px;
+  margin-left: 50px;
+  margin-right: 109px;
+  border-radius: 23px;
+  width: 650px;
+}
+
+#login-btn {
+  height: 46px;
+  margin-left: 50px;
+  margin-right: 109px;
+  border-radius: 23px;
+  width: 650px;
+}
+
+.d-grid {
+  margin-top: 50px;
+}
+
+.btn {
+  margin-bottom: 10px;
+}

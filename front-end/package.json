@@ -14,6 +14,7 @@
     "aos": "^2.3.4",
     "axios": "^0.27.2",
     "bootstrap": "^5.3.1",
+    "bootstrap-icons": "^1.10.5",
     "install": "^0.13.0",
     "jwt-decode": "^3.1.2",
     "npm": "^8.16.0",
@@ -23,6 +24,7 @@
     "react-router-dom": "^6.0.0",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.0.7",
+    "react-tsparticles": "^2.12.2",
     "tailwindcss": "^3.1.4",
     "web-vitals": "^2.1.4"
   },
