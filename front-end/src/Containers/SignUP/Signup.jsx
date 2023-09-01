@@ -1,4 +1,5 @@
 import React from 'react'
+<<<<<<< Updated upstream
 import "../../Styles/Signup.css"
 import checkMark from "../../assets/signup-page/check-mark-1.png"
 function Signup() {
@@ -32,6 +33,17 @@ function Signup() {
       </div>
     </div>
   );
+=======
+import "./SignUp.css";
+
+
+function Signup() {
+  return (
+    <div className='login-page-css'>
+      <h2>Login</h2>
+    </div>
+  )
+>>>>>>> Stashed changes
 }
 
 export default Signup;

@@ -49,7 +49,7 @@ class NavbarComponent extends Component {
             <Nav.Link as={Link} className="nav-item nav-link" to="/customer" style={{color: "white"}}>Contact Us</Nav.Link>
 
             <Link to="/signUP">
-                <button className="login-button-css" >Sign up</button>
+                <button className="login-button-css" onClick={this.props.onHandle} >Sign up</button>
               </Link>
               <Link to = "/register-page">
                 <button className="login-button-css padding-css" >sign in</button>
