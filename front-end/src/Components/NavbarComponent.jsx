@@ -1,38 +1,64 @@
-import React, { Component } from "react";
-import { ReactDOM } from "react-dom";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "../Styles/Navbar.css";
 import { Link } from "react-router-dom";
 import '../Styles/Navbar.css';
+import { useState } from "react";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
-class NavbarComponent extends Component {
+const NavbarComponent = ()=> {
 
-  render() {
-
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(true);
+   
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" >
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="">Navbar</Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-              <Link className="link-css nav-link" aria-current="page" to="/">Home</Link>
-              <Link className="nav-link" to="/Library">Library</Link>
-              <Link className="nav-link" to="/Library">About Us</Link>
-              <Link className="nav-link" to="/contactUs">Contact Us</Link>
-              <Link to="/SignInPage"><button className="login-button-css ">Sign In</button></Link>
-              
-            </div>
-          </div>
-        </div>
-      </nav>
-    );
-  }
-  
+       
+      <Navbar bg="dark" variant="dark" expand="lg" className="navbar" w>
+      <Container className='container' >
+        <Navbar.Brand as={Link} className="nav-item na-link" to="/">LBMS</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Link to="/" className="nav-item nav-link">Home</Link>
+            <Nav.Link as={Link} className="nav-item nav-link" to="/Library">Library</Nav.Link>
+            
+
+            <NavDropdown title="Category" id="basic-nav-dropdown" >
+
+              <NavDropdown.Item href="/">Marvel</NavDropdown.Item>
+              <NavDropdown.Item href="/">Marvel</NavDropdown.Item>
+              <NavDropdown.Item href="/">Marvel</NavDropdown.Item>
+              <NavDropdown.Item href="/">Marvel</NavDropdown.Item>
+              <NavDropdown.Item href="/">Marvel</NavDropdown.Item>
+              <NavDropdown.Item href="/">Marvel</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/All">Separated link</NavDropdown.Item>
+            </NavDropdown>
+            
+
+          </Nav>
+          
+          <Nav.Link as={Link} className="nav-item nav-link" to="/ContactUs" style={{color: "white"}}>Contact Us</Nav.Link>
+          {isAdminLoggedIn && <Nav.Link as={Link} className="nav-item nav-link" to="/admin" style={{color: "white"}}>Admin</Nav.Link>}
+
+          <Link to="/SignInPage">
+              <button className="login-button-css" >Sign in</button>
+            </Link>
+              <button className="login-button-css padding-css" >sign up</button>
+
+            
+        </Navbar.Collapse>
+      </Container>
 
 
+    </Navbar>
+
+
+
+  )
 }
+
 
 export default NavbarComponent;
