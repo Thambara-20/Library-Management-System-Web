@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import CustomerSupport from "../../Components/CustomerSupport";
+import NavbarComponent from "../../Components/NavbarComponent";
+import ContactDetails from "../../Components/ContactDetails";
 
 class CustomerSuppportPage extends Component {
   state = {};
   render() {
     return (
       <div className="CustomerSupport-container">
-        <CustomerSupport/>
+         <NavbarComponent/>
+        <ContactDetails/>
       </div>
     );
   }
