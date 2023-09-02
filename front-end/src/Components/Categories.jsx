@@ -3,7 +3,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import { Link } from 'react-router-dom';
 
-import { booksDummy } from '../Helpers/CategoryDummy';
+import { booksDummy } from '../helpers/CategoryDummy';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import '../Styles/BooksCategories.css'; // Import your CSS file
