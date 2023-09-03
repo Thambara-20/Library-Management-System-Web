@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../../Styles/RemoveBook.css'; // Adjust the path as needed
-import bookImage from '../../assets/admin/books.png'; // Replace with your image path
+import '../../Styles/RemoveBook.css'; 
+import bookImage from '../../assets/admin/books.png'; 
 
 function BookRemove() {
   const [bookId, setBookId] = useState('');
