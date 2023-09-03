@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-
+import CountUp from 'react-countup';
 // Define custom dark theme colors
 const darkThemeColors = {
     background: '#222222', // Darker gray background color
@@ -23,7 +23,7 @@ const MiniBox = ({ title, icon: Icon = PersonOutlineOutlinedIcon, count, increas
       sx={{
         boxShadow: '0px 6px 10px rgba(0, 0, 0, 0.5)',
         backgroundColor: darkThemeColors.background,
-      }}
+      }}    
     >
       {/* Text on the top-right corner */}
       <Typography
@@ -36,7 +36,7 @@ const MiniBox = ({ title, icon: Icon = PersonOutlineOutlinedIcon, count, increas
           color: darkThemeColors.text,
         }}
       >
-        {count}
+        {<CountUp start={0} end={count} duration={4}/> }
       </Typography>
       <Icon
         sx={{
