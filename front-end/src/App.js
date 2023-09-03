@@ -11,9 +11,6 @@ import AdminMainPage from './Containers/Admin/AdminMainPage';
 import UserManagement from './Containers/Admin/UserManagement';
 import BookManagement from './Containers/Admin/BookManagement';
 
-import BookAdd from './Containers/Admin/AddBook';
-import BookRemove from './Containers/Admin/RemoveBook';
-import BookUpdate from './Containers/Admin/UpdateBook';
 
 
 class App extends Component{
@@ -25,7 +22,10 @@ class App extends Component{
           <Route path="/Library" element={<LibraryPage/>} />
           <Route path="/ContactUs"  element={<CustomerSuppportPage/>}/>
           <Route path="/"   element ={<Home/>} />
-          <Route path="/SignInPage"   element ={<SignInPage/>} />
+          {/* <Route path="/SignInPage"   element ={<SignInPage/>} /> */}
+          <Route path="/admin"   element ={<AdminMainPage/>} />
+          <Route path="/admin/userManagement"   element ={<UserManagement/>} />
+          <Route path="/admin/bookManagement"   element ={<BookManagement/>} />
         </Routes>
       </div>
       <MainFooter/>
