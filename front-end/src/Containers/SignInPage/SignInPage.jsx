@@ -1,36 +1,95 @@
-import React from 'react'
-import "../../Styles/SignIn.css"
+import React, { useState } from 'react';
+import axios from 'axios';
+import '../../Styles/SignIn.css';
+import { useNavigate } from 'react-router-dom';
 
-function SignInPage() {
+const SignInPage = ({ onClose,onSuucessClose }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    password: '',
+  });
+
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:8080/api/users/login", formData);
+      console.log('Login successful:', response.data);
+      alert('Login successful.');
+      onClose();
+      onSuucessClose();
+      navigate("/");
+
+    } catch (error) {
+      console.error('Login failed:', error.response.data);
+      setErrorMessage("server is not connected");
+      // Use error.response.data.message
+    }
+  };
+
+
   return (
-    <div className="frame">
-      <div className="overlap-group-wrapper">
-        <div className="overlap-group">
-          <div className="text-wrapper">Login</div>
-          <div className="input-container">
-            <label className="input-label">User ID</label>
-            <input type="text" className="input-field" />
-          </div>
-          <div className="input-container">
-            <label className="input-label">Password</label>
-            <input type="password" className="input-field" />
-          </div>
-          <div className="wrapper" >
-            <div className="button-wrapper">
-              <button className="login-button">Login</button>
+    <div className="popup-wrapper">
+      <div className="popup">
+        <button className="popup-close-button" onClick={onClose}>
+          Close
+        </button>
+        <div className="frame">
+          <div className="overlap-group-wrapper">
+            <div className="overlap-group">
+              <div className="text-wrapper">Login</div>
+              <form onSubmit={handleSubmit}>
+                <div className="input-container">
+                  <label className="input-label">User name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="input-field"
+                    required
+                  />
+                </div>
+                <div className="input-container">
+                  <label className="input-label">Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    className="input-field"
+                    required
+                  />
+                </div>
+                <div className="error-message">{errorMessage}</div>
+                <div className="wrapper">
+                  <div className="button-wrapper">
+                    <button type="submit" className="login-button">
+                      Login
+                    </button>
+                  </div>
+                  <div className="button-wrapper">
+                    <button className="register-button">Register</button>
+                  </div>
+                </div>
+              </form>
             </div>
-            <div className="button-wrapper">
-              <button className="register-button">Register</button>
-            </div>
           </div>
-        
-          {/* <img className="check-mark" alt="Check mark" src={checkMark} /> */}
-          {/* <div className="text-wrapper-8">agree terms and conditions</div> */}
-
         </div>
       </div>
     </div>
+
   );
-}
+};
 
 export default SignInPage;
+
+
