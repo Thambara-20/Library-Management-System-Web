@@ -26,15 +26,6 @@ class App extends Component{
           <Route path="/ContactUs"  element={<CustomerSuppportPage/>}/>
           <Route path="/"   element ={<Home/>} />
           <Route path="/SignInPage"   element ={<SignInPage/>} />
-          <Route path="/admin"   element ={<AdminMainPage/>} />
-          <Route path="/admin/userManagement"   element ={<UserManagement/>} />
-          <Route path="/admin/bookManagement"   element ={<BookManagement/>} />
-
-          <Route path="/AddBook"   element ={<BookAdd/>} />
-          <Route path="/RemoveBook"   element ={<BookRemove/>} />
-          <Route path="/UpdateBook"   element ={<BookUpdate/>} />
-
-
         </Routes>
       </div>
       <MainFooter/>
