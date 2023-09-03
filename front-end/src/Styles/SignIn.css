@@ -1,21 +1,50 @@
+.popup-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.5); 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(5px); /* Ensure the popup is on top of other content */
+}
+
+.popup-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px; /* Increase the font size for a larger button */
+  color: #ffffff;
+  outline: none;
+}
+
 .frame {
-    background-color: #f5f5f5;
+    background:none;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    width: 100%;
   }
   
   .frame .overlap-group-wrapper {
-    width: 50%;
+    width: 80vh;
     max-width: 1200px;
   }
   
   .frame .overlap-group {
-    background-color: #ffffff;
+    background-color: #e8e6e6;
     border-radius: 30px;
     box-shadow: 0px 4px 15px #00000040;
-    padding: 40px;
+    padding: 70px;
+    width: 100%;
   }
   
   .frame .text-wrapper {
@@ -35,6 +64,7 @@
   
   .frame .input-container {
     margin-bottom: 20px;
+  
   }
   
   .frame .input-label {
@@ -63,13 +93,25 @@
     align-items: center;
   }
   
-  .frame .login-button,
+  .frame .login-button  {
+    background-color: #6f746c;
+    color: #ffffff;
+    border: none;
+    padding: 15px 50px ; 
+    padding-left:57%;/* Increase padding for longer buttons */
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center; /* Aligns button text to the center */
+  }
   .frame .register-button {
     background-color: #6f746c;
     color: #ffffff;
     border: none;
-    padding: 15px 80px; /* Increase padding for longer buttons */
+    padding: 15px 40px ; /* Increase padding for longer buttons */
     font-size: 1rem;
+    
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
@@ -81,16 +123,20 @@
   
   /* Existing code... */
   
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .frame .overlap-group {
       padding: 20px;
+      width: auto;
+      
     }
     .frame .overlap-group-wrapper {
-      width: 90%;
-      max-width: 1200px;
+      width: 75%;
+      
+      
     }
     
     .frame .text-wrapper {
+      
       font-size: 1.5rem;
       text-align: center;
     }
@@ -101,19 +147,27 @@
     }
   
     .frame .input-field {
+     
+      width: 100%;
       font-size: 0.9rem;
+    }
+
+    .frame .input-container {
+      width: 100%;
+      margin-bottom: 20px;
+    
     }
   
     .frame .login-button{
       font-size: 0.9rem;
-      padding: 15px 80px 15px 40px;
+      padding: 15px 50% 15px 30%;
       text-align: center; /* Aligns button text to the center */
     }
     
     
     .frame .register-button {
       font-size: 0.9rem;
-      padding: 15px 90px 15px 30px;
+      padding: 15px 40% 15px 20%;
       text-align: center; /* Aligns button text to the center */
     }
     
@@ -122,6 +176,84 @@
       align-items: center;
       justify-content: center; /* Aligns buttons to the center */
       margin-top: 20px;
+
     }
+    .wrapper {
+     
+      display: flex;
+      justify-content: space-between; /* Aligns buttons to the sides */
+      align-items: center;
+    }
+  }
+  
+
+
+    
+  @media (max-width: 400px) {
+    .frame .overlap-group {
+      padding: 20px;
+      width: auto;
+      
+    }
+    .frame .overlap-group-wrapper {
+      width: 70%;
+      
+      
+    }
+
+ 
+    .frame .input-container {
+      width: 100%;
+      margin-bottom: 20px;
+    
+    }
+  
+    .frame .login-button{
+      font-size: 0.9rem;
+      padding: 15px 10% 15px 10%;
+      text-align: center; /* Aligns button text to the center */
+    }
+    
+    
+    .frame .register-button {
+      font-size: 0.9rem;
+      padding: 15px 10% 15px 10%;
+      text-align: center; /* Aligns button text to the center */
+    }
+   
+  }
+      
+  @media (max-width: 300px) {
+    .frame .overlap-group {
+      padding: 20px;
+      width: auto;
+      
+    }
+    .frame .overlap-group-wrapper {
+      width: 90%;
+      
+      
+    }
+
+ 
+    .frame .input-container {
+      width: 100%;
+      margin-bottom: 20px;
+    
+    }
+  
+    .frame .login-button{
+      font-size: 0.9rem;
+      padding: 15px 10% 15px 10%;
+      text-align: center; /* Aligns button text to the center */
+    }
+    
+    
+    .frame .register-button {
+      font-size: 0.9rem;
+      padding: 15px 10% 15px 10%;
+      text-align: center; /* Aligns button text to the center */
+    }
+   
   }
   
