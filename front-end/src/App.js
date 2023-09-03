@@ -22,7 +22,7 @@ class App extends Component{
           <Route path="/Library" element={<LibraryPage/>} />
           <Route path="/ContactUs"  element={<CustomerSuppportPage/>}/>
           <Route path="/"   element ={<Home/>} />
-          <Route path="/SignInPage"   element ={<SignInPage/>} />
+          {/* <Route path="/SignInPage"   element ={<SignInPage/>} /> */}
           <Route path="/admin"   element ={<AdminMainPage/>} />
           <Route path="/admin/userManagement"   element ={<UserManagement/>} />
           <Route path="/admin/bookManagement"   element ={<BookManagement/>} />
