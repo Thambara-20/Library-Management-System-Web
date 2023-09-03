@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import { Link } from 'react-router-dom';
-import { booksDummy } from '../Helpers/BooksDummy';
+import { booksDummy } from '../helpers/BooksDummy';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import '../Styles/PopularBooks.css'; // Import your CSS file

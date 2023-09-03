@@ -11,9 +11,10 @@ import "../../Styles/Library.css";
 import BookCard from "../../Components/BookCard";
 import NavbarComponent from "../../Components/NavbarComponent";
 import SearchIcon from "@mui/icons-material/Search";
-import { booksDummy as books } from "../../Helpers/BooksDummy";
+import { booksDummy as books } from "../../helpers/BooksDummy";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Header from "../../Components/Header/Header";
 
 const LibraryPage = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -35,7 +36,7 @@ const LibraryPage = () => {
 
   return (
     <div className="Library-page-wrapper">
-      <NavbarComponent />
+      <Header/>
       <Container data-aos="fade-up" data-aos-offset="200">
         <div className="library-top">
           <div className="category-dropdown">
