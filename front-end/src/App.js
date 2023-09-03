@@ -7,8 +7,10 @@ import Home from './Containers/Home/Home';
 import { Component } from 'react';
 import SignInPage from './Containers/SignInPage/SignInPage';
 import LibraryPage from './Containers/Library/LibraryPage';
-//import Signup from './Containers/SignUp/SignUp';
-
+import CustomerSuppportPage from './Containers/CustomerSupport/CustomerSupportPage';
+import AdminMainPage from './Containers/Admin/AdminMainPage';
+import UserManagement from './Containers/Admin/UserManagement';
+import BookManagement from './Containers/Admin/BookManagement';
 
 
 
@@ -25,7 +27,6 @@ class App extends Component{
           <Route path="/admin"   element ={<AdminMainPage/>} />
           <Route path="/admin/userManagement"   element ={<UserManagement/>} />
           <Route path="/admin/bookManagement"   element ={<BookManagement/>} />
-
         </Routes>
       </div>
     </div>
