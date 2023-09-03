@@ -23,7 +23,7 @@
 .welcome-title {
 
     position: relative;
-    z-index: 1;
+    z-index: 999;
 }
 
 .welcome-title>h1 {
@@ -90,7 +90,7 @@
     border-radius: 15px;
     border: none;
     transition: all 200ms ease-in;
-    z-index: -17;
+    z-index: 999;
 }
 
 .image-container:hover {

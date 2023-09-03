@@ -4,6 +4,7 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import OutsideClickHandler from 'react-outside-click-handler';
+
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const getMenuStyles = (menuOpen)=>{
