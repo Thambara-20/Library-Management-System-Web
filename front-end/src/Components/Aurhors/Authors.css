@@ -1,0 +1,7 @@
+.author-container{
+    justify-content: space-around;
+    gap: 1rem;
+}
+.author-container>img{
+    width: 9rem;
+}
