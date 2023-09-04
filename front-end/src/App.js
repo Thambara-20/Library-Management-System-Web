@@ -2,8 +2,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
 import MainFooter from './Components/Footer';
-// import Home from '../src/Containers/Home/HomePage';
-import Home from './Containers/Home/Home';
+import Home from '../src/Containers/Home/HomePage';
 import { Component } from 'react';
 import SignInPage from './Containers/SignInPage/SignInPage';
 import LibraryPage from './Containers/Library/LibraryPage';
@@ -11,7 +10,6 @@ import CustomerSuppportPage from './Containers/CustomerSupport/CustomerSupportPa
 import AdminMainPage from './Containers/Admin/AdminMainPage';
 import UserManagement from './Containers/Admin/UserManagement';
 import BookManagement from './Containers/Admin/BookManagement';
-
 
 
 class App extends Component{
@@ -27,9 +25,13 @@ class App extends Component{
           <Route path="/admin"   element ={<AdminMainPage/>} />
           <Route path="/admin/userManagement"   element ={<UserManagement/>} />
           <Route path="/admin/bookManagement"   element ={<BookManagement/>} />
+
+
         </Routes>
       </div>
+      <MainFooter/>
     </div>
+
     )
   }
 }

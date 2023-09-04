@@ -185,75 +185,77 @@
       align-items: center;
     }
   }
-  
 
 
-    
+
+
+
+
   @media (max-width: 400px) {
     .frame .overlap-group {
       padding: 20px;
       width: auto;
-      
+
     }
     .frame .overlap-group-wrapper {
       width: 70%;
-      
-      
+
+
     }
 
- 
+
     .frame .input-container {
       width: 100%;
       margin-bottom: 20px;
-    
+
     }
-  
+
     .frame .login-button{
       font-size: 0.9rem;
       padding: 15px 10% 15px 10%;
       text-align: center; /* Aligns button text to the center */
     }
-    
-    
+
+
     .frame .register-button {
       font-size: 0.9rem;
       padding: 15px 10% 15px 10%;
       text-align: center; /* Aligns button text to the center */
     }
-   
+
   }
-      
+
   @media (max-width: 300px) {
     .frame .overlap-group {
       padding: 20px;
       width: auto;
-      
+
     }
     .frame .overlap-group-wrapper {
       width: 90%;
-      
-      
+
+
     }
 
- 
+
     .frame .input-container {
       width: 100%;
       margin-bottom: 20px;
-    
+
     }
-  
+
     .frame .login-button{
       font-size: 0.9rem;
       padding: 15px 10% 15px 10%;
       text-align: center; /* Aligns button text to the center */
     }
-    
-    
+
+
     .frame .register-button {
       font-size: 0.9rem;
       padding: 15px 10% 15px 10%;
       text-align: center; /* Aligns button text to the center */
     }
-   
+
   }
   
