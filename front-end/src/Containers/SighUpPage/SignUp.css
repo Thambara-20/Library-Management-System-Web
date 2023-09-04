@@ -1,0 +1,49 @@
+.paddings.innerWidth.flexCenter.reg-container{
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.image-container:hover{
+    pointer-events: none;
+}
+
+.left{
+    align-items: center;
+}
+.name{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+  }
+  .reg-log-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+.btn.btn-outline-primary{
+    width: 200px;
+    height: 45px;
+    font-weight: 500;
+}
+.btn.btn-primary{
+    width: 200px;
+    height: 45px;
+    transition: 300ms;
+    border: none;
+}
+.btn.btn-primary:hover{
+    scale: none;
+    background:orange;
+}
+.reg-container{
+    background: rgb(255, 255, 255);
+    border-radius: 15px;
+    box-shadow:  3px 10px 18px rgb(129, 124, 124);
+}
+.register-wrapper{
+    margin-top: 40px;
+    border-radius: 15px;
+}
+
+
+  

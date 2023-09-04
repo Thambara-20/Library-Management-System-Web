@@ -1,5 +1,6 @@
 import React from 'react'
 import "../../Styles/SignIn.css"
+import { Link } from 'react-router-dom';
 
 function SignInPage() {
   return (
@@ -20,7 +21,9 @@ function SignInPage() {
               <button className="login-button">Login</button>
             </div>
             <div className="button-wrapper">
+              <Link to='/Register'>
               <button className="register-button">Register</button>
+              </Link>
             </div>
           </div>
         

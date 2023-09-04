@@ -1,36 +1,34 @@
-import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import MainFooter from "./Components/Footer";
+import Home from "./Containers/Home/Home";
+import { Component } from "react";
+import SignInPage from "./Containers/SignInPage/SignInPage";
+import LibraryPage from "./Containers/Library/LibraryPage";
+import CustomerSuppportPage from "./Containers/CustomerSupport/CustomerSupportPage";
+import AdminMainPage from "./Containers/Admin/AdminMainPage";
+import UserManagement from "./Containers/Admin/UserManagement";
+import BookManagement from "./Containers/Admin/BookManagement";
+import SignUp from "./Containers/SighUpPage/SignUp";
 
-import MainFooter from './Components/Footer';
-// import Home from '../src/Containers/Home/HomePage';
-import Home from './Containers/Home/Home';
-import { Component } from 'react';
-import SignInPage from './Containers/SignInPage/SignInPage';
-import LibraryPage from './Containers/Library/LibraryPage';
-import CustomerSuppportPage from './Containers/CustomerSupport/CustomerSupportPage';
-import AdminMainPage from './Containers/Admin/AdminMainPage';
-import UserManagement from './Containers/Admin/UserManagement';
-import BookManagement from './Containers/Admin/BookManagement';
-
-
-
-class App extends Component{
-  render(){
-    return(
-    <div>
+class App extends Component {
+  render() {
+    return (
       <div>
-        <Routes>
-          <Route path="/Library" element={<LibraryPage/>} />
-          <Route path="/ContactUs"  element={<CustomerSuppportPage/>}/>
-          <Route path="/"   element ={<Home/>} />
-          <Route path="/SignInPage"   element ={<SignInPage/>} />
-          <Route path="/admin"   element ={<AdminMainPage/>} />
-          <Route path="/admin/userManagement"   element ={<UserManagement/>} />
-          <Route path="/admin/bookManagement"   element ={<BookManagement/>} />
-        </Routes>
+        <div>
+          <Routes>
+            <Route path="/Library" element={<LibraryPage />} />
+            <Route path="/Register" element={<SignUp/>} />
+            <Route path="/ContactUs" element={<CustomerSuppportPage />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/SignInPage" element={<SignInPage />} />
+            <Route path="/admin" element={<AdminMainPage />} />
+            <Route path="/admin/userManagement" element={<UserManagement />} />
+            <Route path="/admin/bookManagement" element={<BookManagement />} />
+          </Routes>
+        </div>
       </div>
-    </div>
-    )
+    );
   }
 }
 

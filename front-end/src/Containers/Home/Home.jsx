@@ -8,7 +8,7 @@ import NewArrivals from "../../Components/NewArrivals/NewArrivals";
 import Value from "../../Components/Value/Value";
 import Contact from "../../Components/ContactUs/Contact";
 import GetStarter from "../../Components/FootGetStart/GetStarter";
-
+import Footer from "../../Components/Footer/Footer";
 function Home() {
   return (
     <div className="App">
@@ -23,6 +23,7 @@ function Home() {
       <NewArrivals />
       <Contact />
       <GetStarter/>
+      <Footer/>
     </div>
   );
 }

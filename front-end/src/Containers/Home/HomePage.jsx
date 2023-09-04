@@ -12,8 +12,6 @@ const HomePage = () => {
       <NavbarComponent/>
         <PopulerBooks />
         <BookCategories />
-        
-      
     </div>
   )
 }
