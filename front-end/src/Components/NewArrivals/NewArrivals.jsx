@@ -10,6 +10,7 @@ import "swiper/css";
 import { useState, useEffect } from "react";
 import data from "../../utils/slider.json";
 import { sliderSetting } from "../../utils/common";
+import { Link } from "react-router-dom";
 
 
 
@@ -33,6 +34,7 @@ const NewArrivals = () => {
           {data.map((card, i) => {
             return (
               <SwiperSlide key={i}>
+                <Link to={'/Register'}>
                 <div className="flexColStart p-card">
                   <img src={card.image} alt="book" />
                   <span className="secondaryText p-value">
@@ -47,6 +49,7 @@ const NewArrivals = () => {
                   <span className="primaryText">{card.name}</span>
                   <span className="f-size ">{card.detail}</span>
                 </div>
+                </Link>
               </SwiperSlide>
             );
           })}

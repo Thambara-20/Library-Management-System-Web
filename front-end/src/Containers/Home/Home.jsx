@@ -9,6 +9,8 @@ import Value from "../../Components/Value/Value";
 import Contact from "../../Components/ContactUs/Contact";
 import GetStarter from "../../Components/FootGetStart/GetStarter";
 import Footer from "../../Components/Footer/Footer";
+import TextBanner from "../../Components/TextBanner/TextBanner"
+
 function Home() {
   return (
     <div className="App">
@@ -17,7 +19,7 @@ function Home() {
         <Header />
         <Welcome />
       </div>
-      <Authors />
+      <TextBanner/>
       <Popular />
       <Value />
       <NewArrivals />
