@@ -4,8 +4,12 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import OutsideClickHandler from 'react-outside-click-handler';
+
+
+
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
   const getMenuStyles = (menuOpen)=>{
     if(document.documentElement.clientWidth <= 800){
       return{right:!menuOpen&& "-100%"}
@@ -41,7 +45,7 @@ const Header = () => {
           </Link>
         </div>
         </OutsideClickHandler>
-        <div className="menu-icon" onClick={()=>{setMenuOpen((prev)=>!(prev))}}>
+        <div className="menu-icon" onClick={()=>{setMenuOpen( !prev)}}>
           <BiMenuAltRight size={30} />
         </div>
       </div>

@@ -29,7 +29,7 @@ const NewArrivals = () => {
           <span className="primaryText">New Arrival Books</span>
         </div>
 
-        <Swiper {...sliderSetting}>
+        <Swiper {...sliderSetting} data-aos="fade-up" data-aos-offset="200">
           <SliderButtons />
           {data.map((card, i) => {
             return (

@@ -28,7 +28,7 @@ const Popular = () => {
           <span className="primaryText">Popular Books</span>
         </div>
 
-        <Swiper {...sliderSetting}>
+        <Swiper {...sliderSetting} data-aos="fade-up" data-aos-offset="200">
           <SliderButtons />
           {data.map((card, i) => {
             return (
