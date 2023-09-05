@@ -3,6 +3,7 @@ import { grey } from '@mui/material/colors'
 import React from 'react'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
+
 function TableBox({topic,filteredData,columns}) {
     return (
         <Box m="15px">
@@ -12,6 +13,8 @@ function TableBox({topic,filteredData,columns}) {
                     Welcome to the UserManager
                 </Typography>
             </Box>
+            
+                {topic === "BookManager" &&(<button  class="btn btn-primary"data-aos="fade-up" id="" display="relative" >Add a book</button>)}
             <Box
                 data-aos="fade-up"
                 m="30px 0 0 0"

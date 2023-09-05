@@ -1,20 +1,36 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "../Styles/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../Styles/Navbar.css';
 import { useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import SignInPage from "../Containers/SignInPage/SignInPage";
 
-const NavbarComponent = ()=> {
+const NavbarComponent = ({ isAdminLoggedIn, updateAdminStatus }) => {
+  const [showSignUpPopup, setShowSignUpPopup] = useState(false);
+  const navigate = useNavigate();
 
-  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(true);
-   
+
+  const openSignUpPopup = () => {
+    setShowSignUpPopup(true);
+  };
+
+  const closeSignUpPopup = () => {
+    setShowSignUpPopup(false);
+  };
+
+  const changeIcon = () => {
+
+    // Update isAdminLoggedIn when the user logs in as an admin
+    updateAdminStatus(true);
+  };
+
     return (
-       
+       <div>
       <Navbar bg="dark" variant="dark" expand="lg" className="navbar" w>
       <Container className='container' >
         <Navbar.Brand as={Link} className="nav-item na-link" to="/">LBMS</Navbar.Brand>
@@ -42,19 +58,26 @@ const NavbarComponent = ()=> {
           
           <Nav.Link as={Link} className="nav-item nav-link" to="/ContactUs" style={{color: "white"}}>Contact Us</Nav.Link>
           {isAdminLoggedIn && <Nav.Link as={Link} className="nav-item nav-link" to="/admin" style={{color: "white"}}>Admin</Nav.Link>}
-
-          <Link to="/SignInPage">
-              <button className="login-button-css" >Sign in</button>
-            </Link>
-              <button className="login-button-css padding-css" >sign up</button>
-
+          <button
+            className="login-button-css"
+            onClick={openSignUpPopup} // Open the signup popup when clicked
+          >
+            Sign in
+          </button>
+          <button className="login-button-css padding-css" onClick={openSignUpPopup}>
+            Sign up
+          </button>
             
         </Navbar.Collapse>
       </Container>
+      {showSignUpPopup && (
+        <SignInPage onClose={closeSignUpPopup} onSuucessClose={changeIcon} updateAdminStatus={updateAdminStatus}/>
 
+      )}
 
     </Navbar>
-
+ 
+    </div>
 
 
   )

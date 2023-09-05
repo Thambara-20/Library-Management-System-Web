@@ -1,10 +1,23 @@
 const express = require("express");
 const cors = require("cors");
-
+const config = require("config");
 const app = express();
 
-var corsOptions = {
-  origin: "http://localhost:8080"
+
+
+if (!config.jwtPrivateKey) {
+  console.error("FATAL ERROR: jwtPrivateKey is not defined.");
+  process.exit(1);
+}
+
+
+// var corsOptions = {
+//   origin: "http://localhost:8080"
+// };
+const corsOptions = {
+  origin: "http://localhost:3000", // Replace with your frontend's URL
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, // Allow cookies and authentication headers
 };
 
 app.use(cors(corsOptions));
@@ -36,7 +49,8 @@ app.get("/", (req, res) => {
 });
 
 
-require("./routes/book.routes")(app);
+require("./routes/bookRoutes")(app);
+require("./routes/userRoutes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

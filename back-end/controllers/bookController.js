@@ -2,7 +2,6 @@ const db = require("../models");
 const Book = db.books;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Book
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.title) {
@@ -12,7 +11,6 @@ exports.create = (req, res) => {
     return;
   }
 
-  // Create a Book
   const book = {
     title: req.body.title,
     author: req.body.author,
@@ -20,7 +18,7 @@ exports.create = (req, res) => {
     publisher: req.body.publisher
   };
 
-  // Save Book in the database
+
   Book.create(book)
     .then(data => {
       res.send(data);
@@ -33,10 +31,10 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all books from the database.
 exports.findAll = (req, res) => {
   const title = req.query.title;
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+  
 
   Book.findAll({ where: condition })
     .then(data => {
@@ -49,3 +47,30 @@ exports.findAll = (req, res) => {
       });
     });
 };
+
+
+
+
+exports.deleteBook = async (req, res) => {
+  const id = req.body.id;
+  console.log(id);
+
+  try {
+    // Find the user by id
+    const book = await Book.findOne({ where: { id } });
+
+    if (!book) {
+      
+      return res.status(404).json({ error: 'Book not found' });
+    }
+
+   
+    await book.destroy();
+
+    res.status(200).json({ message: 'Book deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+

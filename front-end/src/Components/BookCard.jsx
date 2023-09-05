@@ -23,7 +23,7 @@ const BookCard = ({ book }) => {
                 <Typography variant="subtitle1" color="text.secondary">
                     Category: {book.category}
                 </Typography>
-                {/* Add more book details as needed */}
+                
             </CardContent>
         </Card>
     );
