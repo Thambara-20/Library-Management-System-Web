@@ -5,11 +5,22 @@ import { MdCall } from "react-icons/md";
 import { BsFillChatDotsFill } from "react-icons/bs";
 import { HiChatBubbleBottomCenter } from "react-icons/hi2";
 import { AiFillAndroid } from "react-icons/ai";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useState, useEffect } from "react";
+
+
 
 const Contact = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+    AOS.refresh({duration: 2000});
+  }, []);
   return (
-    <section className="contact-wrapper">
-      <div className="paddings innerWidth flexCenter c-container">
+    <section className="contact-wrapper"data-aos="fade-up" data-aos-offset="200">
+      <div className="paddings innerWidth flexCenter c-container"data-aos="fade-up" data-aos-offset="200">
         {/* this is our left side */}
         <div className="flexColStart c-left">
           <span className="orangeText">Our contacts</span>

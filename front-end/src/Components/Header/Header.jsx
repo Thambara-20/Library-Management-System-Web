@@ -4,14 +4,17 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import OutsideClickHandler from 'react-outside-click-handler';
+
 import SignInPage from "../../Containers/SignInPage/SignInPage";
 import auth from "../../services/authService";
+
 
 const Header = () => {
   const [showSignUpPopup, setShowSignUpPopup] = useState(false);
   const [isUserLogIn, setUserLogIn] = useState(false);
   const [isAdminLoggedIn, setAdminLoggedIn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
 
   const openSignUpPopup = () => {
     setShowSignUpPopup(true);
@@ -51,6 +54,7 @@ const Header = () => {
     } else {
       setUserLogIn(false);
       setAdminLoggedIn(false);
+
     }
   }, []);
 
@@ -82,7 +86,8 @@ const Header = () => {
             </Link>
           </div>
         </OutsideClickHandler>
-        <div className="menu-icon" onClick={() => setMenuOpen((prev) => !prev)}>
+        <div className="menu-icon" onClick={()=>{setMenuOpen( !prev)}}>
+
           <BiMenuAltRight size={30} />
         </div>
         {showSignUpPopup && (

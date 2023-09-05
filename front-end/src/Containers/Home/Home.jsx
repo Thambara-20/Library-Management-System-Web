@@ -8,6 +8,8 @@ import NewArrivals from "../../Components/NewArrivals/NewArrivals";
 import Value from "../../Components/Value/Value";
 import Contact from "../../Components/ContactUs/Contact";
 import GetStarter from "../../Components/FootGetStart/GetStarter";
+import Footer from "../../Components/Footer/Footer";
+import TextBanner from "../../Components/TextBanner/TextBanner"
 
 function Home() {
   return (
@@ -17,12 +19,13 @@ function Home() {
         <Header />
         <Welcome />
       </div>
-      <Authors />
+      <TextBanner/>
       <Popular />
       <Value />
       <NewArrivals />
       <Contact />
       <GetStarter/>
+      <Footer/>
     </div>
   );
 }

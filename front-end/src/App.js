@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import MainFooter from './Components/Footer';
@@ -39,19 +40,15 @@ class App extends Component {
       <div>
         <div>
           <Routes>
-            {/* Other routes */}
+
             <Route path="/Library" element={<LibraryPage />} />
             <Route path="/ContactUs" element={<CustomerSupportPage />} />
-            <Route
-              path="/"
-              element={
-                <Home/>
-              }
-            />
+            <Route path="/" element={  <Home/>   }   />
 
             {isAdminLoggedIn ? <Route path="/admin" element={<AdminMainPage />} /> : <Route path="/" />}
             {isAdminLoggedIn ? <Route path="/admin/userManagement" element={<UserManagement />} /> : <Route path="/" />}
             {isAdminLoggedIn ? <Route path="/admin/bookManagement" element={<BookManagement />} /> : <Route path="/" />}
+
           </Routes>
         </div>
       </div>
