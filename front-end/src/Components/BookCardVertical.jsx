@@ -1,14 +1,14 @@
 import React from "react";
 import { Card, CardContent, CardMedia, Typography, Button } from "@mui/material";
 
-const BookCardVertical = ({ book, showCancellationButton }) => {
+const BookCardVertical = ({ book, showCancellationButton, showIssueButton, showRejectButton }) => {
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        maxWidth: "700px",
+        maxWidth: "900px",
         margin: "0 auto", // Center align the container horizontally
       }}
     >
@@ -16,6 +16,7 @@ const BookCardVertical = ({ book, showCancellationButton }) => {
         className="book-card"
         style={{
           marginBottom: "20px",
+          width: "100%", // Set a fixed width for the card
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
@@ -33,26 +34,26 @@ const BookCardVertical = ({ book, showCancellationButton }) => {
             style={{ maxWidth: "100%" }} // Ensure the image doesn't exceed card width
           />
         </div>
-        <div style={{ flex: 1, marginLeft: "50px" }}>
+        <div style={{ flex: 1, marginLeft: "40px" }}>
           <CardContent className="card-content">
             <Typography variant="subtitle1" component="div">
-              Book ID: {book.bookID}
+              Book ID : {book.bookID}
             </Typography>
             <Typography variant="subtitle1" component="div">
-              ISBN: {book.ISBN}
+              ISBN : {book.ISBN}
             </Typography>
             <Typography variant="subtitle1" component="div">
-              Title: {book.title}
+              Title : {book.title}
             </Typography>
           </CardContent>
         </div>
-        <div style={{ flex: 1, marginLeft: "10px", marginTop: "15px" }}>
+        <div style={{ flex: 1, marginLeft: "30px", marginTop: "15px" }}>
           <CardContent className="card-content">
-            <Typography variant="subtitle1" color="text.secondary">
-              Reserved Date: {book.reservedData}
+            <Typography variant="subtitle1" color="text.secondary" >
+              Reserved Date : {book.reservedData}
             </Typography>
-            <Typography variant="subtitle1" color="text.secondary">
-              Borrow Before: {book.borrowBefore}
+            <Typography variant="subtitle1" color="text.secondary" >
+              Borrow Before : {book.borrowBefore}
             </Typography>
           </CardContent>
         </div>
@@ -67,6 +68,34 @@ const BookCardVertical = ({ book, showCancellationButton }) => {
           >
             <Button variant="contained" >
               Cancel
+            </Button>
+          </div>
+        )}
+        {showIssueButton && (
+          <div
+            style={{
+              position: "absolute",
+              bottom: "10px",
+              left: "40%", // Adjust the left value for spacing
+              transform: "translateX(-50%)",
+            }}
+          >
+            <Button variant="contained" style={{ width: "100%" }}>
+              Issue
+            </Button>
+          </div>
+        )}
+        {showRejectButton && (
+          <div
+            style={{
+              position: "absolute",
+              bottom: "10px",
+              left: "70%", // Adjust the left value for spacing
+              transform: "translateX(-50%)",
+            }}
+          >
+            <Button variant="contained" style={{ width: "100%" }}>
+              Reject
             </Button>
           </div>
         )}
