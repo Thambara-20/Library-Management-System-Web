@@ -3,7 +3,7 @@ import React from 'react';
 import BookCardVertical from '../../Components/BookCardVertical'; 
 import { userReservedDummy as userReserved } from "../../Helpers/UserReservedDummy";
 
-const CartPage = () => {
+const ReservedBooks = () => {
   
   return (
     <div>
@@ -18,4 +18,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default ReservedBooks;
