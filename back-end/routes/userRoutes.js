@@ -1,20 +1,21 @@
+
+const auth = require("../middleware/auth")
+const admin = require("../middleware/admin")
+
 module.exports = (app) => {
     const users = require('../controllers/userController.js');
   
     var router = require('express').Router();
   
-    // Create a new user (signup)
-    // router.post('/signup', users.signup);
-  
-    // User login
-    router.post('/', users.create);
+    router.get('/me',auth,users.get)
+
+    router.post('/signup' ,users.signup);
     
     router.post('/login', users.login);
-  
-    // Retrieve all users (example)
+
     router.get('/find', users.findAll);
-  
-    // Other routes can be added here
+
+    router.delete('/delete',[auth,admin],users.deleteUser);
   
     app.use('/api/users', router);
   };

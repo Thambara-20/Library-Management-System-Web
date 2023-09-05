@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+
 import '../../Styles/SignIn.css';
 import { useNavigate } from 'react-router-dom';
+import { login } from '../../services/authService';
 
 const SignInPage = ({ onClose,onSuucessClose }) => {
   const [formData, setFormData] = useState({
@@ -21,19 +22,16 @@ const SignInPage = ({ onClose,onSuucessClose }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/api/users/login", formData);
-      console.log('Login successful:', response.data);
-      alert('Login successful.');
-      onClose();
-      onSuucessClose();
-      navigate("/");
-
+      await login(formData);
+            onClose();
+            onSuucessClose();
+            navigate("/");
+       
     } catch (error) {
-      console.error('Login failed:', error.response.data);
-      setErrorMessage("server is not connected");
-      // Use error.response.data.message
+        console.error("Error during login:", error);
+        setErrorMessage("An error occurred during login.");
     }
-  };
+};
 
 
   return (

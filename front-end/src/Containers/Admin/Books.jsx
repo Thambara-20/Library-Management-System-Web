@@ -16,6 +16,9 @@ const Books = () => {
 
 	const [searchQuery, setSearchQuery] = useState('');
 	const [filteredData, setFilteredData] = useState(mockDataContacts);
+    
+    
+
 
 	const filterData = () => {
 		// Clear previous search results by resetting filteredData to initial data
@@ -41,7 +44,7 @@ const Books = () => {
 		// Run filterData when the component mounts and whenever searchQuery changes
 		filterData();
 	},[searchQuery, filterData]);
-
+    
 	const columns = [
 		{ field: 'id', headerName: 'ID', flex: 0.4 },
 		{ field: 'isbn', headerName: 'ISBN' },
@@ -76,6 +79,7 @@ const Books = () => {
 						onClick={() => {
 							const isConfirmed = window.confirm("Are you sure you want to delete?");
 							if (isConfirmed) {
+								
 								// Perform the deletion action here
 								// You can call your `handleClick` function or any other action
 								// when the user confirms deletion.
@@ -103,7 +107,7 @@ const Books = () => {
 				setSearchQuery={setSearchQuery}
 				handleSearch={filterData}
 			/>
-			<TableBox filteredData={filteredData} topic="BookManager" columns={columns} />
+			<TableBox filteredData={filteredData} topic="BookManager" columns={columns} data-aos="fade-up"/>
 		</div>
 	);
 };
