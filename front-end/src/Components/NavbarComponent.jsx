@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "../Styles/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../Styles/Navbar.css';
 import { useState } from "react";
 import Container from 'react-bootstrap/Container';
@@ -10,12 +10,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import SignInPage from "../Containers/SignInPage/SignInPage";
 
-const NavbarComponent = ()=> {
+const NavbarComponent = ({ isAdminLoggedIn, updateAdminStatus }) => {
+  const [showSignUpPopup, setShowSignUpPopup] = useState(false);
+  const navigate = useNavigate();
 
-  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(true);
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-  
-  const [showSignUpPopup, setShowSignUpPopup] = useState(false); // Control the visibility of the signup popup
 
   const openSignUpPopup = () => {
     setShowSignUpPopup(true);
@@ -26,8 +24,10 @@ const NavbarComponent = ()=> {
   };
 
   const changeIcon = () => {
-    setIsUserLoggedIn(true);
-  }
+
+    // Update isAdminLoggedIn when the user logs in as an admin
+    updateAdminStatus(true);
+  };
 
     return (
        <div>
@@ -71,7 +71,8 @@ const NavbarComponent = ()=> {
         </Navbar.Collapse>
       </Container>
       {showSignUpPopup && (
-        <SignInPage onClose={closeSignUpPopup} onSuucessClose={changeIcon} />
+        <SignInPage onClose={closeSignUpPopup} onSuucessClose={changeIcon} updateAdminStatus={updateAdminStatus}/>
+
       )}
 
     </Navbar>

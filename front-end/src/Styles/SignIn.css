@@ -71,6 +71,7 @@
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 5px;
+    color: #000000;
   }
   
   .frame .input-field {
@@ -183,7 +184,9 @@
       display: flex;
       justify-content: space-between; /* Aligns buttons to the sides */
       align-items: center;
+
     }
+   
   }
 
 

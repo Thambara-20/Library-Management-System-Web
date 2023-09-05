@@ -1,7 +1,15 @@
 const express = require("express");
 const cors = require("cors");
-
+const config = require("config");
 const app = express();
+
+
+
+if (!config.jwtPrivateKey) {
+  console.error("FATAL ERROR: jwtPrivateKey is not defined.");
+  process.exit(1);
+}
+
 
 // var corsOptions = {
 //   origin: "http://localhost:8080"
