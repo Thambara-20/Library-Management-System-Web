@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import MainFooter from './Components/Footer';
 import Home from './Containers/Home/Home';
 import LibraryPage from './Containers/Library/LibraryPage';
@@ -43,9 +43,7 @@ class App extends Component {
             <Route
               path="/"
               element={
-                <Home
-                  // Pass the user data to the Home component
-                />
+                <Home/>
               }
             />
 
