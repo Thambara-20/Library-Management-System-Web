@@ -2,7 +2,6 @@ const db = require("../models");
 const Book = db.books;
 const Op = db.Sequelize.Op;
 
-
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.title) {
@@ -12,7 +11,6 @@ exports.create = (req, res) => {
     return;
   }
 
-
   const book = {
     title: req.body.title,
     author: req.body.author,
@@ -20,7 +18,7 @@ exports.create = (req, res) => {
     publisher: req.body.publisher
   };
 
- 
+
   Book.create(book)
     .then(data => {
       res.send(data);
@@ -37,6 +35,7 @@ exports.findAll = (req, res) => {
   const title = req.query.title;
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
   
+
   Book.findAll({ where: condition })
     .then(data => {
       res.send(data);
@@ -48,6 +47,7 @@ exports.findAll = (req, res) => {
       });
     });
 };
+
 
 
 
@@ -73,3 +73,4 @@ exports.deleteBook = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+

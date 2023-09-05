@@ -7,6 +7,7 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Components/SearchBar"
 
+
 ReactDOM.render(
   <BrowserRouter>
     <App />

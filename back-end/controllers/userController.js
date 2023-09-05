@@ -1,4 +1,5 @@
 const db = require("../models");
+
 const { User, validateUser } = db.users;
 const Op = db.Sequelize.Op;
 const config = require("config");

@@ -14,6 +14,7 @@ const NavbarComponent = ({ isAdminLoggedIn, updateAdminStatus }) => {
   const [showSignUpPopup, setShowSignUpPopup] = useState(false);
   const navigate = useNavigate();
 
+
   const openSignUpPopup = () => {
     setShowSignUpPopup(true);
   };
@@ -23,9 +24,11 @@ const NavbarComponent = ({ isAdminLoggedIn, updateAdminStatus }) => {
   };
 
   const changeIcon = () => {
+
     // Update isAdminLoggedIn when the user logs in as an admin
     updateAdminStatus(true);
   };
+
     return (
        <div>
       <Navbar bg="dark" variant="dark" expand="lg" className="navbar" w>
@@ -69,6 +72,7 @@ const NavbarComponent = ({ isAdminLoggedIn, updateAdminStatus }) => {
       </Container>
       {showSignUpPopup && (
         <SignInPage onClose={closeSignUpPopup} onSuucessClose={changeIcon} updateAdminStatus={updateAdminStatus}/>
+
       )}
 
     </Navbar>
