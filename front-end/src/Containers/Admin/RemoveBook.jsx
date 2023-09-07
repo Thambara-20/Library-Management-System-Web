@@ -12,7 +12,7 @@ function BookRemove() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Removing book with ID:', bookId);
-    // Add your removal logic here
+    // Add the removal logic here
     setBookId('');
   };
 
