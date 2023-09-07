@@ -37,7 +37,7 @@ const Users = () => {
 useEffect(() => {
 	// Run filterData when the component mounts and whenever searchQuery changes
 	filterData();
-}, [searchQuery]);
+}, [searchQuery],[filteredData]);
 
 const columns = [
 	{ field: 'id', headerName: 'ID', flex: 0.4 },

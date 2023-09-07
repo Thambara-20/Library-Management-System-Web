@@ -10,7 +10,7 @@ import auth from "../../services/authService";
 const Header = () => {
   const [showSignUpPopup, setShowSignUpPopup] = useState(false);
   const [isUserLogIn, setUserLogIn] = useState(false);
-  const [isAdminLoggedIn, setAdminLoggedIn] = useState(false);
+  const [isAdminLoggedIn, setAdminLoggedIn] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const openSignUpPopup = () => {
@@ -38,21 +38,21 @@ const Header = () => {
   };
 
   // Use useEffect to check the user's login status on component mount
-  useEffect(() => {
-    const user = auth.getCurrentUser();
-    
-    // Assuming user.isAdmin is correctly set when a user is an admin
-    if (user && user.isAdmin) {
-      setUserLogIn(true);
-      setAdminLoggedIn(true);
-    } else if (user) {
-      setUserLogIn(true);
-      setAdminLoggedIn(false);
-    } else {
-      setUserLogIn(false);
-      setAdminLoggedIn(false);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const user = auth.getCurrentUser();
+
+  //   // Assuming user.isAdmin is correctly set when a user is an admin
+  //   if (user && user.isAdmin) {
+  //     setUserLogIn(true);
+  //     setAdminLoggedIn(true);
+  //   } else if (user) {
+  //     setUserLogIn(true);
+  //     setAdminLoggedIn(false);
+  //   } else {
+  //     setUserLogIn(false);
+  //     setAdminLoggedIn(false);
+  //   }
+  // }, []);
 
   return (
     <section className="h-wrapper">
@@ -62,25 +62,36 @@ const Header = () => {
         </a>
         <OutsideClickHandler onOutsideClick={() => setMenuOpen(false)}>
           <div className="flexCenter h-menu" style={getMenuStyles(menuOpen)}>
-            <Link to="/" className="navbar-elements">
+            <Link to="/" className="navbar-elements" style={{ textDecoration: "none" }}>
               Home
             </Link>
-            <Link to="/Library" className="navbar-elements">
+            <Link to="/Library" className="navbar-elements" style={{ textDecoration: "none" }}>
               Library
             </Link>
-            <Link className="navbar-elements">About Us</Link>
-            <Link to="/ContactUs" className="navbar-elements">
+            <Link className="navbar-elements" style={{ textDecoration: "none" }}>
+              About Us
+            </Link>
+            <Link to="/ContactUs" className="navbar-elements" style={{ textDecoration: "none" }}>
               Contact Us
             </Link>
-            {isAdminLoggedIn && <Link className="nav-item nav-link" to="/admin">Admin</Link>}
+            {isAdminLoggedIn && (
+              <Link className="navbar-elements" to="/admin" style={{ textDecoration: "none" }}>
+                Admin
+              </Link>
+            )}
             <Link>
               {isUserLogIn ? (
-                <button className="button" onClick={changeIconLogOut}>Log Out</button>
+                <button className="button" onClick={changeIconLogOut}>
+                  Log Out
+                </button>
               ) : (
-                <button className="button" onClick={openSignUpPopup}>Sign Up</button>
+                <button className="button" onClick={openSignUpPopup}>
+                  Sign Up
+                </button>
               )}
             </Link>
           </div>
+
         </OutsideClickHandler>
         <div className="menu-icon" onClick={() => setMenuOpen((prev) => !prev)}>
           <BiMenuAltRight size={30} />

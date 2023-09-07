@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Value.css";
 import {
   Accordion,
@@ -6,7 +6,7 @@ import {
   AccordionItemHeading,
   AccordionItemButton,
   AccordionItemPanel,
-  AccordionItemState,
+
 } from "react-accessible-accordion";
 import "react-accessible-accordion/dist/fancy-example.css";
 import valueImage from "./values.jpg";

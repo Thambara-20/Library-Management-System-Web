@@ -9,7 +9,6 @@ import {
 } from "@mui/material";
 import "../../Styles/Library.css";
 import BookCard from "../../Components/BookCard";
-import NavbarComponent from "../../Components/NavbarComponent";
 import SearchIcon from "@mui/icons-material/Search";
 import { booksDummy as books } from "../../Helpers/BooksDummy";
 import AOS from "aos";

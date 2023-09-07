@@ -13,7 +13,7 @@ const GetStarter = () => {
                     Join us to start your knowledge journey.<br/> Search Your book and find most Interest one
                 </span>
                 <button className="button">
-                    <Link to="/admin"> Get Start</Link>
+                    <Link to="/Library"> Get Start</Link>
                 </button>
             </div>
         </div>

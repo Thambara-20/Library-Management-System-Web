@@ -8,18 +8,18 @@ module.exports = app => {
   
     // Retrieve all books
     router.get("/find", books.findAll);
-  
+    
     // Retrieve all published books
     // router.get("/published", books.findAllPublished);
   
     // // Retrieve a single Tutorial with id
-    // router.get("/:id", books.findOne);
+     router.get("/findone/:id", books.findOne);
   
     // // Update a Tutorial with id
-    // router.put("/:id", books.update);
+     router.put("/update/:id", books.update);
 
     // Delete a Tutorial with id
-    router.delete("/delete", books.deleteBook);
+    router.delete("/delete/:id", books.deleteBook);
 
   
     // // Delete all books

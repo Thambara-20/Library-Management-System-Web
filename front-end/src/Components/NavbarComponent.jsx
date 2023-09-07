@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "../Styles/Navbar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import '../Styles/Navbar.css';
 import { useState } from "react";
 import Container from 'react-bootstrap/Container';
@@ -12,7 +12,7 @@ import SignInPage from "../Containers/SignInPage/SignInPage";
 
 const NavbarComponent = ({ isAdminLoggedIn, updateAdminStatus }) => {
   const [showSignUpPopup, setShowSignUpPopup] = useState(false);
-  const navigate = useNavigate();
+ 
 
 
   const openSignUpPopup = () => {

@@ -13,6 +13,11 @@
 }
 .h-menu{
     gap:2rem;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: Top;
+    
 }
 
 .h-menu>*:hover{
@@ -30,8 +35,10 @@
 }
 
 .menu-icon{
-    display: none;;
+    display: none;
 }
+
+
 @media(max-width:768px){
     .menu-icon{
         display: block;
