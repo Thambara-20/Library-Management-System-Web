@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
@@ -40,9 +41,10 @@ class App extends Component {
           <ToastContainer />
         <div>
           <Routes>
-            {/* Other routes */}
+
             <Route path="/Library" element={<LibraryPage />} />
             <Route path="/ContactUs" element={<CustomerSupportPage />} />
+
             <Route path="/"element={ <Home /> }/>
             
             {isAdminLoggedIn ? <Route path="/admin" element={<AdminMainPage />} /> : <Route path="/" />}
@@ -51,6 +53,7 @@ class App extends Component {
             {isAdminLoggedIn ? <Route path="/admin/bookManagement/addbook" element={<AddBook />} /> : <Route path="/" />}
             {isAdminLoggedIn ? <Route path="/admin/bookManagement/updatebook/:bookid" element={<BookUpdate />} /> : <Route path="/" />}
          
+
           </Routes>
         </div>
       </div>

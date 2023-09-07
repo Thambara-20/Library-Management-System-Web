@@ -91,7 +91,7 @@
     border-radius: 15px;
     border: none;
     transition: all 200ms ease-in;
-   
+
 }
 
 .image-container:hover {
@@ -103,7 +103,7 @@
     height: 100%;
 }
 
-/* @media(max-width:640px) {
+@media(max-width:640px) {
     .w-container{
         margin-top: 2rem;
     }
@@ -114,4 +114,4 @@
         width: 95%;
         line-height: 25rem;
     }
-} */
+}

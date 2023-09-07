@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 import '../../Styles/SignIn.css';
@@ -35,7 +36,9 @@ const SignInPage = ({ onClose,onSuucessClose }) => {
 
 
 
+
   return (
+
     <div className="popup-wrapper">
       <div className="popup">
         <button className="popup-close-button" onClick={onClose}>
@@ -80,6 +83,7 @@ const SignInPage = ({ onClose,onSuucessClose }) => {
                   </div>
                 </div>
               </form>
+
             </div>
           </div>
         </div>

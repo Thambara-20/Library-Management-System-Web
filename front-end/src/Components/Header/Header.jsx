@@ -4,14 +4,17 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import OutsideClickHandler from 'react-outside-click-handler';
+
 import SignInPage from "../../Containers/SignInPage/SignInPage";
 import auth from "../../services/authService";
+
 
 const Header = () => {
   const [showSignUpPopup, setShowSignUpPopup] = useState(false);
   const [isUserLogIn, setUserLogIn] = useState(false);
   const [isAdminLoggedIn, setAdminLoggedIn] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+
 
   const openSignUpPopup = () => {
     setShowSignUpPopup(true);
@@ -38,21 +41,23 @@ const Header = () => {
   };
 
   // Use useEffect to check the user's login status on component mount
-  // useEffect(() => {
-  //   const user = auth.getCurrentUser();
 
-  //   // Assuming user.isAdmin is correctly set when a user is an admin
-  //   if (user && user.isAdmin) {
-  //     setUserLogIn(true);
-  //     setAdminLoggedIn(true);
-  //   } else if (user) {
-  //     setUserLogIn(true);
-  //     setAdminLoggedIn(false);
-  //   } else {
-  //     setUserLogIn(false);
-  //     setAdminLoggedIn(false);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const user = auth.getCurrentUser();
+    
+    // Assuming user.isAdmin is correctly set when a user is an admin
+    if (user && user.isAdmin) {
+      setUserLogIn(true);
+      setAdminLoggedIn(true);
+    } else if (user) {
+      setUserLogIn(true);
+      setAdminLoggedIn(false);
+    } else {
+      setUserLogIn(false);
+      setAdminLoggedIn(false);
+
+    }
+  }, []);
 
   return (
     <section className="h-wrapper">
@@ -94,6 +99,7 @@ const Header = () => {
 
         </OutsideClickHandler>
         <div className="menu-icon" onClick={() => setMenuOpen((prev) => !prev)}>
+          
           <BiMenuAltRight size={30} />
         </div>
         {showSignUpPopup && (
