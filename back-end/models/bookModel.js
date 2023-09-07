@@ -1,5 +1,10 @@
 module.exports = (sequelize, Sequelize) => {
     const Book = sequelize.define("book", {
+      
+    
+      ISBN: {
+        type: Sequelize.STRING
+      },
       title: {
         type: Sequelize.STRING
       },
@@ -11,7 +16,15 @@ module.exports = (sequelize, Sequelize) => {
       },
       publisher:{
         type: Sequelize.STRING
+      },
+      abstract:{
+        type: Sequelize.STRING
+      },
+      status:{
+        type: Sequelize.BOOLEAN
       }
+      
+      
     });
   
 

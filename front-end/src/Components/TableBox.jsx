@@ -3,34 +3,41 @@ import { grey } from '@mui/material/colors'
 import React from 'react'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
+import AddBookButton from './Button';
 
-function TableBox({topic,filteredData,columns}) {
+
+function TableBox({ topic, filteredData, columns }) {
     return (
         <Box m="15px">
             <Box data-aos="fade-up" display="flex" justifyContent="space-between" alignItems="center" margin="10px 0 10px" >
                 <Typography variant="h3" >{topic}</Typography>
                 <Typography variant="subtitle1">
-                    Welcome to the UserManager
+                    Welcome to the {topic}
                 </Typography>
             </Box>
-            
-                {topic === "BookManager" &&(<button  class="btn btn-primary"data-aos="fade-up" id="" display="relative" >Add a book</button>)}
+
+            {topic === "BookManager" && (
+                <AddBookButton />
+            )}
             <Box
-                data-aos="fade-up"
+
                 m="30px 0 0 0"
-                height="75vh"
+                height="70vh"
+                data-aos="fade-up"
                 sx={{
                     '& .MuiDataGrid-root': {
                         border: 'none',
                     },
                     '& .MuiDataGrid-cell': {
-                        borderBottom: 'none',
+                    
+                        borderBottom: '1px solid black', 
                     },
-                    '& .name-column--cell': {
-                        color: grey[800],
+                    '& .MuiDataGrid-toolbarContainer .MuiButton-text': {
+                        color: `${grey[900]} !important`,
                     },
+
                     '& .MuiDataGrid-columnHeaders': {
-                        backgroundColor: grey[700],
+                        backgroundColor: grey[500],
                         borderBottom: 'none',
                     },
                     '& .MuiDataGrid-virtualScroller': {
@@ -38,22 +45,18 @@ function TableBox({topic,filteredData,columns}) {
                     },
                     '& .MuiDataGrid-footerContainer': {
                         borderTop: 'none',
-                        backgroundColor: grey[700],
+                        backgroundColor: grey[500],
                     },
                     '& .MuiCheckbox-root': {
                         color: `${grey[200]} !important`,
                     },
-                    '& .MuiDataGrid-toolbarContainer .MuiButton-text': {
-                        color: `${grey[800]} !important`,
-                    },
-                    
                 }}
             >
                 <DataGrid
                     rows={filteredData}
                     columns={columns}
                     components={{ Toolbar: GridToolbar }}
-                    
+
                 />
             </Box>
         </Box>

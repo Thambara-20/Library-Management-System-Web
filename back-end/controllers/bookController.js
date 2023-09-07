@@ -12,10 +12,12 @@ exports.create = (req, res) => {
   }
 
   const book = {
+    ISBN: req.body.ISBN,
     title: req.body.title,
     author: req.body.author,
-    category: req.body.category ,
-    publisher: req.body.publisher
+    category: req.body.category,
+    publisher: req.body.publisher,
+    status:  true
   };
 
 
@@ -48,12 +50,27 @@ exports.findAll = (req, res) => {
     });
 };
 
+exports.findOne = (req, res) => {
+const id = req.params.id;
+
+  Book.findByPk(id)
+    .then(data => {
+      if(!data){
+        res.status(404).send({
+          message: "Not found book with id " + id
+        });
+      }else{
+        res.send(data);
+      }
+      
+    })
+}
 
 
 
 exports.deleteBook = async (req, res) => {
-  const id = req.body.id;
-  console.log(id);
+  const id = req.params.id;
+  console.log(req.params);
 
   try {
     // Find the user by id
@@ -74,3 +91,29 @@ exports.deleteBook = async (req, res) => {
   }
 };
 
+exports.update = async (req, res) => {
+  const id = req.params.id;
+  console.log(req.params);
+  console.log(req.body);
+  try {
+    Book.update(req.body, {
+      where: { id: id } 
+    })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Book was updated successfully."
+        });
+      } else {
+        res.send({
+          message: `Cannot update Book with id=${id}. Maybe Book was not found or req.body is empty!`
+        });
+      }
+    }
+    )
+  }
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }   
+}
