@@ -34,7 +34,7 @@ const NewArrivals = () => {
           {data.map((card, i) => {
             return (
               <SwiperSlide key={i}>
-                <Link to={'/Register'}>
+                <Link to={'/Register'} id="link">
                 <div className="flexColStart p-card">
                   <img src={card.image} alt="book" />
                   <span className="secondaryText p-value">

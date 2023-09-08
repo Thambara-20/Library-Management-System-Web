@@ -95,8 +95,8 @@ const Contact = () => {
         </div>
 
         {/* this is our right side */}
-        <div className="flexCenter welcome-right">
-          <div className="image-container">
+        <div className="flexCenter welcome-right" id="con-cont">
+          <div className="image-container" id="i-c">
             <img src={right} alt="right-img" className="" />
           </div>
         </div>

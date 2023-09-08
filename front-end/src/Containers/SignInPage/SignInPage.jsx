@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 import '../../Styles/SignIn.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../services/authService';
 
 const SignInPage = ({ onClose,onSuucessClose }) => {
@@ -78,9 +78,11 @@ const SignInPage = ({ onClose,onSuucessClose }) => {
                       Login
                     </button>
                   </div>
+                  <Link to={'/Register'} id='link'>
                   <div className="button-wrapper">
                     <button className="register-button">Register</button>
                   </div>
+                  </Link>
                 </div>
               </form>
 

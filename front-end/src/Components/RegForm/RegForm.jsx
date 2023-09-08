@@ -14,6 +14,7 @@ class RegForm extends Component {
             </label>
             <input
               type={this.props.type}
+              name={this.props.name}
               required="true"
               pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/"
               className="form-control "

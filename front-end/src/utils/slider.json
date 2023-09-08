@@ -2,15 +2,21 @@
 [
   {
     "name": "Aliva Priva Jardin",
+    "price": "43",
+    "detail": "Jakarta Garden City Street, Cakung. Pulo Gadung, Jakarta Timur, DKI Jakarta",
+    "image": "./Photos/Home_Sweet_Loan_cov.jpg"
+  },
+  {
+    "name": "Aliva Priva Jardin",
     "price": "47",
     "detail": "Jakarta Garden City Street, Cakung. Pulo Gadung, Jakarta Timur, DKI Jakarta",
-    "image": "./Photos/Battle Story Somme 1916.jpg"
+    "image": "./Photos/Battle_Story_Somme.jpg"
   },
   {
     "name": "Asatti Garden City",
     "price": "66",
     "detail": "Pahlawan Street XVII No.215, Cinangka, Sawangan, Depok, Jawa Barat",
-    "image": "./Photos/Discovering Life through.jpg"
+    "image": "./Photos/Discovering_Life_through.jpg"
   },
   {
     "name": "Citralan Serang",
@@ -18,12 +24,7 @@
     "detail": "Ruko Puri Indah Residence Block A7, Lingkar Street, Ciracas, Serang, Banten",
     "image": "./Photos/Great-Influencer.jpg"
   },
-  {
-    "name": "Aliva Priva Jardin",
-    "price": "43",
-    "detail": "Jakarta Garden City Street, Cakung. Pulo Gadung, Jakarta Timur, DKI Jakarta",
-    "image": "./Photos/Home_Sweet_Loan_cov.jpg"
-  },
+
   {
     "name": "Asatti Garden City",
     "price": "63",

@@ -1,6 +1,7 @@
 import React from 'react'
 import './GetStarter.css'
 import { Link } from "react-router-dom";
+import '../../index.css';
 
 
 const GetStarter = () => {
@@ -13,7 +14,7 @@ const GetStarter = () => {
                     Join us to start your knowledge journey.<br/> Search Your book and find most Interest one
                 </span>
                 <button className="button">
-                    <Link to="/Library"> Get Start</Link>
+                    <Link to="/Library" id='gt-start'> Get Start</Link>
                 </button>
             </div>
         </div>
