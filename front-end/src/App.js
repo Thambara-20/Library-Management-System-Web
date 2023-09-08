@@ -24,13 +24,14 @@ class App extends Component {
 
   async componentDidMount() {
     const currentUser = await auth.getCurrentUser();
+    
     if (currentUser) {
       this.setState({
         isAdminLoggedIn: currentUser.isAdmin,
       });
 
     }
-
+   
   }
 
   render() {

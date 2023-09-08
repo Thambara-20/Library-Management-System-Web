@@ -110,6 +110,34 @@ Link{
   transform: scale(1.1);
 }
 
+.gradient-background {
+  width: 100%;
+  /* You can adjust the height as needed */
+  background: 
+  linear-gradient(40deg, black 10%, gray 70%, rgb(255, 255, 255)  );
+  background-size: 100% 100%, 100% 100%;
+  background-position: 0 0, 50% 50%; /* Adjust the position if needed */
+  animation: gradientAnimation 5s linear infinite; 
+ 
+  text-align: center;
+  
+}
+.dark-background {
+  width: 100%;
+  border-radius: 10px;
+  background: 
+  linear-gradient(20deg, black 0%, rgb(89, 88, 88) 70%  );
+  background-size: 100% 100%, 100% 100%;
+  background-position: 0 0, 50% 50%; /* Adjust the position if needed */
+  animation: gradientAnimation 5s linear infinite; 
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  ;
+  text-align: center;
+  
+}
+
+
+
 /* media queries */
 @media (min-width: 1536px) {
   .innerWidth {
