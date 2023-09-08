@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import MainFooter from './Components/Footer';
-import Home from '../src/Containers/Home/HomePage';
+import Home from '../src/Containers/Home/Home';
 import { Component } from 'react';
 import SignInPage from './Containers/SignInPage/SignInPage';
 import LibraryPage from './Containers/Library/LibraryPage';
