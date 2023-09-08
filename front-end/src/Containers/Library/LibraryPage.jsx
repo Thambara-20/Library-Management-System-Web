@@ -94,7 +94,7 @@ const LibraryPage = () => {
 
   return (
     <div className="Library-page-wrapper">
-      <Header />
+      <Header/>
       <Container data-aos="fade-up" data-aos-offset="200">
         <div className="library-top">
           <div className="category-dropdown">
