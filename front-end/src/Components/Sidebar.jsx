@@ -37,8 +37,8 @@ const Sidebar = () => {
             sx={{
                 '& .pro-sidebar-inner': {
                     backgroundColor: ' !important',
-                },
-
+                }, 
+                
                 '& .pro-inner-item': {
                     padding: '5px 35px 5px 20px !important',
                 },

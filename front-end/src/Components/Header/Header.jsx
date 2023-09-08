@@ -15,7 +15,6 @@ const Header = () => {
   const [isAdminLoggedIn, setAdminLoggedIn] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
 
-
   const openSignUpPopup = () => {
     setShowSignUpPopup(true);
   };
@@ -29,8 +28,8 @@ const Header = () => {
   };
 
   const changeIconLogOut = () => {
-    auth.logout(); // Call the logout function from your authService
-    setUserLogIn(false); // Set isUserLogIn to false when logged out
+    auth.logout(); 
+    setUserLogIn(false); 
     setAdminLoggedIn(false);
   };
 
@@ -40,12 +39,10 @@ const Header = () => {
     }
   };
 
-  // Use useEffect to check the user's login status on component mount
 
   useEffect(() => {
     const user = auth.getCurrentUser();
     
-    // Assuming user.isAdmin is correctly set when a user is an admin
     if (user && user.isAdmin) {
       setUserLogIn(true);
       setAdminLoggedIn(true);
@@ -55,7 +52,6 @@ const Header = () => {
     } else {
       setUserLogIn(false);
       setAdminLoggedIn(false);
-
     }
   }, []);
 

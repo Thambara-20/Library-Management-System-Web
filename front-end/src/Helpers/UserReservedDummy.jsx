@@ -12,3 +12,46 @@ export const userReservedDummy = [
     
   
 ];
+
+
+
+export const mockTransactions = [
+    {
+      txId: '01e4dsa',
+      user: 'johndoe',
+      date: '2021-09-01',
+      cost: '43.95',
+    },
+    {
+      txId: '0315dsaa',
+      user: 'jackdower',
+      date: '2022-04-01',
+      cost: '133.45',
+    },
+    {
+      txId: '01e423sa',
+      user: 'aberdohnny',
+      date: '2021-09-01',
+      cost: '43.95',
+    },
+    
+    {
+      txId: '01e4232a',
+      user: 'aberdohnny',
+      date: '2021-09-01',
+      cost: '43.95',
+    },
+    {
+      txId: '01e3sa',
+      user: 'aberdohnny',
+      date: '2021-09-01',
+      cost: '43.95',
+    }
+    ,
+    {
+      txId: '01e23dsa',
+      user: 'aberdohnny',
+      date: '2021-09-01',
+      cost: '43.95',
+    }
+]
