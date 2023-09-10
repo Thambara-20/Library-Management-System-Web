@@ -2,8 +2,23 @@
     justify-content: space-between;
     align-items: flex-start;
 }
+.register-wrapper {
+    margin-bottom: 30px;
+}
 
-.image-container:hover{
+#re-con {
+    width: 30rem;
+    height: 40rem;
+    background: white;
+}
+
+#reg-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+#reg-img:hover {
     pointer-events: none;
 }
 

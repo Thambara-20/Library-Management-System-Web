@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import ContactDetails from "../../Components/ContactDetails";
 import Header from "../../Components/Header/Header";
+import ContactEmail from '../../Components/ContactEmail/ContactEmail'
+
 class CustomerSuppportPage extends Component {
   state = {};
   render() {
     return (
       <div className="CustomerSupport-container">
         <Header/>
-        <ContactDetails/>
+        <ContactEmail/>
       </div>
     );
   }

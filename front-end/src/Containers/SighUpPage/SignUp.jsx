@@ -46,8 +46,8 @@ const SignUp = () => {
           </form>
         </div>
         <div className="left">
-          <div className="image-container">
-            <img src={imgage} alt="left image of registraion" />
+          <div className="image-container" id="re-con">
+            <img src={imgage} alt="left image of registraion" id="reg-img"/>
           </div>
         </div>
       </div>

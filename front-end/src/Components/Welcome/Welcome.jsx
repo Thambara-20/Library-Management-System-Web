@@ -59,8 +59,8 @@ const Welcome = () => {
 
         {/*this is right side of the welcome element*/}
         <div className="flexCenter welcome-right">
-          <div className="image-container">
-            <img src={rightImage} alt="right image" className="" />
+          <div className="image-container" id="img-container">
+            <img src={rightImage} alt="right image" className="l-image" />
           </div>
         </div>
       </div>

@@ -1,5 +1,17 @@
 .v-container.image-container{
     border:8px solid rgb(232, 232, 232  / 93%);
+    width: 30rem;
+        height: 35rem;
+}
+#v-image {
+    width: 30rem;
+    height: 35rem;
+    background: white;
+}
+#v-image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
 }
 .v-container>div{
     flex:1
