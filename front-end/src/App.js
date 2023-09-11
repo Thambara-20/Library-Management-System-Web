@@ -13,6 +13,7 @@ import auth from './services/authService';
 import { ToastContainer } from 'react-toastify';
 import BookUpdate from './Containers/Admin/UpdateBook';
 import SignUp from './Containers/SighUpPage/SignUp';
+import Profile from './Components/UserProfile/Profile';
 
 class App extends Component {
   constructor(props) {
@@ -48,6 +49,7 @@ class App extends Component {
             <Route path='Register' element = {<SignUp/>}/>
             <Route path="/"element={ <Home /> }/>
             <Route path="/Library" element={<LibraryPage />} />
+            <Route path="/Profile" element={<Profile/>} />
             
             {isAdminLoggedIn ? <Route path="/admin" element={<AdminMainPage />} /> : <Route path="/" />}
             {isAdminLoggedIn ? <Route path="/admin/userManagement" element={<UserManagement />} /> : <Route path="/" />}
