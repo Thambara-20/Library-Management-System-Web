@@ -3,11 +3,11 @@ import React from 'react';
 import BookCardVertical from '../../Components/BookCardVertical'; 
 import { userReservedDummy as userReserved } from "../../Helpers/UserReservedDummy";
 
-const ReservedBooks = () => {
+const Notifications = () => {
   
   return (
     <div data-aos='fade-up'>
-       <h1 style={{ fontSize: '36px', fontWeight: 'bold', textAlign: 'center', margin: '15px 0',color:'white' }}>Ready To Borrow</h1>
+       <h1 style={{ fontSize: '36px', fontWeight: 'bold', textAlign: 'center', margin: '15px 0',color:'white' }}>Notifications</h1>
       
       <div>
           {userReserved.map((book) => (
@@ -18,4 +18,4 @@ const ReservedBooks = () => {
   );
 };
 
-export default ReservedBooks;
+export default Notifications;

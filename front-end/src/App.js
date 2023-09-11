@@ -13,7 +13,7 @@ import auth from './services/authService';
 import { ToastContainer } from 'react-toastify';
 import BookUpdate from './Containers/Admin/UpdateBook';
 import SignUp from './Containers/SighUpPage/SignUp';
-import Profile from './Components/UserProfile/Profile';
+import Profile from './Containers/UserProfile/Profile';
 
 class App extends Component {
   constructor(props) {

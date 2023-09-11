@@ -1,5 +1,4 @@
 import React from "react";
-import imgage from "./register-image.jpg";
 import RegForm from "../../Components/RegForm/RegForm";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
@@ -33,23 +32,13 @@ const SignUp = () => {
 
             <div className="reg-log-button">
               <div className="reg-button">
-              <button className="btn btn-primary" type="submit">Register</button>
+                <button className="btn btn-primary" type="submit">Register</button>
               </div>
-              <div className="log-button">
-                <Link to={"/SignInPage"}>
-                <button type="button" className="btn btn-outline-primary">
-                 Sing In
-                </button>
-                </Link>
-              </div>
+
             </div>
           </form>
         </div>
-        <div className="left">
-          <div className="image-container" id="re-con">
-            <img src={imgage} alt="left image of registraion" id="reg-img"/>
-          </div>
-        </div>
+
       </div>
     </section>
   );
