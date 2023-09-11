@@ -7,13 +7,24 @@ import OutsideClickHandler from 'react-outside-click-handler';
 
 import SignInPage from "../../Containers/SignInPage/SignInPage";
 import auth from "../../services/authService";
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Button, IconButton, Menu, MenuItem, Select } from "@mui/material";
 
 const Header = () => {
   const [showSignUpPopup, setShowSignUpPopup] = useState(false);
-  const [isUserLogIn, setUserLogIn] = useState(false);
+  const [isUserLogIn, setUserLogIn] = useState(true);
   const [isAdminLoggedIn, setAdminLoggedIn] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false); // Add this state
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const openSignUpPopup = () => {
     setShowSignUpPopup(true);
@@ -28,21 +39,15 @@ const Header = () => {
   };
 
   const changeIconLogOut = () => {
-    auth.logout(); 
-    setUserLogIn(false); 
+    auth.logout();
+    setUserLogIn(false);
     setAdminLoggedIn(false);
-  };
-
-  const getMenuStyles = (menuOpen) => {
-    if (document.documentElement.clientWidth <= 800) {
-      return { right: !menuOpen && "-100%" };
-    }
   };
 
 
   useEffect(() => {
     const user = auth.getCurrentUser();
-    
+
     if (user && user.isAdmin) {
       setUserLogIn(true);
       setAdminLoggedIn(true);
@@ -54,6 +59,20 @@ const Header = () => {
       setAdminLoggedIn(false);
     }
   }, []);
+
+
+  const getMenuStyles = (menuOpen) => {
+    if (document.documentElement.clientWidth <= 800) {
+      return { right: !menuOpen && "-100%" };
+    }
+  };
+  const selectStyle = {
+    '& .MuiSelect-icon': {
+      color: '#2949c6', // Change the arrow color here
+    },
+  };
+  
+  
 
   return (
     <section className="h-wrapper">
@@ -82,20 +101,30 @@ const Header = () => {
             )}
             <Link>
               {isUserLogIn ? (
-                <button className="button" onClick={changeIconLogOut}>
-                  Log Out
-                </button>
+                
+                <Button >
+                <><AccountCircleIcon style={{color:'#2949c6'}} />
+
+                  <Select className="selecter"sx={selectStyle} variant="outlined" displayEmpty>
+                    <MenuItem className="menuitem" value="">Profile</MenuItem>
+                    <MenuItem className='menuitem'value="Category 1">My Reservations</MenuItem>
+                    <MenuItem className= 'menuitem'value="Category 2">Notifications</MenuItem>
+                    {/* Add more categories as needed */}
+                  </Select> 
+               
+                </>
+                
+              </Button>
               ) : (
                 <button className="button" onClick={openSignUpPopup}>
                   Sign Up
                 </button>
               )}
             </Link>
-          </div>
 
+          </div>
         </OutsideClickHandler>
         <div className="menu-icon" onClick={() => setMenuOpen((prev) => !prev)}>
-          
           <BiMenuAltRight size={30} />
         </div>
         {showSignUpPopup && (
@@ -107,3 +136,5 @@ const Header = () => {
 };
 
 export default Header;
+
+

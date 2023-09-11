@@ -39,6 +39,14 @@
 }
 
 
+
+.selecter{
+    color: white !important;
+    background-color: none;
+    
+}
+
+
 @media(max-width:768px){
     .menu-icon{
         cursor: pointer;
@@ -66,5 +74,10 @@
         transition: all 300ms ease-in;
         z-index: 111;
     }
+    .selecter{
+        display: none !important;
+        
+    }
+    
 }
 
