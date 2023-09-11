@@ -11,7 +11,7 @@ const BookCard = ({ book }) => {
                 <CardMedia
                     component="img"
                     alt="Book Cover"
-                    height="200"
+                    height="300"
                     image={book.img}// Use the img prop as the image source
                 />
                 <Typography variant="h6" component="div">

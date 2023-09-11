@@ -10,10 +10,19 @@ import RateReviewIcon from '@mui/icons-material/RateReview';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import './Profile.css'; // Import the CSS file for styling
 import MenuIcon from '@mui/icons-material/Menu';// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import ReservedBooks from '../Reserve/ReservedBooks';
+import Aos from 'aos';
+import BarrowedBooks from '../Barrow/Barrowed';
+import WishList from '../Wishlist/Wishlist';
+import Notifications from '../Notifications/Notifications';
 
 const Profile = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+    const pages = [<ProfileInfo/>,<ReservedBooks/>,<BarrowedBooks/>,<WishList/>,<Notifications/>]
+    const [currentPage, setCurrentPage] = useState(1);
+
+
 
     const toggleSidebar = () => {
         setSidebarOpen(!isSidebarOpen);
@@ -30,6 +39,14 @@ const Profile = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
+
+    useEffect(() => {
+        Aos.init({
+          duration: 1000,
+       });
+    },[]);
+
     return (
         <div className={`Profile-container ${isSidebarOpen ? '' : 'collapsed'}`}>
             <div className='Profile-top'>
@@ -45,13 +62,13 @@ const Profile = () => {
                     </Button>
 
                     <List>
-                        <ListItem button className='custom-icon-list-item'>
+                        <ListItem button className='custom-icon-list-item'  onClick={() => setCurrentPage(0)}>
                             <AccountCircleIcon />
                             <div className={`menu-text ${isSidebarOpen ? '' : 'collapsed'}`}>My Info
                             </div>
                         </ListItem>
                         <Divider />
-                        <ListItem button className='custom-icon-list-item'>
+                        <ListItem button className='custom-icon-list-item'  onClick={() => setCurrentPage(1)}>
                             <AssignmentIcon />
                             <div className={`menu-text ${isSidebarOpen ? '' : 'collapsed'}`}>
 
@@ -59,7 +76,7 @@ const Profile = () => {
                             </div>
                         </ListItem>
                         <Divider />
-                        <ListItem button className='custom-icon-list-item'>
+                        <ListItem button className='custom-icon-list-item'  onClick={() => setCurrentPage(2)}>
                             <ShoppingBasketIcon />
                             <div className={`menu-text ${isSidebarOpen ? '' : 'collapsed'}`}>
                                 My Borrowings
@@ -67,7 +84,7 @@ const Profile = () => {
                             </div>
                         </ListItem>
                         <Divider />
-                        <ListItem button className='custom-icon-list-item'>
+                        <ListItem button className='custom-icon-list-item'  onClick={() => setCurrentPage(3)}>
                             <FavoriteIcon />
                             <div className={`menu-text ${isSidebarOpen ? '' : 'collapsed'}`}>
 
@@ -75,15 +92,15 @@ const Profile = () => {
                             </div>
                         </ListItem>
                         <Divider />
-                        <ListItem button className='custom-icon-list-item'>
+                        <ListItem button className='custom-icon-list-item'  onClick={() => setCurrentPage(4)}>
                             <RateReviewIcon />
                             <div className={`menu-text ${isSidebarOpen ? '' : 'collapsed'}`}>
 
-                                My Reviews
+                                Notifications
                             </div>
                         </ListItem>
                         <Divider />
-                        <ListItem button className='custom-icon-list-item'>
+                        <ListItem button className='custom-icon-list-item' onClick={() => setCurrentPage(5)}>
                             <ExitToAppIcon />
                             <div className={`menu-text ${isSidebarOpen ? '' : 'collapsed'}`}>
 
@@ -93,7 +110,8 @@ const Profile = () => {
                     </List>
                 </div>
                 <div className={`Profile-info ${isSidebarOpen ? '' : 'collapsed'}`}>
-                    <ProfileInfo />
+                    {pages[currentPage]}
+                   
                 </div>
             </div>
         </div>

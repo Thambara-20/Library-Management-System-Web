@@ -34,9 +34,6 @@ const SignInPage = ({ onClose,onSuucessClose }) => {
     }
 };
 
-
-
-
   return (
 
     <div className="popup-wrapper">
@@ -85,7 +82,6 @@ const SignInPage = ({ onClose,onSuucessClose }) => {
                   </Link>
                 </div>
               </form>
-
             </div>
           </div>
         </div>

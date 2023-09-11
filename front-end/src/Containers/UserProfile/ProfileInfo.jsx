@@ -1,10 +1,11 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import './ProfileInfo.css'; // Import the CSS file
+  
 
 const ProfileInfo = () => {
   return (
-    <div className='ProfileInfo-wrapper'>
+    <div className='ProfileInfo-wrapper' data-aos='fade-up'>
       <div className='ProfileInfo-content'>
         {/* Left side */}
         <div className='ProfileInfo-left'>
