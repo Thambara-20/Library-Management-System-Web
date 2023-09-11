@@ -8,7 +8,7 @@ import { AiFillAndroid } from "react-icons/ai";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useState, useEffect } from "react";
-
+import { motion } from "framer-motion";
 
 
 const Contact = () => {
@@ -42,7 +42,7 @@ const Contact = () => {
                     <span className="secondaryText">+9476 3055 795</span>
                   </div>
                 </div>
-                <div className="flexCenter button">Call Now</div>
+                <div className="flexCenter button btn-color">Call Now</div>
               </div>
               {/* first row second element */}
               <div className="mode flexColCenter mode" id="mode">
@@ -55,7 +55,7 @@ const Contact = () => {
                     <span>+9476 3055 795</span>
                   </div>
                 </div>
-                <div className="flexCenter button">Chat Now</div>
+                <div className="flexCenter button btn-color">Chat Now</div>
               </div>
             </div>
 
@@ -75,7 +75,7 @@ const Contact = () => {
                     </span>
                   </div>
                 </div>
-                <div className="flexCenter button">Mail Now</div>
+                <div className="flexCenter button btn-color">Mail Now</div>
               </div>
               {/* second row second element */}
               <div className="flexColCenter mode" id="mode">
@@ -88,18 +88,20 @@ const Contact = () => {
                     <span>Download App</span>
                   </div>
                 </div>
-                <div className="flexCenter button">Go Store</div>
+                <div className="flexCenter button btn-color">Go Store</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* this is our right side */}
-        <div className="flexCenter welcome-right" id="con-cont">
+        <div className="flexCenter contact-right" >
           <div className="image-container" id="i-c">
             <img src={right} alt="right-img" className="" />
           </div>
         </div>
+    
+        
       </div>
     </section>
   );
