@@ -3,6 +3,8 @@ import rightImage from "./main.jpg";
 import "./Hero.css";
 import CountUp from "react-countup";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { duration } from "@mui/material";
 
 const Welcome = () => {
   return (
@@ -11,25 +13,37 @@ const Welcome = () => {
         {/* this is left side of main content */}
         <div className=" flexColStart welcome-left">
           <div className="welcome-title">
-            <div className="blue-circle"></div>
-            <h1>
-            Empowering
+            <motion.div initial={{ y: "3rem",x:'3rem', opacity: 0 }}
+              animate={{ y: 0,x:0, opacity: 1 }}
+              transition={{ duration: 3, type: "spring" }} className="blue-circle"></motion.div>
+            <motion.h1
+              initial={{ y: "3rem", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 3, type: "spring" }}
+              className="header-h"
+            >
+              Empowering
               <br />
               Minds
               <br />
               Through Books
-            </h1>
+            </motion.h1>
           </div>
           <div className="flexColStart welcome-description">
             <span className="secondaryText">
-            Where Curiosity Meets a World of Books
+              Where Curiosity Meets a World of Books
             </span>
-            <span className="secondaryText">Forget all difficulties in finding a book for you.</span>
+            <span className="secondaryText">
+              Forget all difficulties in finding a book for you.
+            </span>
           </div>
           <div className="get-start-btn">
             <Link to="/admin">
-
-            <button className="get-button button" id="get-btn">Get Start</button>
+              <motion.button initial={{ x: "3rem", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 3, type: "spring" }} className="get-button button" id="get-btn">
+                Get Start
+              </motion.button>
             </Link>
           </div>
           <div className="flexCenter stats" id="stat">
@@ -59,9 +73,15 @@ const Welcome = () => {
 
         {/*this is right side of the welcome element*/}
         <div className="flexCenter welcome-right">
-          <div className="image-container" id="img-container">
+          <motion.div
+            initial={{ x: "3rem", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 3, type: "spring" }}
+            className="image-container"
+            id="img-container"
+          >
             <img src={rightImage} alt="right image" className="l-image" />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
