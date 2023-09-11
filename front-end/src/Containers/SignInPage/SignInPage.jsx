@@ -5,7 +5,7 @@ import '../../Styles/SignIn.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../services/authService';
 
-const SignInPage = ({ onClose,onSuucessClose }) => {
+const SignInPage = ({ onClose, onSuucessClose }) => {
   const [formData, setFormData] = useState({
     name: '',
     password: '',
@@ -24,15 +24,15 @@ const SignInPage = ({ onClose,onSuucessClose }) => {
 
     try {
       await login(formData);
-            onClose();
-            onSuucessClose();
-            navigate("/");
-       
+      onClose();
+      onSuucessClose();
+      navigate("/");
+
     } catch (error) {
-        console.error("Error during login:", error);
-        setErrorMessage("An error occurred during login.");
+      console.error("Error during login:", error);
+      setErrorMessage("An error occurred during login.");
     }
-};
+  };
 
   return (
 
@@ -70,16 +70,20 @@ const SignInPage = ({ onClose,onSuucessClose }) => {
                 </div>
                 <div className="error-message">{errorMessage}</div>
                 <div className="wrapper">
-                  <div className="button-wrapper">
-                    <button type="submit" className="login-button">
-                      Login
-                    </button>
+
+                  <div className="reg-log-button">
+                    <div className="reg-button">
+                      <button className="btn btn-primary" type="submit">Login</button>
+                    </div>
+
                   </div>
-                  <Link to={'/Register'} id='link'>
-                  <div className="button-wrapper">
-                    <button className="register-button">Register</button>
+                  <div className="reg-log-button">
+                    <Link to={'/Register'} id='link'>
+                      <div className="reg-button">
+                        <button className="btn btn-primary">Register</button>
+                      </div>
+                    </Link>
                   </div>
-                  </Link>
                 </div>
               </form>
             </div>
