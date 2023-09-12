@@ -114,7 +114,7 @@ function BookAdd() {
     <div className="content-wrapper" data-aos="fade-right">
       <BookImageContainer 
         bookImage={bookImage} 
-        Adding={true}/>
+        Adding={true}/> 
       <BookForm 
         formData={book}
         handleInputChange={handleInputChange}
