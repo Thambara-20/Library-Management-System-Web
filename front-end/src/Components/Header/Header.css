@@ -19,10 +19,13 @@
     align-items: Top;
     
 }
+.navbar-elements{
+    color: white;
+}
 
 .h-menu>*:hover{
     cursor: pointer;
-    color:aqua;
+    color:#4066ff;
 }
 .img{
     text-align: center;
@@ -68,7 +71,7 @@
             scale: 1.1;
     }
     .h-menu{
-        color: var(--black);
+        color: black;
         position: absolute;
         top: 5rem;
         right: 4rem;
@@ -83,9 +86,13 @@
         transition: all 300ms ease-in;
         z-index: 111;
     }
+
     .selecter{
         display: none !important;
         
+    .navbar-elements{
+        color: black;
+
     }
     
 }

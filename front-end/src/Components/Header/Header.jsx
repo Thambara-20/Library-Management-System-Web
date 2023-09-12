@@ -4,6 +4,11 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import OutsideClickHandler from 'react-outside-click-handler';
+
+import { AiOutlineHome } from 'react-icons/ai';
+import { HiOutlineBuildingLibrary } from 'react-icons/hi2';
+import { GoPeople } from 'react-icons/go'
+import { ImMail2 } from 'react-icons/im'
 import SignInPage from "../../Containers/SignInPage/SignInPage";
 import auth from "../../services/authService";
 import HeaderDropDown from "./HeaderDropDown";
@@ -34,6 +39,17 @@ const Header = () => {
   };
 
 
+
+  const getMenuStyles = (menuOpen) => {
+    if (document.documentElement.clientWidth <= 800) {
+      return { right: !menuOpen && "-100%" };
+    }
+  };
+
+  const handleTogleButton = (event)=>{
+    const temp = !menuOpen;
+    setMenuOpen(temp);
+  };
   // useEffect(() => {
   //   const user = auth.getCurrentUser();
 
@@ -50,12 +66,7 @@ const Header = () => {
   // }, []);
 
 
-  const getMenuStyles = (menuOpen) => {
-    if (document.documentElement.clientWidth <= 800) {
-      return { right: !menuOpen && "-100%" };
-    }
-  };
-
+ 
   
   return (
     <section className="h-wrapper">
@@ -63,19 +74,19 @@ const Header = () => {
         <a href="">
           <img src={logo} alt="logo" className="img" height={80} />
         </a>
-        <OutsideClickHandler onOutsideClick={() => setMenuOpen(false)}>
+        <OutsideClickHandler onOutsideClick={handleTogleButton}>
           <div className="flexCenter h-menu" style={getMenuStyles(menuOpen)}>
             <Link to="/" className="navbar-elements" style={{ textDecoration: "none" }}>
-              Home
+              <AiOutlineHome style={{paddingBottom:4,paddingRight:2}} size={20}/>Home
             </Link>
             <Link to="/Library" className="navbar-elements" style={{ textDecoration: "none" }}>
-              Library
+              <HiOutlineBuildingLibrary style={{paddingBottom:4,paddingRight:2}} size={20}/>Library
             </Link>
             <Link className="navbar-elements" style={{ textDecoration: "none" }}>
-              About Us
+              <GoPeople style={{paddingBottom:4,paddingRight:2}} size={20}/>About Us
             </Link>
             <Link to="/ContactUs" className="navbar-elements" style={{ textDecoration: "none" }}>
-              Contact Us
+              <ImMail2 style={{paddingBottom:4,paddingRight:2}} size={20}/>Contact Us
             </Link>
             {isAdminLoggedIn && (
               <Link className="navbar-elements" to="/admin" style={{ textDecoration: "none" }}>
@@ -92,8 +103,10 @@ const Header = () => {
           </div>
         </OutsideClickHandler>
         <div className="menu-icon" onClick={() => setMenuOpen((prev) => !prev)}>
+
           <BiMenuAltRight size={30} />
         </div>
+       
         {showSignUpPopup && (
           <SignInPage onClose={closeSignUpPopup} onSuucessClose={changeIconLogIn} />
         )}
