@@ -1,6 +1,6 @@
 import React from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
-import CustomHeader from "../CustomTitle";
+
 
 const PieRechartComponent = () => {
   const COLORS = ["orange", "#82ca9d", "white"];

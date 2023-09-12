@@ -4,40 +4,47 @@ import { CancelButton } from "./Button";
 
 const BookCardVertical = ({ book, showCancellationButton, showIssueButton, showRejectButton, showReturn=false ,Wishlist=false}) => {
   return (
+  
+      
     <div
       style={{
         display: "flex",
+        height: "90%",
         flexDirection: "column",
         alignItems: "center",
-        maxWidth: "1000px",
-        margin: "0 auto", // Center align the container horizontally
+        maxWidth: "900px",
+        
+        
       }}
     >
       <Card
         className="book-card"
-        style={{
+        sx={{
+          
           marginBottom: "20px", 
           boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)",      
-          width: "100%", // Set a fixed width for the card
+          width: "100%", 
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          backgroundColor: '#2c2c2c',
+          backgroundColor: '#1c1c1c',
           padding: "10px",
           position: "relative",
-        }}
-      >
-        <div style={{ flex: 0.5 }}>
+          transition: "transform 0.2s ease-in-out",
+          ":hover": {
+            transform: "scale(1.05)"}
+          }}
+          >
+        <div style={{ flex: 0.2,width:'400px' }}>
           <CardMedia
             component="img"
             alt="Book Cover"
-
             height="100%"
             image={book.img}
             style={{ maxWidth: "100%" }} // Ensure the image doesn't exceed card width
           />
         </div>
-        <div style={{ flex: 1, marginLeft: "40px",color:'white'  }}>
+        <div style={{ flex: 0.8, marginLeft: "40px",color:'white'  }}>
           <CardContent className="card-content">
             <Typography variant="subtitle1" component="div">
               Book ID : {book.bookID}
@@ -51,9 +58,9 @@ const BookCardVertical = ({ book, showCancellationButton, showIssueButton, showR
           </CardContent>
         </div>
 
-        <div style={{ flex: 1, marginLeft: "30px", marginTop: "15px",}}>
+        <div style={{ flex: 0.5, marginLeft: "30px", marginTop: "15px",}}>
           {!Wishlist ? (
-          <CardContent className="card-content">
+            <CardContent className="card-content">
             {!showReturn ? (
               <div>
                 <Typography variant="subtitle1" color="white">
@@ -75,17 +82,17 @@ const BookCardVertical = ({ book, showCancellationButton, showIssueButton, showR
               </div>
             )}
 
-          </CardContent>) :<div></div>}
+          </CardContent>) :<CardContent className="card-content"></CardContent >}
         </div>
         {showCancellationButton && (
           <div
-            style={{
-              position: "absolute",
-              bottom: "10px",
-              left: "50%",
-              transform: "translateX(-50%)",
+          style={{
+            position: "absolute",
+            bottom: "10px",
+            left: "50%",
+            transform: "translateX(-50%)",
             }}
-          >
+            >
             <CancelButton variant="contained" >
               Cancel
             </CancelButton>
@@ -93,12 +100,12 @@ const BookCardVertical = ({ book, showCancellationButton, showIssueButton, showR
         )}
         {showIssueButton && (
           <div
-            style={{
-              position: "absolute",
-              bottom: "10px",
-              left: "40%", // Adjust the left value for spacing
-              transform: "translateX(-50%)",
-            }}
+          style={{
+            position: "absolute",
+            bottom: "10px",
+            left: "40%", // Adjust the left value for spacing
+            transform: "translateX(-50%)",
+          }}
           >
             <Button variant="contained" >
               Issue
@@ -107,13 +114,13 @@ const BookCardVertical = ({ book, showCancellationButton, showIssueButton, showR
         )}
         {showRejectButton && (
           <div
-            style={{
-              position: "absolute",
+          style={{
+            position: "absolute",
               bottom: "10px",
               left: "70%", // Adjust the left value for spacing
               transform: "translateX(-50%)",
             }}
-          >
+            >
             <Button variant="contained" >
               Reject
             </Button>

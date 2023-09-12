@@ -23,7 +23,6 @@ const BookCard = ({ book }) => {
                 <Typography variant="subtitle1" color="text.secondary">
                     Category: {book.category}
                 </Typography>
-                
             </CardContent>
         </Card>
     );

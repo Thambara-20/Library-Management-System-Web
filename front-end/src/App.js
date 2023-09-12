@@ -49,7 +49,7 @@ class App extends Component {
             <Route path='Register' element = {<SignUp/>}/>
             <Route path="/"element={ <Home /> }/>
             <Route path="/Library" element={<LibraryPage />} />
-            <Route path="/Profile" element={<Profile/>} />
+            <Route path="/Profile/:page" element={<Profile/>} />
             
             {isAdminLoggedIn ? <Route path="/admin" element={<AdminMainPage />} /> : <Route path="/" />}
             {isAdminLoggedIn ? <Route path="/admin/userManagement" element={<UserManagement />} /> : <Route path="/" />}
