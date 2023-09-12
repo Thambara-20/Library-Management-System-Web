@@ -1,12 +1,9 @@
-import './App.css';
+import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import MainFooter from './Components/Footer';
-import Home from '../src/Containers/Home/Home';
-import { Component } from 'react';
-import SignInPage from './Containers/SignInPage/SignInPage';
+import Home from './Containers/Home/Home';
 import LibraryPage from './Containers/Library/LibraryPage';
-import CustomerSuppportPage from './Containers/CustomerSupport/CustomerSupportPage';
+import CustomerSupportPage from './Containers/CustomerSupport/CustomerSupportPage';
 import AdminMainPage from './Containers/Admin/AdminMainPage';
 import UserManagement from './Containers/Admin/UserManagement';
 import BookManagement from './Containers/Admin/BookManagement';
@@ -74,8 +71,9 @@ class App extends Component {
       <MainFooter/>
     </div>
 
-    )
   }
 }
 
 export default App;
+
+
