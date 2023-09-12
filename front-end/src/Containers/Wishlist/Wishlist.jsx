@@ -7,7 +7,7 @@ const WishList = () => {
   
   return (
     <div data-aos='fade-up'>
-       <h1 style={{ fontSize: '36px', fontWeight: 'bold', textAlign: 'center', margin: '15px 0',color:'white' }}>My Wishlist</h1>
+       <h1 style={{ fontSize: '36px', fontWeight: 'bold', textAlign: 'center', margin: '15px 0',color:'white',minWidth:'1000px' }}>My Wishlist</h1>
       
       <div>
           {userReserved.map((book) => (
