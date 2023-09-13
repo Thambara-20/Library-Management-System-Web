@@ -5,6 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import './BookDetails.css'
 import Rating from "react-rating-stars-component"
+import loading from '../../../assets/loading.gif'
 
 export async function fetchdata(ISBN, setBook, setBookImage) {
   const response = await fetch(
@@ -55,8 +56,12 @@ const BookDetails = ({ books }) => {
   }, [bookId]);
 
   if (!book.title) {
-    return <div>Loading...</div>;
-  }
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <img src={loading} alt="Book Cover" style={{ maxWidth: '10%', maxHeight: '10%' }} />
+      </div>
+    );
+      }
 
   const selectedBook = books.find((book) => book.id == bookId);
   const containerStyle = {
@@ -64,18 +69,26 @@ const BookDetails = ({ books }) => {
     alignItems: "center",
     justifyContent: 'start', // Center vertically
     gap: "20px",
-    height: '100%'
+    height: '100%',
+    background: 'linear-gradient(50deg, black 0%, rgb(117, 112, 112)45%,black 0%,rgb(97, 94, 94) 90%  )' 
+   
+   
   };
 
   return (
+
+    <div className="book-wrapper">
+     
+  
+    
     <div className="book-details">
       <Card>
-        <CardContent style={containerStyle}>
-          <div style={{ flex: '1' }}>
+        <CardContent style={containerStyle} data-aos='fade-up' >
+          <div style={{ flex: '1', }} >
 
-            <img src={selectedBook.img} alt="Book Cover"
+            <img src={selectedBook.img} alt="Book Cover" className="image-book" data-aos='fade-up'
 
-              style={{ maxWidth: "430px", height: "auto", boxShadow: '0 4px 6px rgba(0,0,0,0.5' }}
+            
             />
             <Rating
               count={5}
@@ -87,17 +100,19 @@ const BookDetails = ({ books }) => {
             
             />
           </div>
-          <div style={{ flex: '2', justifyContent: 'space-between' }}>
-
+          <div className='right'>
+             <h2>
+              Book Details 
+             </h2>
 
             <Typography className='title'variant="h5">{book.title}</Typography>
-            <Typography variant="subtitle1" color="text.secondary">
+            <Typography   className='author'>
               Author: {book.author}
             </Typography>
-            <Typography variant="subtitle1" color="text.secondary">
+            <Typography  className='category'>
               Category: {book.category}
             </Typography>
-            <Typography variant="body1">{book.abstract}</Typography>
+            <Typography variant="body1" className='abs'>{book.abstract}</Typography>
             <p>Page Count: {book.pageCount}</p>
             <p>Publisher: {book.publisher}</p>
             <p>Published Date: {book.publishedDate}</p>
@@ -105,7 +120,7 @@ const BookDetails = ({ books }) => {
             <a href={book.previewLink} target="_blank" rel="noopener noreferrer">
               Preview Link
             </a>
-            <div style={containerStyle}>
+            <div className="buttons">
               <Button variant="contained" color="primary">
                 Reserve Now
               </Button>
@@ -116,6 +131,7 @@ const BookDetails = ({ books }) => {
           </div>
         </CardContent>
       </Card>
+    </div>
     </div>
   );
 };
