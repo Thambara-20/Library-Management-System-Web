@@ -1,15 +1,21 @@
 
+.book-wrapper{
+  margin-top: 40px;
+}
+
+.book-details{
+  margin: 10px 15px;
+  box-shadow: 0px 0px 6px rgba(0,0,0,0.4);
+  border-radius: 5px;
+}
+
 .cardContent {
   max-width: 400px;
   padding: 20px;
- 
   background-color: #fff;
   text-align: center;
-}
-
-.details{
-  margin: 50px;
-}
+  
+}  
 
 
 .typo{
@@ -19,7 +25,54 @@
 }
 
 .title{
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   margin-bottom: 10px;
+  color: rgb(26, 211, 32);
+}
+
+.right{
+  flex: 2.3;
+  opacity: 0.8;
+  background-color: #fff;
+  justify-content: space-between;
+  margin: 5px;
+  padding: 25px 15px 25px 15px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 9px rgba(0,0,0,0.5);
+}
+
+.buttons{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  height: 100%;
+
+}
+
+.image-book{
+  border-radius: 5px;
+  max-width: 350px;
+}
+.image-book:hover {
+  transform: scale(1.05);; /* Change to desired hover color */
+}
+
+.abs{
+ font-size: 15px;
+ font-weight: bold;
+}
+.author{
+  font: 250 !important;
+  color: black;
+  font-weight: 900;
+}
+.category{
+  padding-bottom: 20px;
+  font: 250;
+  color: black;
+  font-weight: 900;
+
 }
