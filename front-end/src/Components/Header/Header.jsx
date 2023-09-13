@@ -50,20 +50,21 @@ const Header = () => {
     const temp = !menuOpen;
     setMenuOpen(temp);
   };
-  // useEffect(() => {
-  //   const user = auth.getCurrentUser();
 
-  //   if (user && user.isAdmin) {
-  //     setUserLogIn(true);
-  //     setAdminLoggedIn(true);
-  //   } else if (user) {
-  //     setUserLogIn(true);
-  //     setAdminLoggedIn(false);
-  //   } else {
-  //     setUserLogIn(false);
-  //     setAdminLoggedIn(false);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const user = auth.getCurrentUser();
+
+    if (user && user.isAdmin) {
+      setUserLogIn(true);
+      setAdminLoggedIn(true);
+    } else if (user) {
+      setUserLogIn(true);
+      setAdminLoggedIn(false);
+    } else {
+      setUserLogIn(false);
+      setAdminLoggedIn(false);
+    }
+  }, []);
 
 
  

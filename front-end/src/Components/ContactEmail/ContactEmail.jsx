@@ -2,16 +2,20 @@ import React from "react";
 import imgage from "./email.jpg";
 import RegForm from "../../Components/RegForm/RegForm";
 import "./ContactEmail.css";
-import { Link } from "react-router-dom";
+
 
 const SignUp = () => {
   return (
-    <section className="register-wrapper">
-      <div
-        className="paddings innerWidth flexCenter reg-container"
-        id="reg-container"
-      >
+    <section className="register-wrapper" data-aos="fade-up">
+      <div className="innerWidth flexCenter reg-container" id="reg-container">
         {/* left-side */}
+        <div className="left">
+          <div className="image-container" id="re-con">
+            <img src={imgage} alt="left image of registration" id="reg-img" />
+          </div>
+        </div>
+
+        {/* right-side */}
         <div className="right">
           <form action="" className="reg-form">
             <span className="primaryText">Send an Email</span>
@@ -39,16 +43,11 @@ const SignUp = () => {
             </div>
           </form>
         </div>
-
-        {/* right-side */}
-        <div className="left">
-          <div className="image-container" id="re-con">
-            <img src={imgage} alt="left image of registraion" id="reg-img" />
-          </div>
-        </div>
       </div>
     </section>
   );
 };
+
+
 
 export default SignUp;

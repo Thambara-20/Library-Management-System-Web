@@ -23,7 +23,9 @@ const HeaderDropDown = ({ onLogout }) => {
   return (
     <div>
      
+        <Link to="/profile/0"className="link">
         <AccountCircleIcon style={{ color: '#2949c6',fontSize:'30px' }} />
+        </Link>
         <Select className="selecter" sx={selectStyle} displayEmpty value=''>
           <Link to="/profile/0"className="link">
             <MenuItem className="menuitem">Profile

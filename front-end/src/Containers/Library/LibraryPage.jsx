@@ -1,3 +1,5 @@
+// LibraryPage.js
+
 import React, { useState, useEffect } from "react";
 import {
   Container,
@@ -15,24 +17,17 @@ import { booksDummy as books } from "../../Helpers/BooksDummy";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "../../Components/Header/Header";
-import axios from "axios";
-
-
+import BookDetails from "../Library/Bookdetails/BookDetails";
+import { Link } from "react-router-dom";
 
 const LibraryPage = () => {
-
-
-
-
-
-  // hadnle searching filters by hook
   const [checked, setChecked] = useState(true);
   const [switchLabel, setSwitchLabel] = useState("Search by Title");
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedAuthor, setSelectedAuthor] = useState("");
   const [toggleState, setToggleState] = useState(true);
-  // crete list of authors and remove duplicates of this array
+  const [hoveredBook, setHoveredBook] = useState(null);
   const listOfAuthor = books.map((book) => book.author);
   const Author = [...new Set(listOfAuthor)];
 
@@ -44,7 +39,6 @@ const LibraryPage = () => {
 
   const handleSearchChange = (event) => {
     setSearchKeyword(event.target.value);
-    
   };
 
   const handleCategoryChange = (event) => {
@@ -66,60 +60,78 @@ const LibraryPage = () => {
     }
   };
 
-  let renderBooks;
-  if (toggleState) {
-    renderBooks = books
-              .filter(
-                (book) =>
-                  book.title
-                    .toLowerCase()
-                    .includes(searchKeyword.toLowerCase()) &&
-                  (selectedCategory === "" ||
-                    book.category === selectedCategory) && (selectedAuthor === "" || book.author === selectedAuthor)
-              )
-              .map((book) => (
-                <Grid
-                  className="grid-item"
-                  item
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  lg={3}
-                  key={book.id}
-                  data-aos="fade-up"
-                  data-aos-offset="100"
-                >
-                  <BookCard book={book} className="grid-card" />
-                </Grid>
-              ))
-  } else if(!toggleState) {
-    console.log(switchLabel);
-    renderBooks = books
-              .filter(
-                (book) =>
-                  book.author
-                    .toLowerCase()
-                    .includes(searchKeyword.toLowerCase()) &&
-                  (selectedCategory === "" ||
-                    book.category === selectedCategory) && (selectedAuthor === "" || book.author === selectedAuthor)
-              )
-              .map((book) => (
-                <Grid
-                  className="grid-item"
-                  item
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  lg={3}
-                  key={book.id}
-                  data-aos="fade-up"
-                  data-aos-offset="100"
-                >
-                  <BookCard book={book} className="grid-card" />
-                </Grid>
-              ))
-  }
+  const handleReserveClick = (book) => {
+    // Handle the reserve action here
+    console.log("Book reserved:", book.title);
+  };
 
+  const handleWishlistClick = (book) => {
+    // Handle the wishlist action here
+    console.log("Book added to wishlist:", book.title);
+  };
+
+  const renderBooks = toggleState
+    ? books
+        .filter(
+          (book) =>
+            book.title.toLowerCase().includes(searchKeyword.toLowerCase()) &&
+            (selectedCategory === "" || book.category === selectedCategory) &&
+            (selectedAuthor === "" || book.author === selectedAuthor)
+        )
+        .map((book) => (
+          <Grid
+            className="grid-item"
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            lg={3}
+            key={book.id}
+           
+            data-aos="fade-up"
+            data-aos-offset="100"
+          >
+            <Link to={`/book/${book.id}`}>
+              <div className="book-card-container">
+                <BookCard
+                  book={book}
+                  onReserveClick={handleReserveClick}
+                  onWishlistClick={handleWishlistClick}
+                />
+              </div>
+            </Link>
+          </Grid>
+        ))
+    : books
+        .filter(
+          (book) =>
+            book.author.toLowerCase().includes(searchKeyword.toLowerCase()) &&
+            (selectedCategory === "" || book.category === selectedCategory) &&
+            (selectedAuthor === "" || book.author === selectedAuthor)
+        )
+        .map((book) => (
+          <Grid
+            className="grid-item"
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            lg={3}
+            key={book.id}
+            data-aos="fade-up"
+            data-aos-offset="100"
+          >
+            <Link to={`/book/${book.id}`}>
+              <div className="book-card-container">
+                <BookCard
+                  book={book}
+                  onReserveClick={handleReserveClick}
+                  onWishlistClick={handleWishlistClick}
+                />
+              </div>
+            </Link>
+          </Grid>
+        ));
 
   return (
     <div className="Library-page-wrapper">
@@ -149,15 +161,11 @@ const LibraryPage = () => {
               displayEmpty
             >
               <MenuItem value="">Select Author</MenuItem>
-              {Author.map(author => (
-                <MenuItem key={author} value={author}>{author}</MenuItem>
-              )) 
-              }
-            
-              {/* <MenuItem value="">Select Category</MenuItem>
-              <MenuItem value="Category 1">Category 1</MenuItem>
-              <MenuItem value="Category 2">Category 2</MenuItem> */}
-              {/* Add more authors as needed */}
+              {Author.map((author) => (
+                <MenuItem key={author} value={author}>
+                  {author}
+                </MenuItem>
+              ))}
             </Select>
           </div>
           <div className="search-bar">
@@ -184,36 +192,13 @@ const LibraryPage = () => {
         </div>
         <div>
           <Grid container spacing={2} data-aos="fade-up" data-aos-offset="200">
-            {renderBooks
-              
-              // books
-              // .filter(
-              //   (book) =>
-              //     book.title
-              //       .toLowerCase()
-              //       .includes(searchKeyword.toLowerCase()) &&
-              //     (selectedCategory === "" ||
-              //       book.category === selectedCategory) && (selectedAuthor === "" || book.author === selectedAuthor)
-              // )
-              // .map((book) => (
-              //   <Grid
-              //     className="grid-item"
-              //     item
-              //     xs={12}
-              //     sm={6}
-              //     md={4}
-              //     lg={3}
-              //     key={book.id}
-              //     data-aos="fade-up"
-              //     data-aos-offset="100"
-              //   >
-              //     <BookCard book={book} className="grid-card" />
-              //   </Grid>
-              // ))
-            }
+            {renderBooks}
           </Grid>
         </div>
       </Container>
+      <div className="book-details-section">
+        {hoveredBook && <BookDetails book={hoveredBook} />}
+      </div>
     </div>
   );
 };

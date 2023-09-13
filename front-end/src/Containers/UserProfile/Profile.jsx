@@ -15,13 +15,13 @@ import Aos from 'aos';
 import BarrowedBooks from '../Barrow/Barrowed';
 import WishList from '../Wishlist/Wishlist';
 import Notifications from '../Notifications/Notifications';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Link } from 'react-router-dom';
+import auth from '../../services/authService';
 import { useParams } from 'react-router-dom';
 import Header from '../../Components/Header/Header';
-
+import { useNavigate } from 'react-router-dom';
 const Profile = () => {
 
+    const navigate = useNavigate();
     const page = useParams()["page"];
     const [isSidebarOpen, setSidebarOpen] = useState(false);
     const currentPageName = ['My Info', 'My Reservations', 'My Borrowings', 'My Wishlist', 'Notifications']
@@ -117,7 +117,7 @@ const Profile = () => {
                                 </div>
                             </ListItem>
                             <Divider />
-                            <ListItem button className='custom-icon-list-item' onClick={() => setCurrentPage(5)}>
+                            <ListItem button className='custom-icon-list-item' onClick={() => {auth.logout();navigate('/')}}>
                                 <ExitToAppIcon />
                                 <div className={`menu-text ${isSidebarOpen ? '' : 'collapsed'}`}>
 
