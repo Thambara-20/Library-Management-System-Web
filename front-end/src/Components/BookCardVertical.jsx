@@ -1,43 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardMedia, Typography, Button } from "@mui/material";
 import { CancelButton } from "./Button";
 
-const BookCardVertical = ({ book, showCancellationButton, showIssueButton, showRejectButton, showReturn=false ,Wishlist=false}) => {
+const BookCardVertical = ({ book, showCancellationButton = false, showIssueButton = false, showRejectButton = false, showReturn = false, Wishlist = false }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div
       style={{
         display: "flex",
+        height: "90%",
         flexDirection: "column",
         alignItems: "center",
-        maxWidth: "1000px",
-        margin: "0 auto", // Center align the container horizontally
+        maxWidth: "900px",
       }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <Card
         className="book-card"
-        style={{
-          marginBottom: "20px", 
-          boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)",      
-          width: "100%", // Set a fixed width for the card
+        sx={{
+          marginBottom: "20px",
+          boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)",
+          width: "100%",
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          backgroundColor: '#2c2c2c',
+          backgroundColor: "#1c1c1c",
           padding: "10px",
           position: "relative",
+          transition: "transform 0.2s ease-in-out",
+          ":hover": {
+            transform: "scale(1.05)",
+          },
         }}
       >
-        <div style={{ flex: 0.5 }}>
+        <div style={{ flex: 0.2, width: "400px" }}>
           <CardMedia
             component="img"
             alt="Book Cover"
-
             height="100%"
             image={book.img}
             style={{ maxWidth: "100%" }} // Ensure the image doesn't exceed card width
           />
         </div>
-        <div style={{ flex: 1, marginLeft: "40px",color:'white'  }}>
+        <div style={{ flex: 0.8, marginLeft: "40px", color: "white" }}>
           <CardContent className="card-content">
             <Typography variant="subtitle1" component="div">
               Book ID : {book.bookID}
@@ -51,33 +58,34 @@ const BookCardVertical = ({ book, showCancellationButton, showIssueButton, showR
           </CardContent>
         </div>
 
-        <div style={{ flex: 1, marginLeft: "30px", marginTop: "15px",}}>
+        <div style={{ flex: 0.5, marginLeft: "30px", marginTop: "15px" }}>
           {!Wishlist ? (
-          <CardContent className="card-content">
-            {!showReturn ? (
-              <div>
-                <Typography variant="subtitle1" color="white">
-                  Reserved Date: {book.reservedData}
-                </Typography>
-                <Typography variant="subtitle1" color="white">
-                  Borrow Before: {book.borrowBefore}
-                </Typography>
-              </div>
-            ) : (
-              <div>
-                
-              <Typography variant="subtitle1" color="white">
-                Barrowed Date: {book.barrowedDate}
-              </Typography>
-              <Typography variant="subtitle1" color="white">
-                Return Before: {book.returnBefore}
-              </Typography>
-              </div>
-            )}
-
-          </CardContent>) :<div></div>}
+            <CardContent className="card-content">
+              {!showReturn ? (
+                <div>
+                  <Typography variant="subtitle1" color="white">
+                    Reserved Date: {book.reservedData}
+                  </Typography>
+                  <Typography variant="subtitle1" color="white">
+                    Borrow Before: {book.borrowBefore}
+                  </Typography>
+                </div>
+              ) : (
+                <div>
+                  <Typography variant="subtitle1" color="white">
+                    Barrowed Date: {book.barrowedDate}
+                  </Typography>
+                  <Typography variant="subtitle1" color="white">
+                    Return Before: {book.returnBefore}
+                  </Typography>
+                </div>
+              )}
+            </CardContent>
+          ) : (
+            <CardContent className="card-content"></CardContent>
+          )}
         </div>
-        {showCancellationButton && (
+        {showCancellationButton && isHovered && (
           <div
             style={{
               position: "absolute",
@@ -86,9 +94,7 @@ const BookCardVertical = ({ book, showCancellationButton, showIssueButton, showR
               transform: "translateX(-50%)",
             }}
           >
-            <CancelButton variant="contained" >
-              Cancel
-            </CancelButton>
+            <CancelButton variant="contained">Cancel</CancelButton>
           </div>
         )}
         {showIssueButton && (
@@ -100,9 +106,7 @@ const BookCardVertical = ({ book, showCancellationButton, showIssueButton, showR
               transform: "translateX(-50%)",
             }}
           >
-            <Button variant="contained" >
-              Issue
-            </Button>
+            <Button variant="contained">Issue</Button>
           </div>
         )}
         {showRejectButton && (
@@ -114,9 +118,7 @@ const BookCardVertical = ({ book, showCancellationButton, showIssueButton, showR
               transform: "translateX(-50%)",
             }}
           >
-            <Button variant="contained" >
-              Reject
-            </Button>
+            <Button variant="contained">Reject</Button>
           </div>
         )}
       </Card>

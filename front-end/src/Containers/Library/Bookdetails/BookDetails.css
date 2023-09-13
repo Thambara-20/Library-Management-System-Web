@@ -1,0 +1,25 @@
+
+.cardContent {
+  max-width: 400px;
+  padding: 20px;
+ 
+  background-color: #fff;
+  text-align: center;
+}
+
+.details{
+  margin: 50px;
+}
+
+
+.typo{
+  font-size: 24px;
+  font-weight: 400 ;
+  margin-bottom: 20px;
+}
+
+.title{
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}

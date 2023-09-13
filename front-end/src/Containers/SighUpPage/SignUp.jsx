@@ -4,6 +4,8 @@ import "./SignUp.css";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Button } from "@mui/material";
+
+
 const SignUp = () => {
   return (
     <div>
@@ -43,7 +45,7 @@ const SignUp = () => {
 
               <div className="reg-log-button">
                 <div className="reg-button">
-                  <button className="btn btn-primary" type="submit">Register</button>
+                  <button className="btn btn-primary" type="submit">Sign Up</button>
                 </div>
 
               </div>
