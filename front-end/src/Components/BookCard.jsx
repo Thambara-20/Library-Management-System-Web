@@ -5,21 +5,12 @@ import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import "../Styles/BookCard.css"; // Import the CSS file
 
 const BookCard = ({ book }) => {
-  const [isHovered, setIsHovered] = useState(false);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
 
   return (
     <Card
-      className={`book-card ${isHovered ? "hovered" : ""}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      className='book-card'
+    
     >
       <CardContent className="card-content">
         <CardMedia
@@ -38,10 +29,7 @@ const BookCard = ({ book }) => {
           Category: {book.category}
         </Typography>
       </CardContent>
-      <div className="button-container">
-        <button className="reserve-button">Reserve</button>
-        <button className="wishlist-button">Add to Wishlist</button>
-      </div>
+     
     </Card>
   );
 };

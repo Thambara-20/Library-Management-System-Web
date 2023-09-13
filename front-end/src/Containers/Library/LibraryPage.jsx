@@ -17,7 +17,6 @@ import { booksDummy as books } from "../../Helpers/BooksDummy";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "../../Components/Header/Header";
-import BookDetails from "../Library/Bookdetails/BookDetails";
 import { Link } from "react-router-dom";
 
 const LibraryPage = () => {
@@ -87,16 +86,22 @@ const LibraryPage = () => {
             md={4}
             lg={3}
             key={book.id}
+            style={{
+              width: "100%", // Set the width to 100% for full-width
+              height: "100%", // Set the height to 100% for full-height
+              display: "flex", // Ensure the card container fills the grid item
+              flexDirection: "column",
+              justifyContent:'space-around' // Stack child elements vertically
+            }}
            
             data-aos="fade-up"
             data-aos-offset="100"
           >
-            <Link to={`/book/${book.id}`}>
+            <Link to={`/book/${book.id}`} className="book-card-container">
               <div className="book-card-container">
                 <BookCard
                   book={book}
-                  onReserveClick={handleReserveClick}
-                  onWishlistClick={handleWishlistClick}
+                 
                 />
               </div>
             </Link>
@@ -120,6 +125,12 @@ const LibraryPage = () => {
             key={book.id}
             data-aos="fade-up"
             data-aos-offset="100"
+            style={{
+              width: "100%", // Set the width to 100% for full-width
+              height: "100%", // Set the height to 100% for full-height
+              display: "flex", // Ensure the card container fills the grid item
+              flexDirection: "column", // Stack child elements vertically
+            }}
           >
             <Link to={`/book/${book.id}`}>
               <div className="book-card-container">
@@ -197,7 +208,7 @@ const LibraryPage = () => {
         </div>
       </Container>
       <div className="book-details-section">
-        {hoveredBook && <BookDetails book={hoveredBook} />}
+        
       </div>
     </div>
   );
