@@ -46,7 +46,7 @@
   }
   
   .btn.btn-primary:hover {
-    transform: none; /* Fixed the typo, should be "transform" */
+    transform: none; 
     background: rgb(0, 0, 0);
   }
   
@@ -64,19 +64,19 @@
     display: flex;
   }
   
-  /* Media query for smaller screens */
+
   @media screen and (max-width: 768px) {
     .paddings.innerWidth.flexCenter.reg-container {
-      width: 90%; /* Adjust the width for smaller screens */
+      width: 90%; 
     }
   
     .name {
-      gap: 20px; /* Reduce the gap between elements */
+      gap: 20px; 
     }
   
     .btn.btn-primary,
     .btn.btn-outline-primary {
-      width: 100%; /* Make buttons full-width */
+      width: 100%; 
     }
   }
   
