@@ -95,7 +95,7 @@ const SignInPage = ({ onClose, onSuucessClose }) => {
                     </div>
                   </div>
                 </form>
-                {/* Add checkbox and sign-up icons with text here */}
+              
 
 
                 <div className="divider"></div> {/* Add this line to create the black line */}

@@ -5,42 +5,26 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import './BookDetails.css'
 import Rating from "react-rating-stars-component"
-import loading from '../../../assets/loading.gif'
+import { fetchallbookdata } from "../../../services/bookService";
+import LoadingIcon from "../../../Components/LoadingIcon";
+import ReadPage from "./ReadPage";
 
-export async function fetchdata(ISBN, setBook, setBookImage) {
-  const response = await fetch(
-    `https://www.googleapis.com/books/v1/volumes?q=isbn:${ISBN}`
-  );
-  const data = await response.json();
 
-  if (data.items && data.items.length > 0) {
-    const bookDetails = data.items[0].volumeInfo;
-    setBook({
-      ISBN: ISBN,
-      title: bookDetails.title || "",
-      author: bookDetails.authors ? bookDetails.authors.join(", ") : "",
-      category: bookDetails.categories
-        ? bookDetails.categories.join(", ")
-        : "",
-      language: bookDetails.language || "",
-      abstract: bookDetails.description || "",
-      pageCount: bookDetails.pageCount || 0,
-      publisher: bookDetails.publisher || "",
-      publishedDate: bookDetails.publishedDate || "",
-      averageRating: bookDetails.averageRating || 0,
-      ratingsCount: bookDetails.ratingsCount || 0,
-      imageLinks: bookDetails.imageLinks || {},
-      previewLink: bookDetails.previewLink || "",
-    });
-    setBookImage(bookDetails.imageLinks.thumbnail || null);
-    ;
+const fetchdata = async (isbn,setBook, setBookImage) => {
+   
+  try {
+    await fetchallbookdata(isbn,setBook,setBookImage);
+ 
+  } catch (error) {
+    console.error('Error fetching book details:', error);
   }
-}
-
+};
+ 
 const BookDetails = ({ books }) => {
-  const bookId = useParams()["bookId"]; // Get the bookId from the URL params
+  const bookId = useParams()["bookId"];
   const [book, setBook] = useState({});
   const [bookImage, setBookImage] = useState(null);
+  const [showPages, setShowPages] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -48,159 +32,82 @@ const BookDetails = ({ books }) => {
     });
   }, []);
 
-
-
   useEffect(() => {
-    // Call fetchdata when the component mounts with the ISBN from the route params
+    // Replace the ISBN with your desired ISBN, or fetch it from your data
     fetchdata(9781338216660, setBook, setBookImage);
   }, [bookId]);
 
-  if (!book.title) {
-    return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-        <img src={loading} alt="Book Cover" style={{ maxWidth: '10%', maxHeight: '10%' }} />
-      </div>
-    );
-      }
-
   const selectedBook = books.find((book) => book.id == bookId);
+
   const containerStyle = {
     display: "flex",
     alignItems: "center",
-    justifyContent: 'start', // Center vertically
+    justifyContent: 'start',
     gap: "20px",
     height: '100%',
-    background: 'linear-gradient(50deg, black 0%, rgb(117, 112, 112)45%,black 0%,rgb(97, 94, 94) 90%  )' 
-   
-   
+    background: 'linear-gradient(50deg, black 0%, rgb(117, 112, 112)45%,black 0%,rgb(97, 94, 94) 90%)',
+    transform: showPages ? 'translateX(-100%)' : 'translateX(0)', // Slide out the right part
   };
 
+  const contentStyle = {
+    flex: '1',
+    transition: 'transform 0.5s ease-in-out',
+  };
+
+  if (!book.title) {
   return (
+    <LoadingIcon/>
 
+  );
+    }
+  return (
     <div className="book-wrapper">
-     
-  
-    
-    <div className="book-details">
-      <Card>
-        <CardContent style={containerStyle} data-aos='fade-up' >
-          <div style={{ flex: '1', }} >
-
-            <img src={selectedBook.img} alt="Book Cover" className="image-book" data-aos='fade-up'
-
-            
-            />
-            <Rating
-              count={5}
-              value={2}
-              size={24}
-              activeColor="#ffd700"
-              edit={false}
-              style={{ marginTop: '10px' ,textAlign:'center'}}
-            
-            />
-          </div>
-          <div className='right'>
-             <h2>
-              Book Details 
-             </h2>
-
-            <Typography className='title'variant="h5">{book.title}</Typography>
-            <Typography   className='author'>
-              Author: {book.author}
-            </Typography>
-            <Typography  className='category'>
-              Category: {book.category}
-            </Typography>
-            <Typography variant="body1" className='abs'>{book.abstract}</Typography>
-            <p>Page Count: {book.pageCount}</p>
-            <p>Publisher: {book.publisher}</p>
-            <p>Published Date: {book.publishedDate}</p>
-            <p>Ratings Count: {book.ratingsCount}</p>
-            <a href={book.previewLink} target="_blank" rel="noopener noreferrer">
-              Preview Link
-            </a>
-            <div className="buttons">
-              <Button variant="contained" color="primary">
-                Reserve Now
-              </Button>
-              <Button variant="contained" color="secondary">
-                Add to Wishlist
-              </Button>
+      <div className="book-details">
+        <Card>
+          <CardContent style={containerStyle} data-aos='fade-up'>
+            <div style={contentStyle}>
+              <img src={selectedBook.img} alt="Book Cover" className="image-book" data-aos='fade-up' />
+              <Rating count={5} value={2} size={24} activeColor="#ffd700" edit={false}
+                style={{ marginTop: '10px', textAlign: 'center' }}
+              />
             </div>
+                <div className="blurred-background"></div>
+            <div className='right' data-aos='fade-up'>
+              <div className="right-data">
+                <h2>Book Details</h2>
+                <Typography className='title' variant="h5">{book.title}</Typography>
+                <Typography className='author'>Author: {book.author}</Typography>
+                <Typography className='category'>Category: {book.category}</Typography>
+                <Typography variant="body1" className='abs'>{book.abstract}</Typography>
+                <p>Page Count: {book.pageCount}</p>
+                <p>Publisher: {book.publisher}</p>
+                <p>Published Date: {book.publishedDate}</p>
+                <p>Ratings Count: {book.ratingsCount}</p>
+                <a href={book.previewLink} target="_blank" rel="noopener noreferrer">Preview Link</a>
+              </div>
+              <div className="buttons">
+                <Button className='reserve-btn'variant="contained" color="primary">
+                  Reserve Now
+                </Button>
+                <Button className='wishlist-btn'variant="contained" color="secondary">
+                  Add to Wishlist
+                </Button>
+              </div>
+            </div>
+          <ReadPage/>
+          </CardContent>
+        </Card>
+          <div className='read-btn-wrapper'>
+            <Button className='read'variant="contained"  onClick={() => setShowPages(!showPages)}>
+              Read few pages {showPages ? '<' : '>'}
+            </Button>
           </div>
-        </CardContent>
-      </Card>
-    </div>
+     
+      </div>
     </div>
   );
 };
 
 export default BookDetails;
 
-
-// import React, { useEffect } from "react";
-// import { useParams } from "react-router-dom";
-// import { Card, CardContent, Typography, Button } from "@mui/material";
-// import AOS from "aos";
-// import "aos/dist/aos.css";
-
-// const BookDetails = ({ books }) => {
-
-//   useEffect(() => {
-//     AOS.init({
-//       duration: 1000,
-//     });
-//   }, []);
-//   const bookId = useParams()["bookId"];
-
-//   const selectedBook = books.find((book) => book.id == bookId);
-
-//   if (!selectedBook) {
-//     return <div>Book not found</div>;
-//   }
-
-//   const containerStyle = {
-//     display: "flex",
-//     alignItems: "center",
-//     justifyContent:'center', // Center vertically
-//     gap: "20px", // Add some space between image and text
-//   };
-
-//   return (
-//     <div className="book-details" data-aos="fade-up">
-//       <Card >
-//         <CardContent data-aos="fade-up">
-//           <div style={containerStyle}>
-//             <img
-//               src={selectedBook.img}
-//               alt="Book Cover"
-//               style={{ maxWidth: "450px", height: "auto" , boxShadow:'0 4px 6px rgba(0,0,0,0.5'}} // Adjust image size as needed
-//             />
-//             <div className="details">
-//               <Typography className='typo'variant="h4">{selectedBook.title}</Typography>
-//               <Typography className='typo'variant="subtitle1" color="text.secondary">
-//                 Author: {selectedBook.author}
-//               </Typography>
-//               <Typography className='typo'variant="subtitle1" color="text.secondary">
-//                 Category: {selectedBook.category}
-//               </Typography>
-//               <Typography className='typo'variant="body1">{selectedBook.abstract}</Typography>
-//               <div style={containerStyle}>
-//                 <Button variant="contained" color="primary">
-//                   Reserve Now
-//                 </Button>
-//                 <Button variant="contained" color="secondary">
-//                   Add to Wishlist
-//                 </Button>
-//               </div>
-//             </div>
-//           </div>
-//         </CardContent>
-//       </Card>
-//     </div>
-//   );
-// };
-
-// export default BookDetails;
 
