@@ -7,6 +7,9 @@ import { Button } from "@mui/material";
 
 
 const SignUp = () => {
+
+  const [popupState, setPopupState] = useState("");
+
   return (
     <div>
 

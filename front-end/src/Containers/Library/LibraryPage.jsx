@@ -11,7 +11,7 @@ import {
   Switch,
 } from "@mui/material";
 import "./Library.css";
-import BookCard from "../../Components/BookCard";
+import BookCard from "../../Components/BookCard/BookCard";
 import SearchIcon from "@mui/icons-material/Search";
 import { booksDummy as books } from "../../Helpers/BooksDummy";
 import AOS from "aos";
@@ -48,13 +48,13 @@ const LibraryPage = () => {
     setSelectedAuthor(event.target.value);
   };
 
-  const handleSwitchChange = (event) => {
-    setChecked(event.target.checked);
-    if (event.target.checked) {
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    if (event.target.value === '') {
       setSwitchLabel("Search by Title");
-      setToggleState(true);
+      setToggleState(true)
     } else {
-      setSwitchLabel("Search by Author");
+      setSwitchLabel(event.target.value);
       setToggleState(false);
     }
   };
@@ -163,6 +163,7 @@ const LibraryPage = () => {
               {/* Add more categories as needed */}
             </Select>
           </div>
+
           <div className="category-dropdown">
             <Select
               className="selecter"
@@ -179,27 +180,44 @@ const LibraryPage = () => {
               ))}
             </Select>
           </div>
-          <div className="search-bar">
-            <TextField
-              className="text-field"
-              label={switchLabel}
+          <div className="serach-con">
+            <div className="search-bar">
+              <TextField
+                className="text-field"
+                label={switchLabel}
+                variant="outlined"
+                onChange={handleSearchChange}
+              />
+            </div>
+            <div className="search-button">
+              <Button variant="contained" color="grey">
+                <SearchIcon style={{ height: "40px" }} />
+              </Button>
+            </div>
+          </div>
+
+          {/* handle the serach filter , author search or titile search */}
+          <div className="category-dropdown">
+            <Select
+              className="selecter"
+              value={search}
+              onChange={handleSearch}
               variant="outlined"
-              onChange={handleSearchChange}
-            />
+              displayEmpty
+            >
+              <MenuItem value="">Select By Title</MenuItem>
+              <MenuItem value="Search by Author">Search by Author</MenuItem>
+              {/* Add more categories as needed */}
+            </Select>
           </div>
-          <div className="search-button">
-            <Button variant="contained" color="grey">
-              <SearchIcon style={{ height: "40px" }} />
-            </Button>
-          </div>
-          <div className="switch-button">
+          {/* <div className="switch-button">
             <Switch
               checked={checked}
               onChange={handleSwitchChange}
               inputProps={{ "aria-label": "controlled" }}
             />
             <span>{switchLabel}</span>
-          </div>
+          </div> */}
         </div>
         <div>
           <Grid container spacing={2} data-aos="fade-up" data-aos-offset="200">
