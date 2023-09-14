@@ -8,7 +8,6 @@ import { AiFillAndroid } from "react-icons/ai";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import ReactWhatsapp from 'react-whatsapp';
 import {CopyToClipboard} from 'react-copy-to-clipboard';

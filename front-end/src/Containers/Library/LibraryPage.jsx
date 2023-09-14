@@ -15,7 +15,6 @@ import { booksDummy as books } from "../../Helpers/BooksDummy";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "../../Components/Header/Header";
-import axios from "axios";
 
 const LibraryPage = () => {
   // hadnle searching filters by hook
@@ -60,16 +59,7 @@ const LibraryPage = () => {
     }
   };
 
-  // const handleSwitchChange = (event) => {
-  //   setChecked(event.target.checked);
-  //   if (event.target.checked) {
-  //     setSwitchLabel("Search by Title");
-  //     setToggleState(true);
-  //   } else {
-  //     setSwitchLabel("Search by Author");
-  //     setToggleState(false);
-  //   }
-  // };
+
 
   let renderBooks;
   if (toggleState) {
@@ -128,16 +118,15 @@ const LibraryPage = () => {
         <div className="library-top">
           <div className="category-dropdown">
             <Select
-              className="selecter"
+              className="selecter" // This is the class name to target
               value={selectedCategory}
               onChange={handleCategoryChange}
-              variant="outlined"
               displayEmpty
+          
             >
               <MenuItem value="">Select Category</MenuItem>
               <MenuItem value="Category 1">Category 1</MenuItem>
               <MenuItem value="Category 2">Category 2</MenuItem>
-              {/* Add more categories as needed */}
             </Select>
           </div>
 
@@ -156,10 +145,7 @@ const LibraryPage = () => {
                 </MenuItem>
               ))}
 
-              {/* <MenuItem value="">Select Category</MenuItem>
-              <MenuItem value="Category 1">Category 1</MenuItem>
-              <MenuItem value="Category 2">Category 2</MenuItem> */}
-              {/* Add more authors as needed */}
+
             </Select>
           </div>
           <div className="serach-con">
@@ -192,48 +178,20 @@ const LibraryPage = () => {
               {/* Add more categories as needed */}
             </Select>
           </div>
-          {/* <div className="switch-button">
-            <Switch
-              checked={checked}
-              onChange={handleSwitchChange}
-              inputProps={{ "aria-label": "controlled" }}
-            />
-            <span>{switchLabel}</span>
-          </div> */}
+
         </div>
         <div>
           <Grid container spacing={2} data-aos="fade-up" data-aos-offset="200">
-            {
-              renderBooks
 
-              // books
-              // .filter(
-              //   (book) =>
-              //     book.title
-              //       .toLowerCase()
-              //       .includes(searchKeyword.toLowerCase()) &&
-              //     (selectedCategory === "" ||
-              //       book.category === selectedCategory) && (selectedAuthor === "" || book.author === selectedAuthor)
-              // )
-              // .map((book) => (
-              //   <Grid
-              //     className="grid-item"
-              //     item
-              //     xs={12}
-              //     sm={6}
-              //     md={4}
-              //     lg={3}
-              //     key={book.id}
-              //     data-aos="fade-up"
-              //     data-aos-offset="100"
-              //   >
-              //     <BookCard book={book} className="grid-card" />
-              //   </Grid>
-              // ))
-            }
+            {renderBooks}
+
+
           </Grid>
         </div>
       </Container>
+      <div className="book-details-section">
+
+      </div>
     </div>
   );
 };

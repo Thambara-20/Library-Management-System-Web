@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import '../../Styles/UpdateBook.css'; // Update the import path
-import bookImg from '../../assets/admin/books.png';
+import './UpdateBook.css'; // Update the import path
+import bookImg from '../../../assets/admin/books.png';
 import { useParams } from 'react-router-dom';
-import { findBook, updateBook, fetchImgdata } from '../../services/bookService';
-import { BookForm } from '../../Components/BookForm'; // Import the form component
-import BookImageContainer from '../../Components/ImageContainer'
+import { findBook, updateBook, fetchImgdata } from '../../../services/bookService';
+import { BookForm } from '../../../Components/BookForm/BookForm'; // Import the form component
+import BookImageContainer from '../../../Components/ImageContainer/ImageContainer'
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';

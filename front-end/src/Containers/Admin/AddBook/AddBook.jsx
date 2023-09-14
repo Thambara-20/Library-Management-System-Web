@@ -1,12 +1,12 @@
 import React, { useState, useRef ,useEffect } from 'react';
-import '../../Styles/AddBook.css';
-import bookImg from '../../assets/admin/books.png';
-import { AddBook, fetchImgdata, fetchdata } from '../../services/bookService';
+import './AddBook.css';
+import bookImg from '../../../assets/admin/books.png';
+import { AddBook, fetchImgdata, fetchdata } from '../../../services/bookService';
 import { Button } from '@mui/material';
 import {  Link } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { BookForm } from '../../Components/BookForm'; // Import the form component
-import  BookImageContainer from '../../Components/ImageContainer'
+import { BookForm } from '../../../Components/BookForm/BookForm'; // Import the form component
+import  BookImageContainer from '../../../Components/ImageContainer/ImageContainer'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 // Set an initial placeholder image URL

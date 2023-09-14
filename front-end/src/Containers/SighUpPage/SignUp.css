@@ -1,3 +1,4 @@
+
 .paddings.innerWidth.flexCenter.reg-container{
     justify-content: space-between;
     align-items: flex-start;
@@ -26,16 +27,25 @@
     align-items: center;
 }
 .name{
+
     display: flex;
     flex-wrap: wrap;
     gap: 50px;
   }
   .reg-log-button{
     display: flex;
+    margin: 0;
+    padding: 0;
     flex-direction: row;
     justify-content: space-between;
   }
-.btn.btn-outline-primary{
+
+  .reg-button{
+    margin-bottom: 0px;
+  
+  }
+  
+  .btn.btn-outline-primary {
     width: 200px;
     height: 45px;
     font-weight: 500;
@@ -45,20 +55,19 @@
     height: 45px;
     transition: 300ms;
     border: none;
-}
-.btn.btn-primary:hover{
-    scale: none;
-    background:orange;
-}
-.reg-container{
-    background: rgb(255, 255, 255);
-    border-radius: 15px;
-    box-shadow:  3px 10px 18px rgb(129, 124, 124);
-}
-.register-wrapper{
-    margin-top: 40px;
-    border-radius: 15px;
-}
+
+    background: grey;
+    box-shadow: 0px 4px 15px #00000040;
+  }
+  
+  .btn.btn-primary:hover {
+    transform: none; 
+    background: rgb(0, 0, 0);
+  }
+  
+ 
+  
+
 
 /* poping success message box styles */
 .popupMessage {

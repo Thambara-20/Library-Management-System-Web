@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../Styles/RemoveBook.css'; 
+import './RemoveBook.css'; 
 import bookImage from '../../assets/admin/books.png'; 
 
 function BookRemove() {
@@ -12,7 +12,6 @@ function BookRemove() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Removing book with ID:', bookId);
-    // Add your removal logic here
     setBookId('');
   };
 

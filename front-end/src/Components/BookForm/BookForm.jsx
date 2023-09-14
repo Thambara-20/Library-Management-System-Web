@@ -1,5 +1,5 @@
 import React from 'react';
-import "../Styles/BookForm.css"
+import "./BookForm.css"
 import 'aos/dist/aos.css';
 
 function BookForm({ bookId, formData, handleInputChange, onSubmit, ISBN = false, handleFetchDetails, title }) {

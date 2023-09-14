@@ -3,7 +3,7 @@ import React from 'react';
 import BookCardVertical from '../../Components/BookCardVertical'; 
 import { userReservedDummy as userReserved } from "../../Helpers/UserReservedDummy";
 
-const ReservedBooks = () => {
+const Notifications = () => {
   
   return (
     <div data-aos='fade-up'>
@@ -17,4 +17,4 @@ const ReservedBooks = () => {
   );
 };
 
-export default ReservedBooks;
+export default Notifications;

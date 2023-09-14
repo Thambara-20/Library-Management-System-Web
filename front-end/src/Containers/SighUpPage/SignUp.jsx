@@ -10,6 +10,7 @@ const SignUp = () => {
   const [popupState, setPopupState] = useState("");
 
   return (
+
     <section className="register-wrapper">
       <div className={`popupMessage ` + popupState} id="popup">
         <div className="up">
@@ -79,6 +80,7 @@ const SignUp = () => {
         </div>
       </div>
     </section>
+
   );
 };
 

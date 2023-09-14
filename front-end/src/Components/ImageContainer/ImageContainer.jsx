@@ -1,5 +1,5 @@
 import React from 'react';
-import "../Styles/ImageContainer.css"
+import "./ImageContainer.css"
 import 'aos/dist/aos.css';
 
 

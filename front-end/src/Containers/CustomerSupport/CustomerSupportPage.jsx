@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ContactDetails from "../../Components/ContactDetails";
 import Header from "../../Components/Header/Header";
 import ContactEmail from '../../Components/ContactEmail/ContactEmail'
 
