@@ -13,13 +13,16 @@ import auth from './services/authService';
 import { ToastContainer } from 'react-toastify';
 import BookUpdate from './Containers/Admin/UpdateBook';
 import SignUp from './Containers/SighUpPage/SignUp';
+import Profile from './Containers/UserProfile/Profile';
+import BookDetails from './Containers/Library/Bookdetails/BookDetails';
+import { booksDummy as books } from './Helpers/BooksDummy.js';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isAdminLoggedIn: true,
+      isAdminLoggedIn: false,
     };
   }
 
@@ -48,6 +51,9 @@ class App extends Component {
             <Route path='Register' element = {<SignUp/>}/>
             <Route path="/"element={ <Home /> }/>
             <Route path="/Library" element={<LibraryPage />} />
+            <Route path="/Profile/:page" element={<Profile/>} />
+            <Route path="/book/:bookId" element={<BookDetails books={books}/>} />
+            
             
             {isAdminLoggedIn ? <Route path="/admin" element={<AdminMainPage />} /> : <Route path="/" />}
             {isAdminLoggedIn ? <Route path="/admin/userManagement" element={<UserManagement />} /> : <Route path="/" />}

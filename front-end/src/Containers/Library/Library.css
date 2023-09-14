@@ -9,15 +9,18 @@
   justify-content: space-evenly;
 }
 
-/* style of switch button */
-.switch-button{
+/* Style of switch button */
+.switch-button {
   margin-top: 30px;
   margin-left: 20px;
 }
 
 .category-dropdown {
   margin-right: 8px;
-  height: 30px; /* Set a fixed height to match the search bar and button */
+  height: 30px;
+  background-color: #f0f0f0; /* Light gray background */
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .serach-con{
@@ -27,7 +30,9 @@
 
 .search-bar {
   border-radius: 10px;
-  height: 30px; /* Set a fixed height to match the category dropdown and button */
+  height: 30px;
+  background-color: #f0f0f0; /* Light gray background */
+  padding: 5px;
 }
 
 .search-button {
@@ -37,8 +42,8 @@
   margin-left: 8px;
   margin-top: 22px;
   height: 50px;
-
 }
+
 .what-btn{
   background:none;
   border: none;
@@ -48,62 +53,101 @@
 }
 
 
-/* CSS file (e.g., Library.css) */
-.grid-item:hover {
-  transform: scale(1.05) !important; /* Increase the size by 10% on hover */
-  transition: transform 0.3s ease !important; /* Add a smooth transition effect */
+.grid-item {
+  /* ... (other styles) ... */
+   padding-bottom: 40px;
+  transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
 }
 
 
+/* CSS file (e.g., Library.css) */
+.grid-item:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(660px, 1fr));
+  grid-gap: 20px; /* Adjust the gap between columns */
+  grid-row-gap: 30px; /* Add the desired gap between rows */
+}
+
 @media screen and (max-width: 900px) {
-  .search-button{
+  .search-button {
     display: none;
   }
   .library-top {
     margin-top: 16px;
     margin-bottom: 50px;
-  ;
   }
   
-  .Library-page-wrapper{
-    align-items: center;
-    background-color: black;
+  .Library-page-wrapper {
+    background-color: #333; /* Dark gray background */
+    padding: 20px;
   }
 
-  .text-field{ 
-    background-color: rgb(196, 202, 208);
-    border-radius: 5px; 
-    /* Set a fixed height to match the search bar and button */
+  .text-field {
+    background-color: #c4cad0; /* Light gray background */
+    border-radius: 5px;
+    padding: 5px;
   }
   
   .selecter {
-   background-color: aliceblue;/* Set a fixed height to match the category dropdown and button */
+    background-color: #f0f0f0; /* Light gray background */
+    border-radius: 5px;
+    padding: 5px;
   }
+}
+/* LibraryPage.css */
+
+/* ... (previous styles) ... */
+
+/* Style for buttons */
 
 
+/* Style for buttons */
+.search-button button,
+.switch-button button,
+.wishlist-button button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  border-radius: 5px;
+  outline: none;
+  display: none; 
+  transition: transform 0.3s ease-in-out; /* Hide buttons by default */
 }
 
+.grid-item:hover .search-button button,
+.grid-item:hover .switch-button button,
+.grid-item:hover .wishlist-button button {
+  display: block; /* Show buttons on hover */
+  transform: scale(1.1); 
 
-
+}
 @media screen and (max-width: 450px) {
-
-  .search-bar{ 
-    background-color: rgb(196, 202, 208);
-    border-radius: 5px; 
+  .search-bar {
+    background-color: #c4cad0; /* Light gray background */
+    border-radius: 5px;
     width: 50%;
-
-   
-    /* Set a fixed height to match the search bar and button */
-  }
-  .category-dropdown {
-    width: 40%; /* Set a fixed height to match the search bar and button */
-  }
-  .selecter {
-   background-color: aliceblue;
-   width:100%;
- 
-  /* Set a fixed height to match the category dropdown and button */
+    padding: 5px;
   }
   
-
+  .category-dropdown {
+    width: 40%;
+    background-color: #f0f0f0; /* Light gray background */
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .selecter {
+    background-color: #f0f0f0; /* Light gray background */
+    border-radius: 5px;
+    width: 100%;
+    padding: 5px;
+  }
 }

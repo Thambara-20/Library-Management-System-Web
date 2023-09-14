@@ -1,3 +1,5 @@
+// LibraryPage.js
+
 import React, { useState, useEffect } from "react";
 import {
   Container,
@@ -15,19 +17,23 @@ import { booksDummy as books } from "../../Helpers/BooksDummy";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "../../Components/Header/Header";
+
 import axios from "axios";
 
 const LibraryPage = () => {
   // hadnle searching filters by hook
+
   const [checked, setChecked] = useState(true);
   const [switchLabel, setSwitchLabel] = useState("Search by Title");
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedAuthor, setSelectedAuthor] = useState("");
   const [toggleState, setToggleState] = useState(true);
+
   const [search, setSearch] = useState("");
 
   // crete list of authors and remove duplicates of this array
+
   const listOfAuthor = books.map((book) => book.author);
   const Author = [...new Set(listOfAuthor)];
 
@@ -59,6 +65,7 @@ const LibraryPage = () => {
       setToggleState(false);
     }
   };
+
 
   // const handleSwitchChange = (event) => {
   //   setChecked(event.target.checked);
@@ -156,10 +163,12 @@ const LibraryPage = () => {
                 </MenuItem>
               ))}
 
+
               {/* <MenuItem value="">Select Category</MenuItem>
               <MenuItem value="Category 1">Category 1</MenuItem>
               <MenuItem value="Category 2">Category 2</MenuItem> */}
               {/* Add more authors as needed */}
+
             </Select>
           </div>
           <div className="serach-con">
@@ -203,6 +212,7 @@ const LibraryPage = () => {
         </div>
         <div>
           <Grid container spacing={2} data-aos="fade-up" data-aos-offset="200">
+
             {
               renderBooks
 
@@ -231,9 +241,13 @@ const LibraryPage = () => {
               //   </Grid>
               // ))
             }
+
           </Grid>
         </div>
       </Container>
+      <div className="book-details-section">
+        
+      </div>
     </div>
   );
 };
