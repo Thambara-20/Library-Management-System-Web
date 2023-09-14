@@ -20,7 +20,7 @@ function BookUpdate() {
 
 
   const bookImagePlaceholder = bookImg;
-  const bookId = useParams()["bookid"]; // Get the book ID from the URL
+  const bookId = useParams()["bookid"]; 
   const [bookImage, setBookImage] = useState(bookImagePlaceholder);
 
   const [book, setBook] = useState({

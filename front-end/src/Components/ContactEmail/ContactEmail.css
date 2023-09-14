@@ -1,7 +1,8 @@
 .paddings.innerWidth.flexCenter.reg-container {
-    justify-content: space-around;
-    align-items: flex-start;
+    
+    align-items: center;
     gap: 20px;
+    min-width: 100%;
 }
 #reg-container{
     justify-content: space-around;
@@ -11,6 +12,9 @@
 
 .register-wrapper {
     margin-bottom: 30px;
+    min-width: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 #re-con {
@@ -26,6 +30,7 @@
 }
 
 #reg-img:hover {
+    scale: 1.1;
     pointer-events: none;
 }
 

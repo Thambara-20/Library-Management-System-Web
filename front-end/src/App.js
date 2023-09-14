@@ -20,7 +20,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      isAdminLoggedIn: true,
+      isAdminLoggedIn: false,
     };
   }
 
@@ -49,6 +49,9 @@ class App extends Component {
             <Route path='Register' element = {<SignUp/>}/>
             <Route path="/"element={ <Home /> }/>
             <Route path="/Library" element={<LibraryPage />} />
+            <Route path="/Profile/:page" element={<Profile/>} />
+            <Route path="/book/:bookId" element={<BookDetails books={books}/>} />
+            
             
             {isAdminLoggedIn ? <Route path="/admin" element={<AdminMainPage />} /> : <Route path="/" />}
             {isAdminLoggedIn ? <Route path="/admin/userManagement" element={<UserManagement />} /> : <Route path="/" />}
