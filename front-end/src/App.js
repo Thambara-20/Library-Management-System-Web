@@ -13,6 +13,7 @@ import auth from './services/authService';
 import { ToastContainer } from 'react-toastify';
 import BookUpdate from './Containers/Admin/UpdateBook';
 import SignUp from './Containers/SighUpPage/SignUp';
+import AboutUs from './Containers/AboutUs/AboutUs'
 
 class App extends Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class App extends Component {
           <ToastContainer />
         <div>
           <Routes>
-
+            <Route path='/AboutUs' element={<AboutUs />} />
             <Route path="/ContactUs" element={<CustomerSupportPage />} />
             <Route path='Register' element = {<SignUp/>}/>
             <Route path="/"element={ <Home /> }/>
