@@ -3,7 +3,7 @@ import { grey } from '@mui/material/colors'
 import React from 'react'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
-import {AddBookButton} from './Button';
+import AddBookButton from './Button';
 
 
 function TableBox({ topic=false, filteredData, columns ,id=true,height=false}) {

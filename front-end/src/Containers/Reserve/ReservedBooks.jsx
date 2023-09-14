@@ -6,11 +6,12 @@ import { userReservedDummy as userReserved } from "../../Helpers/UserReservedDum
 const ReservedBooks = () => {
   
   return (
-    <div data-aos='fade-up'>
-    
+    <div>
+       <h1 style={{ fontSize: '36px', fontWeight: 'bold', textAlign: 'center', margin: '15px 0' }}>Ready To Borrow</h1>
+      
       <div>
           {userReserved.map((book) => (
-            <BookCardVertical key={book.id} book={book} showCancellationButton={true}/>
+            <BookCardVertical key={book.id} book={book} showCancellationButton={true}/> // Pass the showCancellationButton prop
           ))}
         </div>
     </div>
