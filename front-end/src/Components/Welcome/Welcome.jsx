@@ -13,13 +13,13 @@ const Welcome = () => {
         {/* this is left side of main content */}
         <div className=" flexColStart welcome-left">
           <div className="welcome-title">
-            <motion.div initial={{ y: "3rem",x:'3rem', opacity: 0 }}
+            <motion.div initial={{ y: "7rem",x:'7rem', opacity: 0 }}
               animate={{ y: 0,x:0, opacity: 1 }}
-              transition={{ duration: 3, type: "spring" }} className="blue-circle"></motion.div>
+              transition={{ duration: 5, type: "spring" }} className="blue-circle"></motion.div>
             <motion.h1
-              initial={{ y: "3rem", opacity: 0 }}
+              initial={{ y: "5rem", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 3, type: "spring" }}
+              transition={{ duration: 5, type: "spring" }}
               className="header-h"
             >
               Empowering
