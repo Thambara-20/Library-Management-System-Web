@@ -1,41 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card, CardContent, CardMedia, Typography, Button } from "@mui/material";
-import { CancelButton } from "./Button";
 
-const BookCardVertical = ({ book, showCancellationButton = false, showIssueButton = false, showRejectButton = false, showReturn = false, Wishlist = false }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
+const BookCardVertical = ({ book, showCancellationButton, showIssueButton, showRejectButton }) => {
   return (
     <div
       style={{
         display: "flex",
-        height: "90%",
         flexDirection: "column",
         alignItems: "center",
         maxWidth: "900px",
+        margin: "0 auto", // Center align the container horizontally
       }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <Card
         className="book-card"
-        sx={{
+        style={{
           marginBottom: "20px",
-          boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)",
-          width: "100%",
+          width: "100%", // Set a fixed width for the card
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          backgroundColor: "#1c1c1c",
+          backgroundColor: "#F4F4F4",
           padding: "10px",
           position: "relative",
-          transition: "transform 0.2s ease-in-out",
-          ":hover": {
-            transform: "scale(1.05)",
-          },
         }}
       >
-        <div style={{ flex: 0.2, width: "400px" }}>
+        <div style={{ flex: 0.5 }}>
           <CardMedia
             component="img"
             alt="Book Cover"
@@ -44,7 +34,7 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
             style={{ maxWidth: "100%" }} // Ensure the image doesn't exceed card width
           />
         </div>
-        <div style={{ flex: 0.8, marginLeft: "40px", color: "white" }}>
+        <div style={{ flex: 1, marginLeft: "40px" }}>
           <CardContent className="card-content">
             <Typography variant="subtitle1" component="div">
               Book ID : {book.bookID}
@@ -57,35 +47,17 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
             </Typography>
           </CardContent>
         </div>
-
-        <div style={{ flex: 0.5, marginLeft: "30px", marginTop: "15px" }}>
-          {!Wishlist ? (
-            <CardContent className="card-content">
-              {!showReturn ? (
-                <div>
-                  <Typography variant="subtitle1" color="white">
-                    Reserved Date: {book.reservedData}
-                  </Typography>
-                  <Typography variant="subtitle1" color="white">
-                    Borrow Before: {book.borrowBefore}
-                  </Typography>
-                </div>
-              ) : (
-                <div>
-                  <Typography variant="subtitle1" color="white">
-                    Barrowed Date: {book.barrowedDate}
-                  </Typography>
-                  <Typography variant="subtitle1" color="white">
-                    Return Before: {book.returnBefore}
-                  </Typography>
-                </div>
-              )}
-            </CardContent>
-          ) : (
-            <CardContent className="card-content"></CardContent>
-          )}
+        <div style={{ flex: 1, marginLeft: "30px", marginTop: "15px" }}>
+          <CardContent className="card-content">
+            <Typography variant="subtitle1" color="text.secondary" >
+              Reserved Date : {book.reservedData}
+            </Typography>
+            <Typography variant="subtitle1" color="text.secondary" >
+              Borrow Before : {book.borrowBefore}
+            </Typography>
+          </CardContent>
         </div>
-        {showCancellationButton && isHovered && (
+        {showCancellationButton && (
           <div
             style={{
               position: "absolute",
@@ -94,7 +66,9 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
               transform: "translateX(-50%)",
             }}
           >
-            <CancelButton variant="contained">Cancel</CancelButton>
+            <Button variant="contained" >
+              Cancel
+            </Button>
           </div>
         )}
         {showIssueButton && (
@@ -106,7 +80,9 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
               transform: "translateX(-50%)",
             }}
           >
-            <Button variant="contained">Issue</Button>
+            <Button variant="contained" style={{ width: "100%" }}>
+              Issue
+            </Button>
           </div>
         )}
         {showRejectButton && (
@@ -118,7 +94,9 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
               transform: "translateX(-50%)",
             }}
           >
-            <Button variant="contained">Reject</Button>
+            <Button variant="contained" style={{ width: "100%" }}>
+              Reject
+            </Button>
           </div>
         )}
       </Card>

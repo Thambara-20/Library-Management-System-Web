@@ -88,38 +88,6 @@ export async function fetchdata(ISBN,setBook,adjustTextareaSize,setBookImage) {
 
 }
 
-export async function fetchallbookdata(ISBN, setBook, setBookImage) {
-  const response = await fetch(
-    `https://www.googleapis.com/books/v1/volumes?q=isbn:${ISBN}`
-  );
-  const data = await response.json();
-
-
-
-  if (data.items && data.items.length > 0) {
-    const bookDetails = data.items[0].volumeInfo;
-    setBook({
-      ISBN: ISBN,
-      title: bookDetails.title || "",
-      author: bookDetails.authors ? bookDetails.authors.join(", ") : "",
-      category: bookDetails.categories
-        ? bookDetails.categories.join(", ")
-        : "",
-      language: bookDetails.language || "",
-      abstract: bookDetails.description || "",
-      pageCount: bookDetails.pageCount || 0,
-      publisher: bookDetails.publisher || "",
-      publishedDate: bookDetails.publishedDate || "",
-      averageRating: bookDetails.averageRating || 0,
-      ratingsCount: bookDetails.ratingsCount || 0,
-      imageLinks: bookDetails.imageLinks || {},
-      previewLink: bookDetails.previewLink || "",
-    });
-    setBookImage(bookDetails.imageLinks.thumbnail || null);
-  }
-}
-
-
 
 export async function fetchImgdata(ISBN, retryCount = 3) {
     try {
