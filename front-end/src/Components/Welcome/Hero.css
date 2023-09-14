@@ -33,7 +33,7 @@
     line-height: 4rem;
 }
 .header-h{
-    z-index: 10;
+    z-index: 100;
 }
 
 .blue-circle {
@@ -43,7 +43,7 @@
     border-radius: 999px;
     position: absolute;
     top: 0%;
-    z-index: 5;
+    z-index: 15;
     right: 45%;
 }
 
