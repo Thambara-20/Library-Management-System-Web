@@ -9,7 +9,7 @@ import {
   Switch,
 } from "@mui/material";
 import "./Library.css";
-import BookCard from "../../Components/BookCard/BookCard";
+import BookCard from "../../Components/BookCard";
 import SearchIcon from "@mui/icons-material/Search";
 import { booksDummy as books } from "../../Helpers/BooksDummy";
 import AOS from "aos";
@@ -17,7 +17,14 @@ import "aos/dist/aos.css";
 import Header from "../../Components/Header/Header";
 import axios from "axios";
 
+
+
 const LibraryPage = () => {
+
+
+
+
+
   // hadnle searching filters by hook
   const [checked, setChecked] = useState(true);
   const [switchLabel, setSwitchLabel] = useState("Search by Title");
@@ -25,8 +32,6 @@ const LibraryPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedAuthor, setSelectedAuthor] = useState("");
   const [toggleState, setToggleState] = useState(true);
-  const [search, setSearch] = useState("");
-
   // crete list of authors and remove duplicates of this array
   const listOfAuthor = books.map((book) => book.author);
   const Author = [...new Set(listOfAuthor)];
@@ -39,6 +44,7 @@ const LibraryPage = () => {
 
   const handleSearchChange = (event) => {
     setSearchKeyword(event.target.value);
+    
   };
 
   const handleCategoryChange = (event) => {
@@ -49,77 +55,71 @@ const LibraryPage = () => {
     setSelectedAuthor(event.target.value);
   };
 
-  const handleSearch = (event) => {
-    setSearch(event.target.value);
-    if (event.target.value === '') {
+  const handleSwitchChange = (event) => {
+    setChecked(event.target.checked);
+    if (event.target.checked) {
       setSwitchLabel("Search by Title");
-      setToggleState(true)
+      setToggleState(true);
     } else {
-      setSwitchLabel(event.target.value);
+      setSwitchLabel("Search by Author");
       setToggleState(false);
     }
   };
 
-  // const handleSwitchChange = (event) => {
-  //   setChecked(event.target.checked);
-  //   if (event.target.checked) {
-  //     setSwitchLabel("Search by Title");
-  //     setToggleState(true);
-  //   } else {
-  //     setSwitchLabel("Search by Author");
-  //     setToggleState(false);
-  //   }
-  // };
-
   let renderBooks;
   if (toggleState) {
     renderBooks = books
-      .filter(
-        (book) =>
-          book.title.toLowerCase().includes(searchKeyword.toLowerCase()) &&
-          (selectedCategory === "" || book.category === selectedCategory) &&
-          (selectedAuthor === "" || book.author === selectedAuthor)
-      )
-      .map((book) => (
-        <Grid
-          className="grid-item"
-          item
-          xs={12}
-          sm={6}
-          md={4}
-          lg={3}
-          key={book.id}
-          data-aos="fade-up"
-          data-aos-offset="100"
-        >
-          <BookCard book={book} className="grid-card" />
-        </Grid>
-      ));
-  } else if (!toggleState) {
+              .filter(
+                (book) =>
+                  book.title
+                    .toLowerCase()
+                    .includes(searchKeyword.toLowerCase()) &&
+                  (selectedCategory === "" ||
+                    book.category === selectedCategory) && (selectedAuthor === "" || book.author === selectedAuthor)
+              )
+              .map((book) => (
+                <Grid
+                  className="grid-item"
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  key={book.id}
+                  data-aos="fade-up"
+                  data-aos-offset="100"
+                >
+                  <BookCard book={book} className="grid-card" />
+                </Grid>
+              ))
+  } else if(!toggleState) {
     console.log(switchLabel);
     renderBooks = books
-      .filter(
-        (book) =>
-          book.author.toLowerCase().includes(searchKeyword.toLowerCase()) &&
-          (selectedCategory === "" || book.category === selectedCategory) &&
-          (selectedAuthor === "" || book.author === selectedAuthor)
-      )
-      .map((book) => (
-        <Grid
-          className="grid-item"
-          item
-          xs={12}
-          sm={6}
-          md={4}
-          lg={3}
-          key={book.id}
-          data-aos="fade-up"
-          data-aos-offset="100"
-        >
-          <BookCard book={book} className="grid-card" />
-        </Grid>
-      ));
+              .filter(
+                (book) =>
+                  book.author
+                    .toLowerCase()
+                    .includes(searchKeyword.toLowerCase()) &&
+                  (selectedCategory === "" ||
+                    book.category === selectedCategory) && (selectedAuthor === "" || book.author === selectedAuthor)
+              )
+              .map((book) => (
+                <Grid
+                  className="grid-item"
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  key={book.id}
+                  data-aos="fade-up"
+                  data-aos-offset="100"
+                >
+                  <BookCard book={book} className="grid-card" />
+                </Grid>
+              ))
   }
+
 
   return (
     <div className="Library-page-wrapper">
@@ -140,7 +140,6 @@ const LibraryPage = () => {
               {/* Add more categories as needed */}
             </Select>
           </div>
-
           <div className="category-dropdown">
             <Select
               className="selecter"
@@ -150,62 +149,43 @@ const LibraryPage = () => {
               displayEmpty
             >
               <MenuItem value="">Select Author</MenuItem>
-              {Author.map((author) => (
-                <MenuItem key={author} value={author}>
-                  {author}
-                </MenuItem>
-              ))}
-
+              {Author.map(author => (
+                <MenuItem key={author} value={author}>{author}</MenuItem>
+              )) 
+              }
+            
               {/* <MenuItem value="">Select Category</MenuItem>
               <MenuItem value="Category 1">Category 1</MenuItem>
               <MenuItem value="Category 2">Category 2</MenuItem> */}
               {/* Add more authors as needed */}
             </Select>
           </div>
-          <div className="serach-con">
-            <div className="search-bar">
-              <TextField
-                className="text-field"
-                label={switchLabel}
-                variant="outlined"
-                onChange={handleSearchChange}
-              />
-            </div>
-            <div className="search-button">
-              <Button variant="contained" color="grey">
-                <SearchIcon style={{ height: "40px" }} />
-              </Button>
-            </div>
-          </div>
-
-          {/* handle the serach filter , author search or titile search */}
-          <div className="category-dropdown">
-            <Select
-              className="selecter"
-              value={search}
-              onChange={handleSearch}
+          <div className="search-bar">
+            <TextField
+              className="text-field"
+              label={switchLabel}
               variant="outlined"
-              displayEmpty
-            >
-              <MenuItem value="">Select By Title</MenuItem>
-              <MenuItem value="Search by Author">Search by Author</MenuItem>
-              {/* Add more categories as needed */}
-            </Select>
+              onChange={handleSearchChange}
+            />
           </div>
-          {/* <div className="switch-button">
+          <div className="search-button">
+            <Button variant="contained" color="grey">
+              <SearchIcon style={{ height: "40px" }} />
+            </Button>
+          </div>
+          <div className="switch-button">
             <Switch
               checked={checked}
               onChange={handleSwitchChange}
               inputProps={{ "aria-label": "controlled" }}
             />
             <span>{switchLabel}</span>
-          </div> */}
+          </div>
         </div>
         <div>
           <Grid container spacing={2} data-aos="fade-up" data-aos-offset="200">
-            {
-              renderBooks
-
+            {renderBooks
+              
               // books
               // .filter(
               //   (book) =>

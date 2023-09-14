@@ -9,9 +9,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import ReactWhatsapp from 'react-whatsapp';
-import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 
 const Contact = () => {
@@ -21,12 +18,6 @@ const Contact = () => {
     });
     AOS.refresh({duration: 2000});
   }, []);
-
-const openEmailTab = url => {
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
-
   return (
     <section className="contact-wrapper"data-aos="fade-up" data-aos-offset="200">
       <div className="paddings innerWidth flexCenter c-container"data-aos="fade-up" data-aos-offset="200">
@@ -51,10 +42,7 @@ const openEmailTab = url => {
                     <span className="secondaryText">+9476 3055 795</span>
                   </div>
                 </div>
-                <CopyToClipboard text="0763055795">
                 <div className="flexCenter button btn-color">Call Now</div>
-                </CopyToClipboard>
-               
               </div>
               {/* first row second element */}
               <div className="mode flexColCenter mode" id="mode">
@@ -67,7 +55,7 @@ const openEmailTab = url => {
                     <span>+9476 3055 795</span>
                   </div>
                 </div>
-                <div className="flexCenter button btn-color"><ReactWhatsapp className="what-btn" number="+94763055795" message="I want to know something about registration">Chat Now</ReactWhatsapp></div>
+                <div className="flexCenter button btn-color">Chat Now</div>
               </div>
             </div>
 
@@ -87,10 +75,7 @@ const openEmailTab = url => {
                     </span>
                   </div>
                 </div>
-                <Link to={'/ContactUs'}> 
                 <div className="flexCenter button btn-color">Mail Now</div>
-            </Link>
-           
               </div>
               {/* second row second element */}
               <div className="flexColCenter mode" id="mode">

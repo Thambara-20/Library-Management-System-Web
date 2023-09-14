@@ -67,7 +67,7 @@ const Header = () => {
         <a href="">
           <img src={logo} alt="logo" className="img" height={80} />
         </a>
-        <OutsideClickHandler onOutsideClick={()=>setMenuOpen(false)}>
+        <OutsideClickHandler onOutsideClick={handleTogleButton}>
           <div className="flexCenter h-menu" style={getMenuStyles(menuOpen)}>
             <Link to="/" className="navbar-elements" style={{ textDecoration: "none" }}>
               <AiOutlineHome style={{paddingBottom:4,paddingRight:2}} size={20}/>Home
@@ -75,7 +75,7 @@ const Header = () => {
             <Link to="/Library" className="navbar-elements" style={{ textDecoration: "none" }}>
               <HiOutlineBuildingLibrary style={{paddingBottom:4,paddingRight:2}} size={20}/>Library
             </Link>
-            <Link to='/AboutUs' className="navbar-elements" style={{ textDecoration: "none" }}>
+            <Link className="navbar-elements" style={{ textDecoration: "none" }}>
               <GoPeople style={{paddingBottom:4,paddingRight:2}} size={20}/>About Us
             </Link>
             <Link to="/ContactUs" className="navbar-elements" style={{ textDecoration: "none" }}>
