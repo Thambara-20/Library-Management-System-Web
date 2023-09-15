@@ -28,6 +28,7 @@ const LibraryPage = () => {
   const [search, setSearch] = useState("");
 
   // crete list of authors and remove duplicates of this array
+  const [hoveredBook, setHoveredBook] = useState(null);
   const listOfAuthor = books.map((book) => book.author);
   const Author = [...new Set(listOfAuthor)];
 

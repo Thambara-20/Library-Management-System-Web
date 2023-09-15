@@ -14,6 +14,9 @@ import { ToastContainer } from 'react-toastify';
 import BookUpdate from './Containers/Admin/UpdateBook';
 import SignUp from './Containers/SighUpPage/SignUp';
 import AboutUs from './Containers/AboutUs/AboutUs';
+import Profile from './Containers/UserProfile/Profile';
+import BookDetails from './Containers/Library/Bookdetails/BookDetails';
+import { booksDummy as books } from './Helpers/BooksDummy.js';
 
 class App extends Component {
   constructor(props) {
@@ -50,6 +53,10 @@ class App extends Component {
             <Route path="/"element={ <Home /> }/>
             <Route path="/Library" element={<LibraryPage />} />
             <Route path="/AboutUs" element = {<AboutUs/>}/>
+            <Route path="/Profile/:page" element={<Profile/>} />
+            <Route path="/book/:bookId" element={<BookDetails books={books}/>} />
+            
+            
             {isAdminLoggedIn ? <Route path="/admin" element={<AdminMainPage />} /> : <Route path="/" />}
             {isAdminLoggedIn ? <Route path="/admin/userManagement" element={<UserManagement />} /> : <Route path="/" />}
             {isAdminLoggedIn ? <Route path="/admin/bookManagement" element={<BookManagement />} /> : <Route path="/" />}
