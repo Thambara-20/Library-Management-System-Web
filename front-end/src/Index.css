@@ -136,13 +136,11 @@ Link{
   linear-gradient(20deg, black 0%, rgb(89, 88, 88) 70%  );
   background-size: 100% 100%, 100% 100%;
   background-position: 0 0, 50% 50%; /* Adjust the position if needed */
-  animation: gradientAnimation 5s linear infinite; 
+
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   ;
   text-align: center;
-  
 }
-
 
 
 

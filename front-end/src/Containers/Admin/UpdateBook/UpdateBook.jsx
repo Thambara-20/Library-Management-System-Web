@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './UpdateBook.css'; // Update the import path
-import bookImg from '../../../assets/admin/books.png';
+import bookImg from '../../../assets/admin/books.jpg';
 import { useParams } from 'react-router-dom';
 import { findBook, updateBook, fetchImgdata } from '../../../services/bookService';
 import { BookForm } from '../../../Components/BookForm/BookForm'; // Import the form component
@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { grey } from '@mui/material/colors';
 
 function BookUpdate() {
   useEffect(() => {
@@ -127,8 +128,8 @@ function BookUpdate() {
           Back
         </Button>
       </Link>
-
-      <h1>Update Books</h1>
+      
+      <h1 style={{ color: 'rgba(244, 244, 244, 0.7)' }}>Update Books</h1>
 
       <div className="content-wrapper" >
         <BookImageContainer 

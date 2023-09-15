@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import img1 from "./img1.jpg";
 import img2 from "./img2.jpg";
 import img3 from "./img4.jpg";
 import "./AboutUsServices.css";
 import image from "./ab.jpg";
+import Aos from "aos";
 
 const AboutUsService = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+    });
+  }, []);
   return (
-    <sectoin className="section-white">
-      <div className="about-group">
+    <div className="section-white" data-aos='fade-up'>
+      <div className="about-group"data-aos="fade-up" >
         <div className="text-container">
           <span className="primaryText">
             Adaptive Strategies for Library Workers in the Digital Age:
@@ -27,7 +33,7 @@ const AboutUsService = () => {
           </span>
         </div>
       </div>
-    </sectoin>
+    </div>
   );
 };
 

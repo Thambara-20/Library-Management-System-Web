@@ -27,6 +27,7 @@ function BookForm({ bookId, formData, handleInputChange, onSubmit, ISBN = false,
                 name={field.name}
                 value={field.value}
                 onChange={handleInputChange}
+                required= {true}
               />
             ) : (
               <input
@@ -34,6 +35,7 @@ function BookForm({ bookId, formData, handleInputChange, onSubmit, ISBN = false,
                 name={field.name}
                 value={field.value}
                 onChange={handleInputChange}
+                required={true}
               />
             )
           ) : (

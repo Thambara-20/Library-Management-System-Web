@@ -16,9 +16,8 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 const Contact = () => {
   useEffect(() => {
     AOS.init({
-      duration: 2000,
+      duration: 1000,
     });
-    AOS.refresh({duration: 2000});
   }, []);
 
 const openEmailTab = url => {
@@ -27,17 +26,17 @@ const openEmailTab = url => {
 
 
   return (
-    <section className="contact-wrapper"data-aos="fade-up" data-aos-offset="200">
-      <div className="paddings innerWidth flexCenter c-container"data-aos="fade-up" data-aos-offset="200">
+    <section className="contact-wrapper"data-aos="fade-up" >
+      <div className="paddings innerWidth flexCenter c-container"data-aos="fade-up" >
         {/* this is our left side */}
-        <div className="flexColStart c-left">
+        <div className="flexColStart c-left" data-aos="fade-up">
           <span className="orangeText">Our contacts</span>
           <span className="primaryText">Easy to Contact</span>
           <span className="secondaryText">
             We always ready to help by providing the best service
           </span>
 
-          <div className="flexColStart contactModes" >
+          <div className="flexColStart contactModes" data-aos="fade-up" >
             {/* {first row} */}
             <div className="flexStart row">
               <div className="flexColCenter mode" id="mode">
@@ -56,7 +55,7 @@ const openEmailTab = url => {
                
               </div>
               {/* first row second element */}
-              <div className="mode flexColCenter mode" id="mode">
+              <div className="mode flexColCenter mode" id="mode" data-aos="fade-up">
                 <div className="flexStart">
                   <div className="flexCenter icon">
                     <BsFillChatDotsFill size={25} />
@@ -71,7 +70,7 @@ const openEmailTab = url => {
             </div>
 
             {/* second raw first element */}
-            <div className="flexStart row">
+            <div className="flexStart row" data-aos="fade-up">
               <div className="flexColCenter mode" id="mode">
                 <div className="flexStart">
                   <div className="flexCenter icon">
@@ -92,7 +91,7 @@ const openEmailTab = url => {
            
               </div>
               {/* second row second element */}
-              <div className="flexColCenter mode" id="mode">
+              <div className="flexColCenter mode" id="mode" data-aos="fade-up">
                 <div className="flexStart">
                   <div className="flexCenter icon">
                     <AiFillAndroid size={25} />
@@ -109,7 +108,7 @@ const openEmailTab = url => {
         </div>
 
         {/* this is our right side */}
-        <div className="flexCenter contact-right" >
+        <div className="flexCenter contact-right" data-aos="fade-up">
           <div className="image-container" id="i-c">
             <img src={right} alt="right-img" className="" />
           </div>

@@ -138,7 +138,7 @@ const Books = () => {
 	];
 
 	return (
-		<div style={{ width: '98%', overflowY: 'auto' }}>
+		<div style={{ width: '99%', overflowY: 'auto' }}>
 			<Topbar
 				searchQuery={searchQuery}
 				setSearchQuery={setSearchQuery}

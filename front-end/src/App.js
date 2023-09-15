@@ -17,7 +17,8 @@ import SignUp from './Containers/SighUpPage/SignUp';
 import AboutUs from './Containers/AboutUs/AboutUs'
 import Profile from './Containers/UserProfile/Profile';
 import BookDetails from './Containers/Library/Bookdetails/BookDetails';
-
+import ReservedBooksPage from './Containers/Admin/ReservedBookspage';
+import PendingApprovalsPage from './Containers/Admin/PendingApprovalsPage';
 
 class App extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const currentUser = await auth.getCurrentUser();
+    const currentUser =  auth.getCurrentUser();
     
     if (currentUser) {
       this.setState({
@@ -63,6 +64,8 @@ class App extends Component {
             {isAdminLoggedIn ? <Route path="/admin/bookManagement" element={<BookManagement />} /> : <Route path="/" />}
             {isAdminLoggedIn ? <Route path="/admin/bookManagement/addbook" element={<AddBook />} /> : <Route path="/" />}
             {isAdminLoggedIn ? <Route path="/admin/bookManagement/updatebook/:bookid" element={<BookUpdate />} /> : <Route path="/" />}
+            {isAdminLoggedIn ? <Route path="/admin/bookManagement/Reservations" element={<ReservedBooksPage />} /> : <Route path="/" />}
+            {isAdminLoggedIn ? <Route path="/admin/bookManagement/PendingApprovals" element={<PendingApprovalsPage />} /> : <Route path="/" />}
          
 
           </Routes>

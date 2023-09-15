@@ -3,16 +3,20 @@ import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import './BookCard.css'
 import { BsFillBagHeartFill } from 'react-icons/bs';
 import { FaBookMedical } from 'react-icons/fa6'
+import { Link } from "react-router-dom";
 
 
 
 const BookCard = ({ book }) => {
-   
+    const bookUrl = `/book/${book.id}/`; 
+    console.log(bookUrl)
+
 
     return (
+        <Link to={bookUrl} className="book-card-link">
         <Card className="book-card visible" style={{ marginBottom: "10px" }}>
             <CardContent className="card-content">
-                <CardMedia
+                <CardMedia className="image-content"
                     component="img"
                     alt="Book Cover"
                     height="200"
@@ -38,6 +42,7 @@ const BookCard = ({ book }) => {
                 
             </CardContent>
         </Card>
+        </Link>
     );
 };
 

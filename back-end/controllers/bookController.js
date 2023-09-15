@@ -96,24 +96,23 @@ exports.update = async (req, res) => {
   console.log(req.params);
   console.log(req.body);
   try {
-    Book.update(req.body, {
-      where: { id: id } 
-    })
-    .then(num => {
-      if (num == 1) {
-        res.send({
-          message: "Book was updated successfully."
-        });
-      } else {
-        res.send({
-          message: `Cannot update Book with id=${id}. Maybe Book was not found or req.body is empty!`
-        });
-      }
+    const [num, updatedBook] = await Book.update(req.body, {
+      where: { id: id },
+      returning: true, // This returns the updated record
+    });
+
+    if (num === 1) {
+      res.send({
+        message: "Book was updated successfully.",
+        updatedBook: updatedBook[0], // Send the updated book data
+      });
+    } else {
+      res.status(404).send({
+        message: `Cannot update Book with id=${id}. Maybe Book was not found or req.body is empty!`,
+      });
     }
-    )
-  }
-  catch (error) {
+  } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
-  }   
+  }
 }

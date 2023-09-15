@@ -1,6 +1,6 @@
 import React, { useState, useRef ,useEffect } from 'react';
 import './AddBook.css';
-import bookImg from '../../../assets/admin/books.png';
+import bookImg from '../../../assets/admin/books.jpg';
 import { AddBook, fetchImgdata, fetchdata } from '../../../services/bookService';
 import { Button } from '@mui/material';
 import {  Link } from 'react-router-dom';
@@ -109,7 +109,7 @@ function BookAdd() {
       </Button>
     </Link>
    
-    <h1>Add Books</h1>
+    <h1 style={{color:'rgba(244, 244, 244, 0.7)'}}>Add Books</h1>
     
     <div className="content-wrapper" data-aos="fade-right">
       <BookImageContainer 

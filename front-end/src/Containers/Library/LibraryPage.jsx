@@ -3,18 +3,18 @@ import {
   Container,
   Grid,
   TextField,
-  Button,
+
   Select,
   MenuItem,
-  Switch,
+ 
 } from "@mui/material";
 import "./Library.css";
 import BookCard from "../../Components/BookCard/BookCard";
-import SearchIcon from "@mui/icons-material/Search";
 import { booksDummy as books } from "../../Helpers/BooksDummy";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "../../Components/Header/Header";
+import Footer from "../../Components/Footer/Footer";
 
 const LibraryPage = () => {
   // hadnle searching filters by hook
@@ -83,6 +83,7 @@ const LibraryPage = () => {
           data-aos-offset="100"
         >
           <BookCard book={book} className="grid-card" />
+
         </Grid>
       ));
   } else if (!toggleState) {
@@ -148,21 +149,6 @@ const LibraryPage = () => {
 
             </Select>
           </div>
-          <div className="serach-con">
-            <div className="search-bar">
-              <TextField
-                className="text-field"
-                label={switchLabel}
-                variant="outlined"
-                onChange={handleSearchChange}
-              />
-            </div>
-            <div className="search-button">
-              <Button variant="contained" color="grey">
-                <SearchIcon style={{ height: "40px" }} />
-              </Button>
-            </div>
-          </div>
 
           {/* handle the serach filter , author search or titile search */}
           <div className="category-dropdown">
@@ -179,19 +165,28 @@ const LibraryPage = () => {
             </Select>
           </div>
 
+          <div className="serach-con">
+            <div className="search-bar">
+              <TextField
+                className="text-field"
+                label={switchLabel}
+                variant="outlined"
+                onChange={handleSearchChange}
+              />
+            </div>
+      
+          </div>
         </div>
         <div>
           <Grid container spacing={2} data-aos="fade-up" data-aos-offset="200">
-
             {renderBooks}
-
-
           </Grid>
         </div>
       </Container>
       <div className="book-details-section">
 
       </div>
+      <Footer/>
     </div>
   );
 };
