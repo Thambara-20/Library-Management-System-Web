@@ -120,7 +120,7 @@ const Sidebar = () => {
 
                         <Item
                             title="Pending Approvals"
-                            to="/admin"
+                            to="/admin/bookManagement/PendingApprovals"
                             icon={<ContactsOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}

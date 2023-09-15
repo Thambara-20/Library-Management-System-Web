@@ -1,7 +1,8 @@
 import React from "react";
 import { render, screen, act } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
-import SignUp from "../Containers/SighUpPage/SignUp";
+import SignUp from "./SignUp";
+
 import "@testing-library/jest-dom/extend-expect";
 import TestResults from "./TestResults";
 
@@ -88,7 +89,7 @@ describe("SignUp Component", () => {
       ],
     };
 
-    
+    render(<TestResults results={results} />);
 
   });
 });
