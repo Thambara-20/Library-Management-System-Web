@@ -1,6 +1,6 @@
 import axios from 'axios';
 import notification from './notificationService'
-const apiUrl = "http://localhost:8080/api/books/"; // Replace with your actual backend API URL
+const apiUrl = "http://localhost:8000/api/books/"; // Replace with your actual backend API URL
 
 export async function fetchBookData() {
     try {

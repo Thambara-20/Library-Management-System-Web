@@ -32,6 +32,7 @@ function BookAdd() {
 
   const [bookImage, setBookImage] = useState(bookImagePlaceholder); // Initialize with the placeholder URL
   const abstractTextareaRef = useRef(null);
+  const [bookUrl,setBookUrl]=useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -57,7 +58,8 @@ function BookAdd() {
      
       await fetchdata(isbn,setBook,adjustTextareaSize);
       const img = await fetchImgdata(isbn);
-      (img)? setBookImage(img):setBookImage(bookImagePlaceholder)  ;
+      setBookUrl(img);
+      (img)? setBookImage(img):setBookImage(bookImagePlaceholder);
 
 
     } catch (error) {
@@ -76,7 +78,7 @@ function BookAdd() {
     console.log('Adding book:', book.ISBN);
    
     try {
-      await AddBook(book);
+      await AddBook({...book,url:bookImage});
     }
     catch (error) {
       console.error('Error adding book:', error);

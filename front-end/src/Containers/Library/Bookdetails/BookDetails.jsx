@@ -60,12 +60,12 @@ const BookDetails = ({ }) => {
     transition: 'transform 0.5s ease-in-out',
   };
 
-  // if (!book.title) {
-  // return (
-  //   <LoadingIcon/>
+  if (!book.title) {
+  return (
+    <LoadingIcon/>
 
-  // );
-  //   }
+  );
+    }
 
   return (
     <div className="book-wrapper">

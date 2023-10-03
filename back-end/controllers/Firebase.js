@@ -16,18 +16,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
-module.exports = async function storeImage() {
+module.exports = async function storeImage(url,title) {
     try {
       // Download the image from the URL
-      const imageUrl =
-        "https://upload.wikimedia.org/wikipedia/commons/3/3f/JPEG_example_flower.jpg?20170304154031";
+      const imageUrl = url;
       const response = await axios.get(imageUrl, { responseType: "arraybuffer" });
-  
+      
       // Convert the downloaded image data to Uint8Array
       const fileData = new Uint8Array(response.data);
   
       // Reference to the image in Firebase Storage
-      const storageRef = ref(storage, "images/image.jpg",{ contentType: "image/jpeg" });
+      const storageRef = ref(storage, `images/${title}.jpg`,{contentType: "image/jpeg"});
   
       // Upload the file to Firebase Storage
       await uploadBytes(storageRef, fileData);

@@ -11,7 +11,7 @@ exports.create = async (req, res) => {
     });
     return;
   }
-  const downloadUrl = await storeImage();
+  const downloadUrl = await storeImage(req.body.url,req.body.title);
 
 
   const book = {

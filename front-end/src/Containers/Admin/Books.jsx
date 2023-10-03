@@ -25,6 +25,7 @@ const Books = () => {
 	const fetchData = async () => {
 		try {
 			const data = await fetchBookData();
+			console.log(data);
 			setFilteredData(data);
 			
 		} catch (error) {

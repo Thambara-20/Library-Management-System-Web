@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { grey } from '@mui/material/colors';
 
 function BookUpdate() {
   useEffect(() => {
@@ -33,6 +32,7 @@ function BookUpdate() {
     language: '',
     abstract: 'none',
     status: '',
+    url:''
   });
 
   // State to track changes made in the form
@@ -45,6 +45,7 @@ function BookUpdate() {
     language: '',
     abstract: 'none',
     status: '',
+ 
   });
 
   const abstractTextareaRef = useRef(null);
@@ -74,7 +75,8 @@ function BookUpdate() {
         const data = await findBook(bookId);
         setBook(data);
         setFormData(data);
-        console.log(formData,"kkkkkkkkkkkkkkkkk");
+        setBookImage(data.url);
+    
       } catch (error) {
         console.error('Error fetching book data:', error);
       }
@@ -82,15 +84,6 @@ function BookUpdate() {
 
     fetchData();
   }, []);
-
-  useEffect(() => {
-    async function fetchData() {
-      const imageLink = await fetchImgdata(formData.ISBN);
-      imageLink && setBookImage(imageLink);
-    }
-
-    fetchData();
-  }, [formData.ISBN]);
 
   // Function to update the book data
   const updateBookData = async () => {
@@ -109,6 +102,7 @@ function BookUpdate() {
         language: '',
         abstract: 'none',
         status: '',
+        
       });
       adjustTextareaSize();
     } catch (error) {

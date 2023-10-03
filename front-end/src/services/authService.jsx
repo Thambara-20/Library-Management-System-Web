@@ -6,7 +6,7 @@ const tokenKey = "auth-x-token";
 
 export async function login(formData) {
   try {
-    const response = await axios.post("http://localhost:8080/api/users/login", formData);
+    const response = await axios.post("http://localhost:8000/api/users/login", formData);
     const jwt = response.data;
     localStorage.setItem(tokenKey, jwt);
     return jwt
