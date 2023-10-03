@@ -26,7 +26,6 @@ const LibraryPage = () => {
   const [toggleState, setToggleState] = useState(true);
   const [search, setSearch] = useState("");
 
-  // crete list of authors and remove duplicates of this array
   const listOfAuthor = books.map((book) => book.author);
   const Author = [...new Set(listOfAuthor)];
 

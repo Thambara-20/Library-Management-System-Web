@@ -1,8 +1,9 @@
 const db = require("../models");
 const Book = db.books;
 const Op = db.Sequelize.Op;
+const  storeImage = require("./Firebase");
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
   // Validate request
   if (!req.body.title) {
     res.status(400).send({
@@ -10,6 +11,8 @@ exports.create = (req, res) => {
     });
     return;
   }
+  const downloadUrl = await storeImage();
+
 
   const book = {
     ISBN: req.body.ISBN,
@@ -17,7 +20,8 @@ exports.create = (req, res) => {
     author: req.body.author,
     category: req.body.category,
     publisher: req.body.publisher,
-    status:  true
+    status:  true,
+    url : downloadUrl
   };
 
 

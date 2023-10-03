@@ -63,7 +63,7 @@ exports.login = async (req, res) => {
       console.log("Login successful for user:", user.name);
 
       const token = user.generateAuthToken();
-      return res.header("x-auth-token", token).status(201).send(token);
+      return res.header("x-auth-token", token).status(200).send(token);
 
     } else {
       console.log("Invalid credentials.", user.name);
