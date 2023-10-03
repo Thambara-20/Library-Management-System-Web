@@ -10,7 +10,8 @@ function BookForm({ bookId, formData, handleInputChange, onSubmit, ISBN = false,
     { name: 'title', label: 'Title', value: formData.title },
     { name: 'author', label: 'Author', value: formData.author },
     { name: 'category', label: 'Category', value: formData.category },
-    { name: 'language', label: 'Language', value: formData.language },
+    { name: 'publisher', label: 'Publisher', value: formData.publisher },
+        { name: 'language', label: 'Language', value: formData.language },
     { name: 'abstract', label: 'Abstract', value: formData.abstract },
   ];
 
@@ -47,7 +48,7 @@ function BookForm({ bookId, formData, handleInputChange, onSubmit, ISBN = false,
           )}
         </div>
       ))}
-      <button className="button-s" type='button' onClick={onSubmit}>
+      <button className="button-sub" type='button' onClick={onSubmit}>
         {title}
       </button>
 

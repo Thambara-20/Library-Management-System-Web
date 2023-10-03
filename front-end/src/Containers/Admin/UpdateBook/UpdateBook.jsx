@@ -30,7 +30,8 @@ function BookUpdate() {
     author: '',
     category: '',
     language: '',
-    abstract: 'none',
+    publisher:'',
+    abstract: '',
     status: '',
     url:''
   });
@@ -43,7 +44,8 @@ function BookUpdate() {
     author: '',
     category: '',
     language: '',
-    abstract: 'none',
+    publisher:'',
+    abstract: '',
     status: '',
  
   });
@@ -100,7 +102,8 @@ function BookUpdate() {
         author: '',
         category: '',
         language: '',
-        abstract: 'none',
+        publisher:'',
+        abstract: '',
         status: '',
         
       });

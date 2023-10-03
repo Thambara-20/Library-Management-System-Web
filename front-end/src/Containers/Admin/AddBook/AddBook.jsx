@@ -26,7 +26,8 @@ function BookAdd() {
     author: '',
     category: '',
     language: '',
-    abstract: 'none',
+    publisher:'',
+    abstract: '',
     noOfCopies: 1,
   });
 
@@ -75,7 +76,7 @@ function BookAdd() {
 
   const handleAddBook = async () => {
     // e.preventDefault();
-    console.log('Adding book:', book.ISBN);
+    console.log(book.abstract);
    
     try {
       await AddBook({...book,url:bookImage});
@@ -89,7 +90,8 @@ function BookAdd() {
       author: '',
       category: '',
       language: '',
-      abstract: 'none',
+      publisher: '',
+      abstract: '',
       noOfCopies: 1,
     });
     setBookImage(bookImagePlaceholder);

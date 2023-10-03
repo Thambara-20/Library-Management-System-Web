@@ -64,7 +64,27 @@
     font-size: 1rem; 
     margin: 0 auto; 
   }
-  
+  .button-sub{
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem; 
+    margin: 0 auto; 
+  }
+  .button-sub:hover{
+    background-color: #005ff7;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem; 
+    margin: 0 auto; 
+    transform: scale(1.01) !important; /* Increase the size by 10% on hover */
+  }
   /* Responsive styles */
   @media (max-width: 768px) {
     .content-wrapper {

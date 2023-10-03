@@ -18,6 +18,7 @@ exports.create = async (req, res) => {
     author: req.body.author,
     category: req.body.category,
     publisher: req.body.publisher,
+    abstract: req.body.abstract,
     status:  true,
     url : downloadUrl
   };
