@@ -1,12 +1,12 @@
 import axios from "axios"; // You need to import axios for making HTTP requests.
 import jwtDecode from "jwt-decode";
+import {Config} from "../services/config.js";
 const _ = require("lodash");
-
 const tokenKey = "auth-x-token";
 
 export async function login(formData) {
   try {
-    const response = await axios.post("http://localhost:8000/api/users/login", formData);
+    const response = await axios.post(`${Config.Url}/api/users/login`, formData);
     const jwt = response.data;
     localStorage.setItem(tokenKey, jwt);
     return jwt

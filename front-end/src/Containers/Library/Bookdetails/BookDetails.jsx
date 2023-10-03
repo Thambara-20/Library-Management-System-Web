@@ -5,7 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import './BookDetails.css'
 import Rating from "react-rating-stars-component"
-import { fetchallbookdata } from "../../../services/bookService";
+import { fetchallbookdata, findBook } from "../../../services/bookService";
 import LoadingIcon from "../../../Components/LoadingIcon";
 import ReadPage from "./ReadPage";
 import { booksDummy as books } from "../../../Helpers/BooksDummy";
@@ -14,15 +14,6 @@ import BookIcon from '@mui/icons-material/Book';
 import DefaultComponent from "../Forum";
 
 
-const fetchdata = async (isbn, setBook, setBookImage) => {
-
-  try {
-    await fetchallbookdata(isbn, setBook, setBookImage);
-
-  } catch (error) {
-    console.error('Error fetching book details:', error);
-  }
-};
 
 const BookDetails = ({ }) => {
 
@@ -31,17 +22,32 @@ const BookDetails = ({ }) => {
   const [bookImage, setBookImage] = useState(null);
   const [showPages, setShowPages] = useState(false);
 
+ 
+
+  const fetchdata = async (bookId) => {
+
+    try {
+      const data = await findBook(bookId);
+      console.log(data);
+      setBook(data);
+      console.log(book.title);
+      } catch (error) {
+      console.error('Error fetching book details:', error);
+    }
+  };
+  
   useEffect(() => {
     AOS.init({
       duration: 1000,
     });
   }, []);
 
-  useEffect(() => {
+  useEffect( () => {
     // Replace the ISBN with your desired ISBN, or fetch it from your data
-    fetchdata(9781338216660, setBook, setBookImage);
+    fetchdata(bookId);
+    
   }, [bookId]);
-
+  
   const selectedBook = books.find((book) => book.id == bookId);
 
   const containerStyle = {
@@ -73,7 +79,7 @@ const BookDetails = ({ }) => {
         <Card>
           <CardContent style={containerStyle} data-aos='fade-up' className="cardcontent">
             <div style={contentStyle} className="image-wrapper">
-              <img src={selectedBook.img} alt="Book Cover" className="image-book" data-aos='fade-up' />
+              <img src={book.url} alt="Book Cover" className="image-book" data-aos='fade-up' />
               <Rating count={5} value={2} size={24} activeColor="#ffd700" edit={false}
                 style={{ marginTop: '10px', textAlign: 'center' }}
               />

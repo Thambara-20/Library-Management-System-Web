@@ -12,8 +12,6 @@ exports.create = async (req, res) => {
     return;
   }
   const downloadUrl = await storeImage(req.body.url,req.body.title);
-
-
   const book = {
     ISBN: req.body.ISBN,
     title: req.body.title,
@@ -55,8 +53,9 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-const id = req.params.id;
 
+try{
+  const id = req.params.id;
   Book.findByPk(id)
     .then(data => {
       if(!data){
@@ -67,7 +66,11 @@ const id = req.params.id;
         res.send(data);
       }
       
-    })
+    })}catch(err){
+      res.status(500).send({
+        message: "Error retrieving book with id=" + id
+      });
+    }
 }
 
 

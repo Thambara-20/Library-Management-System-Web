@@ -1,10 +1,11 @@
 import axios from 'axios';
 import notification from './notificationService'
-const apiUrl = "http://localhost:8000/api/books/"; // Replace with your actual backend API URL
+import { Config } from './config.js';
+const apiUrl = Config.Url; // Replace with your actual backend API URL
 
 export async function fetchBookData() {
     try {
-        const response = await axios.get(`${apiUrl}/find`);
+        const response = await axios.get(`${apiUrl}/api/books/find`);
         console.log(response.data);
         return response.data; // Assuming the API returns an array of book data
     } catch (error) {
@@ -14,7 +15,7 @@ export async function fetchBookData() {
 
 export async function deleteBook(bookId) {
     try {
-        await axios.delete(`${apiUrl}/delete/${bookId}`);
+        await axios.delete(`${apiUrl}/api/books/delete/${bookId}`);
         notification.showSuccess('Book Deleted successfully');
     } catch (error) {
         notification.showError('Error deleting book');
@@ -24,7 +25,7 @@ export async function deleteBook(bookId) {
 
 export async function AddBook(book) {
     try {
-        await axios.post(`${apiUrl}`, book);
+        await axios.post(`${apiUrl}/api/books/`, book);
         notification.showSuccess('Book added successfully');
     } catch (error) {
         notification.showError('Error adding bookDetails');
@@ -34,8 +35,9 @@ export async function AddBook(book) {
 
 export async function findBook(bookId) {
     try {
-        const response = await axios.get(`${apiUrl}/findone/${bookId}`);
-       
+        console.log(bookId);
+        const response = await axios.get(`${apiUrl}/api/books/findone/${bookId}`);
+        console.log(response.data);
         return response.data;
     } // Assuming the API returns an array of book data
     catch (error) {
@@ -48,8 +50,7 @@ export async function findBook(bookId) {
 
 export async function updateBook(bookId, book) {
     try {
-      
-        await axios.put(`${apiUrl}/update/${bookId}`, book);
+      await axios.put(`${apiUrl}/api/books/update/${bookId}`, book);
         notification.showSuccess('Book Updated successfully');
     } catch (error) {
         notification.showError('Error updating bookDetails');
