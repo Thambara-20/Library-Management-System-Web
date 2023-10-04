@@ -5,11 +5,10 @@ import {
   TextField,
   Select,
   MenuItem,
- 
+
 } from "@mui/material";
 import "./Library.css";
 import BookCard from "../../Components/BookCard/BookCard";
-import { booksDummy as books } from "../../Helpers/BooksDummy";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "../../Components/Header/Header";
@@ -49,10 +48,10 @@ const LibraryPage = () => {
     setSearch(event.target.value);
     if (event.target.value === '') {
       setSwitchLabel("Search");
-    
+
     } else {
       setSwitchLabel(event.target.value);
-  
+
     }
   };
   useEffect(() => {
@@ -62,35 +61,35 @@ const LibraryPage = () => {
         const data = await fetchBookData();
         console.log(data);
         setBooks(data);
-        
+
       } catch (error) {
         console.error('Error fetching book data:', error);
-        
+
       }
     };
-  fetchData();
+    fetchData();
   }, [search]);
 
   const categories = [...new Set(books.map((book) => book.category))]
 
-  const renderBooks = books.filter( (book) =>
-          book.title.toLowerCase().includes(searchKeyword.toLowerCase()) &&
-          (selectedCategory === "" || book.category === selectedCategory) &&
-          (selectedAuthor === "" || book.author === selectedAuthor)
-      ).map((book) => (
-        <Grid
-          className="grid-item"
-          item
-          xs={12}
-          sm={6}
-          md={4}
-          lg={3}
-          key={book.id}
-          data-aos="fade-up"
-          data-aos-offset="100"
+  const renderBooks = books.filter((book) =>
+    book.title.toLowerCase().includes(searchKeyword.toLowerCase()) &&
+    (selectedCategory === "" || book.category === selectedCategory) &&
+    (selectedAuthor === "" || book.author === selectedAuthor)
+  ).map((book) => (
+    <Grid
+      className="grid-item"
+      item
+      xs={12}
+      sm={6}
+      md={4}
+      lg={3}
+      key={book.id}
+      data-aos="fade-up"
+      data-aos-offset="100"
 
-        ><BookCard book={book} className="grid-card"/></Grid>
-      ));
+    ><BookCard book={book} className="grid-card" /></Grid>
+  ));
 
 
   return (
@@ -104,15 +103,15 @@ const LibraryPage = () => {
               value={selectedCategory}
               onChange={handleCategoryChange}
               displayEmpty
-          
+
             >
               <MenuItem value="">Category</MenuItem>
-            { categories.map((category) => (
-              <MenuItem key={category} value={category}>
-                {category}
-              </MenuItem>
-            ))}
-              
+              {categories.map((category) => (
+                <MenuItem key={category} value={category}>
+                  {category}
+                </MenuItem>
+              ))}
+
             </Select>
           </div>
 
@@ -159,7 +158,6 @@ const LibraryPage = () => {
                 onChange={handleSearchChange}
               />
             </div>
-      
           </div>
         </div>
         <div>
@@ -169,9 +167,8 @@ const LibraryPage = () => {
         </div>
       </Container>
       <div className="book-details-section">
-
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
