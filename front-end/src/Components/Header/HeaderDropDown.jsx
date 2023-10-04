@@ -6,7 +6,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Link } from 'react-router-dom';
 
 const selectStyle = {
-  backgroundColor:'var(--black)',
+  backgroundColor:'var(--black) !important',
   '& .MuiSelect-icon': {
     color: 'white !important',
     '&:hover': {
@@ -14,7 +14,7 @@ const selectStyle = {
     },
   },
   '& .MuiSelect-select': {
-    color: 'white !important',
+    color: 'black !important',
   },
 };
 

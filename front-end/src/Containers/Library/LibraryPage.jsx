@@ -3,7 +3,6 @@ import {
   Container,
   Grid,
   TextField,
-
   Select,
   MenuItem,
  
@@ -15,19 +14,18 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
+import { fetchBookData } from "../../services/bookService";
 
 const LibraryPage = () => {
   // hadnle searching filters by hook
-  const [checked, setChecked] = useState(true);
   const [switchLabel, setSwitchLabel] = useState("Search by Title");
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedAuthor, setSelectedAuthor] = useState("");
-  const [toggleState, setToggleState] = useState(true);
   const [search, setSearch] = useState("");
-
+  const [books, setBooks] = useState([]);
   const listOfAuthor = books.map((book) => book.author);
-  const Author = [...new Set(listOfAuthor)];
+  const Author = listOfAuthor;
 
   useEffect(() => {
     AOS.init({
@@ -50,26 +48,35 @@ const LibraryPage = () => {
   const handleSearch = (event) => {
     setSearch(event.target.value);
     if (event.target.value === '') {
-      setSwitchLabel("Search by Title");
-      setToggleState(true)
+      setSwitchLabel("Search");
+    
     } else {
       setSwitchLabel(event.target.value);
-      setToggleState(false);
+  
     }
   };
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const data = await fetchBookData();
+        console.log(data);
+        setBooks(data);
+        
+      } catch (error) {
+        console.error('Error fetching book data:', error);
+        
+      }
+    };
+  fetchData();
+  }, [search]);
 
 
-
-  let renderBooks;
-  if (toggleState) {
-    renderBooks = books
-      .filter(
-        (book) =>
+  const renderBooks = books.filter( (book) =>
           book.title.toLowerCase().includes(searchKeyword.toLowerCase()) &&
           (selectedCategory === "" || book.category === selectedCategory) &&
           (selectedAuthor === "" || book.author === selectedAuthor)
-      )
-      .map((book) => (
+      ).map((book) => (
         <Grid
           className="grid-item"
           item
@@ -80,36 +87,10 @@ const LibraryPage = () => {
           key={book.id}
           data-aos="fade-up"
           data-aos-offset="100"
-        >
-          <BookCard book={book} className="grid-card" />
 
-        </Grid>
+        ><BookCard book={book} className="grid-card"/></Grid>
       ));
-  } else if (!toggleState) {
-    console.log(switchLabel);
-    renderBooks = books
-      .filter(
-        (book) =>
-          book.author.toLowerCase().includes(searchKeyword.toLowerCase()) &&
-          (selectedCategory === "" || book.category === selectedCategory) &&
-          (selectedAuthor === "" || book.author === selectedAuthor)
-      )
-      .map((book) => (
-        <Grid
-          className="grid-item"
-          item
-          xs={12}
-          sm={6}
-          md={4}
-          lg={3}
-          key={book.id}
-          data-aos="fade-up"
-          data-aos-offset="100"
-        >
-          <BookCard book={book} className="grid-card" />
-        </Grid>
-      ));
-  }
+
 
   return (
     <div className="Library-page-wrapper">

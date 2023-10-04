@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './UpdateBook.css'; // Update the import path
 import bookImg from '../../../assets/admin/books.jpg';
 import { useParams } from 'react-router-dom';
-import { findBook, updateBook} from '../../../services/bookService';
+import { findBook, updateBook } from '../../../services/bookService';
 import { BookForm } from '../../../Components/BookForm/BookForm'; // Import the form component
 import BookImageContainer from '../../../Components/ImageContainer/ImageContainer'
 import { Button } from '@mui/material';
@@ -68,7 +68,7 @@ function BookUpdate() {
     if (abstractTextareaRef.current) {
       abstractTextareaRef.current.style.height = 'auto';
       abstractTextareaRef.current.style.height =
-        abstractTextareaRef.current.scrollHeight + 'px';
+      abstractTextareaRef.current.scrollHeight + 'px';
     }
   };
 
@@ -98,10 +98,8 @@ function BookUpdate() {
     try {
       // Update the book data on the backend
       console.log(formData.url);
-
       await updateBook(bookId, { ...formData, url: bookUrl });
-
-      // Clear the form and adjust the textarea size
+      setBookUrl(bookImg);
       setFormData({
         bookID: '', // Reset to empty strings
         ISBN: '',
