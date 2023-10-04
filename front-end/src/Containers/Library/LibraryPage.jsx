@@ -24,7 +24,7 @@ const LibraryPage = () => {
   const [selectedAuthor, setSelectedAuthor] = useState("");
   const [search, setSearch] = useState("");
   const [books, setBooks] = useState([]);
-  const listOfAuthor = books.map((book) => book.author);
+  const listOfAuthor = [...new Set(books.map((book) => book.author))];
   const Author = listOfAuthor;
 
   useEffect(() => {
@@ -71,6 +71,7 @@ const LibraryPage = () => {
   fetchData();
   }, [search]);
 
+  const categories = [...new Set(books.map((book) => book.category))]
 
   const renderBooks = books.filter( (book) =>
           book.title.toLowerCase().includes(searchKeyword.toLowerCase()) &&
@@ -105,9 +106,13 @@ const LibraryPage = () => {
               displayEmpty
           
             >
-              <MenuItem value="">Select Category</MenuItem>
-              <MenuItem value="Category 1">Category 1</MenuItem>
-              <MenuItem value="Category 2">Category 2</MenuItem>
+              <MenuItem value="">Category</MenuItem>
+            { categories.map((category) => (
+              <MenuItem key={category} value={category}>
+                {category}
+              </MenuItem>
+            ))}
+              
             </Select>
           </div>
 
