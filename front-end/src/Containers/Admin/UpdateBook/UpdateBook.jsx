@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './UpdateBook.css'; // Update the import path
 import bookImg from '../../../assets/admin/books.jpg';
 import { useParams } from 'react-router-dom';
-import { findBook, updateBook, fetchImgdata } from '../../../services/bookService';
+import { findBook, updateBook} from '../../../services/bookService';
 import { BookForm } from '../../../Components/BookForm/BookForm'; // Import the form component
 import BookImageContainer from '../../../Components/ImageContainer/ImageContainer'
 import { Button } from '@mui/material';
@@ -19,9 +19,10 @@ function BookUpdate() {
   }, []);
 
 
-  const bookImagePlaceholder = bookImg;
+
   const bookId = useParams()["bookid"]; // Get the book ID from the URL
-  const [bookImage, setBookImage] = useState(bookImagePlaceholder);
+
+  const [bookUrl, setBookUrl] = useState(bookImg);
 
   const [book, setBook] = useState({
     bookID: '', // Initial values should be empty strings, not null
@@ -30,10 +31,10 @@ function BookUpdate() {
     author: '',
     category: '',
     language: '',
-    publisher:'',
+    publisher: '',
     abstract: '',
     status: '',
-    url:''
+
   });
 
   // State to track changes made in the form
@@ -44,16 +45,17 @@ function BookUpdate() {
     author: '',
     category: '',
     language: '',
-    publisher:'',
+    publisher: '',
     abstract: '',
     status: '',
- 
+
   });
 
   const abstractTextareaRef = useRef(null);
 
   // Function to handle form input changes
   const handleInputChange = (e) => {
+    console.log(e.target.value);
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -70,6 +72,7 @@ function BookUpdate() {
     }
   };
 
+
   useEffect(() => {
     // Fetch book data from the backend API when the component mounts
     const fetchData = async () => {
@@ -77,22 +80,26 @@ function BookUpdate() {
         const data = await findBook(bookId);
         setBook(data);
         setFormData(data);
-        setBookImage(data.url);
-    
+        const img = data.url;
+        setBookUrl(img);
       } catch (error) {
         console.error('Error fetching book data:', error);
       }
     };
 
     fetchData();
-  }, []);
+
+
+  }, [bookId]);
+
 
   // Function to update the book data
   const updateBookData = async () => {
     try {
       // Update the book data on the backend
-      console.log(formData);
-      await updateBook(bookId, formData);
+      console.log(formData.url);
+
+      await updateBook(bookId, { ...formData, url: bookUrl });
 
       // Clear the form and adjust the textarea size
       setFormData({
@@ -102,10 +109,10 @@ function BookUpdate() {
         author: '',
         category: '',
         language: '',
-        publisher:'',
+        publisher: '',
         abstract: '',
         status: '',
-        
+
       });
       adjustTextareaSize();
     } catch (error) {
@@ -125,14 +132,15 @@ function BookUpdate() {
           Back
         </Button>
       </Link>
-      
+
       <h1 style={{ color: 'rgba(244, 244, 244, 0.7)' }}>Update Books</h1>
 
       <div className="content-wrapper" >
-        <BookImageContainer 
-          bookImage={bookImage}
+        <BookImageContainer
           bookStatus={book.status}
-        // handleStatusChange={}
+          setBookUrl={setBookUrl}
+          bookUrl={bookUrl}
+
         />
         <BookForm
           bookId={bookId}

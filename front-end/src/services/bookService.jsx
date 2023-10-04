@@ -37,7 +37,6 @@ export async function findBook(bookId) {
     try {
         console.log(bookId);
         const response = await axios.get(`${apiUrl}/api/books/findone/${bookId}`);
-        console.log(response.data);
         return response.data;
     } // Assuming the API returns an array of book data
     catch (error) {

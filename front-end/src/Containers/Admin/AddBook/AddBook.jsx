@@ -31,9 +31,9 @@ function BookAdd() {
     noOfCopies: 1,
   });
 
-  const [bookImage, setBookImage] = useState(bookImagePlaceholder); // Initialize with the placeholder URL
+ // Initialize with the placeholder URL
   const abstractTextareaRef = useRef(null);
-  const [bookUrl,setBookUrl]=useState('');
+  const [bookUrl,setBookUrl]=useState(bookImagePlaceholder);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -56,13 +56,11 @@ function BookAdd() {
    
     try {
       console.log(isbn);
-     
       await fetchdata(isbn,setBook,adjustTextareaSize);
       const img = await fetchImgdata(isbn);
       setBookUrl(img);
-      (img)? setBookImage(img):setBookImage(bookImagePlaceholder);
-
-
+      console.log(bookUrl);
+  
     } catch (error) {
       console.error('Error fetching book details:', error);
     }
@@ -70,16 +68,15 @@ function BookAdd() {
 
   const handleFetchDetails = () => {
     fetchBookDetails(book.ISBN);
-    
-   
-  };
-
+    };
+  
   const handleAddBook = async () => {
     // e.preventDefault();
     console.log(book.abstract);
    
     try {
-      await AddBook({...book,url:bookImage});
+      console.log(bookUrl);
+      await AddBook({...book,url:bookUrl});
     }
     catch (error) {
       console.error('Error adding book:', error);
@@ -94,7 +91,6 @@ function BookAdd() {
       abstract: '',
       noOfCopies: 1,
     });
-    setBookImage(bookImagePlaceholder);
     adjustTextareaSize();
   };
 
@@ -117,8 +113,11 @@ function BookAdd() {
     
     <div className="content-wrapper" data-aos="fade-right">
       <BookImageContainer 
-        bookImage={bookImage} 
-        Adding={true}/>
+      
+        Adding={true}
+        setBookUrl = {setBookUrl}
+        bookUrl={bookUrl}
+        />
       <BookForm 
         formData={book}
         handleInputChange={handleInputChange}
@@ -126,7 +125,7 @@ function BookAdd() {
         handleFetchDetails={handleFetchDetails}
         ISBN={true}
         title = "Add Book"
-        setBook={setBook}
+      
       />
     </div>
   </div>
