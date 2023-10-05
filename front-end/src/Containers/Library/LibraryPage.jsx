@@ -3,32 +3,28 @@ import {
   Container,
   Grid,
   TextField,
-  Button,
   Select,
   MenuItem,
-  Switch,
+
 } from "@mui/material";
 import "./Library.css";
 import BookCard from "../../Components/BookCard/BookCard";
-import SearchIcon from "@mui/icons-material/Search";
-import { booksDummy as books } from "../../Helpers/BooksDummy";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "../../Components/Header/Header";
+import Footer from "../../Components/Footer/Footer";
+import { fetchBookData } from "../../services/bookService";
 
 const LibraryPage = () => {
   // hadnle searching filters by hook
-  const [checked, setChecked] = useState(true);
   const [switchLabel, setSwitchLabel] = useState("Search by Title");
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedAuthor, setSelectedAuthor] = useState("");
-  const [toggleState, setToggleState] = useState(true);
   const [search, setSearch] = useState("");
-
-  // crete list of authors and remove duplicates of this array
-  const listOfAuthor = books.map((book) => book.author);
-  const Author = [...new Set(listOfAuthor)];
+  const [books, setBooks] = useState([]);
+  const listOfAuthor = [...new Set(books.map((book) => book.author))];
+  const Author = listOfAuthor;
 
   useEffect(() => {
     AOS.init({
@@ -51,65 +47,50 @@ const LibraryPage = () => {
   const handleSearch = (event) => {
     setSearch(event.target.value);
     if (event.target.value === '') {
-      setSwitchLabel("Search by Title");
-      setToggleState(true)
+      setSwitchLabel("Search");
+
     } else {
       setSwitchLabel(event.target.value);
-      setToggleState(false);
+
     }
   };
+  useEffect(() => {
 
+    const fetchData = async () => {
+      try {
+        const data = await fetchBookData();
+        console.log(data);
+        setBooks(data);
 
+      } catch (error) {
+        console.error('Error fetching book data:', error);
 
-  let renderBooks;
-  if (toggleState) {
-    renderBooks = books
-      .filter(
-        (book) =>
-          book.title.toLowerCase().includes(searchKeyword.toLowerCase()) &&
-          (selectedCategory === "" || book.category === selectedCategory) &&
-          (selectedAuthor === "" || book.author === selectedAuthor)
-      )
-      .map((book) => (
-        <Grid
-          className="grid-item"
-          item
-          xs={12}
-          sm={6}
-          md={4}
-          lg={3}
-          key={book.id}
-          data-aos="fade-up"
-          data-aos-offset="100"
-        >
-          <BookCard book={book} className="grid-card" />
-        </Grid>
-      ));
-  } else if (!toggleState) {
-    console.log(switchLabel);
-    renderBooks = books
-      .filter(
-        (book) =>
-          book.author.toLowerCase().includes(searchKeyword.toLowerCase()) &&
-          (selectedCategory === "" || book.category === selectedCategory) &&
-          (selectedAuthor === "" || book.author === selectedAuthor)
-      )
-      .map((book) => (
-        <Grid
-          className="grid-item"
-          item
-          xs={12}
-          sm={6}
-          md={4}
-          lg={3}
-          key={book.id}
-          data-aos="fade-up"
-          data-aos-offset="100"
-        >
-          <BookCard book={book} className="grid-card" />
-        </Grid>
-      ));
-  }
+      }
+    };
+    fetchData();
+  }, [search]);
+
+  const categories = [...new Set(books.map((book) => book.category))]
+
+  const renderBooks = books.filter((book) =>
+    book.title.toLowerCase().includes(searchKeyword.toLowerCase()) &&
+    (selectedCategory === "" || book.category === selectedCategory) &&
+    (selectedAuthor === "" || book.author === selectedAuthor)
+  ).map((book) => (
+    <Grid
+      className="grid-item"
+      item
+      xs={12}
+      sm={6}
+      md={4}
+      lg={3}
+      key={book.id}
+      data-aos="fade-up"
+      data-aos-offset="100"
+
+    ><BookCard book={book} className="grid-card" /></Grid>
+  ));
+
 
   return (
     <div className="Library-page-wrapper">
@@ -122,11 +103,15 @@ const LibraryPage = () => {
               value={selectedCategory}
               onChange={handleCategoryChange}
               displayEmpty
-          
+
             >
-              <MenuItem value="">Select Category</MenuItem>
-              <MenuItem value="Category 1">Category 1</MenuItem>
-              <MenuItem value="Category 2">Category 2</MenuItem>
+              <MenuItem value="">Category</MenuItem>
+              {categories.map((category) => (
+                <MenuItem key={category} value={category}>
+                  {category}
+                </MenuItem>
+              ))}
+
             </Select>
           </div>
 
@@ -148,21 +133,6 @@ const LibraryPage = () => {
 
             </Select>
           </div>
-          <div className="serach-con">
-            <div className="search-bar">
-              <TextField
-                className="text-field"
-                label={switchLabel}
-                variant="outlined"
-                onChange={handleSearchChange}
-              />
-            </div>
-            <div className="search-button">
-              <Button variant="contained" color="grey">
-                <SearchIcon style={{ height: "40px" }} />
-              </Button>
-            </div>
-          </div>
 
           {/* handle the serach filter , author search or titile search */}
           <div className="category-dropdown">
@@ -179,19 +149,26 @@ const LibraryPage = () => {
             </Select>
           </div>
 
+          <div className="serach-con">
+            <div className="search-bar">
+              <TextField
+                className="text-field"
+                label={switchLabel}
+                variant="outlined"
+                onChange={handleSearchChange}
+              />
+            </div>
+          </div>
         </div>
         <div>
           <Grid container spacing={2} data-aos="fade-up" data-aos-offset="200">
-
             {renderBooks}
-
-
           </Grid>
         </div>
       </Container>
       <div className="book-details-section">
-
       </div>
+      <Footer />
     </div>
   );
 };

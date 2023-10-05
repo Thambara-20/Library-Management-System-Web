@@ -59,7 +59,7 @@ const HeaderContainer = () => {
         isAdminLoggedIn={isAdminLoggedIn}
         isUserLogIn={isUserLogIn}
         menuOpen={menuOpen}
-        getMenuStyles={getMenuStyles} {/* Pass getMenuStyles as a prop */}
+        getMenuStyles={getMenuStyles} 
         openSignUpPopup={openSignUpPopup}
         closeSignUpPopup={closeSignUpPopup}
         changeIconLogIn={changeIconLogIn}

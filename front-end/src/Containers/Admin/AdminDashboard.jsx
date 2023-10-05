@@ -29,7 +29,7 @@ const Dashboard = () => {
 
                 <Box data-aos="fade-up" display="flex" justifyContent="space-between" alignItems="center" margin="5px 0 10px" >
 
-                    <Typography variant="h3">DASHBOARD</Typography>
+                    <h1 style={{color:'white'}}>DASHBOARD</h1>
                     <Typography variant="subtitle1">
                         Welcome to your dashboard
                     </Typography>

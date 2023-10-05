@@ -14,8 +14,9 @@ if (!config.jwtPrivateKey) {
 // var corsOptions = {
 //   origin: "http://localhost:8080"
 // };
+
 const corsOptions = {
-  origin: "http://localhost:3000", // Replace with your frontend's URL
+  origin: "*", // Replace with your frontend's URL
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true, // Allow cookies and authentication headers
 };
@@ -54,7 +55,7 @@ require("./routes/bookRoutes")(app);
 require("./routes/userRoutes")(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

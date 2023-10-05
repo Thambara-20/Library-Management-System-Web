@@ -8,6 +8,9 @@
   margin-left: 20px;
   justify-content: space-evenly;
 }
+.book-card-link{
+  text-decoration: none !important;
+}
 
 
 
@@ -15,14 +18,13 @@
   background-color: #ffff; /* Light gray background */
   border-radius: 5px;
   color: #000 !important;
-  min-width: 60px;
+  width: 100%;
   text-align: start;
+  padding-right: 10px !important;
 }
 
 .category-dropdown {
   min-width: 60px;
-  margin-right: 8px;
-
   height: 100%;
   background-color: #ffff; /* Light gray background */
   border-radius: 5px;
@@ -30,30 +32,16 @@
   color: #000;
 }
 
-.serach-con{
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
 
 .search-bar {
-  border-radius: 10px;
+  border-radius: 5px;
   height: 100%;
   background-color: #ffffff; 
-  color: #333;/* Light gray background */
+  color: #000000;
   
 }
 
-.search-button {
-  color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 8px;
-  margin-top: 22px;
-  height: 50px;
 
-}
 .what-btn{
   background:none;
   border: none;
@@ -63,7 +51,7 @@
 }
 
 
-/* CSS file (e.g., Library.css) */
+
 .grid-item:hover {
   transform: scale(1.05) !important; /* Increase the size by 10% on hover */
   transition: transform 0.3s ease !important; /* Add a smooth transition effect */
@@ -71,12 +59,12 @@
 
 
 @media screen and (max-width: 900px) {
-  .search-button{
-    display: none;
-  }
+ 
   .library-top {
     margin-top: 16px;
     margin-bottom: 50px;
+    justify-content: space-between;
+    min-height: 120px !important;
   ;
   }
   
@@ -84,22 +72,32 @@
     align-items: center;
     background-color: black;
   }
-
+  
   .text-field{ 
-    background-color: rgb(196, 202, 208);
+    background-color: rgb(255, 255, 255);
     border-radius: 5px; 
-    /* Set a fixed height to match the search bar and button */
+    margin: 5px;
   }
   
   .selecter {
-
+    
     background-color: #ffffff; /* Light gray background */
     border-radius: 5px;
-    padding: 5px;
+    max-height: 40px !important;
+    width: 100% !important;
+    height: 90%;
+    
   }
+  .search-bar{ 
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    margin-left: 2px;
+    margin-right: 2px;
+ 
+   
 
 
-}
+}}
 
 
 
@@ -108,15 +106,17 @@
   .search-bar{ 
     background-color: rgb(196, 202, 208);
     border-radius: 5px; 
-    width: 50%;
+    width: 100%;
+    
 
    
     /* Set a fixed height to match the search bar and button */
   }
   .category-dropdown {
-    width: 40%; /* Set a fixed height to match the search bar and button */
+    width: 100%; /* Set a fixed height to match the search bar and button */
   }
   .selecter {
+    margin-top: 10px;
    background-color: aliceblue;
    width:100%;
  

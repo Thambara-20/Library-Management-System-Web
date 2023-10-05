@@ -38,7 +38,7 @@ const Welcome = () => {
             </span>
           </div>
           <div className="get-start-btn">
-            <Link to="/admin">
+            <Link to="/Library">
               <motion.button initial={{ x: "3rem", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 3, type: "spring" }} className="get-button button" id="get-btn">

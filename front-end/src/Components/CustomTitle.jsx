@@ -32,7 +32,7 @@ const CustomHeader = ({ headerText, iconType, to }) => {
                 data-aos="fade-up"
                 spacing={isSmallScreen ? 1 : 2}
                 sx={{
-                    padding: "5px 0px 15px 15px",
+                    padding: "5px 5px 15px 15px",
                     margin: "1px",
                     borderRadius: '8px',
                     background: 'linear-gradient(45deg, black 40%, grey 90%)',
@@ -58,10 +58,10 @@ const CustomHeader = ({ headerText, iconType, to }) => {
                 </Grid>
                 <Grid item>
                     <Typography
-                        variant="h4"
+                        variant="h5"
                         style={{
                             color: grey[300],
-                            fontSize: isSmallScreen ? '24px' : '40px',
+                            fontSize: isSmallScreen ? '20px' : '30px',
                         }}
                     >
                         {headerText}

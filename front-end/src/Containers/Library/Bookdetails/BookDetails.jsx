@@ -5,44 +5,56 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import './BookDetails.css'
 import Rating from "react-rating-stars-component"
-import { fetchallbookdata } from "../../../services/bookService";
+import { fetchallbookdata, findBook } from "../../../services/bookService";
 import LoadingIcon from "../../../Components/LoadingIcon";
 import ReadPage from "./ReadPage";
+import { booksDummy as books } from "../../../Helpers/BooksDummy";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import BookIcon from '@mui/icons-material/Book';
+import DefaultComponent from "../Forum";
 
 
-const fetchdata = async (isbn,setBook, setBookImage) => {
-   
-  try {
-    await fetchallbookdata(isbn,setBook,setBookImage);
- 
-  } catch (error) {
-    console.error('Error fetching book details:', error);
-  }
-};
- 
-const BookDetails = ({ books }) => {
+
+const BookDetails = ({ }) => {
+
   const bookId = useParams()["bookId"];
   const [book, setBook] = useState({});
   const [bookImage, setBookImage] = useState(null);
   const [showPages, setShowPages] = useState(false);
 
+ 
+
+  const fetchdata = async (bookId) => {
+
+    try {
+      const data = await findBook(bookId);
+      console.log(data);
+      setBook(data);
+      console.log(book.title);
+      } catch (error) {
+      console.error('Error fetching book details:', error);
+    }
+  };
+  
   useEffect(() => {
     AOS.init({
       duration: 1000,
     });
   }, []);
 
-  useEffect(() => {
+  useEffect( () => {
     // Replace the ISBN with your desired ISBN, or fetch it from your data
-    fetchdata(9781338216660, setBook, setBookImage);
+    fetchdata(bookId);
+    
   }, [bookId]);
-
+  
   const selectedBook = books.find((book) => book.id == bookId);
 
   const containerStyle = {
     display: "flex",
     alignItems: "center",
     justifyContent: 'start',
+
     gap: "20px",
     height: '100%',
     background: 'linear-gradient(50deg, black 0%, rgb(117, 112, 112)45%,black 0%,rgb(97, 94, 94) 90%)',
@@ -60,18 +72,19 @@ const BookDetails = ({ books }) => {
 
   );
     }
+
   return (
     <div className="book-wrapper">
       <div className="book-details">
         <Card>
-          <CardContent style={containerStyle} data-aos='fade-up'>
-            <div style={contentStyle}>
-              <img src={selectedBook.img} alt="Book Cover" className="image-book" data-aos='fade-up' />
+          <CardContent style={containerStyle} data-aos='fade-up' className="cardcontent">
+            <div style={contentStyle} className="image-wrapper">
+              <img src={book.url} alt="Book Cover" className="image-book" data-aos='fade-up' />
               <Rating count={5} value={2} size={24} activeColor="#ffd700" edit={false}
                 style={{ marginTop: '10px', textAlign: 'center' }}
               />
             </div>
-                <div className="blurred-background"></div>
+            <div className="blurred-background"></div>
             <div className='right' data-aos='fade-up'>
               <div className="right-data">
                 <h2>Book Details</h2>
@@ -86,23 +99,26 @@ const BookDetails = ({ books }) => {
                 <a href={book.previewLink} target="_blank" rel="noopener noreferrer">Preview Link</a>
               </div>
               <div className="buttons">
-                <Button className='reserve-btn'variant="contained" color="primary">
+                <Button className='reserve-btn' variant="contained" color="primary">
+                  <FavoriteBorderIcon />
                   Reserve Now
                 </Button>
-                <Button className='wishlist-btn'variant="contained" color="secondary">
+                <Button className='wishlist-btn' variant="contained" color="secondary">
+                  <BookIcon />
                   Add to Wishlist
                 </Button>
               </div>
             </div>
-          <ReadPage/>
+            <ReadPage />
           </CardContent>
         </Card>
-          <div className='read-btn-wrapper'>
-            <Button className='read'variant="contained"  onClick={() => setShowPages(!showPages)}>
-              Read few pages {showPages ? '<' : '>'}
-            </Button>
-          </div>
-     
+        <div className='read-btn-wrapper'>
+          <Button className='read' variant="contained" onClick={() => setShowPages(!showPages)}>
+            Read few pages {showPages ? '<' : '>'}
+          </Button>
+        </div>
+        <DefaultComponent/>
+
       </div>
     </div>
   );

@@ -8,10 +8,14 @@ import {AddBookButton} from './Button';
 
 function TableBox({ topic=false, filteredData, columns ,id=true,height=false}) {
     return (
-        <Box m="15px">
-            {topic ? (
+        <Box m="15px" style={{
+            background: (id) ? 'linear-gradient(60deg, rgb(255, 255, 255) 0%, rgb(201, 201, 201)  80%)' : 'none',
+            padding: '5px 10px 5px 10px',
+            borderRadius:'5px'
+          }}>
+              {topic ? (
                 <Box data-aos="fade-up" display="flex" justifyContent="space-between" alignItems="center" margin="10px 0 10px">
-                    <Typography variant="h3">{topic}</Typography>
+                    <h2  sx={{color:'black'}}>{topic}</h2>
                     <Typography variant="subtitle1">
                         Welcome to the {topic}
                     </Typography>
@@ -28,6 +32,13 @@ function TableBox({ topic=false, filteredData, columns ,id=true,height=false}) {
                 height= {height ? `${height}`: "70vh!important"}
                 data-aos="fade-up"
                 sx={{
+                    '& .MuiDataGrid-root': {
+                      boxShadow: "5px 5px 15px 0px rgba(0,0,0,0.5)",
+                      transition: "transform 0.3s", // Add a transition for smooth scaling
+                    },
+                    '& .MuiDataGrid:hover': {
+                      transform: "scale(1.1)", // Increase the size by 10% on hover (adjust as needed)
+                    },
                     '& .MuiDataGrid-root': {
                         boxShadow:"5px 5px 15px 0px rgba(0,0,0,0.5)"
                     },

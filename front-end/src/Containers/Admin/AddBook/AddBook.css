@@ -1,7 +1,7 @@
 .book-add {
   text-align: center;
   padding: 20px;
-  background-image: url('../../../assets/admin/background.jpg'); /* Adjust the path as needed */
+  background: linear-gradient(20deg, black 0%, rgb(255, 255, 255) 30%  ); /* Adjust the path as needed */
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

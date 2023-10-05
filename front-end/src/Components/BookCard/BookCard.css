@@ -6,6 +6,10 @@
     transition: 300ms;
 }
 
+.book-card-link{
+    text-decoration: none;
+}
+
 .card-content:hover{
     .whish-list{
         visibility: visible;

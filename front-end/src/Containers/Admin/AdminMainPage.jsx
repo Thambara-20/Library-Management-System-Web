@@ -12,7 +12,7 @@ const AdminMainPage = () => {
           height: "100%", width: "100%", fontFamily: 'Source Sans Pro'
         }}>
           <Topbar/>
-          < Dashboard />
+          <Dashboard/>
         </main>
       </div>
     

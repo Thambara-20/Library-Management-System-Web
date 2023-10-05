@@ -1,6 +1,6 @@
 import React, { useState, useRef ,useEffect } from 'react';
 import './AddBook.css';
-import bookImg from '../../../assets/admin/books.png';
+import bookImg from '../../../assets/admin/books.jpg';
 import { AddBook, fetchImgdata, fetchdata } from '../../../services/bookService';
 import { Button } from '@mui/material';
 import {  Link } from 'react-router-dom';
@@ -26,12 +26,14 @@ function BookAdd() {
     author: '',
     category: '',
     language: '',
-    abstract: 'none',
+    publisher:'',
+    abstract: '',
     noOfCopies: 1,
   });
 
-  const [bookImage, setBookImage] = useState(bookImagePlaceholder); // Initialize with the placeholder URL
+ // Initialize with the placeholder URL
   const abstractTextareaRef = useRef(null);
+  const [bookUrl,setBookUrl]=useState(bookImagePlaceholder);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -54,12 +56,11 @@ function BookAdd() {
    
     try {
       console.log(isbn);
-     
       await fetchdata(isbn,setBook,adjustTextareaSize);
       const img = await fetchImgdata(isbn);
-      (img)? setBookImage(img):setBookImage(bookImagePlaceholder)  ;
-
-
+      setBookUrl(img);
+      console.log(bookUrl);
+  
     } catch (error) {
       console.error('Error fetching book details:', error);
     }
@@ -67,16 +68,15 @@ function BookAdd() {
 
   const handleFetchDetails = () => {
     fetchBookDetails(book.ISBN);
-    
-   
-  };
-
+    };
+  
   const handleAddBook = async () => {
     // e.preventDefault();
-    console.log('Adding book:', book.ISBN);
+    console.log(book.abstract);
    
     try {
-      await AddBook(book);
+      console.log(bookUrl);
+      await AddBook({...book,url:bookUrl});
     }
     catch (error) {
       console.error('Error adding book:', error);
@@ -87,10 +87,10 @@ function BookAdd() {
       author: '',
       category: '',
       language: '',
-      abstract: 'none',
+      publisher: '',
+      abstract: '',
       noOfCopies: 1,
     });
-    setBookImage(bookImagePlaceholder);
     adjustTextareaSize();
   };
 
@@ -109,12 +109,15 @@ function BookAdd() {
       </Button>
     </Link>
    
-    <h1>Add Books</h1>
+    <h1 style={{color:'rgba(244, 244, 244, 0.7)'}}>Add Books</h1>
     
     <div className="content-wrapper" data-aos="fade-right">
       <BookImageContainer 
-        bookImage={bookImage} 
-        Adding={true}/>
+      
+        Adding={true}
+        setBookUrl = {setBookUrl}
+        bookUrl={bookUrl}
+        />
       <BookForm 
         formData={book}
         handleInputChange={handleInputChange}
@@ -122,7 +125,7 @@ function BookAdd() {
         handleFetchDetails={handleFetchDetails}
         ISBN={true}
         title = "Add Book"
-        setBook={setBook}
+      
       />
     </div>
   </div>
