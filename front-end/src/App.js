@@ -36,7 +36,7 @@ class App extends Component {
       });
 
     }
-   
+
   }
 
   render() {
@@ -48,8 +48,9 @@ class App extends Component {
         <div>
           <Routes>
 
+            <Route path="/Library" element={<LibraryPage />} />
             <Route path="/ContactUs" element={<CustomerSupportPage />} />
-            <Route path='Register' element = {<SignUp/>}/>
+
             <Route path="/"element={ <Home /> }/>
             <Route path="/Library" element={<LibraryPage />} />
             <Route path="/AboutUs" element = {<AboutUs/>}/>
@@ -65,6 +66,9 @@ class App extends Component {
             {isAdminLoggedIn ? <Route path="/admin/bookManagement/Reservations" element={<ReservedBooksPage />} /> : <Route path="/" />}
             {isAdminLoggedIn ? <Route path="/admin/bookManagement/PendingApprovals" element={<PendingApprovalsPage />} /> : <Route path="/" />}
          
+
+            <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/ReservedBooks" element={<ReservedBooks />} />
 
         </Routes>
       </div>
