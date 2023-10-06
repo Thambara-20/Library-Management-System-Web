@@ -3,39 +3,55 @@
   display: flex;
   align-items: center;
   margin-top: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   flex-wrap: wrap;
   margin-left: 20px;
+  justify-content: space-evenly;
+}
+.book-card-link{
+  text-decoration: none !important;
 }
 
-/* style of switch button */
-.switch-button{
-  margin-top: 30px;
-  margin-left: 20px;
+
+
+.selecter {
+  background-color: #ffff; /* Light gray background */
+  border-radius: 5px;
+  color: #000 !important;
+  width: 100%;
+  text-align: start;
+  padding-right: 10px !important;
 }
 
 .category-dropdown {
-  margin-right: 8px;
-  height: 30px; /* Set a fixed height to match the search bar and button */
+  min-width: 60px;
+  height: 100%;
+  background-color: #ffff; /* Light gray background */
+  border-radius: 5px;
+  padding: 5px;
+  color: #000;
 }
+
 
 .search-bar {
-  border-radius: 10px;
-  height: 30px; /* Set a fixed height to match the category dropdown and button */
-}
-
-.search-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 8px;
-  margin-top: 22px;
-  height: 50px;
-
+  border-radius: 5px;
+  height: 100%;
+  background-color: #ffffff; 
+  color: #000000;
+  
 }
 
 
-/* CSS file (e.g., Library.css) */
+.what-btn{
+  background:none;
+  border: none;
+  color: rgb(0, 0, 0);
+  width: 100%;
+  height: 100%;
+}
+
+
+
 .grid-item:hover {
   transform: scale(1.05) !important; /* Increase the size by 10% on hover */
   transition: transform 0.3s ease !important; /* Add a smooth transition effect */
@@ -43,12 +59,12 @@
 
 
 @media screen and (max-width: 900px) {
-  .search-button{
-    display: none;
-  }
+ 
   .library-top {
     margin-top: 16px;
     margin-bottom: 50px;
+    justify-content: space-between;
+    min-height: 120px !important;
   ;
   }
   
@@ -56,19 +72,32 @@
     align-items: center;
     background-color: black;
   }
-
+  
   .text-field{ 
-    background-color: rgb(196, 202, 208);
+    background-color: rgb(255, 255, 255);
     border-radius: 5px; 
-    /* Set a fixed height to match the search bar and button */
+    margin: 5px;
   }
   
   .selecter {
-   background-color: aliceblue;/* Set a fixed height to match the category dropdown and button */
+    
+    background-color: #ffffff; /* Light gray background */
+    border-radius: 5px;
+    max-height: 40px !important;
+    width: 100% !important;
+    height: 90%;
+    
   }
+  .search-bar{ 
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    margin-left: 2px;
+    margin-right: 2px;
+ 
+   
 
 
-}
+}}
 
 
 
@@ -77,15 +106,17 @@
   .search-bar{ 
     background-color: rgb(196, 202, 208);
     border-radius: 5px; 
-    width: 50%;
+    width: 100%;
+    
 
    
     /* Set a fixed height to match the search bar and button */
   }
   .category-dropdown {
-    width: 40%; /* Set a fixed height to match the search bar and button */
+    width: 100%; /* Set a fixed height to match the search bar and button */
   }
   .selecter {
+    margin-top: 10px;
    background-color: aliceblue;
    width:100%;
  

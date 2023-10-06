@@ -1,10 +1,11 @@
 import axios from 'axios';
 import notification from './notificationService'
-const apiUrl = "http://localhost:8080/api/books/"; // Replace with your actual backend API URL
+import { Config } from './config.js';
+const apiUrl = Config.Url; // Replace with your actual backend API URL
 
 export async function fetchBookData() {
     try {
-        const response = await axios.get(`${apiUrl}/find`);
+        const response = await axios.get(`${apiUrl}/api/books/find`);
         console.log(response.data);
         return response.data; // Assuming the API returns an array of book data
     } catch (error) {
@@ -14,7 +15,7 @@ export async function fetchBookData() {
 
 export async function deleteBook(bookId) {
     try {
-        await axios.delete(`${apiUrl}/delete/${bookId}`);
+        await axios.delete(`${apiUrl}/api/books/delete/${bookId}`);
         notification.showSuccess('Book Deleted successfully');
     } catch (error) {
         notification.showError('Error deleting book');
@@ -24,7 +25,7 @@ export async function deleteBook(bookId) {
 
 export async function AddBook(book) {
     try {
-        await axios.post(`${apiUrl}`, book);
+        await axios.post(`${apiUrl}/api/books/`, book);
         notification.showSuccess('Book added successfully');
     } catch (error) {
         notification.showError('Error adding bookDetails');
@@ -34,8 +35,8 @@ export async function AddBook(book) {
 
 export async function findBook(bookId) {
     try {
-        const response = await axios.get(`${apiUrl}/findone/${bookId}`);
-       
+        console.log(bookId);
+        const response = await axios.get(`${apiUrl}/api/books/findone/${bookId}`);
         return response.data;
     } // Assuming the API returns an array of book data
     catch (error) {
@@ -48,8 +49,7 @@ export async function findBook(bookId) {
 
 export async function updateBook(bookId, book) {
     try {
-      
-        await axios.put(`${apiUrl}/update/${bookId}`, book);
+      await axios.put(`${apiUrl}/api/books/update/${bookId}`, book);
         notification.showSuccess('Book Updated successfully');
     } catch (error) {
         notification.showError('Error updating bookDetails');
@@ -87,6 +87,38 @@ export async function fetchdata(ISBN,setBook,adjustTextareaSize,setBookImage) {
   }
 
 }
+
+export async function fetchallbookdata(ISBN, setBook, setBookImage) {
+  const response = await fetch(
+    `https://www.googleapis.com/books/v1/volumes?q=isbn:${ISBN}`
+  );
+  const data = await response.json();
+
+
+
+  if (data.items && data.items.length > 0) {
+    const bookDetails = data.items[0].volumeInfo;
+    setBook({
+      ISBN: ISBN,
+      title: bookDetails.title || "",
+      author: bookDetails.authors ? bookDetails.authors.join(", ") : "",
+      category: bookDetails.categories
+        ? bookDetails.categories.join(", ")
+        : "",
+      language: bookDetails.language || "",
+      abstract: bookDetails.description || "",
+      pageCount: bookDetails.pageCount || 0,
+      publisher: bookDetails.publisher || "",
+      publishedDate: bookDetails.publishedDate || "",
+      averageRating: bookDetails.averageRating || 0,
+      ratingsCount: bookDetails.ratingsCount || 0,
+      imageLinks: bookDetails.imageLinks || {},
+      previewLink: bookDetails.previewLink || "",
+    });
+    setBookImage(bookDetails.imageLinks.thumbnail || null);
+  }
+}
+
 
 
 export async function fetchImgdata(ISBN, retryCount = 3) {

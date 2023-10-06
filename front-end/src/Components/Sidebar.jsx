@@ -10,7 +10,8 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import { blueGrey, green, grey, cyan, blue } from '@mui/material/colors';
-import profileImg from "../assets/profile-icons/images.jpeg"
+import profileImg from "../assets/profile-icons/images.jpg"
+import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 // Custom Item component for MenuItems
 const Item = ({ title, to, icon, selected, setSelected }) => {
 
@@ -91,7 +92,7 @@ const Sidebar = () => {
 
                             <Box textAlign="center">
                                 <Typography variant="h5" color={grey} fontWeight="bold" sx={{ m: '10px 0 0 0' }}
-                                > Mahinda Rajapaksha
+                                > Hello Admin!
                                 </Typography>
                                 <Typography variant="h8" color={green}>
                                     Admin
@@ -119,8 +120,15 @@ const Sidebar = () => {
 
                         <Item
                             title="Pending Approvals"
-                            to="/admin"
+                            to="/admin/bookManagement/PendingApprovals"
                             icon={<ContactsOutlinedIcon />}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
+                        <Item
+                            title="Reservations"
+                            to="/admin/bookManagement/Reservations"
+                            icon={<CollectionsBookmarkIcon />}
                             selected={selected}
                             setSelected={setSelected}
                         />

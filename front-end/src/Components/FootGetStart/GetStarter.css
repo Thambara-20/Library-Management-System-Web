@@ -1,7 +1,14 @@
+
+.wrapper{
+    width: 100% !important;
+}
+.g-wrapper{
+    width: 100% !important;
+}
 .inner-Container{
     background:#4161df;
     padding:2rem;
-    border-radius: 10px;
+    border-radius: 1px !important;
     border:6px solid#5f77d6;
 }
 .inner-Container>.primaryText{
@@ -17,7 +24,7 @@
     background:#5a73d7;
     border: 2px solid white;
     box-shadow: var(--shadow);
-    border-radius: 10px;
+    border-radius: 1px !important;
     margin-top: 10px;
 }
 .paddings.innerWidth.g-container{

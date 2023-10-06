@@ -1,5 +1,4 @@
 const db = require("../models");
-
 const { User, validateUser } = db.users;
 const Op = db.Sequelize.Op;
 const config = require("config");
@@ -7,15 +6,14 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const _ = require("lodash");
 
+
 exports.get = async (req, res) => {
   console.log(req.user.name);
   const user = await User.findByPk(req.user.name);
   res.send(user)
 };
 
-// Create and Save a new User
 exports.signup = async (req, res) => {
-  // Validate request
   const { error } = validateUser(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -65,7 +63,7 @@ exports.login = async (req, res) => {
       console.log("Login successful for user:", user.name);
 
       const token = user.generateAuthToken();
-      return res.header("x-auth-token", token).status(201).send(token);
+      return res.header("x-auth-token", token).status(200).send(token);
 
     } else {
       console.log("Invalid credentials.", user.name);
@@ -77,7 +75,6 @@ exports.login = async (req, res) => {
   }
 };
 
-// Retrieve all books from the database.
 exports.findAll = (req, res) => {
   const name = req.body.name;
   console.log(name);
@@ -100,18 +97,16 @@ exports.deleteUser = async (req, res) => {
   console.log(name);
 
   try {
-    // Find the user by name
     const user = await User.findOne({ where: { name } });
 
     if (!user) {
-      // If user doesn't exist, return an error response
       return res.status(404).json({ error: 'User not found' });
     }
 
-    // Delete the user
+   
     await user.destroy();
 
-    // Respond with a success message
+    
     res.status(200).json({ message: 'User deleted successfully' });
   } catch (error) {
     console.error(error);

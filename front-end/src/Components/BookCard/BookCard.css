@@ -1,0 +1,31 @@
+.whish-list{
+    height: 40px;
+    visibility: hidden;
+    display: flex;
+    justify-content: space-around;
+    transition: 300ms;
+}
+
+.book-card-link{
+    text-decoration: none;
+}
+
+.card-content:hover{
+    .whish-list{
+        visibility: visible;
+    }
+    .whish-list:hover{
+        cursor: pointer;
+        /* scale: 1.1; */
+    }
+    .icon{
+        transition: 300ms;
+    }
+    .icon:hover{
+        scale: 1.2;
+    }
+    .icon:active{
+        scale: 0.98;
+    }
+
+}

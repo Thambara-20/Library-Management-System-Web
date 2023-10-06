@@ -8,28 +8,35 @@ import { AiFillAndroid } from "react-icons/ai";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import ReactWhatsapp from 'react-whatsapp';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 
 const Contact = () => {
   useEffect(() => {
     AOS.init({
-      duration: 2000,
+      duration: 1000,
     });
-    AOS.refresh({duration: 2000});
   }, []);
+
+const openEmailTab = url => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+
   return (
-    <section className="contact-wrapper"data-aos="fade-up" data-aos-offset="200">
-      <div className="paddings innerWidth flexCenter c-container"data-aos="fade-up" data-aos-offset="200">
+    <section className="contact-wrapper"data-aos="fade-up" >
+      <div className="paddings innerWidth flexCenter c-container"data-aos="fade-up" >
         {/* this is our left side */}
-        <div className="flexColStart c-left">
+        <div className="flexColStart c-left" data-aos="fade-up">
           <span className="orangeText">Our contacts</span>
           <span className="primaryText">Easy to Contact</span>
           <span className="secondaryText">
             We always ready to help by providing the best service
           </span>
 
-          <div className="flexColStart contactModes" >
+          <div className="flexColStart contactModes" data-aos="fade-up" >
             {/* {first row} */}
             <div className="flexStart row">
               <div className="flexColCenter mode" id="mode">
@@ -42,10 +49,13 @@ const Contact = () => {
                     <span className="secondaryText">+9476 3055 795</span>
                   </div>
                 </div>
+                <CopyToClipboard text="0763055795">
                 <div className="flexCenter button btn-color">Call Now</div>
+                </CopyToClipboard>
+               
               </div>
               {/* first row second element */}
-              <div className="mode flexColCenter mode" id="mode">
+              <div className="mode flexColCenter mode" id="mode" data-aos="fade-up">
                 <div className="flexStart">
                   <div className="flexCenter icon">
                     <BsFillChatDotsFill size={25} />
@@ -55,12 +65,12 @@ const Contact = () => {
                     <span>+9476 3055 795</span>
                   </div>
                 </div>
-                <div className="flexCenter button btn-color">Chat Now</div>
+                <div className="flexCenter button btn-color"><ReactWhatsapp className="what-btn" number="+94763055795" message="I want to know something about registration">Chat Now</ReactWhatsapp></div>
               </div>
             </div>
 
             {/* second raw first element */}
-            <div className="flexStart row">
+            <div className="flexStart row" data-aos="fade-up">
               <div className="flexColCenter mode" id="mode">
                 <div className="flexStart">
                   <div className="flexCenter icon">
@@ -75,10 +85,13 @@ const Contact = () => {
                     </span>
                   </div>
                 </div>
+                <Link to={'/ContactUs'}> 
                 <div className="flexCenter button btn-color">Mail Now</div>
+            </Link>
+           
               </div>
               {/* second row second element */}
-              <div className="flexColCenter mode" id="mode">
+              <div className="flexColCenter mode" id="mode" data-aos="fade-up">
                 <div className="flexStart">
                   <div className="flexCenter icon">
                     <AiFillAndroid size={25} />
@@ -95,7 +108,7 @@ const Contact = () => {
         </div>
 
         {/* this is our right side */}
-        <div className="flexCenter contact-right" >
+        <div className="flexCenter contact-right" data-aos="fade-up">
           <div className="image-container" id="i-c">
             <img src={right} alt="right-img" className="" />
           </div>
