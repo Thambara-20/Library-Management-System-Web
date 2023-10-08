@@ -12,9 +12,10 @@ exports.create = async (req, res) => {
     return;
   }
   
-  const downloadUrl = await storeImage(req.body.url,req.body.title);
+ const downloadUrl = await storeImage(req.body.url,req.body.title);
   
   const book = {
+    bookid: req.body.id,
     ISBN: req.body.ISBN,
     title: req.body.title,
     author: req.body.author,
@@ -23,6 +24,7 @@ exports.create = async (req, res) => {
     abstract: req.body.abstract,
     status:  true,
     url : downloadUrl
+
   };
 
 
@@ -79,12 +81,12 @@ try{
 
 
 exports.deleteBook = async (req, res) => {
-  const id = req.params.id;
+  const bookid = req.params.id;
   console.log(req.params);
 
   try {
     // Find the user by id
-    const book = await Book.findOne({ where: { id } });
+    const book = await Book.findOne({ where: { bookid } });
 
     if (!book) {
       
@@ -107,7 +109,7 @@ exports.update = async (req, res) => {
   console.log(req.body);
   try {
     const [num, updatedBook] = await Book.update(req.body, {
-      where: { id: id },
+      where: { bookid: id },
       returning: true, // This returns the updated record
     });
 

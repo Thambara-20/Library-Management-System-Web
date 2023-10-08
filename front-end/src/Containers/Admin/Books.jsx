@@ -77,7 +77,8 @@ const Books = () => {
 
 
 	const columns = [
-		{ field: 'id', headerName: 'ID', flex: 0.4 },
+		{ field: 'bookid', headerName: 'Book ID', flex: 0.4 },
+
 		{ field: 'ISBN', headerName: 'ISBN' ,flex: 0.9 },
 		{
 			field: 'title',
@@ -119,7 +120,7 @@ const Books = () => {
 				<Button
 					variant="contained"
 					style={{ backgroundColor: 'darkred', color: 'white' }}
-					onClick={() => handleDelete(cellValues.row.id)}
+					onClick={() => handleDelete(cellValues.row.bookid)}
 				>
 					Delete
 				</Button>
@@ -128,7 +129,7 @@ const Books = () => {
 		{
 			field: 'Update',
 			renderCell: (cellValues) => (
-				<Link to={`/admin/bookManagement/updatebook/${cellValues.row.id}`}>
+				<Link to={`/admin/bookManagement/updatebook/${cellValues.row.bookid}`}>
 					<Button color="primary" variant="contained">
 						Update
 					</Button>
@@ -145,7 +146,7 @@ const Books = () => {
 				setSearchQuery={setSearchQuery}
 				handleSearch={filterData}
 			/>
-			<TableBox filteredData={filteredData} topic="BookManager" columns={columns} data-aos="fade-up" />
+			<TableBox filteredData={filteredData} topic="BookManager" columns={columns} data-aos="fade-up" id="bookid" />
 		</div>
 	);
 };

@@ -126,10 +126,20 @@
   width:100%;
  
 }
+.reserve-btn:disabled{
+  background-color: #abaeb1 !important;
+  color: black !important;
+  
+}
 .wishlist-btn{
   background-color: #ff5722!important;
   width:100%;
  
+}
+.wishlist-btn:disabled{
+  background-color: #7e858b !important;
+  color: black !important;
+  
 }
 .read{
   background-color: #9f1c9f!important;

@@ -18,6 +18,7 @@ import Profile from './Containers/UserProfile/Profile';
 import BookDetails from './Containers/Library/Bookdetails/BookDetails';
 import ReservedBooksPage from './Containers/Admin/ReservedBookspage';
 import PendingApprovalsPage from './Containers/Admin/PendingApprovalsPage';
+import SignInPage from './Containers/SignInPage/SignInPage';
 
 class App extends Component {
   constructor(props) {
@@ -53,7 +54,7 @@ class App extends Component {
             <Route path='Register' element = {<SignUp/>}/>
             <Route path="/"element={ <Home /> }/>
             <Route path="/Library" element={<LibraryPage />} />
-            <Route path="/AboutUs" element = {<AboutUs/>}/>
+            <Route path="/AboutUs" element = {<SignInPage/>}/>
 
             <Route path="/Profile/:page" element={<Profile/>} />
             <Route path="/book/:bookId" element={<BookDetails/>} />

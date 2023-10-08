@@ -34,6 +34,7 @@ exports.signup = async (req, res) => {
       national_id: user.national_id,
       isAdmin: user.name === "administrator" ? true : false
     });
+    
 
     res.send( newUser.generateAuthToken())
 

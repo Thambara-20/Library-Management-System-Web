@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 
 const BookCard = ({ book }) => {
-    const bookUrl = `/book/${book.id}/`; 
+    const bookUrl = `/book/${book.bookid}/`; 
     console.log(bookUrl)
 
 

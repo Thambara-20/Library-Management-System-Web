@@ -1,9 +1,12 @@
+const auth = require("../middleware/auth")
+const admin = require("../middleware/admin")
+
 module.exports = app => {
     const reservations = require("../controllers/reservationController.js");
   
     var router = require("express").Router();
   
-    router.post("/", reservations.create);
+    router.post("/",[auth], reservations.create);
   
     // Retrieve all books
     router.get("/find", reservations.findAll);

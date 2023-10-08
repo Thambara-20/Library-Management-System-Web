@@ -12,16 +12,40 @@ import { booksDummy as books } from "../../../Helpers/BooksDummy";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import BookIcon from '@mui/icons-material/Book';
 import DefaultComponent from "../Forum";
-
+import SignInPage from "../../SignInPage/SignInPage";
+import reserve from "../../../services/reservationService";
 
 
 const BookDetails = ({ }) => {
 
   const bookId = useParams()["bookId"];
   const [book, setBook] = useState({});
-  const [bookImage, setBookImage] = useState(null);
   const [showPages, setShowPages] = useState(false);
+  const [showSignUpPopup, setShowSignUpPopup] = useState(false);
 
+
+
+  const openSignUpPopup = () => {
+    setShowSignUpPopup(true);
+  };
+
+  const closeSignUpPopup = () => {
+    setShowSignUpPopup(false);
+  };
+  
+  const handlereserve = async () => {
+    try {
+      await reserve(bookId);
+    } catch (error) {
+      console.log(error)
+      if (error.response && error.response.status === 401) {
+        openSignUpPopup();
+      } else {
+        console.error("An error occurred:",);
+      }
+    }
+  };
+  
  
 
   const fetchdata = async (bookId) => {
@@ -54,7 +78,6 @@ const BookDetails = ({ }) => {
     display: "flex",
     alignItems: "center",
     justifyContent: 'start',
-
     gap: "20px",
     height: '100%',
     background: 'linear-gradient(50deg, black 0%, rgb(117, 112, 112)45%,black 0%,rgb(97, 94, 94) 90%)',
@@ -75,6 +98,9 @@ const BookDetails = ({ }) => {
 
   return (
     <div className="book-wrapper">
+       {showSignUpPopup && (
+            <SignInPage onClose={closeSignUpPopup} onSuucessClose={closeSignUpPopup} />
+          )}
       <div className="book-details">
         <Card>
           <CardContent style={containerStyle} data-aos='fade-up' className="cardcontent">
@@ -86,6 +112,7 @@ const BookDetails = ({ }) => {
             </div>
             <div className="blurred-background"></div>
             <div className='right' data-aos='fade-up'>
+            <p style={{color:"red",fontWeight:600}}>Not available now</p>
               <div className="right-data">
                 <h2>Book Details</h2>
                 <Typography className='title' variant="h5">{book.title}</Typography>
@@ -99,11 +126,11 @@ const BookDetails = ({ }) => {
                 <a href={book.previewLink} target="_blank" rel="noopener noreferrer">Preview Link</a>
               </div>
               <div className="buttons">
-                <Button className='reserve-btn' variant="contained" color="primary">
+                <Button className='reserve-btn' variant="contained" color="primary" onClick={handlereserve}  disabled={!book.status}>
                   <FavoriteBorderIcon />
                   Reserve Now
                 </Button>
-                <Button className='wishlist-btn' variant="contained" color="secondary">
+                <Button className='wishlist-btn' variant="contained" color="secondary"  disabled={!book.status}>
                   <BookIcon />
                   Add to Wishlist
                 </Button>
@@ -113,7 +140,7 @@ const BookDetails = ({ }) => {
           </CardContent>
         </Card>
         <div className='read-btn-wrapper'>
-          <Button className='read' variant="contained" onClick={() => setShowPages(!showPages)}>
+          <Button className='read' variant="contained" onClick={() => setShowPages(!showPages)}  >
             Read few pages {showPages ? '<' : '>'}
           </Button>
         </div>
