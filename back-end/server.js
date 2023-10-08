@@ -53,6 +53,7 @@ app.get("/", (req, res) => {
 
 require("./routes/bookRoutes")(app);
 require("./routes/userRoutes")(app);
+require("./routes/reservationRoutes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8000;

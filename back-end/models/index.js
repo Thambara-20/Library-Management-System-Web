@@ -23,5 +23,6 @@ db.sequelize = sequelize;
 
 db.books = require("./bookModel.js")(sequelize, Sequelize);
 db.users = require("./userModel.js")(sequelize, Sequelize);
+db.reservations = require("./reservationModel.js")(sequelize, Sequelize);
 
 module.exports = db;

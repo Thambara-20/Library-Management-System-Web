@@ -51,7 +51,6 @@
 }
 
 
-
 .grid-item:hover {
   transform: scale(1.05) !important; /* Increase the size by 10% on hover */
   transition: transform 0.3s ease !important; /* Add a smooth transition effect */

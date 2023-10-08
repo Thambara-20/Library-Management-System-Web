@@ -14,14 +14,14 @@ const BookCard = ({ book }) => {
 
     return (
         <Link to={bookUrl} className="book-card-link">
-        <Card className="book-card visible" style={{ marginBottom: "10px", minHeight:550,width: 270,
-                    maxHeight:600 }}>
+        <Card className="book-card visible" style={{ marginBottom: "10px", minHeight:580, maxHeight:580,width: 270,
+                   }}>
             <CardContent className="card-content" >
                 <CardMedia className="image-content"
                     component="img"
                     alt="Book Cover"
-                    min-height="200"
-                    // max-height="230"
+                    min-height="210"
+                    max-height="210" 
                     image={book.url}// Use the img prop as the image source
                 />
                 <Typography variant="h6" component="div">
