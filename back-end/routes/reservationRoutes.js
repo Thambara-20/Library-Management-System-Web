@@ -9,17 +9,12 @@ module.exports = app => {
     router.post("/",[auth], reservations.create);
   
     // Retrieve all books
-    router.get("/find", reservations.findAll);
+    router.get("/find",[auth],reservations.findAll);
     
     // Retrieve all published books
     // router.get("/published", books.findAllPublished);
-  
-     router.get("/findone/:id", reservations.findOne);
-  
 
-  
-    // // Delete all books
-    // router.delete("/", books.deleteAll);
+    router.delete("/delete/:id", [auth],reservations.deleteOne);
   
     app.use('/api/reservations', router);
   };

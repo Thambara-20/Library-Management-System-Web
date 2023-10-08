@@ -36,6 +36,7 @@ const BookDetails = ({ }) => {
   const handlereserve = async () => {
     try {
       await reserve(bookId);
+      fetchdata(bookId);
     } catch (error) {
       console.log(error)
       if (error.response && error.response.status === 401) {
@@ -67,10 +68,9 @@ const BookDetails = ({ }) => {
   }, []);
 
   useEffect( () => {
-    // Replace the ISBN with your desired ISBN, or fetch it from your data
     fetchdata(bookId);
     
-  }, [bookId]);
+  }, [book.status]);
   
   const selectedBook = books.find((book) => book.id == bookId);
 
@@ -112,7 +112,7 @@ const BookDetails = ({ }) => {
             </div>
             <div className="blurred-background"></div>
             <div className='right' data-aos='fade-up'>
-            <p style={{color:"red",fontWeight:600}}>Not available now</p>
+            {book.status?null :(<p style={{color:"red",fontWeight:600, position:'absolute', left:40, zIndex:100}}>Not available now</p>)}
               <div className="right-data">
                 <h2>Book Details</h2>
                 <Typography className='title' variant="h5">{book.title}</Typography>

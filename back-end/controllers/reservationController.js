@@ -56,18 +56,19 @@ exports.create = async (req, res) => {
 
 
 exports.findAll = (req, res) => {
-    const name = req.body.name;
+    const name = req.user.name;
+    console.log(name)
 
     Reservation.findAll({
         where: { name: name },
         include: [{
             model: Book,
-            attributes: ['ISBN', 'title']
+            
         },
-        {
-            model: User,
-            attributes: ['email']
-        },
+        // {
+        //     model: User,
+        //     attributes: ['email']
+        // },
         ]
     })
         .then(data => {
@@ -85,25 +86,38 @@ exports.findAll = (req, res) => {
         });
 };
 
-exports.findOne = (req, res) => {
+exports.deleteOne = (req, res) => {
+    const id = req.params.id;
+     console.log(id);
+    Reservation.findOne({ where: { reservation_id: id } })
+    .then(async (reservation) => {
+      if (reservation) {
+        const bookId = reservation.bookid; // Replace with the actual field name that stores the bookId in the Reservation model
+        await reservation.destroy();
 
-    try {
-        const id = req.params.id;
-        Reservation.findByPk(id)
-            .then(data => {
-                if (!data) {
-                    res.status(404).send({
-                        message: "Not found reservation with id " + id
-                    });
-                } else {
-                    res.send(data);
-                }
-
-            })
-    } catch (err) {
-        res.status(500).send({
-            message: "Error retrieving reservation with id=" + id
+        const book = await Book.findOne({ where: { bookid: bookId } });
+          if (book) {
+          // Update the book status to true
+          await book.update({ status: true });
+          res.send({
+            message: "Reservation was deleted successfully, and book status updated"
+          });
+        } else {
+          res.send({
+            message: "Book status cannot be updated"
+          });
+        }
+      } else {
+        res.send({
+          message: "Reservation was not found"
         });
-    }
-}
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Could not delete Reservation"
+      });
+    });
 
+}
+  

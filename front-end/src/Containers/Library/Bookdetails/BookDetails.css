@@ -143,11 +143,13 @@
 }
 .read{
   background-color: #9f1c9f!important;
-  width:100%;
+  width:98%;
+  box-shadow:0px 0px 9px rgba(0,0,0,0.5)
+
 }
 .wishlist-btn:hover{
   background-color: #ff0000 !important;
-  width:100%;
+  width:98%;
 }
 .read:hover{
   background-color: #d80e9f !important;
@@ -187,11 +189,11 @@
 } 
 
 .read-btn-wrapper{
-  background-color: black;
   display: flex;
-  justify-content: flex-end;
-   margin-top: 5px ;
-   box-shadow:0px 0px 9px rgba(0,0,0,0.5)
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px ;
 }
 
 @media screen and (max-width: 900px) {

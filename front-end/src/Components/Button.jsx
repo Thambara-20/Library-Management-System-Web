@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import { Cancel } from '@mui/icons-material';
-
 export function AddBookButton() {
 
 
@@ -24,11 +22,13 @@ export function AddBookButton() {
 
 
 
+
 export function CancelButton() {
 
   return (
-    <Link to="" className="link" sx={{ width: '60%', }}>
+
       <Button
+    
         sx={{
           backgroundColor: 'white',
           color: 'black',
@@ -40,8 +40,9 @@ export function CancelButton() {
 
       >
         Cancel
+       
       </Button>
-    </Link>
+ 
 
   );
 }

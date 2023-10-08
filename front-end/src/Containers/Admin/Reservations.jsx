@@ -56,7 +56,7 @@ const Reservations = () => {
         <div >
             <CustomHeader headerText={"Recent Updates"} iconType={"business"} color={'black'} />
             <div style={{ display:'flex', flexDirection:'row' }}>
-                <div style={{ flex: '1' }}>
+                <div style={{ flex: '1' }} data-aos="fade-up">
                     <TableBox filteredData={filteredData} columns={columns} data-aos="fade-up" id={"txId"} height="60vh" />
                 </div>
 

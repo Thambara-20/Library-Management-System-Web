@@ -48,7 +48,7 @@ const Dashboard = () => {
                 {/* Row 2 */}
                 <HorizontalRule/>
                 
-                 <Reservations/>
+                 <Reservations data-aos="fade-up"/>
              
                
                

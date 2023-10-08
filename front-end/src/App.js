@@ -54,7 +54,7 @@ class App extends Component {
             <Route path='Register' element = {<SignUp/>}/>
             <Route path="/"element={ <Home /> }/>
             <Route path="/Library" element={<LibraryPage />} />
-            <Route path="/AboutUs" element = {<SignInPage/>}/>
+            <Route path="/AboutUs" element = {<AboutUs/>}/>
 
             <Route path="/Profile/:page" element={<Profile/>} />
             <Route path="/book/:bookId" element={<BookDetails/>} />
