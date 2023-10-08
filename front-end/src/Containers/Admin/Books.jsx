@@ -106,8 +106,8 @@ const Books = () => {
 			headerName: 'Availability',
 			cellClassName: 'available-column--cell',
 			renderCell: (cellValues) => (
-				(cellValues.row.status) ?<><GppGoodIcon  /><h8 style={{  color:"#2a9461" }}
-				>Available</h8></>: <><GppBadIcon  /><h8 style={{  color: 'darkred' }}
+				(cellValues.row.status) ?<><GppGoodIcon  /><h8 style={{  color:"#2a9461" ,fontWeight: 'bold'}}
+				>Available</h8></>: <><GppBadIcon  /><h8 style={{  color: 'darkred', fontWeight: 'bold' }}
 				>Reserved</h8></>
 				
 		
@@ -119,7 +119,7 @@ const Books = () => {
 			renderCell: (cellValues) => (
 				<Button
 					variant="contained"
-					style={{ backgroundColor: 'darkred', color: 'white' }}
+					style={{ backgroundColor: 'rgb(100, 100, 100)', color: 'white' }}
 					onClick={() => handleDelete(cellValues.row.bookid)}
 				>
 					Delete
@@ -130,7 +130,8 @@ const Books = () => {
 			field: 'Update',
 			renderCell: (cellValues) => (
 				<Link to={`/admin/bookManagement/updatebook/${cellValues.row.bookid}`}>
-					<Button color="primary" variant="contained">
+					<Button  variant="contained"
+					style={{ backgroundColor: 'rgb(0, 0, 0)', color: 'white' }}>
 						Update
 					</Button>
 				</Link>

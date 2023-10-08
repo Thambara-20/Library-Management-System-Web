@@ -21,6 +21,7 @@ const ReservedBooks = () => {
 		const flattenedData = reservationData.map((reservation) => ({
 			...reservation,
 			...reservation.book,
+			...reservation.user,
 		}));
 		return flattenedData;
 	};
@@ -46,7 +47,6 @@ const ReservedBooks = () => {
 			newFilteredData = data.filter((reservation) => {
 				const idMatch = reservation.reservation_id.toString().toLowerCase().includes(searchQuery.toLowerCase());
 				const nameMatch = reservation.name.toLowerCase().includes(searchQuery.toLowerCase());
-
 				return idMatch || nameMatch;
 			});
 			setFilteredData(newFilteredData);
@@ -69,11 +69,11 @@ const ReservedBooks = () => {
 
 	const columns = [
 		{ field: 'reservation_id', headerName: 'ID', flex: 0.4 },
-		{ field: 'bookid', headerName: 'Book ID' },
+		{ field: 'bookid', headerName: 'Book ID',flex: 0.4 },
 		{
 			field: 'name',
 			headerName: 'Name',
-			flex: 1,
+			flex: 0.4,
 			cellClassName: 'name-column--cell',
 		},
 
@@ -85,13 +85,9 @@ const ReservedBooks = () => {
 		{
 			field: 'email',
 			headerName: 'Email',
-			flex: 1,
+			flex: 0.7,
 		},
-		{
-			field: 'address',
-			headerName: 'Address',
-			flex: 1,
-		}
+		
 	];
 
 	if (!filteredData) {

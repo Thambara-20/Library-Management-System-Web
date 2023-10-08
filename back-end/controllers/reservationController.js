@@ -91,6 +91,9 @@ exports.findAll = (req, res) => {
     Reservation.findAll({
         include: [{
             model: Book,
+        },{
+            model: User,
+            attributes: ['email']
         }
         ]
     })
