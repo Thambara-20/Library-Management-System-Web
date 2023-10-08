@@ -9,7 +9,9 @@ module.exports = app => {
     router.post("/",[auth], reservations.create);
   
     // Retrieve all books
-    router.get("/find",[auth],reservations.findAll);
+    router.get("/find",[auth],reservations.find);
+    
+    router.get("/findall",[auth,admin],reservations.findAll);
     
     // Retrieve all published books
     // router.get("/published", books.findAllPublished);

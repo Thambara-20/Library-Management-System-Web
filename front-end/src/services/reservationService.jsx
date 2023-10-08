@@ -38,6 +38,21 @@ export default async function reserve(bookId) {
     
     }
   }
+
+  export async function fetchReservationData() {
+    try {
+      const response = await axios.get(`${apiUrl}/api/reservations/findall`,  {
+        headers: {
+          'x-auth-token': authService.getJwt(), 
+        },
+      });
+     
+      return response.data; 
+    } catch (error) {
+      throw error;
+    }
+  }
+
   export async function cancelReservation(reservationId) {
     try {
         await axios.delete(`${apiUrl}/api/reservations/delete/${reservationId}`, {

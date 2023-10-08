@@ -33,14 +33,14 @@ const BookCard = ({ book }) => {
                 <Typography variant="subtitle1" color="text.secondary">
                     Category: {book.category}
                 </Typography>
-                <div className="whish-list" >
+                {/* <div className="whish-list" >
                     <div className="wish">
-                        <BsFillBagHeartFill className="icon" style={{color:'#a34127',margin:15 }} size={45}/>
+                        <BsFillBagHeartFill className="icon" style={{color:'#a34127',margin:15 }} size={5}/>
                     </div>
                     <div className="reserve">
-                        <FaBookMedical className="icon" style={{color:'#503299',margin:15}} size={45}/>
+                        <FaBookMedical className="icon" style={{color:'#503299',margin:15}} size={5}/>
                     </div>
-                </div>
+                </div> */}
                 
             </CardContent>
         </Card>

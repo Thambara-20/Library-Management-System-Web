@@ -55,9 +55,10 @@ exports.create = async (req, res) => {
 };
 
 
-exports.findAll = (req, res) => {
+exports.find = (req, res) => {
     const name = req.user.name;
     console.log(name)
+    
 
     Reservation.findAll({
         where: { name: name },
@@ -85,6 +86,28 @@ exports.findAll = (req, res) => {
             });
         });
 };
+
+exports.findAll = (req, res) => {
+    Reservation.findAll({
+        include: [{
+            model: Book,
+        }
+        ]
+    })
+        .then(data => {
+            if (data) {
+                res.send(data);
+            } else {
+                res.status(404).send({ message: "Reservation not found" });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving reservation."
+            });
+        });
+}
 
 exports.deleteOne = (req, res) => {
     const id = req.params.id;
