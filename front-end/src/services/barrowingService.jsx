@@ -4,12 +4,29 @@ import { Config } from './config.js';
 import authService from './authService';
 const apiUrl = Config.Url;
 
-export default async function return(reservation_id) {
+export async function getBarrows() {
+  try {
+    const res = await axios.get(`${apiUrl}/api/barrows/find`, {
+      headers: {
+        'x-auth-token': authService.getJwt(),
+      },
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error)
+    if (error.response.status !== 401) {
+      notification.showError("Getting barrows Unseccessful");
+    }
+    throw error;
+  }
+}
+
+export async function returns(reservation_id) {
   try {
     const data = {
       reservation_id: reservation_id
     };
-    await axios.post(`${apiUrl}/api/barrows/return`, data, {
+    await axios.put(`${apiUrl}/api/barrows/return`, data, {
       headers: {
         'x-auth-token': authService.getJwt(),
       },

@@ -5,7 +5,7 @@ import Topbar from '../../Components/Topbar';
 import TableBox from '../../Components/TableBox';
 import { Button } from '@mui/material';
 import LoadingIcon from '../../Components/LoadingIcon';
-
+import {returns,getBarrows} from '../../services/barrowingService'
 const Barrowings = () => {
     useEffect(() => {
         AOS.init({
@@ -20,17 +20,19 @@ const Barrowings = () => {
     const flattenBookObjects = (reservationData) => {
 		const flattenedData = reservationData.map((reservation) => ({
 			...reservation,
-			...reservation.book,
-			...reservation.user,
+		
 		}));
 		return flattenedData;
 	};
     const fetchData = async () => {
         try {
-            // const reservationData = await fetchReservationData();
-            // const flattenedData = flattenBookObjects(reservationData);
-            // setData(flattenedData);
-            // filterData(flattenedData, searchQuery);
+            const barrowData = await getBarrows();
+			
+			const flattenData = flattenBookObjects(barrowData);
+			console.log(flattenData)
+            setData(flattenData);
+            filterData(flattenData, searchQuery);
+
         } catch (error) {
             console.error('Error fetching book data:', error);
         }
@@ -71,7 +73,7 @@ const Barrowings = () => {
     }, [searchQuery]);
 
 	const columns = [
-		{ field: 'barrowing_id', headerName: 'ID', flex: 0.4 },
+		{ field: 'barrow_id', headerName: 'ID', flex: 0.4 },
 		{ field: 'bookid', headerName: 'Book ID',flex: 0.4 },
 		{
 			field: 'name',
@@ -115,7 +117,7 @@ const Barrowings = () => {
 				setSearchQuery={setSearchQuery}
 				handleSearch={filterData}
 			/>
-			<TableBox filteredData={filteredData} topic="Book Lending Record" columns={columns} id="barrowing_id" />
+			<TableBox filteredData={filteredData} topic="Book Lending Record" columns={columns} id="barrow_id" />
 		</div>
 	);
 };

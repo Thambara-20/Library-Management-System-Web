@@ -76,7 +76,7 @@ function TableBox({ topic=false, filteredData, columns ,id=undefined,height=fals
                 }}
             >
                 <DataGrid  
-                    getRowId={(id==="bookid") ? (row) => row.bookid :(id==="txId") ? (row) => row.txId :(id==="reservation_id") ? (row) => row.reservation_id: undefined} 
+                    getRowId={(id==="bookid") ? (row) => row.bookid :(id==="txId") ? (row) => row.txId :(id==="barrow_id") ? (row) => row.barrow_id:(id==="reservation_id") ? (row) => row.reservation_id: undefined} 
                     rows={filteredData}
                     columns={columns}
                     components={{ Toolbar: GridToolbar }}
