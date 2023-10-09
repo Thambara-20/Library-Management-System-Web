@@ -26,6 +26,8 @@ const LibraryPage = () => {
   const listOfAuthor = [...new Set(books.map((book) => book.author))];
   const Author = listOfAuthor;
 
+ 
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -95,6 +97,7 @@ const LibraryPage = () => {
   return (
     <div className="Library-page-wrapper">
       <Header />
+     
       <Container data-aos="fade-up" data-aos-offset="200">
         <div className="library-top">
           <div className="category-dropdown">

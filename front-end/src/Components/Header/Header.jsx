@@ -83,7 +83,7 @@ const Header = () => {
             <Link to="/Library" className="navbar-elements" style={{ textDecoration: "none" }}>
               <HiOutlineBuildingLibrary style={{paddingBottom:4,paddingRight:2}} size={20}/>Library
             </Link>
-            <Link className="navbar-elements" style={{ textDecoration: "none" }}>
+            <Link to= "/AboutUs" className="navbar-elements" style={{ textDecoration: "none" }}>
               <GoPeople style={{paddingBottom:4,paddingRight:2}} size={20}/>About Us
             </Link>
             <Link to="/ContactUs" className="navbar-elements" style={{ textDecoration: "none" }}>

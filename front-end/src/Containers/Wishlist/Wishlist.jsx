@@ -10,7 +10,7 @@ const WishList = () => {
       
       <div >
           {userReserved.map((book) => (
-            <BookCardVertical key={book.id} book={book} Wishlist={true}/>
+            <BookCardVertical key={book.id} book={book} Wishlist={true} showCancellationButton={true}/>
           ))}
         </div>
     </div>

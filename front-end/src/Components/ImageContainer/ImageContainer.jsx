@@ -20,21 +20,9 @@ const BookImageContainer = ({  bookStatus, handleStatusChange, setBookUrl ,bookU
 
   return (
     <div className="form-image-container">
-      <img className="image" src={bookUrl} alt="Book" data-aos="fade-up" />
+      <img className="image" src={bookUrl}  data-aos="fade-up" />
 
-      <div className="status-wrapper">
-        <label style={{ color: 'white', position: 'relative' }}>
-          Status : {bookStatus ? 'Available' : 'Not Available'}
-        </label>
-        <div className="status" >
-          <button
-            className={`status-button ${bookStatus ? 'positive' : 'negative'}`}
-            onClick={handleStatusChange}
-          >
-            {!bookStatus ? 'Make it Available' : 'Make it Unavailable'}
-          </button>
-        </div>
-      </div>
+    
       <div>
         <input
           style={{ width: '80%',margin:'30px' }}

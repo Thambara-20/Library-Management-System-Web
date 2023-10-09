@@ -37,7 +37,7 @@ const Reservations = () => {
         { field: 'txId', headerName: 'transaction Id', flex: 0.3 },
         { field: 'user', headerName: 'User', flex: 0.4 },
         {
-            field: 'date',
+            field: 'book id',
             headerName: 'Bookd Id',
             flex: 0.3,
             cellClassName: 'name-column--cell',
@@ -56,8 +56,8 @@ const Reservations = () => {
         <div >
             <CustomHeader headerText={"Recent Updates"} iconType={"business"} color={'black'} />
             <div style={{ display:'flex', flexDirection:'row' }}>
-                <div style={{ flex: '1' }}>
-                    <TableBox filteredData={filteredData} columns={columns} data-aos="fade-up" id={false} height="60vh" />
+                <div style={{ flex: '1' }} data-aos="fade-up">
+                    <TableBox filteredData={filteredData} columns={columns} data-aos="fade-up" id={"txId"} height="60vh" />
                 </div>
 
                 <div style={{ flex: '1', padding: "25px 2px 0px 2px"}}>

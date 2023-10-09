@@ -2,8 +2,16 @@ import React, { useState } from "react";
 import { Card, CardContent, CardMedia, Typography, Button } from "@mui/material";
 import { CancelButton } from "./Button";
 
-const BookCardVertical = ({ book, showCancellationButton = false, showIssueButton = false, showRejectButton = false, showReturn = false, Wishlist = false }) => {
+const BookCardVertical = ({ book, showCancellationButton = false, showIssueButton = false, showRejectButton = false, showReturn = false, Wishlist = false, setid, Cancel, id }) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const createdAtDate = new Date(book.createdAt);
+  const formattedDate = createdAtDate.toLocaleDateString();
+  const handleCancel = async () => {
+
+    setid(id);
+    Cancel();
+  }
 
   return (
     <div
@@ -40,14 +48,14 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
             component="img"
             alt="Book Cover"
             height="100%"
-            image={book.img}
+            image={book.url}
             style={{ maxWidth: "100%" }} // Ensure the image doesn't exceed card width
           />
         </div>
         <div style={{ flex: 0.8, marginLeft: "40px", color: "white" }}>
           <CardContent className="card-content">
             <Typography variant="subtitle1" component="div">
-              Book ID : {book.bookID}
+              Book ID : {book.bookid}
             </Typography>
             <Typography variant="subtitle1" component="div">
               ISBN : {book.ISBN}
@@ -64,7 +72,7 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
               {!showReturn ? (
                 <div>
                   <Typography variant="subtitle1" color="white">
-                    Reserved Date: {book.reservedData}
+                    Reserved Date: {formattedDate}
                   </Typography>
                   <Typography variant="subtitle1" color="white">
                     Borrow Before: {book.borrowBefore}
@@ -94,7 +102,19 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
               transform: "translateX(-50%)",
             }}
           >
-            <CancelButton variant="contained">Cancel</CancelButton>
+            <Button
+              onClick={() => { handleCancel()}}
+              sx={{
+                backgroundColor: 'white',
+                color: 'black',
+
+                '&:hover': {
+                  backgroundColor: 'grey', // Change to the desired hover color
+                },
+              }}
+            >
+              Cancel
+            </Button>
           </div>
         )}
         {showIssueButton && (
