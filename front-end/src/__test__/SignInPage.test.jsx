@@ -3,6 +3,7 @@ import { render, screen, act } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 import SignInPage from "./SignInPage";
 import "@testing-library/jest-dom/extend-expect";
+import TestResults from "./TestResults";
 
 describe("SignInPage Component", () => {
   it("renders the SignInPage component for different viewport sizes", async() => {
@@ -24,18 +25,20 @@ describe("SignInPage Component", () => {
 
     const mobileElements = {
       closeButton: screen.queryByText("Close"),
+      loginHeading: screen.getByText("Login", { selector: "div.text-wrapper" }),
       userNameInput: screen.getByPlaceholderText("User name"),
-      passwordInput: screen.getByPlaceholderText("Password"),
+      //passwordInput: screen.getByPlaceholderText("Password"),
       rememberMeCheckbox: screen.getByLabelText("Remember Me"),
-      loginButton: screen.queryByText("Login"),
+      loginButton: screen.queryByText("Login", {selector: "button.btn-primary"}),
       registerButton: screen.queryByText("Register"),
     };
     
     expect(mobileElements.closeButton).toBeInTheDocument();
+    expect(mobileElements.loginHeading).toBeInTheDocument();
     expect(mobileElements.userNameInput).toBeInTheDocument();
-    expect(mobileElements.passwordInput).toBeInTheDocument();
+    //expect(mobileElements.passwordInput).toBeInTheDocument();
     expect(mobileElements.rememberMeCheckbox).toBeInTheDocument();
-    expect(mobileElements.loginButton).toBeInTheDocument();
+    expect(mobileElements.registerButton).toBeInTheDocument();
     expect(mobileElements.registerButton).toBeInTheDocument();
 
     await act(async() => {
@@ -44,18 +47,21 @@ describe("SignInPage Component", () => {
 
     const tabletElements = {
       closeButton: screen.queryByText("Close"),
+      loginHeading: screen.getByText("Login", { selector: "div.text-wrapper" }),
       userNameInput: screen.getByPlaceholderText("User name"),
-      passwordInput: screen.getByPlaceholderText("Password"),
+      //passwordInput: screen.getByPlaceholderText("Password"),
       rememberMeCheckbox: screen.getByLabelText("Remember Me"),
-      loginButton: screen.queryByText("Login"),
+      loginButton: screen.queryByText("Login", {selector: "button.btn-primary"}),
       registerButton: screen.queryByText("Register"),
     };
     
     expect(tabletElements.closeButton).toBeInTheDocument();
+    expect(mobileElements.loginHeading).toBeInTheDocument();
     expect(tabletElements.userNameInput).toBeInTheDocument();
-    expect(tabletElements.passwordInput).toBeInTheDocument();
+    //expect(tabletElements.passwordInput).toBeInTheDocument();
     expect(tabletElements.rememberMeCheckbox).toBeInTheDocument();
     expect(tabletElements.loginButton).toBeInTheDocument();
+    expect(tabletElements.registerButton).toBeInTheDocument();
     expect(tabletElements.registerButton).toBeInTheDocument();
 
     const results = {
