@@ -4,20 +4,22 @@ import { useEffect, useState } from 'react';
 import Topbar from '../../Components/Topbar';
 import TableBox from '../../Components/TableBox';
 import { fetchReservationData } from '../../services/reservationService';
+import { Button } from '@mui/material';
+import { approveReservation } from '../../services/reservationService';
+import LoadingIcon from '../../Components/LoadingIcon';
 
 const ReservedBooks = () => {
-	useEffect(() => {
-		AOS.init({
-			duration: 1000,
-		});
-	}, []);
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+        });
+    }, []);
 
-	const [searchQuery, setSearchQuery] = useState('');
-	const [data, setData] = useState();
-	const [filteredData, setFilteredData] = useState();
+    const [searchQuery, setSearchQuery] = useState('');
+    const [data, setData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
 
-	const flattenBookObjects = (reservationData) => {
-		// Use map to transform the reservationData and flatten the book objects
+    const flattenBookObjects = (reservationData) => {
 		const flattenedData = reservationData.map((reservation) => ({
 			...reservation,
 			...reservation.book,
@@ -25,47 +27,50 @@ const ReservedBooks = () => {
 		}));
 		return flattenedData;
 	};
-	const fetchData = async () => {
-		try {
-			const reservationData = await fetchReservationData();
+    const fetchData = async () => {
+        try {
+            const reservationData = await fetchReservationData();
+            const flattenedData = flattenBookObjects(reservationData);
+            setData(flattenedData);
+            filterData(flattenedData, searchQuery);
+        } catch (error) {
+            console.error('Error fetching book data:', error);
+        }
+    }
 
-			const flattenedData = flattenBookObjects(reservationData);
-			setData(flattenedData);
-			setFilteredData(flattenedData);
-			console.log(flattenedData);
+    const filterData = (dataToFilter, query) => {
+        if (query) {
+            const newFilteredData = dataToFilter.filter((reservation) => {
+                const idMatch = reservation.reservation_id.toString().toLowerCase().includes(query.toLowerCase());
+                const nameMatch = reservation.name.toLowerCase().includes(query.toLowerCase());
+                return idMatch || nameMatch;
+            });
+            setFilteredData(newFilteredData);
+        } else {
+            setFilteredData(dataToFilter);
+        }
+    }
 
-		} catch (error) {
-			console.error('Error fetching book data:', error);
-		}
-	}
+    const handleReservation = async (bookId) => {
+        const isConfirmed = window.confirm('Are you sure you want to reserve this book?');
+        if (isConfirmed) {
+            try {
+                await approveReservation(bookId);
+                filterData(data.filter((reservation) => reservation.bookid !== bookId), searchQuery);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+    }
 
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-	const filterData = () => {
-		// Clear previous search results by resetting filteredData to initial data
-		let newFilteredData = data;
-		if (searchQuery) {
-			newFilteredData = data.filter((reservation) => {
-				const idMatch = reservation.reservation_id.toString().toLowerCase().includes(searchQuery.toLowerCase());
-				const nameMatch = reservation.name.toLowerCase().includes(searchQuery.toLowerCase());
-				return idMatch || nameMatch;
-			});
-			setFilteredData(newFilteredData);
-		}
-		else {
-			// Handle the case when the search query is empty (no filtering)
-			setFilteredData(data);
-
-		}
-	}
-	useEffect(() => {
-		fetchData();
-	}, []);
-
-	useEffect(() => {
-		// Run filterData when the component mounts and whenever searchQuery changes
-		filterData();
-
-	}, [searchQuery, filteredData]);
+    useEffect(() => {
+        // Run filterData when the component mounts and whenever searchQuery changes
+        filterData(data, searchQuery);
+    }, [searchQuery]);
 
 	const columns = [
 		{ field: 'reservation_id', headerName: 'ID', flex: 0.4 },
@@ -87,11 +92,23 @@ const ReservedBooks = () => {
 			headerName: 'Email',
 			flex: 0.7,
 		},
+		{
+			field: 'Approval',
+			renderCell: (cellValues) => (
+				<Button
+					variant="contained"
+					style={{ backgroundColor: 'rgb(100, 100, 100)', color: 'white' }}
+					onClick={() => handleReservation(cellValues.row.bookid)}
+				>
+					Approve
+				</Button>
+			),flex: 0.7,
+		},
 		
 	];
 
 	if (!filteredData) {
-		return <div>Loading...</div>;
+		return <LoadingIcon/>;
 	}
 	return (
 		<div style={{ width: '100%', maxWidth: "1280px", overflowY: 'auto' }}>

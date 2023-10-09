@@ -58,7 +58,7 @@ const Books = () => {
 	const filterData = () => {
 		if (searchQuery) {
 			const newFilteredData = filteredData.filter((book) => {
-				const idMatch = book.id.toString().toLowerCase().includes(searchQuery.toLowerCase());
+				const idMatch = book.bookid.toString().toLowerCase().includes(searchQuery.toLowerCase());
 				const titleMatch = book.title.toLowerCase().includes(searchQuery.toLowerCase());
 				return idMatch || titleMatch;
 			});

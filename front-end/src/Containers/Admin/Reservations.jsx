@@ -30,6 +30,8 @@ const Reservations = () => {
     useEffect(() => {
         fetchData();
     }, []);
+    
+
 
 
     const columns = [
@@ -37,7 +39,7 @@ const Reservations = () => {
         { field: 'txId', headerName: 'transaction Id', flex: 0.3 },
         { field: 'user', headerName: 'User', flex: 0.4 },
         {
-            field: 'book id',
+            field: 'bookid',
             headerName: 'Bookd Id',
             flex: 0.3,
             cellClassName: 'name-column--cell',
@@ -47,7 +49,8 @@ const Reservations = () => {
             field: 'time',
             headerName: 'Time',
             flex: 0.3,
-        }
+        },
+       
 
     ];
 
