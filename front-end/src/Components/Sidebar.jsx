@@ -135,8 +135,8 @@ const Sidebar = () => {
                         />
                         <Item
                             title="Barrowings"
-                            to="/admin/bookManagement/Reservations"
-                            icon={<CollectionsBookmarkIcon />}
+                            to="/admin/bookManagement/Barrowings"
+                            icon={<BookmarkAddedIcon />}
                             selected={selected}
                             setSelected={setSelected}
                         />

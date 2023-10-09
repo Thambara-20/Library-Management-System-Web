@@ -51,7 +51,7 @@ exports.create = async (req, res) => {
 
 
 exports.returnBook = async (req, res) => {
-    const id = req.params.id;
+    const id = req.body.reservation_id;
 
     try {
         const barrow = await Barrow.findByPk(id);

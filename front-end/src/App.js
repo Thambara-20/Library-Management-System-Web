@@ -18,7 +18,7 @@ import Profile from './Containers/UserProfile/Profile';
 import BookDetails from './Containers/Library/Bookdetails/BookDetails';
 import ReservedBooksPage from './Containers/Admin/ReservedBookspage';
 import PendingApprovalsPage from './Containers/Admin/PendingApprovalsPage';
-import SignInPage from './Containers/SignInPage/SignInPage';
+import BarrowingsPage from './Containers/Admin/BarrowingsPage';
 
 class App extends Component {
   constructor(props) {
@@ -66,6 +66,7 @@ class App extends Component {
             {isAdminLoggedIn ? <Route path="/admin/bookManagement/updatebook/:bookid" element={<BookUpdate />} /> : <Route path="/" />}
             {isAdminLoggedIn ? <Route path="/admin/bookManagement/Reservations" element={<ReservedBooksPage />} /> : <Route path="/" />}
             {isAdminLoggedIn ? <Route path="/admin/bookManagement/PendingApprovals" element={<PendingApprovalsPage />} /> : <Route path="/" />}
+            {isAdminLoggedIn ? <Route path="/admin/bookManagement/Barrowings" element={<BarrowingsPage />} /> : <Route path="/" />}
          
 
           </Routes>
