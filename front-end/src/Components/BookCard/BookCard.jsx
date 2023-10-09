@@ -8,20 +8,20 @@ import { Link } from "react-router-dom";
 
 
 const BookCard = ({ book }) => {
-    const bookUrl = `/book/${book.id}/`; 
+    const bookUrl = `/book/${book.bookid}/`; 
     console.log(bookUrl)
 
 
     return (
         <Link to={bookUrl} className="book-card-link">
-        <Card className="book-card visible" style={{ marginBottom: "10px", minHeight:550,width: 270,
-                    maxHeight:600 }}>
+        <Card className="book-card visible" style={{ marginBottom: "10px", minHeight:580, maxHeight:580,width: 270,
+                   }}>
             <CardContent className="card-content" >
                 <CardMedia className="image-content"
                     component="img"
                     alt="Book Cover"
-                    min-height="200"
-                    // max-height="230"
+                    min-height="210"
+                    max-height="210" 
                     image={book.url}// Use the img prop as the image source
                 />
                 <Typography variant="h6" component="div">
@@ -33,14 +33,14 @@ const BookCard = ({ book }) => {
                 <Typography variant="subtitle1" color="text.secondary">
                     Category: {book.category}
                 </Typography>
-                <div className="whish-list" >
+                {/* <div className="whish-list" >
                     <div className="wish">
-                        <BsFillBagHeartFill className="icon" style={{color:'#a34127',margin:15 }} size={45}/>
+                        <BsFillBagHeartFill className="icon" style={{color:'#a34127',margin:15 }} size={5}/>
                     </div>
                     <div className="reserve">
-                        <FaBookMedical className="icon" style={{color:'#503299',margin:15}} size={45}/>
+                        <FaBookMedical className="icon" style={{color:'#503299',margin:15}} size={5}/>
                     </div>
-                </div>
+                </div> */}
                 
             </CardContent>
         </Card>

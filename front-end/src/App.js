@@ -18,6 +18,7 @@ import Profile from './Containers/UserProfile/Profile';
 import BookDetails from './Containers/Library/Bookdetails/BookDetails';
 import ReservedBooksPage from './Containers/Admin/ReservedBookspage';
 import PendingApprovalsPage from './Containers/Admin/PendingApprovalsPage';
+import SignInPage from './Containers/SignInPage/SignInPage';
 
 class App extends Component {
   constructor(props) {

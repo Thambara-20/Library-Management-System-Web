@@ -36,7 +36,7 @@ module.exports = async function storeImage(url,title) {
       console.log("Image uploaded and download URL:", downloadURL);
       return downloadURL;
     } catch (err) {
-      console.error("Error uploading image:", err);
+      console.log("Error uploading image:", err);
     }
   }
 

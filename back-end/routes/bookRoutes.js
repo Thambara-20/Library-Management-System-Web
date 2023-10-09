@@ -1,10 +1,13 @@
+const admin = require("../middleware/admin.js");
+const auth = require("../middleware/auth.js");
+
 module.exports = app => {
     const books = require("../controllers/bookController.js");
   
     var router = require("express").Router();
   
     // Create a new Tutorial
-    router.post("/", books.create);
+    router.post("/", [auth,admin],books.create);
   
     // Retrieve all books
     router.get("/find", books.findAll);
@@ -16,10 +19,10 @@ module.exports = app => {
      router.get("/findone/:id", books.findOne);
   
     // // Update a Tutorial with id
-     router.put("/update/:id", books.update);
+     router.put("/update/:id",[auth,admin], books.update);
 
     // Delete a Tutorial with id
-    router.delete("/delete/:id", books.deleteBook);
+    router.delete("/delete/:id", [auth,admin],books.deleteBook);
 
   
     // // Delete all books

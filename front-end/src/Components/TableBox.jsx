@@ -6,7 +6,7 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import {AddBookButton} from './Button';
 
 
-function TableBox({ topic=false, filteredData, columns ,id=true,height=false}) {
+function TableBox({ topic=false, filteredData, columns ,id=undefined,height=false}) {
     return (
         <Box m="15px" style={{
             background: (id) ? 'linear-gradient(60deg, rgb(255, 255, 255) 0%, rgb(201, 201, 201)  80%)' : 'none',
@@ -72,7 +72,7 @@ function TableBox({ topic=false, filteredData, columns ,id=true,height=false}) {
                 }}
             >
                 <DataGrid  
-                    getRowId={(!id) ? (row) => row.txId : undefined} 
+                    getRowId={(id=="bookid") ? (row) => row.bookid :(id=="txId") ? (row) => row.txId :(id=="reservation_id") ? (row) => row.reservation_id: undefined} 
                     rows={filteredData}
                     columns={columns}
                     components={{ Toolbar: GridToolbar }}

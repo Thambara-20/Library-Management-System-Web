@@ -77,7 +77,8 @@ const Books = () => {
 
 
 	const columns = [
-		{ field: 'id', headerName: 'ID', flex: 0.4 },
+		{ field: 'bookid', headerName: 'Book ID', flex: 0.4 },
+
 		{ field: 'ISBN', headerName: 'ISBN' ,flex: 0.9 },
 		{
 			field: 'title',
@@ -105,8 +106,8 @@ const Books = () => {
 			headerName: 'Availability',
 			cellClassName: 'available-column--cell',
 			renderCell: (cellValues) => (
-				(cellValues.row.status) ?<><GppGoodIcon  /><h8 style={{  color:"#2a9461" }}
-				>Available</h8></>: <><GppBadIcon  /><h8 style={{  color: 'darkred' }}
+				(cellValues.row.status) ?<><GppGoodIcon  /><h8 style={{  color:"#2a9461" ,fontWeight: 'bold'}}
+				>Available</h8></>: <><GppBadIcon  /><h8 style={{  color: 'darkred', fontWeight: 'bold' }}
 				>Reserved</h8></>
 				
 		
@@ -118,8 +119,8 @@ const Books = () => {
 			renderCell: (cellValues) => (
 				<Button
 					variant="contained"
-					style={{ backgroundColor: 'darkred', color: 'white' }}
-					onClick={() => handleDelete(cellValues.row.id)}
+					style={{ backgroundColor: 'rgb(100, 100, 100)', color: 'white' }}
+					onClick={() => handleDelete(cellValues.row.bookid)}
 				>
 					Delete
 				</Button>
@@ -128,8 +129,9 @@ const Books = () => {
 		{
 			field: 'Update',
 			renderCell: (cellValues) => (
-				<Link to={`/admin/bookManagement/updatebook/${cellValues.row.id}`}>
-					<Button color="primary" variant="contained">
+				<Link to={`/admin/bookManagement/updatebook/${cellValues.row.bookid}`}>
+					<Button  variant="contained"
+					style={{ backgroundColor: 'rgb(0, 0, 0)', color: 'white' }}>
 						Update
 					</Button>
 				</Link>
@@ -145,7 +147,7 @@ const Books = () => {
 				setSearchQuery={setSearchQuery}
 				handleSearch={filterData}
 			/>
-			<TableBox filteredData={filteredData} topic="BookManager" columns={columns} data-aos="fade-up" />
+			<TableBox filteredData={filteredData} topic="BookManager" columns={columns} data-aos="fade-up" id="bookid" />
 		</div>
 	);
 };
