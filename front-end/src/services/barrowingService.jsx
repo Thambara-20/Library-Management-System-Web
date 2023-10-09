@@ -21,10 +21,11 @@ export async function getBarrows() {
   }
 }
 
-export async function returns(reservation_id) {
+export async function returns(barrow_id) {
   try {
+    console.log(barrow_id)
     const data = {
-      reservation_id: reservation_id
+      barrow_id: barrow_id
     };
     await axios.put(`${apiUrl}/api/barrows/return`, data, {
       headers: {

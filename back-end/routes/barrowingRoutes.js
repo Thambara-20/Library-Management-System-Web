@@ -9,7 +9,7 @@ module.exports = app => {
     // Create a new Tutorial
     router.post("/",[auth,admin],barrows.create);
     
-    router.put("/return/", barrows.returnBook);
+    router.put("/return", barrows.returnBook);
     // Retrieve all books
   
     router.get("/find", barrows.find);

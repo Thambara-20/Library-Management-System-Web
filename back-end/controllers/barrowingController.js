@@ -51,7 +51,8 @@ exports.create = async (req, res) => {
 
 
 exports.returnBook = async (req, res) => {
-    const id = req.body.reservation_id;
+    const id = req.body.barrow_id;
+    console.log(id);
 
     try {
         const barrow = await Barrow.findByPk(id);
@@ -86,7 +87,9 @@ exports.find = async (req, res) => {
 
     try {
         const barrows = await Barrow.findAll({
-            where: {}
+            where: {
+                is_returned: false
+            },
         });
         res.send(barrows);
     } catch (err) {

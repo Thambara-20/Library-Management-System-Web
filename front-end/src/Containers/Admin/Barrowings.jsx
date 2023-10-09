@@ -17,21 +17,18 @@ const Barrowings = () => {
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
 
-    const flattenBookObjects = (reservationData) => {
-		const flattenedData = reservationData.map((reservation) => ({
-			...reservation,
+    // const flattenBookObjects = (reservationData) => {
+	// 	const flattenedData = reservationData.map((reservation) => ({
+	// 		...reservation,
 		
-		}));
-		return flattenedData;
-	};
+	// 	}));
+	// 	return flattenedData;
+	// };
     const fetchData = async () => {
         try {
             const barrowData = await getBarrows();
-			
-			const flattenData = flattenBookObjects(barrowData);
-			console.log(flattenData)
-            setData(flattenData);
-            filterData(flattenData, searchQuery);
+            setData(barrowData);
+            filterData(barrowData, searchQuery);
 
         } catch (error) {
             console.error('Error fetching book data:', error);
@@ -51,16 +48,16 @@ const Barrowings = () => {
         }
     }
 
-    const handleReturning = async (bookId) => {
+    const handleReturning = async (barrow_id) => {
         const isConfirmed = window.confirm('Are you sure you want to reserve this book?');
-        // if (isConfirmed) {
-        //     try {
-        //         await approveReservation(bookId);
-        //         filterData(data.filter((reservation) => reservation.bookid !== bookId), searchQuery);
-        //     } catch (e) {
-        //         console.error(e);
-        //     }
-        // }
+         if (isConfirmed) {
+            try {
+                await returns(barrow_id);
+               filterData(data.filter((barrowing) => barrowing.barrow_id !== barrow_id), searchQuery);
+             } catch (e) {
+                 console.error(e);
+             }
+     }
     }
 
     useEffect(() => {
@@ -98,7 +95,7 @@ const Barrowings = () => {
 				<Button
 					variant="contained"
 					style={{ backgroundColor: 'rgb(100, 100, 100)', color: 'white' }}
-					onClick={() => handleReturning(cellValues.row.bookid)}
+					onClick={() => handleReturning(cellValues.row.barrow_id)}
 				>
 					Return now
 				</Button>
