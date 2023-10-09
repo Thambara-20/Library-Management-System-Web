@@ -5,7 +5,7 @@ import SignInPage from "./SignInPage";
 import "@testing-library/jest-dom/extend-expect";
 
 describe("SignInPage Component", () => {
-  it("renders the SignInPage component for different viewport sizes", () => {
+  it("renders the SignInPage component for different viewport sizes", async() => {
     render(
       <Router>
         <SignInPage />
@@ -18,7 +18,7 @@ describe("SignInPage Component", () => {
       window.dispatchEvent(new Event("resize"));
     };
 
-    act(() => {
+    await act(async() => {
       setViewportSize(360, 640); // Mobile view
     });
 
@@ -38,7 +38,7 @@ describe("SignInPage Component", () => {
     expect(mobileElements.loginButton).toBeInTheDocument();
     expect(mobileElements.registerButton).toBeInTheDocument();
 
-    act(() => {
+    await act(async() => {
       setViewportSize(768, 1024); // Tablet view
     });
 
