@@ -1,11 +1,11 @@
-import { mockDataContacts } from '../../assets/users/mockData';
+import { mockDataContacts } from '../../../assets/users/mockData';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect, useState } from 'react';
-import Topbar from '../../Components/Topbar';
-import TableBox from '../../Components/TableBox';
+import Topbar from '../../../Components/Topbar';
+import TableBox from '../../../Components/TableBox';
 
-const Users = () => {
+const PendingApprovals = () => {
 	useEffect(() => {
 		AOS.init({
 			duration: 1000,
@@ -73,9 +73,9 @@ return (
 			setSearchQuery={setSearchQuery}
 			handleSearch={filterData}
 		/>
-		<TableBox filteredData = {filteredData} topic = "UserManager" columns = {columns}/>
+		<TableBox filteredData = {filteredData} topic = "Pending Approvals" columns = {columns}/>
 		</div>
 );
 };
 
-export default Users;
+export default PendingApprovals;

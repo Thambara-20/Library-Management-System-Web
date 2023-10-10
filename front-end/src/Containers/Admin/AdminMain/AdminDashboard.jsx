@@ -1,18 +1,14 @@
 import React, { useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
-import { grey, green } from '@mui/material/colors';
-import MiniBox from '../../Components/MiniBox';
+import MiniBox from '../../../Components/MiniBox';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import PendingActionsOutlinedIcon from '@mui/icons-material/PendingActionsOutlined';
-import GroupAddOutlinedIcon from '@mui/icons-material/GroupAddOutlined';
-import PieChart from '../../Components/Chart/Chart';
-import Reservations from './Reservations';
-import HorizontalRule from '../../Components/horizontalline/Horizontalline';
-import PieRechartComponent from '../../Components/Chart/Chart';
+import Reservations from '../Reservations';
+import HorizontalRule from '../../../Components/horizontalline/Horizontalline';
 
 const Dashboard = () => {
     useEffect(() => {

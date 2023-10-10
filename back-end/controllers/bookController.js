@@ -1,7 +1,7 @@
 const db = require("../models");
 const Book = db.books;
 const Op = db.Sequelize.Op;
-const  storeImage = require("./Firebase");
+const  storeImage = require("./firebaseImageController");
 
 exports.create = async (req, res) => {
   // Validate request

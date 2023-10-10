@@ -102,7 +102,7 @@ const LibraryPage = () => {
         <div className="library-top">
           <div className="category-dropdown">
             <Select
-              className="selecter" // This is the class name to target
+              className="selecter-item" // This is the class name to target
               value={selectedCategory}
               onChange={handleCategoryChange}
               displayEmpty
@@ -120,7 +120,7 @@ const LibraryPage = () => {
 
           <div className="category-dropdown">
             <Select
-              className="selecter"
+              className="selecter-item"
               value={selectedAuthor}
               onChange={handleAuthorChange}
               variant="outlined"
@@ -140,7 +140,7 @@ const LibraryPage = () => {
           {/* handle the serach filter , author search or titile search */}
           <div className="category-dropdown">
             <Select
-              className="selecter"
+              className="selecter-item"
               value={search}
               onChange={handleSearch}
               variant="outlined"
@@ -169,8 +169,7 @@ const LibraryPage = () => {
           </Grid>
         </div>
       </Container>
-      <div className="book-details-section">
-      </div>
+  
       <Footer />
     </div>
   );

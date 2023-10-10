@@ -4,7 +4,7 @@ const Reservation = db.reservations;
 const User = db.users; // Remove unnecessary curly braces
 const Book = db.books;
 const Op = db.Sequelize.Op;
-const storeImage = require("./Firebase");
+
 
 exports.create = async (req, res) => {
     if (!req.body.bookid ) { // Check for both name and bookid
@@ -31,7 +31,7 @@ exports.create = async (req, res) => {
 
                 Reservation.destroy({ where: { reservation_id: reservation.reservation_id } }) // Use where clause
                 try{
-                    const barrowData =await Barrow.create(barrow);
+                    const barrowData = await Barrow.create(barrow);
                     res.send(barrowData);
                 }
                 catch(err){

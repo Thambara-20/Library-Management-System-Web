@@ -12,9 +12,12 @@
   text-decoration: none !important;
 }
 
+.Library-page-wrapper{
 
+  min-height: 100vh;
+}
 
-.selecter {
+.selecter-item {
   background-color: #ffff; /* Light gray background */
   border-radius: 5px;
   color: #000 !important;
@@ -56,71 +59,3 @@
   transition: transform 0.3s ease !important; /* Add a smooth transition effect */
 }
 
-
-@media screen and (max-width: 900px) {
- 
-  .library-top {
-    margin-top: 16px;
-    margin-bottom: 50px;
-    justify-content: space-between;
-    min-height: 120px !important;
-  ;
-  }
-  
-  .Library-page-wrapper{
-    align-items: center;
-    background-color: black;
-  }
-  
-  .text-field{ 
-    background-color: rgb(255, 255, 255);
-    border-radius: 5px; 
-    margin: 5px;
-  }
-  
-  .selecter {
-    
-    background-color: #ffffff; /* Light gray background */
-    border-radius: 5px;
-    max-height: 40px !important;
-    width: 100% !important;
-    height: 90%;
-    
-  }
-  .search-bar{ 
-    background-color: rgb(255, 255, 255);
-    width: 100%;
-    margin-left: 2px;
-    margin-right: 2px;
- 
-   
-
-
-}}
-
-
-
-@media screen and (max-width: 450px) {
-
-  .search-bar{ 
-    background-color: rgb(196, 202, 208);
-    border-radius: 5px; 
-    width: 100%;
-    
-
-   
-    /* Set a fixed height to match the search bar and button */
-  }
-  .category-dropdown {
-    width: 100%; /* Set a fixed height to match the search bar and button */
-  }
-  .selecter {
-    margin-top: 10px;
-   background-color: aliceblue;
-   width:100%;
- 
-  /* Set a fixed height to match the category dropdown and button */
-  }
-  
-
-}

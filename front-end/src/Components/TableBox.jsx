@@ -30,6 +30,7 @@ function TableBox({ topic=false, filteredData, columns ,id=undefined,height=fals
 
                 m="30px 0 0 0"
                 height= {height ? `${height}`: "70vh!important"}
+                width="100%"
                 data-aos="fade-up"
                 sx={{
                     '& .MuiDataGrid-root': {
