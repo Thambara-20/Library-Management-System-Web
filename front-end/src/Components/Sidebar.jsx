@@ -12,6 +12,7 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import { blueGrey, green, grey, cyan, blue } from '@mui/material/colors';
 import profileImg from "../assets/profile-icons/images.jpg"
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
+import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 // Custom Item component for MenuItems
 const Item = ({ title, to, icon, selected, setSelected }) => {
 
@@ -38,10 +39,10 @@ const Sidebar = () => {
             sx={{
                 '& .pro-sidebar-inner': {
                     backgroundColor: ' !important',
-                }, 
-                
+                },
+
                 '& .pro-inner-item': {
-                    padding: '5px 35px 5px 20px !important',
+                    padding: '5px 25px 5px 25px !important',
                 },
                 '& .pro-inner-item:hover': {
                     color: 'grey !important',
@@ -103,8 +104,8 @@ const Sidebar = () => {
 
                     {/* Menu Items */}
                     <Box paddingLeft={isCollapsed ? '2%' : '10%'}>
-                        <Typography variant="h10" color={blue} sx={{ m: '25px 0 2px 0' }} textAlign={'center'}>
-                            MainPage
+                        <Typography variant="h10" color={blue} sx={{ m: '25px 0 2px 10px' }} textAlign={'center'}>
+                            Home
                         </Typography>
 
                         <Item title="Dashboard" to="/admin" icon={<HomeOutlinedIcon />} selected={selected} setSelected={setSelected}
@@ -132,15 +133,22 @@ const Sidebar = () => {
                             selected={selected}
                             setSelected={setSelected}
                         />
-
-                    </Box>
-                    <Item 
-                            color="white" title={!isCollapsed &&("Back to Library")}
-                            to="/"
-                            icon={<ArrowBackIcon />}
+                        <Item
+                            title="Barrowings"
+                            to="/admin/bookManagement/Barrowings"
+                            icon={<BookmarkAddedIcon />}
                             selected={selected}
                             setSelected={setSelected}
-                         />
+                        />
+
+                    </Box>
+                    <Item
+                        color="white" title={!isCollapsed && ("Back to Library")}
+                        to="/"
+                        icon={<ArrowBackIcon />}
+                        selected={selected}
+                        setSelected={setSelected}
+                    />
                 </Menu>
             </ProSidebar>
         </Box>

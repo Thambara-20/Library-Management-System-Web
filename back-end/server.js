@@ -50,7 +50,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome." });
 });
 
-
+require("./routes/barrowingRoutes")(app);
 require("./routes/bookRoutes")(app);
 require("./routes/userRoutes")(app);
 require("./routes/reservationRoutes")(app);

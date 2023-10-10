@@ -3,12 +3,10 @@ import 'aos/dist/aos.css';
 import { useEffect, useState } from 'react';
 import Topbar from '../../Components/Topbar';
 import TableBox from '../../Components/TableBox';
-import { fetchReservationData } from '../../services/reservationService';
 import { Button } from '@mui/material';
-import { approveReservation } from '../../services/reservationService';
 import LoadingIcon from '../../Components/LoadingIcon';
-
-const ReservedBooks = () => {
+import {returns,getBarrows} from '../../services/barrowingService'
+const Barrowings = () => {
     useEffect(() => {
         AOS.init({
             duration: 1000,
@@ -19,20 +17,19 @@ const ReservedBooks = () => {
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
 
-    const flattenBookObjects = (reservationData) => {
-		const flattenedData = reservationData.map((reservation) => ({
-			...reservation,
-			...reservation.book,
-			...reservation.user,
-		}));
-		return flattenedData;
-	};
+    // const flattenBookObjects = (reservationData) => {
+	// 	const flattenedData = reservationData.map((reservation) => ({
+	// 		...reservation,
+		
+	// 	}));
+	// 	return flattenedData;
+	// };
     const fetchData = async () => {
         try {
-            const reservationData = await fetchReservationData();
-            const flattenedData = flattenBookObjects(reservationData);
-            setData(flattenedData);
-            filterData(flattenedData, searchQuery);
+            const barrowData = await getBarrows();
+            setData(barrowData);
+            filterData(barrowData, searchQuery);
+
         } catch (error) {
             console.error('Error fetching book data:', error);
         }
@@ -51,16 +48,16 @@ const ReservedBooks = () => {
         }
     }
 
-    const handleReservation = async (bookId) => {
+    const handleReturning = async (barrow_id) => {
         const isConfirmed = window.confirm('Are you sure you want to reserve this book?');
-        if (isConfirmed) {
+         if (isConfirmed) {
             try {
-                await approveReservation(bookId);
-                filterData(data.filter((reservation) => reservation.bookid !== bookId), searchQuery);
-            } catch (e) {
-                console.error(e);
-            }
-        }
+                await returns(barrow_id);
+               filterData(data.filter((barrowing) => barrowing.barrow_id !== barrow_id), searchQuery);
+             } catch (e) {
+                 console.error(e);
+             }
+     }
     }
 
     useEffect(() => {
@@ -73,7 +70,7 @@ const ReservedBooks = () => {
     }, [searchQuery]);
 
 	const columns = [
-		{ field: 'reservation_id', headerName: 'ID', flex: 0.4 },
+		{ field: 'barrow_id', headerName: 'ID', flex: 0.4 },
 		{ field: 'bookid', headerName: 'Book ID',flex: 0.4 },
 		{
 			field: 'name',
@@ -93,14 +90,14 @@ const ReservedBooks = () => {
 			flex: 0.7,
 		},
 		{
-			field: 'Approval',
+			field: 'Return',
 			renderCell: (cellValues) => (
 				<Button
 					variant="contained"
 					style={{ backgroundColor: 'rgb(100, 100, 100)', color: 'white' }}
-					onClick={() => handleReservation(cellValues.row.bookid)}
+					onClick={() => handleReturning(cellValues.row.barrow_id)}
 				>
-					Approve
+					Return now
 				</Button>
 			),flex: 0.7,
 		},
@@ -117,9 +114,9 @@ const ReservedBooks = () => {
 				setSearchQuery={setSearchQuery}
 				handleSearch={filterData}
 			/>
-			<TableBox filteredData={filteredData} topic="Book Reservations" columns={columns} id="reservation_id" />
+			<TableBox filteredData={filteredData} topic="Book Lending Record" columns={columns} id="barrow_id" />
 		</div>
 	);
 };
 
-export default ReservedBooks;
+export default Barrowings;

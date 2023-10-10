@@ -20,7 +20,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-
+db.barrows = require("./barrowingModel.js")(sequelize, Sequelize);
 db.books = require("./bookModel.js")(sequelize, Sequelize);
 db.users = require("./userModel.js")(sequelize, Sequelize);
 db.reservations = require("./reservationModel.js")(sequelize, Sequelize);
@@ -28,7 +28,7 @@ db.reservations = require("./reservationModel.js")(sequelize, Sequelize);
 const Book  = db.books;
 const Reservation  = db.reservations;
 const {User} = db.users
-
+const Barrow = db.barrows;
 // Add associations here
 Reservation.belongsTo(User, {
   foreignKey: 'name', // Assuming the 'name' field in Reservation links to User's 'name' field
@@ -38,6 +38,15 @@ Reservation.belongsTo(Book, {
   foreignKey: 'bookid', // Assuming the 'bookid' field in Reservation links to Book's 'bookid' field
   
 });
+Reservation.belongsTo(Barrow, {
+  foreignKey: 'bookid', 
+  
+});
+
+Barrow.belongsTo(Reservation, {
+  foreignKey: 'bookid', 
+});
+
 
 // Optional: If you want to retrieve reservations for a specific user, you can add the following association:
 User.hasMany(Reservation, {
