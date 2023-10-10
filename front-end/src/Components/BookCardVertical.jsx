@@ -81,7 +81,7 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
               ) : (
                 <div>
                   <Typography variant="subtitle1" color="white">
-                    Barrowed Date: {formattedDate}
+                    Borrowed Date: {book.barrowedDate}
                   </Typography>
                   <Typography variant="subtitle1" color="white">
                     Return Before: {book.returnBefore}
