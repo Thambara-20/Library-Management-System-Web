@@ -1,13 +1,12 @@
 
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
 import Home from './Containers/Home/Home';
 import LibraryPage from './Containers/Library/LibraryPage';
 import CustomerSupportPage from './Containers/CustomerSupport/CustomerSupportPage';
-import AdminMainPage from './Containers/Admin/AdminMainPage';
-import UserManagement from './Containers/Admin/UserManagement';
-import BookManagement from './Containers/Admin/BookManagement';
+import AdminMainPage from './Containers/Admin/AdminMain/AdminMainPage';
+import UserManagement from './Containers/Admin/Users/UserManagement';
+import BookManagement from './Containers/Admin/Books/BookManagement';
 import AddBook from './Containers/Admin/AddBook/AddBook';
 import auth from './services/authService';
 import { ToastContainer } from 'react-toastify';
@@ -16,9 +15,9 @@ import SignUp from './Containers/SighUpPage/SignUp';
 import AboutUs from './Containers/AboutUs/AboutUs'
 import Profile from './Containers/UserProfile/Profile';
 import BookDetails from './Containers/Library/Bookdetails/BookDetails';
-import ReservedBooksPage from './Containers/Admin/ReservedBookspage';
-import PendingApprovalsPage from './Containers/Admin/PendingApprovalsPage';
-import BarrowingsPage from './Containers/Admin/BarrowingsPage';
+import ReservedBooksPage from './Containers/Admin/Reservations/ReservedBookspage';
+import PendingApprovalsPage from './Containers/Admin/Approvals/PendingApprovalsPage';
+import BarrowingsPage from './Containers/Admin/Barrowings/BarrowingsPage';
 
 class App extends Component {
   constructor(props) {

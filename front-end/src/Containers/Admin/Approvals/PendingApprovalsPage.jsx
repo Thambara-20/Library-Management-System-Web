@@ -1,8 +1,8 @@
 import React from 'react'
-import Sidebar from '../../Components/Sidebar'
-import Users from '../Admin/Users'
+import Sidebar from '../../../Components/Sidebar'
+import PendingApprovals from './PendingApprovals'
 
-function UserManagement() {
+function PendingApprovalsPage() {
   return (
 
     <div className="app" style={{display: "flex",position: "relative"}}>
@@ -10,11 +10,11 @@ function UserManagement() {
       <main className="content" style={{
         height: "100%", width: "100%", fontFamily: 'Source Sans Pro'
       }}>
-        <Users />
+        <PendingApprovals />
       </main>
     </div>
 
   )
 }
 
-export default UserManagement
+export default PendingApprovalsPage

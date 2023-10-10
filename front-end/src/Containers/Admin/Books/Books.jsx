@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Button } from '@mui/material';
-import Topbar from '../../Components/Topbar';
-import TableBox from '../../Components/TableBox';
-import { fetchBookData, deleteBook} from '../../services/bookService'; // Update the import path
+import Topbar from '../../../Components/Topbar';
+import TableBox from '../../../Components/TableBox';
+import { fetchBookData, deleteBook} from '../../../services/bookService'; // Update the import path
 import { Link } from 'react-router-dom';
 import GppGoodIcon from '@mui/icons-material/GppGood';
 import GppBadIcon from '@mui/icons-material/GppBad';

@@ -28,7 +28,7 @@ module.exports = (sequelize, Sequelize) => {
     });
 
     User.prototype.generateAuthToken = function () { // Fix the method definition
-        const token = jwt.sign({ name: this.name ,isAdmin:this.isAdmin}, config.get("jwtPrivateKey")); // Fix the key name
+        const token = jwt.sign({ name: this.name ,isAdmin:this.isAdmin}, config.get("jwtPrivateKey")); 
         return token;
     }
 
@@ -38,7 +38,7 @@ module.exports = (sequelize, Sequelize) => {
                 .min(3)
                 .max(255)
                 .required(),
-            password: Joi.string().required(), // Assuming you validate the password separately
+            password: Joi.string().required(), 
         });
 
         try {

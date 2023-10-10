@@ -3,10 +3,9 @@ const Reservation = db.reservations;
 const { User } = db.users;
 const Book = db.books;
 const Op = db.Sequelize.Op;
-const storeImage = require("./Firebase");
+
 
 exports.create = async (req, res) => {
-    // Validate request
    
     if (!req.user.name || !req.body.bookid) {
         res.status(400).send({
@@ -15,7 +14,6 @@ exports.create = async (req, res) => {
         return;
     }
 
-    // Check if the book with the specified bookid exists
     Book.findOne({ where: { bookid: req.body.bookid } })
         .then(book => {
             if (!book) {
@@ -66,10 +64,6 @@ exports.find = (req, res) => {
             model: Book,
             
         },
-        // {
-        //     model: User,
-        //     attributes: ['email']
-        // },
         ]
     })
         .then(data => {
@@ -118,7 +112,7 @@ exports.deleteOne = (req, res) => {
     Reservation.findOne({ where: { reservation_id: id } })
     .then(async (reservation) => {
       if (reservation) {
-        const bookId = reservation.bookid; // Replace with the actual field name that stores the bookId in the Reservation model
+        const bookId = reservation.bookid; 
         await reservation.destroy();
 
         const book = await Book.findOne({ where: { bookid: bookId } });

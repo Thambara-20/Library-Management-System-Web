@@ -1,12 +1,12 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect, useState } from 'react';
-import Topbar from '../../Components/Topbar';
-import TableBox from '../../Components/TableBox';
-import { fetchReservationData } from '../../services/reservationService';
+import Topbar from '../../../Components/Topbar';
+import TableBox from '../../../Components/TableBox';
+import { fetchReservationData } from '../../../services/reservationService';
 import { Button } from '@mui/material';
-import { approveReservation } from '../../services/reservationService';
-import LoadingIcon from '../../Components/LoadingIcon';
+import { approveReservation } from '../../../services/reservationService';
+import LoadingIcon from '../../../Components/LoadingIcon';
 
 const ReservedBooks = () => {
     useEffect(() => {

@@ -11,22 +11,16 @@ if (!config.jwtPrivateKey) {
 }
 
 
-// var corsOptions = {
-//   origin: "http://localhost:8080"
-// };
-
 const corsOptions = {
-  origin: "*", // Replace with your frontend's URL
+  origin: "*", 
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true, // Allow cookies and authentication headers
+  credentials: true, 
 };
 
 app.use(cors(corsOptions));
 
-// parse requests of content-type - application/json
 app.use(express.json());
 
-// parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
 const db = require("./models");
@@ -39,16 +33,11 @@ db.sequelize.sync()
     console.log("Failed to sync db: " + err.message);
   });
 
-// drop the table if it already exists
+
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");
 // });
 
-// simple route
-app.get("/", (req, res) => {
-  
-  res.json({ message: "Welcome." });
-});
 
 require("./routes/barrowingRoutes")(app);
 require("./routes/bookRoutes")(app);

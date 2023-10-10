@@ -1,7 +1,5 @@
 import React from 'react'
-import Sidebar from '../../Components/Sidebar'
-import Users from './Users'
-import Reservations from './Reservations'
+import Sidebar from '../../../Components/Sidebar'
 import ReservedBooks from './ReservedBooks'
 
 

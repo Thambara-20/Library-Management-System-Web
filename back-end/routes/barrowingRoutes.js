@@ -6,17 +6,13 @@ module.exports = app => {
   
     var router = require("express").Router();
   
-    // Create a new Tutorial
     router.post("/",[auth,admin],barrows.create);
     
-    router.put("/return", barrows.returnBook);
-    // Retrieve all books
+    router.put("/return",[auth,admin], barrows.returnBook);
   
     router.get("/find", barrows.find);
-  
-    // // Delete all books
-    // router.delete("/", books.deleteAll);
-  
+
     app.use('/api/barrows', router);
+
   };
   

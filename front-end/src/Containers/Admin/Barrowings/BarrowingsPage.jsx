@@ -1,6 +1,6 @@
 import React from 'react'
 import Barrowings from './Barrowings'
-import Sidebar from '../../Components/Sidebar'
+import Sidebar from '../../../Components/Sidebar'
 
 
 function BarrowingsPage() {
