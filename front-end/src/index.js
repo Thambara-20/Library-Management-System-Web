@@ -5,7 +5,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
-import "./Components/SearchBar"
+import "font-awesome/css/font-awesome.css";
+
 
 
 ReactDOM.render(

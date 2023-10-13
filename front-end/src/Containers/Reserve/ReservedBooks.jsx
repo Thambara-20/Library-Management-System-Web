@@ -1,21 +1,55 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 import BookCardVertical from '../../Components/BookCardVertical'; 
-import { userReservedDummy as userReserved } from "../../Helpers/UserReservedDummy";
+import { reservedlist } from '../../services/reservationService';
+import { cancelReservation } from '../../services/reservationService';
 
 const ReservedBooks = () => {
-  
+  const [userReservedBooks, setUserReservedBooks] = useState([]);
+  const [reservation_id, setReservation_id] = useState(null);
+
+  async function fetchData() {
+    try {
+      const response = await reservedlist();
+      setUserReservedBooks(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    fetchData();
+  }, [reservation_id]);
+
+  async function handleCancel(reservationId) {
+    try {
+      console.log(reservationId);
+      await cancelReservation(reservationId);
+      setUserReservedBooks((prevReservedBooks) =>
+        prevReservedBooks.filter((reservation) => reservation.reservation_id !== reservationId)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  if (!userReservedBooks) return null;
+
   return (
-    <div>
-       <h1 style={{ fontSize: '36px', fontWeight: 'bold', textAlign: 'center', margin: '15px 0' }}>Ready To Borrow</h1>
-      
+    <div data-aos='fade-up'>
       <div>
-          {userReserved.map((book) => (
-            <BookCardVertical key={book.id} book={book} showCancellationButton={true}/> // Pass the showCancellationButton prop
-          ))}
-        </div>
+        {userReservedBooks.map((reservation) => (
+          <BookCardVertical
+            key={reservation.reservation_id}
+            book={reservation.book}
+            showCancellationButton={true}
+            setid={setReservation_id}
+            Cancel={() => handleCancel(reservation.reservation_id)}
+            id={reservation.reservation_id}
+          />
+        ))}
+      </div>
     </div>
   );
 };
 
 export default ReservedBooks;
+

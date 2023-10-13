@@ -1,10 +1,11 @@
 import React from "react";
 import "./AboutUsDetail.css";
 import aboutImg from "./aboutUs.jpeg";
+import Aos from "aos";
 
 const AboutUsDetail = () => {
   return (
-    <section className="heor">
+    <section className="heor" data-aos='fade-up'>
       <div className="container-about">
         {/* this is left side of the about us container top */}
         <div className="left-about">

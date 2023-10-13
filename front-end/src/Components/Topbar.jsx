@@ -8,7 +8,7 @@ import { grey } from '@mui/material/colors';
 const Topbar = ({ searchQuery, setSearchQuery, handleSearch }) => {
 
   return (
-    <Box display="flex" sx={{ background: `linear-gradient(90deg, ${grey[900]} 10%, rgb(255, 255, 255) 70%)` }} justifyContent="space-between" p={2}>
+    <Box display="flex" sx={{ background: `linear-gradient(90deg, ${grey[900]} 50%, rgb(255, 255, 255) 100%)` }} justifyContent="space-between" p={2}>
       {/* Search Bar */}
       <Box display="flex"  >
         <InputBase
@@ -19,7 +19,7 @@ const Topbar = ({ searchQuery, setSearchQuery, handleSearch }) => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value) }
           color='white'
-          margin="normal"
+         
           
         />
         <IconButton type="button" sx={{ p: 1 , color:'white'}} onClick={handleSearch}>
@@ -32,11 +32,21 @@ const Topbar = ({ searchQuery, setSearchQuery, handleSearch }) => {
   
         <IconButton>
           <Badge variant="dot" color="secondary">
-            <NotificationsOutlinedIcon />
+            <NotificationsOutlinedIcon 
+               sx={{
+                variant:"outlined",
+                color:'black',
+                
+              }} />
           </Badge>
         </IconButton>
         <IconButton>
-          <PersonOutlinedIcon />
+          <PersonOutlinedIcon
+          sx={{
+            variant:"outlined",
+            color:'black',
+            
+          }} />
         </IconButton>
       </Box>
     </Box>

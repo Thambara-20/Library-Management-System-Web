@@ -1,12 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import imgage from "./email.jpg";
 import RegForm from "../../Components/RegForm/RegForm";
 import "./ContactEmail.css";
 import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import popImage from "./popup.png";
+import Aos from "aos";
 
-const SignUp = () => {
+const ContactEmail = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+    });
+  }, []);
+
   const [popupState, setPopupState] = useState("");
   const pop = document.getElementById("popup");
   const form = useRef();
@@ -42,8 +49,8 @@ const SignUp = () => {
   };
 
   return (
-    <section className="register-wrapper">
-      <div className={`popupMessage ` + popupState} id="popup">
+    <section className="register-wrapper" data-aos="fade-up">
+      <div className={`popupMessage ` + popupState} id="popup" data-aos="fade-up">
         <div className="up">
           <img src={popImage} alt="popup Image" />
         </div>
@@ -114,4 +121,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default ContactEmail;

@@ -1,6 +1,5 @@
 import React from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
-import CustomHeader from "../CustomTitle";
 
 const PieRechartComponent = () => {
   const COLORS = ["orange", "#82ca9d", "white"];
@@ -39,7 +38,7 @@ const PieRechartComponent = () => {
 
   return (
  
-      <div  data-aos="fade-up" className="dark-background" >
+      <div  data-aos="fade-up" className="dark-background"  >
       <h5 style={{padding:"4px 0 0 10px" ,textAlign:'start',color:'white'}} >Book Status</h5>
         <PieChart width={570} height={400} backgroundColor="black">
 

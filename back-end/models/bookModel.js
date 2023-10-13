@@ -1,8 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
     const Book = sequelize.define("book", {
-      
-    
-      ISBN: {
+      bookid:{
+        type: Sequelize.INTEGER,
+        primaryKey:true,
+        autoIncrement:true
+      },
+        ISBN: {
         type: Sequelize.STRING
       },
       title: {
@@ -22,10 +25,14 @@ module.exports = (sequelize, Sequelize) => {
       },
       status:{
         type: Sequelize.BOOLEAN
+      },
+      url:{
+        type: Sequelize.STRING
       }
       
       
     });
+ 
   
 
     return Book;

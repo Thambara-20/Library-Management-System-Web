@@ -1,8 +1,9 @@
 const db = require("../models");
 const Book = db.books;
 const Op = db.Sequelize.Op;
+const  storeImage = require("./firebaseImageController");
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
   // Validate request
   if (!req.body.title) {
     res.status(400).send({
@@ -10,14 +11,20 @@ exports.create = (req, res) => {
     });
     return;
   }
-
+  
+ const downloadUrl = await storeImage(req.body.url,req.body.title);
+  
   const book = {
+    bookid: req.body.id,
     ISBN: req.body.ISBN,
     title: req.body.title,
     author: req.body.author,
     category: req.body.category,
     publisher: req.body.publisher,
-    status:  true
+    abstract: req.body.abstract,
+    status:  true,
+    url : downloadUrl
+
   };
 
 
@@ -51,8 +58,9 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-const id = req.params.id;
 
+try{
+  const id = req.params.id;
   Book.findByPk(id)
     .then(data => {
       if(!data){
@@ -63,18 +71,22 @@ const id = req.params.id;
         res.send(data);
       }
       
-    })
+    })}catch(err){
+      res.status(500).send({
+        message: "Error retrieving book with id=" + id
+      });
+    }
 }
 
 
 
 exports.deleteBook = async (req, res) => {
-  const id = req.params.id;
+  const bookid = req.params.id;
   console.log(req.params);
 
   try {
     // Find the user by id
-    const book = await Book.findOne({ where: { id } });
+    const book = await Book.findOne({ where: { bookid } });
 
     if (!book) {
       
@@ -96,24 +108,23 @@ exports.update = async (req, res) => {
   console.log(req.params);
   console.log(req.body);
   try {
-    Book.update(req.body, {
-      where: { id: id } 
-    })
-    .then(num => {
-      if (num == 1) {
-        res.send({
-          message: "Book was updated successfully."
-        });
-      } else {
-        res.send({
-          message: `Cannot update Book with id=${id}. Maybe Book was not found or req.body is empty!`
-        });
-      }
+    const [num, updatedBook] = await Book.update(req.body, {
+      where: { bookid: id },
+      returning: true, // This returns the updated record
+    });
+
+    if (num === 1) {
+      res.send({
+        message: "Book was updated successfully.",
+        updatedBook: updatedBook[0], // Send the updated book data
+      });
+    } else {
+      res.status(404).send({
+        message: `Cannot update Book with id=${id}. Maybe Book was not found or req.body is empty!`,
+      });
     }
-    )
-  }
-  catch (error) {
+  } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
-  }   
+  }
 }

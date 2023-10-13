@@ -25,7 +25,7 @@ exports.signup = async (req, res) => {
 
   try {
     const hash = await bcrypt.hash(req.body.password, 10);
-    const user = _.pick(req.body, ["name", "password", "national_id"]);
+    const user = _.pick(req.body, ["name", "national_id"]);
 
     const newUser = await User.create({
     
@@ -34,6 +34,7 @@ exports.signup = async (req, res) => {
       national_id: user.national_id,
       isAdmin: user.name === "administrator" ? true : false
     });
+    
 
     res.send( newUser.generateAuthToken())
 
@@ -63,7 +64,7 @@ exports.login = async (req, res) => {
       console.log("Login successful for user:", user.name);
 
       const token = user.generateAuthToken();
-      return res.header("x-auth-token", token).status(201).send(token);
+      return res.header("x-auth-token", token).status(200).send(token);
 
     } else {
       console.log("Invalid credentials.", user.name);

@@ -8,9 +8,10 @@ function auth(req, res, next) {
   try {
     const decodedPayload = jwt.verify(token, config.get("jwtPrivateKey"));
     req.user = decodedPayload;
+    
     next();
   } catch (ex) {
-    res.status(400).send("Invalid token.");
+    res.status(401).send("Invalid token.");
   }
 }
 
