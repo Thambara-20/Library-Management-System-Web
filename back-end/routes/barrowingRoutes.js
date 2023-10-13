@@ -12,7 +12,11 @@ module.exports = app => {
   
     router.get("/find", barrows.find);
 
+    router.get("/findone",[auth], barrows.findOne);
+
     app.use('/api/barrows', router);
+
+   
 
   };
   

@@ -4,7 +4,7 @@ import { reservedlist } from '../../services/reservationService';
 import { cancelReservation } from '../../services/reservationService';
 
 const ReservedBooks = () => {
-  const [userReservedBooks, setUserReservedBooks] = useState([]);
+  const [userReservedBooks, setUserReservedBooks] = useState();
   const [reservation_id, setReservation_id] = useState(null);
 
   async function fetchData() {
@@ -31,7 +31,9 @@ const ReservedBooks = () => {
     }
   }
 
-  if (!userReservedBooks) return null;
+  if (userReservedBooks.length===0) {
+
+  return <div style={{color:'white', zIndex:10, height:100 }}>No Reservations</div>;}
 
   return (
     <div data-aos='fade-up'>
@@ -41,6 +43,7 @@ const ReservedBooks = () => {
             key={reservation.reservation_id}
             book={reservation.book}
             showCancellationButton={true}
+            showReturn={true}
             setid={setReservation_id}
             Cancel={() => handleCancel(reservation.reservation_id)}
             id={reservation.reservation_id}

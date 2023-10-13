@@ -126,7 +126,7 @@ const Profile = () => {
                             </ListItem>
                         </List>
                     </div>
-                    <div className={`Profile-info ${isSidebarOpen ? '' : 'collapsed'}`} style={{ background: 'black' }}>
+                    <div className={`Profile-info ${isSidebarOpen ? '' : 'collapsed'}`} >
                         {pages[currentPage]}
 
                     </div>

@@ -8,7 +8,7 @@ import {AddBookButton} from './Button';
 
 function TableBox({ topic=false, filteredData, columns ,id=undefined,height=false}) {
     return (
-        <Box m="15px" style={{
+        <Box m="5px" style={{
             // background: (id) ? 'linear-gradient(60deg, rgb(255, 255, 255) 0%, rgb(201, 201, 201)  80%)' : 'none',
             padding: '5px 10px 5px 10px',
             borderRadius:'5px'
@@ -28,8 +28,8 @@ function TableBox({ topic=false, filteredData, columns ,id=undefined,height=fals
             )}
             <Box
 
-                m="30px 0 0 0"
-                height= {height ? `${height}`: "70vh!important"}
+                m="20px 0 10px 0"
+                height= {height ? `${height}`: "74vh!important"}
                 width="100%"
                 data-aos="fade-up"
                 sx={{
