@@ -34,11 +34,11 @@ module.exports = (sequelize, Sequelize) => {
 
     async function validateUser(user) {
         const schema = Joi.object({
-            name: Joi.string()
+            name: Joi.string().required()
                 .min(3)
                 .max(255)
                 .required(),
-            password: Joi.string().required(), 
+            password: Joi.string().required().min(8), 
         });
 
         try {

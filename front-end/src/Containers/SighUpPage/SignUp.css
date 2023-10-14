@@ -64,12 +64,7 @@
     transform: none; 
     background: rgb(0, 0, 0);
   }
-  
- 
-  
 
-
-/* poping success message box styles */
 .popupMessage {
     display: flex;
     flex-direction: column;

@@ -44,11 +44,8 @@ const SignInPage = ({ onClose, onSuucessClose }) => {
         <div className="frame">
           <div className="overlap-group-wrapper">
             <div className="overlap-group" >
-
-
-                <div className="text-wrapper">Login</div>
+              <div className="text-wrapper">Login</div>
               <div className='login-wrapper'>
-
                 <form onSubmit={handleSubmit}>
                   <div className="input-container">
                     <label className="input-label">User name</label>

@@ -22,6 +22,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
             style={{ color: blueGrey[40] }}
             onClick={() => setSelected(title)}
             icon={icon}
+
         >
             <Typography>{title}</Typography>
             <Link to={to} />
@@ -38,7 +39,7 @@ const Sidebar = () => {
         <Box
             sx={{
                 '& .pro-sidebar-inner': {
-                    backgroundColor: ' !important',
+                    backgroundColor: ' black!important',
                 },
 
                 '& .pro-inner-item': {
@@ -54,7 +55,8 @@ const Sidebar = () => {
             }}
         >
             <ProSidebar collapsed={isCollapsed}  >
-                <Menu iconShape="square" >
+                <Menu iconShape="square" 
+                >
                     {/* Logo & Menu Icon */}
                     <MenuItem
                         onClick={() => setIsCollapsed(!isCollapsed)}
@@ -108,11 +110,11 @@ const Sidebar = () => {
                             Home
                         </Typography>
 
-                        <Item title="Dashboard" to="/admin" icon={<HomeOutlinedIcon />} selected={selected} setSelected={setSelected}
+                        <Item title="Dashboard" to="/admin" icon={<HomeOutlinedIcon style={{marginLeft:9}} />} selected={selected} setSelected={setSelected}    
                         />
-                        <Item title="UserManager" to="/admin/userManagement" icon={<PersonOutlineOutlinedIcon />} selected={selected} setSelected={setSelected}
+                        <Item title="UserManager" to="/admin/userManagement" icon={<PersonOutlineOutlinedIcon style={{marginLeft:9}} />} selected={selected} setSelected={setSelected}
                         />
-                        <Item title="BookManager" to="/admin/bookManagement" icon={<LibraryBooksIcon />} selected={selected} setSelected={setSelected}
+                        <Item title="BookManager" to="/admin/bookManagement" icon={<LibraryBooksIcon style={{marginLeft:9}} />} selected={selected} setSelected={setSelected}
                         />
 
                         <Typography variant="h10" color={blue} sx={{ m: '25px 0 2px 2px' }}>
@@ -122,21 +124,21 @@ const Sidebar = () => {
                         <Item
                             title="Pending Approvals"
                             to="/admin/bookManagement/PendingApprovals"
-                            icon={<ContactsOutlinedIcon />}
+                            icon={<ContactsOutlinedIcon style={{marginLeft:9}} />}
                             selected={selected}
                             setSelected={setSelected}
                         />
                         <Item
                             title="Reservations"
                             to="/admin/bookManagement/Reservations"
-                            icon={<CollectionsBookmarkIcon />}
+                            icon={<CollectionsBookmarkIcon style={{marginLeft:9}} />}
                             selected={selected}
                             setSelected={setSelected}
                         />
                         <Item
                             title="Barrowings"
                             to="/admin/bookManagement/Barrowings"
-                            icon={<BookmarkAddedIcon />}
+                            icon={<BookmarkAddedIcon style={{marginLeft:9}}  />}
                             selected={selected}
                             setSelected={setSelected}
                         />
@@ -145,7 +147,7 @@ const Sidebar = () => {
                     <Item
                         color="white" title={!isCollapsed && ("Back to Library")}
                         to="/"
-                        icon={<ArrowBackIcon />}
+                        icon={<ArrowBackIcon style={{marginLeft:9}} />}
                         selected={selected}
                         setSelected={setSelected}
                     />
