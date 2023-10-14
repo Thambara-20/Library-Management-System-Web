@@ -1,4 +1,5 @@
 const express = require("express");
+const userDetails = require('./routes/registerRoutes')
 const cors = require("cors");
 const config = require("config");
 const app = express();
@@ -43,6 +44,8 @@ require("./routes/barrowingRoutes")(app);
 require("./routes/bookRoutes")(app);
 require("./routes/userRoutes")(app);
 require("./routes/reservationRoutes")(app);
+app.use('/Register', userDetails);
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8000;
