@@ -4,10 +4,72 @@ import RegForm from "../../Components/RegForm/RegForm";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
 import popImage from "./otp.png";
+import axios from 'axios';
 
 const SignUp = () => {
 
   const [popupState, setPopupState] = useState("");
+  const [error, setError] = useState(false);
+  const [data, setData] = useState({
+    Fname: "",
+    Sname: "",
+    address: "",
+    email: "",
+    idNumber: "",
+    FP: "",
+    SP: ""
+  });
+  
+  const isStrongPassword = (password) => {
+   // Define regex patterns for different password criteria
+  const lengthRegex = /.{8,}/;  // At least 8 characters
+  const uppercaseRegex = /[A-Z]/; // At least one uppercase letter
+  const lowercaseRegex = /[a-z]/; // At least one lowercase letter
+  const numberRegex = /\d/;       // At least one digit
+  const specialCharRegex = /[!@#\$%\^&\*\(\)_\+\-=\[\]\{\};:'",<>\.]/; // At least one special character
+
+  // Check the password against each criteria
+  const isLengthValid = lengthRegex.test(password);
+  const isUppercaseValid = uppercaseRegex.test(password);
+  const isLowercaseValid = lowercaseRegex.test(password);
+  const isNumberValid = numberRegex.test(password);
+  const isSpecialCharValid = specialCharRegex.test(password);
+
+  // Return true if all criteria are met
+  return isLengthValid && isUppercaseValid && isLowercaseValid && isNumberValid && isSpecialCharValid;
+}
+  const postData = async(event) => {
+    if (data.FP === data.SP && data.FP.length > 5 && isStrongPassword(data.FP)) {
+      setError(false)
+      console.log('successfull')
+      const newO = {
+    name: data.Fname + data.Sname,
+    password: data.FP,
+    national_id: data.idNumber,
+    isAdmin:false
+      }
+      console.log(newO);
+      const status = await axios.post("http://localhost:8080/api/users/signup", {
+        name: data.Fname +" " +data.Sname,
+        password: data.FP
+      })
+    } else {
+      setError(true)
+      const newdata = { ...data };
+      newdata.SP = "";
+      newdata.FP = "";
+      setData(newdata);
+    }
+    
+    
+  }
+
+  const handleF = (e) => {
+    const newdata = { ...data };
+    newdata[e.target.id] = e.target.value;
+    setData(newdata);
+    console.log(newdata);
+  }
 
   return (
 
@@ -35,36 +97,41 @@ const SignUp = () => {
         
       <div className="paddings innerWidth flexCenter reg-container">
         <div className="right">
-          <form action="" className="reg-form" name="reg-form">
+          <form onSubmit={postData} action="" className="reg-form" name="reg-form">
             <span className="primaryText">Register</span>
             <div className="name">
-              <RegForm Label="First Name" placeHolder="Rasindu" name='firstName' />
-              <RegForm Label="Last Name" placeHolder="Rawishanka" name='lastName'/>
+              <RegForm onChange={e=>handleF(e) } value={data.Fname} id="Fname" Label="First Name" placeHolder="Rasindu" name='firstName' />
+              <RegForm onChange={e => handleF(e)} value={data.Sname} id="Sname"  Label="Last Name" placeHolder="Rawishanka" name='lastName'/>
             </div>
             <RegForm
               Label="Address"
               placeHolder="No2, Piliyandala rd, Colombo"
               name='address'
+              onChange={e=>handleF(e) } value={data.address} id="address"
             />
             <RegForm
               Label="Email"
               type="email"
               placeHolder="SmartBook@gmail.com"
-              name = 'email'
+              name='email'
+              onChange={e=>handleF(e) } value={data.email} id="email"
             />
-            <RegForm Label="ID number" placeHolder="9909349839 V" name='id'/>
+            <RegForm onChange={e=>handleF(e) } value={data.idNumber} id="idNumber" Label="ID number" placeHolder="9909349839 V" name='id'/>
 
             <div className="name">
-              <RegForm Label="Password" type="password" name='password' placeHolder="* * * * * * *" />
-              <RegForm Label="Confirm Password" name='cPassword' type="password" placeHolder="* * * * * * *" />
+              <RegForm onChange={e=>handleF(e) } value={data.FP} id="FP" Label="Password" type="password" name='password' placeHolder="* * * * * * *" />
+              <RegForm onChange={e=>handleF(e) } value={data.SP} id="SP" Label="Confirm Password" name='cPassword' type="password" placeHolder="* * * * * * *" />
             </div>
+            {error ? <span id="passD">Password does't match or too short. it should 5 charactors<br/> should includes one uppercase and special charactor</span>:""}
+              
 
             <div className="reg-log-button">
               <div className="reg-button">
-              <button className="btn btn-primary" onClick={()=>{setPopupState("open-popup")}} type="submit">Register</button>
+                <button onClick={postData}  className="btn btn-primary" type="submit">Register</button>   
+                {/* open-popup */}
               </div>
               <div className="log-button">
-                <Link to={"/SignInPage"}>
+                <Link to={"/"}>
                 <button type="button" className="btn btn-outline-primary">
                  Sing In
                 </button>
@@ -73,6 +140,8 @@ const SignUp = () => {
             </div>
           </form>
         </div>
+
+        {/* right side */}
         <div className="left">
           <div className="image-container" id="re-con">
             <img src={imgage} alt="left image of registraion" id="reg-img"/>

@@ -12,13 +12,16 @@ class RegForm extends Component {
             <label for="exampleInputEmail1" className="secondaryText form-label">
               {this.props.Label}
             </label>
-            <input
+        <input
+          onChange={this.props.onChange}
+          id={this.props.id}
               type={this.props.type}
               name={this.props.name}
+              value={this.props.value}
               required="true"
               pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/"
               className="form-control "
-              id="exampleInputEmail1"
+              // id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder={this.props.placeHolder}
               style={{width:this.props.Width}}
