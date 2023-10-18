@@ -7,8 +7,8 @@ const Notification = db.notifications;
 
 async function notifications(req, res) {
     try {
-        const data = await Notification.findAll();
 
+        const data = await Notification.findAll();
         res.json(data); // Send the retrieved data as a JSON response
     } catch (error) {
         console.error('Error fetching notifications:', error);
@@ -41,16 +41,15 @@ async function checkOverdueItems() {
 
         for (i = 0; i < overdueBarrows.length; i++) {
             try {
-
                 Notification.create({
                     name: overdueBarrows[i].name,
-                    bookid: overdueBarrows[i].barrow_id,
+                    bookid: overdueBarrows[i].bookid,
                     book: overdueBarrows[i].book.title,
                     return_date: overdueBarrows[i].return_date,
                     is_returned: overdueBarrows[i].is_returned,
-                    email: overdueBarrows[i].user.email
-
-                })
+                    email: overdueBarrows[i].user.email,
+                    is_read: false
+                     })
             }
             catch (error) {
                 console.log(error);

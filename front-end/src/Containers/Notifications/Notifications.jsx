@@ -1,16 +1,15 @@
 import React from 'react';
-
-import BookCardVertical from '../../Components/BookCardVertical'; 
 import { userReservedDummy as userReserved } from "../../Helpers/UserReservedDummy";
+import { NotificationCard } from '../../Components/NotificationCard';
 
 const Notifications = () => {
   
   return (
     <div data-aos='fade-up'>
     
-      <div>
+      <div style={{ justifyContent:'center', display:'flex', flexDirection:'column', alignItems:'center'}}>
           {userReserved.map((book) => (
-            <BookCardVertical key={book.id} book={book} showCancellationButton={true}/>
+            <NotificationCard key ={book.id} title = {book.title} book_id={2}/>
           ))}
         </div>
     </div>

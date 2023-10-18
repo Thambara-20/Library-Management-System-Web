@@ -8,7 +8,6 @@ module.exports = app => {
   
     router.get("/notifications", notification.notifications);
 
-
     app.use('/api/notification', router);
 
    

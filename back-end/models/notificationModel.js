@@ -20,8 +20,9 @@ module.exports = (sequelize, Sequelize) => {
       is_returned: {
         type: Sequelize.BOOLEAN
       },
-      
-      }
+        is_read: {
+        type: Sequelize.BOOLEAN
+      }}
     );
   
   
