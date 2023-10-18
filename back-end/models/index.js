@@ -24,6 +24,7 @@ db.barrows = require("./barrowingModel.js")(sequelize, Sequelize);
 db.books = require("./bookModel.js")(sequelize, Sequelize);
 db.users = require("./userModel.js")(sequelize, Sequelize);
 db.reservations = require("./reservationModel.js")(sequelize, Sequelize);
+db.notifications = require("./notificationModel.js")(sequelize, Sequelize);
 
 const Book  = db.books;
 const Reservation  = db.reservations;
