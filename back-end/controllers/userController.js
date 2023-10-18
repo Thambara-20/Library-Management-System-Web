@@ -14,16 +14,18 @@ exports.get = async (req, res) => {
 };
 
 exports.signup = async (req, res) => {
-  const { error } = validateUser(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
-  if (!req.body.name || !req.body.password) {
-    return res.status(400).send({
-      message: "Username and password are required fields."
-    });
+  try{
+  const { error } = validateUser(req.body);}
+  catch(error){
+    return res.status(400).send(error);
   }
 
   try {
+    if (!req.body.name || !req.body.password || !req.body.email) {
+      return res.status(400).send({
+        message: "Missing required fields."
+      });
+    }
     const hash = await bcrypt.hash(req.body.password, 10);
     const user = _.pick(req.body, ["name", "national_id"]);
 

@@ -45,7 +45,7 @@ const SignUp = () => {
 
               <div className="reg-log-button">
                 <div className="reg-button">
-                  <button className="btn btn-primary" type="submit">Sign Up</button>
+                  <button className="btn btn-primary" type="submit">Sign up</button>
                 </div>
 
               </div>

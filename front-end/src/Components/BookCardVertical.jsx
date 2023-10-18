@@ -2,22 +2,27 @@ import React, { useState } from "react";
 import { Card, CardContent, CardMedia, Typography, Button } from "@mui/material";
 import { CancelButton } from "./Button";
 
-const BookCardVertical = ({ book, showCancellationButton = false, showIssueButton = false, showRejectButton = false, showReturn = false, Wishlist = false, setid, Cancel, id }) => {
+const BookCardVertical = ({ book, showCancellationButton = false, showIssueButton = false, showRejectButton = false, showReturn = false, Wishlist = false, setid =null, Cancel=null, id,item }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const formatedDate =(date)=>{
+    if (date){
+    const createdAtDate = new Date(date);
+    const formattedDate = createdAtDate.toLocaleDateString();
+    return formattedDate;
+  }}
 
-  const createdAtDate = new Date(book.createdAt);
-  const formattedDate = createdAtDate.toLocaleDateString();
   const handleCancel = async () => {
-
     setid(id);
     Cancel();
   }
+
 
   return (
     <div
       style={{
         display: "flex",
         height: "90%",
+        minHeight:'70vh',
         flexDirection: "column",
         alignItems: "center",
         maxWidth: "900px",
@@ -32,9 +37,10 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
           boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)",
           width: "100%",
           display: "flex",
+        
           flexDirection: "row",
           alignItems: "center",
-          backgroundColor: "#1c1c1c",
+          backgroundColor: "#6666",
           padding: "10px",
           position: "relative",
           transition: "transform 0.2s ease-in-out",
@@ -69,11 +75,11 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
         <div style={{ flex: 0.5, marginLeft: "30px", marginTop: "15px" }}>
           {!Wishlist ? (
             <CardContent className="card-content">
-              {!showReturn ? (
+              {showReturn ? (
                 <div>
                   <Typography variant="subtitle1" color="white">
-                    Reserved Date: {formattedDate}
-                  </Typography>
+                    Reserved Date: {formatedDate(book.createdAt)} 
+                  </Typography> 
                   <Typography variant="subtitle1" color="white">
                     Borrow Before: {book.borrowBefore}
                   </Typography>
@@ -81,16 +87,23 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
               ) : (
                 <div>
                   <Typography variant="subtitle1" color="white">
-                    Borrowed Date: {book.barrowedDate}
+                    Borrowed Date: {formatedDate(item.createdAt)}
                   </Typography>
                   <Typography variant="subtitle1" color="white">
-                    Return Before: {book.returnBefore}
+                    Return Before: {formatedDate(item.return_date)}
                   </Typography>
                 </div>
               )}
             </CardContent>
           ) : (
-            <CardContent className="card-content"></CardContent>
+            <CardContent className="card-content">
+              <div>
+                  
+                  <Typography variant="subtitle1" color="white">
+                     Wait until: {formatedDate(item.return_date)}
+                  </Typography>
+                </div>
+            </CardContent>
           )}
         </div>
         {showCancellationButton && isHovered && (
@@ -117,30 +130,8 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
             </Button>
           </div>
         )}
-        {showIssueButton && (
-          <div
-            style={{
-              position: "absolute",
-              bottom: "10px",
-              left: "40%", // Adjust the left value for spacing
-              transform: "translateX(-50%)",
-            }}
-          >
-            <Button variant="contained">Issue</Button>
-          </div>
-        )}
-        {showRejectButton && (
-          <div
-            style={{
-              position: "absolute",
-              bottom: "10px",
-              left: "70%", // Adjust the left value for spacing
-              transform: "translateX(-50%)",
-            }}
-          >
-            <Button variant="contained">Reject</Button>
-          </div>
-        )}
+      
+      
       </Card>
     </div>
   );

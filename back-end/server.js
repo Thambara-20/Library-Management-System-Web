@@ -3,7 +3,7 @@ const userDetails = require('./routes/registerRoutes')
 const cors = require("cors");
 const config = require("config");
 const app = express();
-
+const { checkOverdueItems } = require('./controllers/notificationController');
 
 
 if (!config.jwtPrivateKey) {
@@ -44,13 +44,15 @@ require("./routes/barrowingRoutes")(app);
 require("./routes/bookRoutes")(app);
 require("./routes/userRoutes")(app);
 require("./routes/reservationRoutes")(app);
-app.use('/Register', userDetails);
+require("./routes/notificationRoutes")(app);
+// Call checkOverdueItems to run it when the server starts
 
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+  console.log(`Server is running on port ${PORT}.`)
+  setInterval(checkOverdueItems, 60000);
 });
 
 

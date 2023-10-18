@@ -133,7 +133,7 @@ const SignUp = () => {
               <div className="log-button">
                 <Link to={"/"}>
                 <button type="button" className="btn btn-outline-primary">
-                 Sing In
+                 Sign in
                 </button>
                 </Link>
               </div>

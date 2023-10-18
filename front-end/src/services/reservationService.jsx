@@ -86,3 +86,19 @@ export async function approveReservation(bookid) {
     throw error;
   }
 }
+
+export async function notificationService() {
+  try {
+    const response = await axios.get(`${apiUrl}/api/notification/notifications`, {
+      headers: {
+        'x-auth-token': authService.getJwt(),
+      },
+    });
+
+    return response.data;
+
+  } catch (error) {
+    console.log(error)
+
+  }
+}

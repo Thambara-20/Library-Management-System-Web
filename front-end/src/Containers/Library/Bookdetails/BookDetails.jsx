@@ -112,7 +112,7 @@ const BookDetails = ({ }) => {
             </div>
             <div className="blurred-background"></div>
             <div className='right' data-aos='fade-up'>
-            {book.status?null :(<p style={{color:"red",fontWeight:600, position:'absolute', left:40, zIndex:100}}>Not available now</p>)}
+            {book.status?null :(<p style={{color:"darkred",fontWeight:600, position:'absolute', left:40, zIndex:100}}>Not available now</p>)}
               <div className="right-data">
                 <h2>Book Details</h2>
                 <Typography className='title' variant="h5">{book.title}</Typography>

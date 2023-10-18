@@ -21,6 +21,23 @@ export async function getBarrows() {
   }
 }
 
+export async function getBarrowed() {
+  try {
+    const res = await axios.get(`${apiUrl}/api/barrows/findone`, {
+      headers: {
+        'x-auth-token': authService.getJwt(),
+      },
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error)
+    if (error.response.status !== 401) {
+      notification.showError("Getting barrow Unseccessful");
+    }
+    throw error;
+  }
+}
+
 export async function returns(barrow_id) {
   try {
     console.log(barrow_id)

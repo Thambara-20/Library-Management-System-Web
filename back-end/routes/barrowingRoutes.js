@@ -10,9 +10,13 @@ module.exports = app => {
     
     router.put("/return",[auth,admin], barrows.returnBook);
   
-    router.get("/find", barrows.find);
+    router.get("/find",[auth,admin], barrows.find);
+
+    router.get("/findone",[auth], barrows.findOne);
 
     app.use('/api/barrows', router);
+
+   
 
   };
   

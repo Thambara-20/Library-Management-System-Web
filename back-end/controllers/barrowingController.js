@@ -98,3 +98,25 @@ exports.find = async (req, res) => {
         });
     }
 }
+
+exports.findOne = async (req, res) => {
+    const name = req.user.name;
+    console.log(name);
+
+    try {
+        const barrows = await Barrow.findAll({
+            include: [{
+                model: Book,
+            }],
+            where: {
+                name: name,
+                is_returned: false
+            },
+        });
+        res.send(barrows);
+    } catch (err) {
+        res.status(500).send({
+            message: "Some error occurred while retrieving barrows."
+        });
+    }
+}

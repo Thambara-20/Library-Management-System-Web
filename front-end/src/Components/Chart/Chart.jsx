@@ -40,7 +40,7 @@ const PieRechartComponent = () => {
  
       <div  data-aos="fade-up" className="dark-background"  >
       <h5 style={{padding:"4px 0 0 10px" ,textAlign:'start',color:'white'}} >Book Status</h5>
-        <PieChart width={570} height={400} backgroundColor="black">
+        <PieChart width={400} height={290} backgroundColor="black">
 
        
           <Pie
@@ -50,7 +50,7 @@ const PieRechartComponent = () => {
             nameKey="name"
             cx="60%"
             cy="50%"
-            outerRadius={130}
+            outerRadius={100}
             fill="#8884d8"
           >
             {pieData.map((entry, index) => (

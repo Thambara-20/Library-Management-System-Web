@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-    const Barrow = sequelize.define("barrow", {
-      barrow_id:{
+    const Notification = sequelize.define("notification", {
+      notification_id:{
         type: Sequelize.INTEGER,
         primaryKey:true,
         autoIncrement:true
@@ -11,18 +11,20 @@ module.exports = (sequelize, Sequelize) => {
       bookid: {
         type: Sequelize.INTEGER
       },
+      book:{
+        type: Sequelize.STRING
+      },
       return_date: {
         type: Sequelize.DATE
       },
       is_returned: {
         type: Sequelize.BOOLEAN
       },
-      
-      }
-
+        is_read: {
+        type: Sequelize.BOOLEAN
+      }}
     );
   
   
-    return Barrow;
-  };
-  
+    return Notification;
+}

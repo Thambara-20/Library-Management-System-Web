@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op;
 
 
 exports.create = async (req, res) => {
-   
+    console.log(req.user)
     if (!req.user.name || !req.body.bookid) {
         res.status(400).send({
             message: "Name and bookid are required fields."
@@ -68,6 +68,7 @@ exports.find = (req, res) => {
     })
         .then(data => {
             if (data) {
+                console.log(data)
                 res.send(data);
             } else {
                 res.status(404).send({ message: "Reservation not found" });
