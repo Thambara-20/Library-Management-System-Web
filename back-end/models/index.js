@@ -43,21 +43,28 @@ Barrow.belongsTo(Book, {
   foreignKey: 'bookid', // Assuming the 'name' field in Reservation links to User's 'name' field
 });
 
-Book.belongsTo(
-  Barrow,
-  { foreignKey: 'bookid' }
-) 
+Barrow.belongsTo(User,{
+  foreignKey:'name'
+})
+
+  
+  
+User.hasMany(Barrow,{
+    foreignKey:'name'
+  })
 
 
-
-// Optional: If you want to retrieve reservations for a specific user, you can add the following association:
 User.hasMany(Reservation, {
   foreignKey: 'name', // Assuming the 'name' field in Reservation links to User's 'name' field
 });
 
-// Optional: If you want to retrieve reservations for a specific book, you can add the following association:
 Book.hasMany(Reservation, {
   foreignKey: 'bookid', // Assuming the 'bookid' field in Reservation links to Book's 'bookid' field
 });
+
+Book.belongsTo(
+  Barrow,
+  { foreignKey: 'bookid' }
+  ) 
 
 module.exports = db;
