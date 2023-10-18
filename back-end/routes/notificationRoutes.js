@@ -6,7 +6,7 @@ module.exports = app => {
   
     var router = require("express").Router();
   
-    router.get("/notifications", notification.notifications);
+    router.get("/notifications",[auth], notification.notifications);
 
     app.use('/api/notification', router);
 

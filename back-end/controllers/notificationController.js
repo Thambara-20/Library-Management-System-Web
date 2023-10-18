@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const db = require("../models");
 const Barrow = db.barrows;
 const { User } = db.users
@@ -7,8 +8,9 @@ const Notification = db.notifications;
 
 async function notifications(req, res) {
     try {
-
-        const data = await Notification.findAll();
+        const name = req.user.name;
+        console.log(name);
+        const data = await Notification.findAll({where :{name}});
         res.json(data); // Send the retrieved data as a JSON response
     } catch (error) {
         console.error('Error fetching notifications:', error);
