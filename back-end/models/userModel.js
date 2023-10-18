@@ -35,12 +35,17 @@ module.exports = (sequelize, Sequelize) => {
     async function validateUser(user) {
         const schema = Joi.object({
             name: Joi.string().required()
-                .min(3)
+                .min(5)
                 .max(255)
                 .required(),
-            password: Joi.string().required().min(8), 
+            email: Joi.string()
+                .email() // This checks if the value is a valid email address
+                .required(),
+            password: Joi.string()
+                .min(8)
+                .required(),
         });
-
+        
         try {
             await schema.validateAsync(user);
         } catch (error) {
