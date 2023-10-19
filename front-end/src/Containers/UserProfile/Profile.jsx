@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ProfileInfo from './ProfileInfo';
-import { Button, ListItem, List, Divider, Avatar } from '@mui/material';
+import { Button, ListItem, List, Divider, Avatar, Badge } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AssignmentIcon from '@mui/icons-material/Assignment';
@@ -54,7 +54,7 @@ const Profile = () => {
 
     useEffect(() => {
         setCurrentPage(page);
-        
+
     }, [page]);
 
     return (
@@ -63,7 +63,7 @@ const Profile = () => {
             <div className={`Profile-container ${isSidebarOpen ? '' : 'collapsed'}`} >
 
                 <div className='Profile-top' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div style={{ display: 'flex', alignItems: 'center',minWidth:'300px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', minWidth: '300px' }}>
                         <Avatar className='Profile-avatar'>
                             <PersonIcon fontSize='large' />
                         </Avatar>
@@ -110,14 +110,16 @@ const Profile = () => {
                             </ListItem>
                             <Divider />
                             <ListItem button className='custom-icon-list-item' onClick={() => setCurrentPage(4)}>
-                                <RateReviewIcon />
+                                <Badge badgeContent={1} color="secondary">
+                                    <RateReviewIcon />
+                                </Badge>
                                 <div className={`menu-text ${isSidebarOpen ? '' : 'collapsed'}`}>
 
                                     Notifications
                                 </div>
                             </ListItem>
                             <Divider />
-                            <ListItem button className='custom-icon-list-item' onClick={() => {auth.logout();navigate('/')}}>
+                            <ListItem button className='custom-icon-list-item' onClick={() => { auth.logout(); navigate('/') }}>
                                 <ExitToAppIcon />
                                 <div className={`menu-text ${isSidebarOpen ? '' : 'collapsed'}`}>
 

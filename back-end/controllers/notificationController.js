@@ -27,7 +27,7 @@ async function checkOverdueItems() {
             return_date: {
                 [Op.gt]: currentDate, // Find items with return_date less than the current date
             },
-            is_returned: false, // Item has not been returned
+            is_returned: false, 
         },
         include: [{
             model: User,
