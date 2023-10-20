@@ -74,7 +74,7 @@ body {
      /* Add smooth transition effect */
   }
   .Sidebar.collapsed{
-    width: 13vh;
+    width: 12vh;
   }
  .menu-text.collapsed{
     display: none;
@@ -85,7 +85,7 @@ body {
   .ListItem-root {
     text-align: left; /* Align text to the left */
     width: 100%; /* Full width for list items */
-    padding: 20px; /* Add horizontal padding */
+    padding: 2px; /* Add horizontal padding */
     display: flex; /* Enable flex layout for items */
     align-items: center; /* Center items vertically */
   }
@@ -123,4 +123,11 @@ body {
     color: #fff;
     margin-right: 10px;
   }
+  @media screen and (max-width: 600px) {
+    .Sidebar.collapsed{
+      width: 11vh;
+    }
+  
+  }
+  
   

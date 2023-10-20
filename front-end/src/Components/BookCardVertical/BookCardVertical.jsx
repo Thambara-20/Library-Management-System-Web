@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardMedia, Typography, Button } from "@mui/material";
-import { CancelButton } from "./Button";
+import { CancelButton } from "../Button";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import "./BookCardVertical.css";
 
@@ -33,9 +33,9 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
             onMouseLeave={() => setIsHovered(false)}
         >
             <Card
-                className="book-card"
+                className="book-card-vertical"
                 sx={{
-                    marginBottom: "20px",
+                    marginBottom: "2px",
                     boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)",
                     width: "100%",
                     display: "flex",

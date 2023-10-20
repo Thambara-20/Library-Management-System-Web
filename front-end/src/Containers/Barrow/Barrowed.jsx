@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getBarrowed } from '../../services/barrowingService';
-import BookCardVertical from '../../Components/BookCardVertical'; 
+import BookCardVertical from '../../Components/BookCardVertical/BookCardVertical'; 
 
 const BarrowedBooks = () => {
   const [userBarrowed, setUserBarrowed] = useState([]);

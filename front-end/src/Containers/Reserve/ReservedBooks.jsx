@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BookCardVertical from '../../Components/BookCardVertical'; 
+import BookCardVertical from '../../Components/BookCardVertical/BookCardVertical'; 
 import { reservedlist } from '../../services/reservationService';
 import { cancelReservation } from '../../services/reservationService';
 
