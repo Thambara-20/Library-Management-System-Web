@@ -27,12 +27,13 @@ exports.signup = async (req, res) => {
       });
     }
     const hash = await bcrypt.hash(req.body.password, 10);
-    const user = _.pick(req.body, ["name", "national_id"]);
+    const user = _.pick(req.body, ["name", "national_id", "email"]);
 
     const newUser = await User.create({
     
       name: user.name,
       password: hash,
+      email: user.email,
       national_id: user.national_id,
       isAdmin: user.name === "administrator" ? true : false
     });

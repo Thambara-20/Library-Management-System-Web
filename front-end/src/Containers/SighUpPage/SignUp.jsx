@@ -54,7 +54,6 @@ const SignUp = () => {
         email: data.email,
         address: data.address,
         national_id: data.idNumber,
-
         password: data.FP
       })
     } else {
