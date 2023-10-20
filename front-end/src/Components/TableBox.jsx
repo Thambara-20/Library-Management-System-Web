@@ -35,14 +35,14 @@ function TableBox({ topic=false, filteredData, columns ,id=undefined,height=fals
                 sx={{
                     '& .MuiDataGrid-root': {
                       boxShadow: "5px 5px 15px 0px rgba(0,0,0,0.5)",
-                      transition: "transform 0.3s", // Add a transition for smooth scaling
+                      transition: "transform 0.3s", 
+                     
                     },
                     '& .MuiDataGrid:hover': {
-                      transform: "scale(1.1)", // Increase the size by 10% on hover (adjust as needed)
+                      transform: "scale(1.1)",
                     },
                  
                     '& .MuiDataGrid-cell': {
-                       
                         borderBottom: '1px solid black',
                     },
                     '& .MuiDataGrid-toolbarContainer .MuiButton-text': {
@@ -57,7 +57,7 @@ function TableBox({ topic=false, filteredData, columns ,id=undefined,height=fals
                        
                     },
                     '& .MuiDataGrid-columnHeaders': {
-                        backgroundColor: grey[500],
+                        backgroundColor:(topic)? grey[500]: grey[700],
                         borderBottom: 'none',
                         borderTop:"none"
                        
@@ -71,9 +71,10 @@ function TableBox({ topic=false, filteredData, columns ,id=undefined,height=fals
                         backgroundColor: grey[500],
                     },
                     '& .MuiCheckbox-root': {
-                        color: `${grey[200]} !important`,
+                        color: `${grey[800]} !important`,
                       
                     },
+                  
                 }}
             >
                 <DataGrid  

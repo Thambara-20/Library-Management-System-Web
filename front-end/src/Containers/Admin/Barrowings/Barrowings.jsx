@@ -17,13 +17,7 @@ const Barrowings = () => {
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
 
-    // const flattenBookObjects = (reservationData) => {
-	// 	const flattenedData = reservationData.map((reservation) => ({
-	// 		...reservation,
-		
-	// 	}));
-	// 	return flattenedData;
-	// };
+
     const fetchData = async () => {
         try {
             const barrowData = await getBarrows();
