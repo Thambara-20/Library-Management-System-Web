@@ -1,12 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import rightImage from "./main.jpg";
 import "./Hero.css";
 import CountUp from "react-countup";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { duration } from "@mui/material";
+import { getBooksCount } from '../../services/bookService';
+import { getUsersCount } from '../../services/authService';
+import {countUnreadNotifications } from '../../services/notificationService';
+import { getReservationsCount } from '../../services/reservationService';
 
 const Welcome = () => {
+  const [usersCount, setUsersCount] = useState(0);
+  const [booksCount, setBooksCount] = useState(0);
+  const [unreadEmailsCount, setUnreadEmailsCount] = useState(0);
+  const [pendingReservationsCount, setPendingReservationsCount] = useState(0);
+
+  useEffect(() => {
+      async function fetchData() {
+          try {
+              const bc = await getBooksCount();
+              setBooksCount(bc.count);
+              const ec =await countUnreadNotifications();
+              setUnreadEmailsCount(ec)
+              const uc = await getUsersCount();
+              setUsersCount(uc.count)
+              const pc = await getReservationsCount()
+              setPendingReservationsCount(pc)
+          } catch (e) {
+              console.error('Error fetching book count:', e);
+          }
+      }
+
+      fetchData(); // Call the async function here
+
+  }, []);
+
   return (
     <section className="welcome-wrapper">
       <div className="paddings innerWidth flexCenter w-container" id="welco">
@@ -49,21 +78,21 @@ const Welcome = () => {
           <div className="flexCenter stats" id="stat">
             <div className="flexColStart stat">
               <span>
-                <CountUp start={7435} end={9455} duration={3} />
+                <CountUp start={7435} end={booksCount} duration={3} />
                 <span>+</span>
               </span>
               <span className="secondaryText">Books</span>
             </div>
             <div className="flexColStart stat">
               <span>
-                <CountUp start={45} end={536} duration={4} />
+                <CountUp start={45} end={usersCount} duration={4} />
                 <span>+</span>
               </span>
               <span className="secondaryText">Users</span>
             </div>
             <div className="flexColStart stat">
               <span>
-                <CountUp start={5} end={136} duration={4} />
+                <CountUp start={5} end={booksCount} duration={4} />
                 <span>+</span>
               </span>
               <span className="secondaryText">New Books</span>

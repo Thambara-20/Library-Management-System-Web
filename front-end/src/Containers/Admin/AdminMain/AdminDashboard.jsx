@@ -13,7 +13,7 @@ import { getBooksCount } from '../../../services/bookService';
 import { getUsersCount } from '../../../services/authService';
 import {countUnreadNotifications } from '../../../services/notificationService';
 import { getReservationsCount } from '../../../services/reservationService';
-
+import { borrowingCount } from '../../../services/barrowingService';
 
 const Dashboard = () => {
     useEffect(() => {
@@ -26,6 +26,7 @@ const Dashboard = () => {
     const [booksCount, setBooksCount] = useState(0);
     const [unreadEmailsCount, setUnreadEmailsCount] = useState(0);
     const [pendingReservationsCount, setPendingReservationsCount] = useState(0);
+    const [borrowingsCount,setBarrowingsCount]= useState(0)
 
     useEffect(() => {
         async function fetchData() {
@@ -37,7 +38,9 @@ const Dashboard = () => {
                 const uc = await getUsersCount();
                 setUsersCount(uc.count)
                 const pc = await getReservationsCount()
-                setPendingReservationsCount(pc)
+                setPendingReservationsCount(pc);
+                const brc = await borrowingCount();
+                setBarrowingsCount(brc);
             } catch (e) {
                 console.error('Error fetching book count:', e);
             }
@@ -75,7 +78,7 @@ const Dashboard = () => {
                 {/* Row 2 */}
                 <HorizontalRule/>
                 
-                 <Reservations data-aos="fade-up"/>
+                 <Reservations data-aos="fade-up" prc={pendingReservationsCount} brc={borrowingsCount} abc={booksCount-borrowingsCount-pendingReservationsCount}/>
 
 
             </Box >

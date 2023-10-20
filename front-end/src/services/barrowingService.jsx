@@ -58,3 +58,12 @@ export async function returns(barrow_id) {
     throw error;
   }
 }
+
+export async function borrowingCount(){
+  try {
+    const response = await axios.get(`${apiUrl}/api/barrows/count`);
+    return response.data.count;
+  } catch (error) {
+    throw error;
+  }
+}

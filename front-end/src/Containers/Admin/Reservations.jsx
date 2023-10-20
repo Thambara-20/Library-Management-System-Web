@@ -7,7 +7,7 @@ import PieRechartComponent from '../../Components/Chart/Chart';
 import { fetchReservationData } from '../../services/reservationService';
 
 
-const Reservations = () => {
+const Reservations = ({abc,prc,brc}) => {
     useEffect(() => {
         AOS.init({
             duration: 1000,
@@ -73,7 +73,7 @@ const Reservations = () => {
                 </div>
 
                 <div style={{ flex: '1', padding: "25px 2px 0px 2px"}}>
-                    <PieRechartComponent/>
+                    <PieRechartComponent abc= {abc} brc={brc} prc={prc}/>
                 </div>
             </div>
         </div>
