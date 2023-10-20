@@ -128,3 +128,13 @@ exports.update = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 }
+
+exports.booksCount = async (req, res) => {
+  try {
+    const count = await Book.count();
+    res.status(200).json({ count });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}

@@ -20,7 +20,8 @@ module.exports = (app) => {
 
     router.put('/update',auth,users.updateUser);
 
-  
+    router.get('/count',users.usersCount)
+
     app.use('/api/users', router);
   };
   

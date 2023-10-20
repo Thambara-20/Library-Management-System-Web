@@ -79,6 +79,19 @@ export function getJwt() {
   return localStorage.getItem(tokenKey);
 }
 
+
+export async function getUsersCount(){
+  try{
+    const response = await axios.get(`${Config.Url}/api/users/count`, {
+    });
+    return response.data;
+  }
+  catch(error){
+    console.error("Get user failed:", error);
+    throw error;
+  }
+}
+
 export default {
   login,
   loginWithJwt,

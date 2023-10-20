@@ -181,3 +181,14 @@ exports.updateUser = async (req, res) => {
   }
 };
 
+
+exports.usersCount= async (req, res) => {
+  try {
+    const count = await User.count();
+    res.status(200).send({ count });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("An error occurred while counting users");
+  }
+}
+

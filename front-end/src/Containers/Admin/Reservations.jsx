@@ -34,7 +34,6 @@ const Reservations = () => {
             console.error('Error fetching book data:', error);
         }
     }
-    // Define the fetchData function to fetch book data from the backend API
  
 
     useEffect(() => {

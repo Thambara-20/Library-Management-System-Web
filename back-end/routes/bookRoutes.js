@@ -16,6 +16,8 @@ module.exports = app => {
 
     router.delete("/delete/:id", [auth,admin],books.deleteBook);
 
+    router.get("/count",books.booksCount)
+
     app.use('/api/books', router);
   };
   

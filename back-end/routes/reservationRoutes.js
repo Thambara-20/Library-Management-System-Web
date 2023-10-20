@@ -13,6 +13,8 @@ module.exports = app => {
     router.get("/findall",[auth,admin],reservations.findAll);
     
     router.delete("/delete/:id", [auth],reservations.deleteOne);
+
+    router.get("/count",reservations.reservationsCount)
   
     app.use('/api/reservations', router);
   };

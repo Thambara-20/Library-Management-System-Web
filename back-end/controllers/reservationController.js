@@ -142,3 +142,15 @@ exports.deleteOne = (req, res) => {
 
 }
   
+exports.reservationsCount=(req,res)=>{   
+    Reservation.count()
+    .then(data => {
+        res.send(data.toString());
+    })
+    .catch(err => {
+        res.status(500).send({
+            message:
+                err.message || "Some error occurred while retrieving reservation."
+        });
+    });
+}
