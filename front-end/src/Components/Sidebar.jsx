@@ -136,7 +136,7 @@ const Sidebar = () => {
                             setSelected={setSelected}
                         />
                         <Item
-                            title="Barrowings"
+                            title="Borrowings"
                             to="/admin/bookManagement/Barrowings"
                             icon={<BookmarkAddedIcon style={{marginLeft:9}}  />}
                             selected={selected}

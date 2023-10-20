@@ -5,7 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import './BookDetails.css'
 import Rating from "react-rating-stars-component"
-import { fetchallbookdata, findBook } from "../../../services/bookService";
+import { findBook } from "../../../services/bookService";
 import LoadingIcon from "../../../Components/LoadingIcon";
 import ReadPage from "./ReadPage";
 import { booksDummy as books } from "../../../Helpers/BooksDummy";
@@ -22,7 +22,7 @@ const BookDetails = ({ }) => {
   const [book, setBook] = useState({});
   const [showPages, setShowPages] = useState(false);
   const [showSignUpPopup, setShowSignUpPopup] = useState(false);
-
+  const [isBookInWishlist, setIsBookInWishlist] = useState(false);
 
 
   const openSignUpPopup = () => {
@@ -32,22 +32,40 @@ const BookDetails = ({ }) => {
   const closeSignUpPopup = () => {
     setShowSignUpPopup(false);
   };
-  
+
   const handlereserve = async () => {
-    try {
-      await reserve(bookId);
-      fetchdata(bookId);
-    } catch (error) {
-      console.log(error)
-      if (error.response && error.response.status === 401) {
-        openSignUpPopup();
-      } else {
-        console.error("An error occurred:",);
+    const isConfirmed = window.confirm('Are you sure you want to reserve this book?');
+    if (isConfirmed) {
+      try {
+
+        await reserve(bookId);
+        fetchdata(bookId);
+      } catch (error) {
+        console.log(error)
+        if (error.response && error.response.status === 401) {
+          openSignUpPopup();
+        } else {
+          console.error("An error occurred:",);
+        }
       }
     }
   };
+
+  const toggleWishlist = () => {
+    const wishlist = JSON.parse(localStorage.getItem('x-auth-alpha-wishlist')) || [];
   
- 
+    if (wishlist.includes(bookId)) {
+      const updatedWishlist = wishlist.filter((item) => item !== bookId);
+      localStorage.setItem('x-auth-alpha-wishlist', JSON.stringify(updatedWishlist));
+      setIsBookInWishlist(false);
+    } else {
+      wishlist.push(bookId);
+      localStorage.setItem('x-auth-alpha-wishlist', JSON.stringify(wishlist));
+      setIsBookInWishlist(true);
+    }
+  };
+
+
 
   const fetchdata = async (bookId) => {
 
@@ -56,22 +74,23 @@ const BookDetails = ({ }) => {
       console.log(data);
       setBook(data);
       console.log(book.title);
-      } catch (error) {
+    } catch (error) {
       console.error('Error fetching book details:', error);
     }
   };
-  
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
     });
   }, []);
 
-  useEffect( () => {
+  useEffect(() => {
     fetchdata(bookId);
-    
+    localStorage.getItem('x-auth-alpha-wishlist') && setIsBookInWishlist(JSON.parse(localStorage.getItem('x-auth-alpha-wishlist')).includes(bookId));
+
   }, [book.status]);
-  
+
   const selectedBook = books.find((book) => book.id == bookId);
 
   const containerStyle = {
@@ -90,17 +109,17 @@ const BookDetails = ({ }) => {
   };
 
   if (!book.title) {
-  return (
-    <LoadingIcon/>
+    return (
+      <LoadingIcon />
 
-  );
-    }
+    );
+  }
 
   return (
     <div className="book-wrapper">
-       {showSignUpPopup && (
-            <SignInPage onClose={closeSignUpPopup} onSuucessClose={closeSignUpPopup} />
-          )}
+      {showSignUpPopup && (
+        <SignInPage onClose={closeSignUpPopup} onSuucessClose={closeSignUpPopup} />
+      )}
       <div className="book-details">
         <Card>
           <CardContent style={containerStyle} data-aos='fade-up' className="cardcontent">
@@ -112,7 +131,7 @@ const BookDetails = ({ }) => {
             </div>
             <div className="blurred-background"></div>
             <div className='right' data-aos='fade-up'>
-              <div className="right-data">
+              z              <div className="right-data">
                 <h2>Book Details</h2>
                 <Typography className='title' variant="h5">{book.title}</Typography>
                 <Typography className='author'>Author: {book.author}</Typography>
@@ -125,13 +144,19 @@ const BookDetails = ({ }) => {
                 <a href={book.previewLink} target="_blank" rel="noopener noreferrer">Preview Link</a>
               </div>
               <div className="buttons">
-                <Button className='reserve-btn' variant="contained" color="primary" onClick={handlereserve}  disabled={!book.status}>
+                <Button className='reserve-btn' variant="contained" color="primary" onClick={handlereserve} disabled={!book.status}>
                   <FavoriteBorderIcon />
                   Reserve Now
                 </Button>
-                <Button className='wishlist-btn' variant="contained" color="secondary"  disabled={!book.status}>
+                <Button
+                  className='wishlist-btn'
+                  variant="contained"
+                  color="secondary"
+                  background="red"
+                  onClick={toggleWishlist}
+                >
                   <BookIcon />
-                  Add to Wishlist
+                  {isBookInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
                 </Button>
               </div>
             </div>
@@ -143,7 +168,7 @@ const BookDetails = ({ }) => {
             Read few pages {showPages ? '<' : '>'}
           </Button>
         </div>
-        <DefaultComponent/>
+        <DefaultComponent />
 
       </div>
     </div>

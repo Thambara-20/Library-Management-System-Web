@@ -22,7 +22,7 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
       style={{
         display: "flex",
         height: "90%",
-        minHeight:'70vh',
+        minHeight:'30vh',
         flexDirection: "column",
         alignItems: "center",
         maxWidth: "900px",
