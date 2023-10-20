@@ -8,8 +8,11 @@ module.exports = app => {
   
     router.get("/notifications",[auth], notification.notifications);
 
-    app.use('/api/notification', router);
+    router.put("/markasread",[auth], notification.markAsRead);
 
+    router.get("/count",[auth], notification.countunRead);
+
+    app.use('/api/notification', router);
    
 
   };
