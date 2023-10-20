@@ -3,7 +3,7 @@ import WarningIcon from '@mui/icons-material/Warning';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { markAsRead } from '../services/notificationService';
 
-const NotificationCard = ({ title, book_id, return_date, is_returned, email, is_read ,id}) => {
+const NotificationCard = ({ title, book_id, return_date, is_returned, email, is_read ,id, }) => {
     const [read, setRead] = useState(false);
     
 

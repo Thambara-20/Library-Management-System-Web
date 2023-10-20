@@ -15,11 +15,7 @@ const BarrowedBooks = () => {
      fetchData();
   },[])
 
-  if (userBarrowed.length===0) {
 
-    return <div style={{color:'white', zIndex:10, height:100 }}>No Reservations</div>;}
-  
-  
   return (
     <div data-aos='fade-up'>
         <div>
@@ -27,6 +23,7 @@ const BarrowedBooks = () => {
             <BookCardVertical key={barrowed.barrow_id} book={barrowed.book} showReturn={false} id ={barrowed.barrow_id} item = {barrowed}/>
           ))}
         </div>
+        {userBarrowed.length === 0 && <div style={{color:'white', zIndex:10, height:100 }}>No Barrowed Books</div>}
     </div>
   );
 };

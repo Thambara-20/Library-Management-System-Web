@@ -43,7 +43,7 @@ const Profile = () => {
         }
       }
       fetchData();
-    }, [count]);
+    }, []);
   
   
 
@@ -129,12 +129,11 @@ const Profile = () => {
                                 </div>
                             </ListItem>
                             <Divider />
-                            <ListItem button className='custom-icon-list-item' onClick={() => setCurrentPage(4)}>
+                            <ListItem button className='custom-icon-list-item' onClick={() => { setCurrentPage(4); setCount(0); }}>
                                 <Badge badgeContent={count} color="secondary">
                                     <RateReviewIcon />
                                 </Badge>
                                 <div className={`menu-text ${isSidebarOpen ? '' : 'collapsed'}`}>
-
                                     Notifications
                                 </div>
                             </ListItem>

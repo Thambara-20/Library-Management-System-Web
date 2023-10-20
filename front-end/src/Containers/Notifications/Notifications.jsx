@@ -30,7 +30,7 @@ useEffect(() => {
     
       <div style={{ justifyContent:'center', display:'flex', flexDirection:'column', alignItems:'center'}}>
           {notifications.map((book) => (
-            <NotificationCard  key ={book.notification_id} id = {book.notification_id} title = {book.book} book_id={book.bookid}/>
+            <NotificationCard  key ={book.notification_id} id = {book.notification_id} title = {book.book} book_id={book.bookid} />
           ))}
         </div>
     </div>
