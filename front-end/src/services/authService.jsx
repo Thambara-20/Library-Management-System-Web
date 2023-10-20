@@ -92,6 +92,22 @@ export async function getUsersCount(){
   }
 }
 
+export async function getUsersData(){
+  try{
+    const response = await axios.get(`${Config.Url}/api/users/find`, {
+      headers: {
+        "x-auth-token": getJwt(),
+      },
+    });
+    return response.data;
+  }
+  catch(error){
+    console.error("Get users failed:", error);
+    throw error;
+  }
+}
+
+
 export default {
   login,
   loginWithJwt,
@@ -100,4 +116,5 @@ export default {
   getJwt,
   getUser,
   updateUser,
+  getUsersCount
 };

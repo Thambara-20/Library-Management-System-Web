@@ -14,7 +14,7 @@ module.exports = (app) => {
     
     router.post('/login', users.login);
 
-    router.get('/find', users.findAll);
+    router.get('/find', [auth,admin],users.findAll);
 
     router.delete('/delete',[auth,admin],users.deleteUser);
 

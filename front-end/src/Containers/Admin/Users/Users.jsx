@@ -4,6 +4,7 @@ import 'aos/dist/aos.css';
 import { useEffect, useState } from 'react';
 import Topbar from '../../../Components/Topbar';
 import TableBox from '../../../Components/TableBox';
+import { getUsersData } from '../../../services/authService';
 
 const Users = () => {
 	useEffect(() => {
@@ -13,25 +14,41 @@ const Users = () => {
 	}, []);
 
 	const [searchQuery, setSearchQuery] = useState('');
-	const [filteredData, setFilteredData] = useState(mockDataContacts);
+	const [data, setData] = useState([]); // [
+	const [filteredData, setFilteredData] = useState(data);
 
 	const filterData = () => {
-		let newFilteredData = mockDataContacts;
+		let newFilteredData = [data];
 
 		if (searchQuery) {
-			newFilteredData = mockDataContacts.filter((user) => {
-				const idMatch = user.id.toString().toLowerCase().includes(searchQuery.toLowerCase());
+			newFilteredData = data.filter((user) => {
 				const nameMatch = user.name.toLowerCase().includes(searchQuery.toLowerCase());
+				const emailMatch = user.email.toLowerCase().includes(searchQuery.toLowerCase());
 
-				return idMatch || nameMatch;
+				return nameMatch|| emailMatch;
 			});
 			setFilteredData(newFilteredData);
 		}
 		else {
 			// Handle the case when the search query is empty (no filtering)
-			setFilteredData(mockDataContacts);	
+			setFilteredData(data);	
 	} 
 }
+
+useEffect(() => {
+	const getData = async () => {
+		try {
+			const data = await getUsersData();
+			console.log(data);
+			setData(data);
+			setFilteredData(data)
+		} catch (error) {
+			console.error('Get users failed:', error);
+		}
+	};
+
+	getData();
+}, []);
 
 useEffect(() => {
 	// Run filterData when the component mounts and whenever searchQuery changes
@@ -39,17 +56,11 @@ useEffect(() => {
 }, [searchQuery],[filteredData]);
 
 const columns = [
-	{ field: 'id', headerName: 'ID', flex: 0.4 },
-	{ field: 'registrarId', headerName: 'Registrar ID' },
-	{
-		field: 'name',
-		headerName: 'Name',
-		flex: 1,
-		cellClassName: 'name-column--cell',
-	},
+	{ field: 'name', headerName: 'Name', flex: 0.4 },
+
 
 	{
-		field: 'phone',
+		field: 'phone_number',
 		headerName: 'Phone No.',
 		flex: 0.7,
 	},
@@ -72,7 +83,7 @@ return (
 			setSearchQuery={setSearchQuery}
 			handleSearch={filterData}
 		/>
-		<TableBox filteredData = {filteredData} topic = "UserManager" columns = {columns}/>
+		<TableBox filteredData = {filteredData} topic = "UserManager" columns = {columns} id="name"/>
 		</div>
 );
 };
