@@ -26,9 +26,9 @@ useEffect(() => {
    return <LoadingIcon/>}
   
   return (
-    <div data-aos='fade-up'>
+    <div data-aos='fade-up' style={{borderRadius:'5px !important'}}>
     
-      <div style={{ justifyContent:'center', display:'flex', flexDirection:'column', alignItems:'center'}}>
+      <div style={{ justifyContent:'flex-start', display:'flex', flexDirection:'column', alignItems:'center',borderRadius:'5px !important'}}>
           {notifications.map((book) => (
             <NotificationCard  key ={book.notification_id} id = {book.notification_id} title = {book.book} book_id={book.bookid} />
           ))}

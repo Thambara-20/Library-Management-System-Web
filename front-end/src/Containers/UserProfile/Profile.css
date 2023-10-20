@@ -61,7 +61,7 @@ body {
     background-color: #333;
     color: #fff;
     padding: 20px;
-    min-width:12vh;
+    min-width:10vh;
     border-radius: 0 20px 20px 0; /* Rounded corners on the left */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -99,7 +99,7 @@ body {
     align-items: center;
     padding: 10px;
     min-height: 70vh;
-    justify-content: center;
+    justify-content: flex-start;
     border-radius: 4px;
     background-color: #1a1a1a;
   }
