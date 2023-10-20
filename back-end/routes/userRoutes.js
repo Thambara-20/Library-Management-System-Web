@@ -18,6 +18,8 @@ module.exports = (app) => {
 
     router.delete('/delete',[auth,admin],users.deleteUser);
 
+    router.put('/update',auth,users.updateUser);
+
   
     app.use('/api/users', router);
   };

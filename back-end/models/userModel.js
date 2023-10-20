@@ -22,6 +22,12 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
 
         },
+        address:{
+            type: Sequelize.STRING,
+        },
+        phone_number:{
+            type: Sequelize.STRING,
+        },
         isAdmin: {
             type: Sequelize.BOOLEAN,
         }

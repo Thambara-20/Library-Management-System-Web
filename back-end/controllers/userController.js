@@ -120,12 +120,14 @@ exports.updateUser = async (req, res) => {
   try {
     const name = req.user.name; // Assuming you have user information in the request object
     const updates = req.body;
+    console.log(updates);
 
     if (!name) {
       return res.status(401).send("Unauthorized");
     }
 
     const user = await User.findOne({ where: { name: name } });
+    console.log(user);
 
     if (!user) {
       return res.status(404).send("User not found");
@@ -137,8 +139,10 @@ exports.updateUser = async (req, res) => {
     }
 
     // Check if the previous password matches
-    if (updates.password) {
-      const passwordMatch = await bcrypt.compare(updates.previousPassword, user.password);
+    if (updates.prevpassword) {
+     
+      const passwordMatch = await bcrypt.compare(updates.prevpassword, user.password);
+      console.log(updates.prevpassword);
       if (!passwordMatch) {
         return res.status(401).send("Previous password does not match.");
       }
@@ -159,10 +163,8 @@ exports.updateUser = async (req, res) => {
     // Save the updated user
     await user.save();
 
-    // You can also generate a new authentication token if needed
-    // const token = user.generateAuthToken();
-
     res.status(200).send("User updated successfully");
+
   } catch (error) {
     console.error("Error during user update:", error);
     res.status(500).send("An error occurred during user update");

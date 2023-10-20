@@ -1,6 +1,7 @@
 import axios from "axios"; // You need to import axios for making HTTP requests.
 import jwtDecode from "jwt-decode";
 import {Config} from "../services/config.js";
+import  notification  from "./notificationService";
 const _ = require("lodash");
 const tokenKey = "auth-x-token";
 
@@ -15,6 +16,24 @@ export async function login(formData) {
     throw error;
   }
 }
+
+export async function updateUser(formData) {
+  try{
+    const response = await axios.put(`${Config.Url}/api/users/update`, formData,
+    {
+      headers: {
+        "x-auth-token": getJwt(),
+      },
+    });
+  notification.showSuccess("Update successful");
+  }
+  catch(error){
+    console.error("Update failed:", error);
+    throw error;
+  }
+  
+}
+
 
 export function loginWithJwt(jwt) {
   localStorage.setItem(tokenKey, jwt);
