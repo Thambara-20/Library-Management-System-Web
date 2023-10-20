@@ -1,11 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProfileInfo.css';
 import { updateUser } from '../../services/authService';
-import auth from '../../services/authService';
+import { getUser } from '../../services/authService';
+
 
 const ProfileInfo = () => {
   const [formData, setFormData] = useState({
-    email: 'example@gmail.com',
+    email: '',
+    address: '',
+    phone: '',
+    currentPassword: '',
+    newPassword: '',
+    confirmNewPassword: '',
+  });
+
+
+  useEffect(() => {
+    async function fetchData() {
+      const user = await getUser();
+      setFormData({
+        email: user.email,
+        address: user.address,
+        phone: user.phone_number,
+        currentPassword: '',
+        newPassword: '',
+        confirmNewPassword: '',
+      });
+    }
+    fetchData();
+  },[])
+
+
+  const [errors, setErrors] = useState({
+    email: '',
     address: '',
     phone: '',
     currentPassword: '',
@@ -19,14 +46,29 @@ const ProfileInfo = () => {
       ...formData,
       [name]: value,
     });
+
+    // Clear the error message when the user edits the field
+    setErrors({
+      ...errors,
+      [name]: '',
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if new password and confirm password match
-    if (formData.newPassword !== formData.confirmNewPassword) {
-      alert('New password and confirm password must match.');
+    // Check if any of the input fields are empty and set error messages accordingly
+    const errorFields = {};
+    Object.keys(formData).forEach((key) => {
+      if (!formData[key]) {
+        errorFields[key] = 'This field is required.';
+      }
+    });
+
+    setErrors(errorFields);
+
+    // Check if any errors were set
+    if (Object.keys(errorFields).length > 0) {
       return;
     }
 
@@ -41,7 +83,14 @@ const ProfileInfo = () => {
 
     try {
       const response = await updateUser(updatedData);
-
+      setFormData({
+        email: '',
+        address: '',
+        phone: '',
+        currentPassword: '',
+        newPassword: '',
+        confirmNewPassword: '',
+      });
     } catch (error) {
       console.error('Error updating profile:', error);
       alert('An error occurred while updating the profile');
@@ -56,27 +105,30 @@ const ProfileInfo = () => {
           <div className="ProfileInfo-left">
             <div className="Account-info">
               <h3>Account Info</h3>
-              <h5>Email </h5>
+              <h5>Email</h5>
               <input
                 type="text"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
               />
-              <h5>Address </h5>
+              {errors.email && <p className="error-message">{errors.email}</p>}
+              <h5>Address</h5>
               <input
                 type="text"
                 name="address"
                 value={formData.address}
                 onChange={handleChange}
               />
-              <h5>Phone Number </h5>
+              {errors.address && <p className="error-message">{errors.address}</p>}
+              <h5>Phone Number</h5>
               <input
                 type="text"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
               />
+              {errors.phone && <p className="error-message">{errors.phone}</p>}
               <h5>Library Card Number - 1234567890</h5>
             </div>
           </div>
@@ -93,6 +145,9 @@ const ProfileInfo = () => {
                   value={formData.currentPassword}
                   onChange={handleChange}
                 />
+                {errors.currentPassword && (
+                  <p className="error-message">{errors.currentPassword}</p>
+                )}
                 <h5>New Password</h5>
                 <input
                   type="password"
@@ -100,6 +155,7 @@ const ProfileInfo = () => {
                   value={formData.newPassword}
                   onChange={handleChange}
                 />
+                {errors.newPassword && <p className="error-message">{errors.newPassword}</p>}
                 <h5>Confirm New Password</h5>
                 <input
                   type="password"
@@ -107,6 +163,9 @@ const ProfileInfo = () => {
                   value={formData.confirmNewPassword}
                   onChange={handleChange}
                 />
+                {errors.confirmNewPassword && (
+                  <p className="error-message">{errors.confirmNewPassword}</p>
+                )}
               </div>
               <button className="Button-root" type="submit">
                 Save Changes

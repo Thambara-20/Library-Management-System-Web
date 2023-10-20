@@ -46,11 +46,15 @@ const SignUp = () => {
     name: data.Fname + data.Sname,
     password: data.FP,
     national_id: data.idNumber,
-    isAdmin:false
+
       }
       console.log(newO);
-      const status = await axios.post("http://localhost:8080/api/users/signup", {
-        name: data.Fname +" " +data.Sname,
+      const status = await axios.post("http://localhost:8000/api/users/signup", {
+        name: data.Fname,
+        email: data.email,
+        address: data.address,
+        national_id: data.idNumber,
+
         password: data.FP
       })
     } else {
@@ -100,23 +104,23 @@ const SignUp = () => {
           <form onSubmit={postData} action="" className="reg-form" name="reg-form">
             <span className="primaryText">Register</span>
             <div className="name">
-              <RegForm onChange={e=>handleF(e) } value={data.Fname} id="Fname" Label="First Name" placeHolder="Rasindu" name='firstName' />
-              <RegForm onChange={e => handleF(e)} value={data.Sname} id="Sname"  Label="Last Name" placeHolder="Rawishanka" name='lastName'/>
+              <RegForm onChange={e=>handleF(e) } value={data.Fname} id="Fname" Label="First Name" placeHolder="First name" name='firstName' />
+              <RegForm onChange={e => handleF(e)} value={data.Sname} id="Sname"  Label="Last Name" placeHolder="Last name" name='lastName'/>
             </div>
             <RegForm
               Label="Address"
-              placeHolder="No2, Piliyandala rd, Colombo"
+              placeHolder="Your address"
               name='address'
               onChange={e=>handleF(e) } value={data.address} id="address"
             />
             <RegForm
               Label="Email"
               type="email"
-              placeHolder="SmartBook@gmail.com"
+              placeHolder="Your email address"
               name='email'
               onChange={e=>handleF(e) } value={data.email} id="email"
             />
-            <RegForm onChange={e=>handleF(e) } value={data.idNumber} id="idNumber" Label="ID number" placeHolder="9909349839 V" name='id'/>
+            <RegForm onChange={e=>handleF(e) } value={data.idNumber} id="idNumber" Label="ID number" placeHolder="Your national id" name='id'/>
 
             <div className="name">
               <RegForm onChange={e=>handleF(e) } value={data.FP} id="FP" Label="Password" type="password" name='password' placeHolder="* * * * * * *" />

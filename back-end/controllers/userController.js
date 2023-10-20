@@ -139,10 +139,10 @@ exports.updateUser = async (req, res) => {
     }
 
     // Check if the previous password matches
-    if (updates.prevpassword) {
+    if (updates.currentPassword) {
      
-      const passwordMatch = await bcrypt.compare(updates.prevpassword, user.password);
-      console.log(updates.prevpassword);
+      const passwordMatch = await bcrypt.compare(updates.currentPassword, user.password);
+      console.log(updates.currentPassword);
       if (!passwordMatch) {
         return res.status(401).send("Previous password does not match.");
       }
@@ -152,13 +152,23 @@ exports.updateUser = async (req, res) => {
     if (updates.name) {
       user.name = updates.name;
     }
-    if (updates.password) {
-      const hash = await bcrypt.hash(updates.password, 10);
+    if (updates.newPassword) {
+      const hash = await bcrypt.hash(updates.newPassword, 10);
       user.password = hash;
     }
     if (updates.email) {
       user.email = updates.email;
     }
+    if (updates.national_id) {
+      user.national_id = updates.national_id;
+    }
+    if (updates.phone) {
+      user.phone_number = updates.phone;
+    }
+    if (updates.address) {
+      user.address = updates.address;
+    }
+
 
     // Save the updated user
     await user.save();

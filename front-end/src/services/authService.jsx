@@ -2,8 +2,10 @@ import axios from "axios"; // You need to import axios for making HTTP requests.
 import jwtDecode from "jwt-decode";
 import {Config} from "../services/config.js";
 import  notification  from "./notificationService";
+import { useNavigate } from 'react-router-dom';
 const _ = require("lodash");
 const tokenKey = "auth-x-token";
+
 
 export async function login(formData) {
   try {
@@ -13,6 +15,20 @@ export async function login(formData) {
     return jwt
   } catch (error) {
     console.error("Login failed:", error);
+    throw error;
+  }
+}
+
+export async function getUser() {
+  try {
+    const response = await axios.get(`${Config.Url}/api/users/me`, {
+      headers: {
+        "x-auth-token": getJwt(),
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Get user failed:", error);
     throw error;
   }
 }
@@ -40,6 +56,7 @@ export function loginWithJwt(jwt) {
 }
 
 export function logout() {
+
   localStorage.removeItem(tokenKey);
 }
 
@@ -67,5 +84,7 @@ export default {
   loginWithJwt,
   logout,
   getCurrentUser,
-  getJwt
+  getJwt,
+  getUser,
+  updateUser,
 };

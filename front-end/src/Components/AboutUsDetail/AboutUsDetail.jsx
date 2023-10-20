@@ -6,7 +6,7 @@ import Aos from "aos";
 const AboutUsDetail = () => {
   return (
     <section className="heor" data-aos='fade-up'>
-      <div className="container-about">
+      <div className="container-about" data-aos="fade-up">
         {/* this is left side of the about us container top */}
         <div className="left-about">
           <div className=" h-about">
