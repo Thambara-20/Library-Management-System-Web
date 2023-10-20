@@ -30,7 +30,7 @@ const Topbar = ({ searchQuery, setSearchQuery, handleSearch }) => {
       {/* Icons */}
       <Box display="flex">
   
-        <IconButton>
+        {/* <IconButton>
           <Badge variant="dot" color="secondary">
             <NotificationsOutlinedIcon 
                sx={{
@@ -39,15 +39,15 @@ const Topbar = ({ searchQuery, setSearchQuery, handleSearch }) => {
                 
               }} />
           </Badge>
-        </IconButton>
-        <IconButton>
+        </IconButton> */}
+        {/* <IconButton>
           <PersonOutlinedIcon
           sx={{
             variant:"outlined",
             color:'black',
             
           }} />
-        </IconButton>
+        </IconButton> */}
       </Box>
     </Box>
   );

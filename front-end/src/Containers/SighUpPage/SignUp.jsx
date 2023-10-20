@@ -51,6 +51,7 @@ const SignUp = () => {
       console.log(newO);
       const status = await axios.post("http://localhost:8080/api/users/signup", {
         name: data.Fname +" " +data.Sname,
+        email: data.email,
         password: data.FP
       })
     } else {

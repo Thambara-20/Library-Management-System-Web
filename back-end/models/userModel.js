@@ -42,7 +42,7 @@ module.exports = (sequelize, Sequelize) => {
                 .email() // This checks if the value is a valid email address
                 .required(),
             password: Joi.string()
-                .min(8)
+                .min(5)
                 .required(),
         });
         
