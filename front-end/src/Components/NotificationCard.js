@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import WarningIcon from '@mui/icons-material/Warning';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { markAsRead } from '../services/notificationService';
 
-const NotificationCard = ({ title, book_id, return_date, is_returned, email, is_read }) => {
+const NotificationCard = ({ title, book_id, return_date, is_returned, email, is_read ,id}) => {
     const [read, setRead] = useState(false);
+    
 
-    const markAsRead = () => {
-        // You can implement the logic for marking the notification as read here
-        setRead(true);
+    const mark = async () => {
+        try {
+            await markAsRead(id);
+            console.log(id);
+            setRead(true);
+        }
+        catch (error) {}
+
+       
     };
 
     if (read) {
@@ -43,7 +51,7 @@ const NotificationCard = ({ title, book_id, return_date, is_returned, email, is_
                     </div>
                     {!read && (
                         <button
-                        onClick={markAsRead}
+                        onClick={mark}
                         style={{
                           fontSize: 16,
                           background: 'transparent',

@@ -106,7 +106,6 @@ exports.deleteUser = async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-   
     await user.destroy();
 
     
@@ -116,3 +115,57 @@ exports.deleteUser = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+exports.updateUser = async (req, res) => {
+  try {
+    const name = req.user.name; // Assuming you have user information in the request object
+    const updates = req.body;
+
+    if (!name) {
+      return res.status(401).send("Unauthorized");
+    }
+
+    const user = await User.findOne({ where: { name: name } });
+
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    // Ensure the user can only update their own information
+    if (name !== user.name) {
+      return res.status(403).send("Permission denied");
+    }
+
+    // Check if the previous password matches
+    if (updates.password) {
+      const passwordMatch = await bcrypt.compare(updates.previousPassword, user.password);
+      if (!passwordMatch) {
+        return res.status(401).send("Previous password does not match.");
+      }
+    }
+
+    // Perform the updates on allowed fields
+    if (updates.name) {
+      user.name = updates.name;
+    }
+    if (updates.password) {
+      const hash = await bcrypt.hash(updates.password, 10);
+      user.password = hash;
+    }
+    if (updates.email) {
+      user.email = updates.email;
+    }
+
+    // Save the updated user
+    await user.save();
+
+    // You can also generate a new authentication token if needed
+    // const token = user.generateAuthToken();
+
+    res.status(200).send("User updated successfully");
+  } catch (error) {
+    console.error("Error during user update:", error);
+    res.status(500).send("An error occurred during user update");
+  }
+};
+

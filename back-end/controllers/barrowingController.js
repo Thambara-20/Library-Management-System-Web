@@ -23,7 +23,7 @@ exports.create = async (req, res) => {
             } 
             else {
                 const barrow = {
-                    name: req.user.name,
+                    name: reservation.name,
                     bookid: req.body.bookid,
                     return_date: new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000), // Add 7 days to currentDate
                     is_returned: false,

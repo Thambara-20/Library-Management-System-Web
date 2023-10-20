@@ -19,14 +19,32 @@ import auth from '../../services/authService';
 import { useParams } from 'react-router-dom';
 import Header from '../../Components/Header/Header';
 import { useNavigate } from 'react-router-dom';
-const Profile = () => {
+import { countUnreadNotifications } from '../../services/notificationService';
 
+const Profile = () => {
+    const currentUser =  auth.getCurrentUser();
     const navigate = useNavigate();
     const page = useParams()["page"];
     const [isSidebarOpen, setSidebarOpen] = useState(false);
     const currentPageName = ['My Info', 'My Reservations', 'My Borrowings', 'My Wishlist', 'Notifications']
     const pages = [<ProfileInfo />, <ReservedBooks />, <BarrowedBooks />, <WishList />, <Notifications />]
     const [currentPage, setCurrentPage] = useState();
+    const [count, setCount] = useState()
+  
+    useEffect(() => {
+      async function fetchData() {
+        try {
+          const response = await countUnreadNotifications();
+          console.log(response)
+          setCount(response);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      fetchData();
+    }, [count]);
+  
+  
 
 
     const toggleSidebar = () => {
@@ -67,7 +85,7 @@ const Profile = () => {
                         <Avatar className='Profile-avatar'>
                             <PersonIcon fontSize='large' />
                         </Avatar>
-                        <h2 className='Profile-heading' style={{ marginLeft: '10px' }}>Hello User!</h2>
+                        <h2 className='Profile-heading' style={{ marginLeft: '10px' }}>Hello {currentUser.name}</h2>
                     </div>
                     <h1 style={{ fontSize: '36px', fontWeight: 'bold', textAlign: 'center', margin: '15px 0', color: 'white' }}>{currentPageName[currentPage]}</h1>
                 </div>
@@ -110,7 +128,7 @@ const Profile = () => {
                             </ListItem>
                             <Divider />
                             <ListItem button className='custom-icon-list-item' onClick={() => setCurrentPage(4)}>
-                                <Badge badgeContent={1} color="secondary">
+                                <Badge badgeContent={count} color="secondary">
                                     <RateReviewIcon />
                                 </Badge>
                                 <div className={`menu-text ${isSidebarOpen ? '' : 'collapsed'}`}>
