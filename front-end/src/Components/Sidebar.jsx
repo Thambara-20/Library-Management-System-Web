@@ -121,13 +121,13 @@ const Sidebar = () => {
                             Requests
                         </Typography>
 
-                        <Item
+                        {/* <Item
                             title="Pending Approvals"
                             to="/admin/bookManagement/PendingApprovals"
                             icon={<ContactsOutlinedIcon style={{marginLeft:9}} />}
                             selected={selected}
                             setSelected={setSelected}
-                        />
+                        /> */}
                         <Item
                             title="Reservations"
                             to="/admin/bookManagement/Reservations"
@@ -136,7 +136,7 @@ const Sidebar = () => {
                             setSelected={setSelected}
                         />
                         <Item
-                            title="Barrowings"
+                            title="Borrowings"
                             to="/admin/bookManagement/Barrowings"
                             icon={<BookmarkAddedIcon style={{marginLeft:9}}  />}
                             selected={selected}
