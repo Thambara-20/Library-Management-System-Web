@@ -78,21 +78,21 @@ const Welcome = () => {
           <div className="flexCenter stats" id="stat">
             <div className="flexColStart stat">
               <span>
-                <CountUp start={7435} end={booksCount} duration={3} />
+                <CountUp start={0} end={booksCount} duration={3} />
                 <span>+</span>
               </span>
               <span className="secondaryText">Books</span>
             </div>
             <div className="flexColStart stat">
               <span>
-                <CountUp start={45} end={usersCount} duration={4} />
+                <CountUp start={0} end={usersCount} duration={4} />
                 <span>+</span>
               </span>
               <span className="secondaryText">Users</span>
             </div>
             <div className="flexColStart stat">
               <span>
-                <CountUp start={5} end={booksCount} duration={4} />
+                <CountUp start={0} end={booksCount} duration={4} />
                 <span>+</span>
               </span>
               <span className="secondaryText">New Books</span>

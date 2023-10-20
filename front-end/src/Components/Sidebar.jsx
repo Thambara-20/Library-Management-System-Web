@@ -14,12 +14,13 @@ import profileImg from "../assets/profile-icons/images.jpg"
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 // Custom Item component for MenuItems
-const Item = ({ title, to, icon, selected, setSelected }) => {
+const Item = ({ title, to, icon, selected, setSelected, collapsed=false }) => {
 
     return (
         <MenuItem
+            
             active={selected === title}
-            style={{ color: blueGrey[40] }}
+            style={{ color: blueGrey[40] ,margin: collapsed ? 2: 0 }}
             onClick={() => setSelected(title)}
             icon={icon}
 
@@ -105,16 +106,16 @@ const Sidebar = () => {
                     )}
 
                     {/* Menu Items */}
-                    <Box paddingLeft={isCollapsed ? '2%' : '10%'}>
-                        <Typography variant="h10" color={blue} sx={{ m: '25px 0 2px 10px' }} textAlign={'center'}>
-                            Home
+                    <Box paddingLeft={isCollapsed ? '3%' : '10%'}>
+                        <Typography variant="h12" color={blue} sx={{ m: '25px 0 2px 1px' }} textAlign={'center'}>
+                            MainPage
                         </Typography>
 
-                        <Item title="Dashboard" to="/admin" icon={<HomeOutlinedIcon style={{marginLeft:9}} />} selected={selected} setSelected={setSelected}    
+                        <Item title="Dashboard" to="/admin" icon={<HomeOutlinedIcon style={{marginLeft:6}} />} selected={selected} setSelected={setSelected}    
                         />
-                        <Item title="UserManager" to="/admin/userManagement" icon={<PersonOutlineOutlinedIcon style={{marginLeft:9}} />} selected={selected} setSelected={setSelected}
+                        <Item title="UserManager" to="/admin/userManagement" icon={<PersonOutlineOutlinedIcon style={{marginLeft:6}} />} selected={selected} setSelected={setSelected}
                         />
-                        <Item title="BookManager" to="/admin/bookManagement" icon={<LibraryBooksIcon style={{marginLeft:9}} />} selected={selected} setSelected={setSelected}
+                        <Item title="BookManager" to="/admin/bookManagement" icon={<LibraryBooksIcon style={{marginLeft:6}} />} selected={selected} setSelected={setSelected}
                         />
 
                         <Typography variant="h10" color={blue} sx={{ m: '25px 0 2px 2px' }}>
@@ -124,31 +125,33 @@ const Sidebar = () => {
                         <Item
                             title="Pending Approvals"
                             to="/admin/bookManagement/PendingApprovals"
-                            icon={<ContactsOutlinedIcon style={{marginLeft:9}} />}
+                            icon={<ContactsOutlinedIcon style={{marginLeft:6}} />}
                             selected={selected}
                             setSelected={setSelected}
                         />
                         <Item
                             title="Reservations"
                             to="/admin/bookManagement/Reservations"
-                            icon={<CollectionsBookmarkIcon style={{marginLeft:9}} />}
+                            icon={<CollectionsBookmarkIcon style={{marginLeft:6}} />}
                             selected={selected}
                             setSelected={setSelected}
                         />
                         <Item
                             title="Borrowings"
                             to="/admin/bookManagement/Barrowings"
-                            icon={<BookmarkAddedIcon style={{marginLeft:9}}  />}
+                            icon={<BookmarkAddedIcon style={{marginLeft:6}}  />}
                             selected={selected}
                             setSelected={setSelected}
                         />
 
                     </Box>
                     <Item
+                        sx={{  marginTop:9 }}
                         color="white" title={!isCollapsed && ("Back to Library")}
                         to="/"
-                        icon={<ArrowBackIcon style={{marginLeft:9}} />}
+                        icon={<ArrowBackIcon style={{marginLeft:6}} />}
                         selected={selected}
+                        collapsed={isCollapsed}
                         setSelected={setSelected}
                     />
                 </Menu>
