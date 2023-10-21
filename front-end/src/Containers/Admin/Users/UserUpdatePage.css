@@ -1,0 +1,100 @@
+/* Add some general styling to improve readability */
+.ProfileInfo-wrapper-admin {
+    width: 100%;
+    min-height: 90vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+/* CSS code for sliding animation */
+.button-admin-user-update:hover{
+    background-color: #686d72 !important;
+}
+
+.ProfileInfo-content-admin {
+    display: flex;
+    margin: 5px 5px 5px 5px;
+    flex-wrap: wrap; /* Allow items to wrap when the screen size reduces */
+    max-width: 1400px; /* Increase the maximum width as needed */
+    background-color: #c7c7c7; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: auto;
+    overflow: hidden;
+    margin: 0 auto; 
+    min-height: 60vh;/* Center the content horizontally */
+}
+
+.ProfileInfo-left-admin {
+    flex: 0.8;
+    padding: 40px;
+    min-width: 350px; /* Increase the minimum width for the left side as needed */
+    min-height: 400px; /* Increase the minimum width for the left side as needed */
+}
+.ProfileInfo-right-admin {
+    flex: 0.8;
+    padding: 10px;
+    min-width: 300px; /* Increase the minimum width for the left side as needed */
+    min-height: 400px; /* Increase the minimum width for the left side as needed */
+}
+/* Style the sections for Account Info and Login Credentials */
+.Account.info-admin,
+.User-Data-admin {
+    /* background-color: #ffffff9b; */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    height: 100%;
+   
+  }
+  
+  /* Style the headings */
+  h3 {
+    color: #28a406 !important;
+    font-size: 24px;
+    padding-bottom: 10px;
+  }
+  
+  h5 {
+    margin: 10px 0;
+    color: #555;
+    padding: 6px 0 6px;
+  }
+  
+  /* Style the input fields */
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Style the change password button */
+  .Button-root-admin {
+    background-color: #686d72;
+    color: #fff;
+    margin: 30px 0;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .Button-root-admin:hover {
+    background-color: #000000;
+  }
+  
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .ProfileInfo-left-admin,
+    .ProfileInfo-right-admin {
+      flex-basis: 100%; /* Stack left and right sides on top of each other */
+      margin: 0; /* Remove margin between left and right sides */
+    }
+  }
+  

@@ -58,6 +58,7 @@ export function loginWithJwt(jwt) {
 export function logout() {
 
   localStorage.removeItem(tokenKey);
+  localStorage.removeItem('x-auth-alpha-wishlist');
 }
 
 export function getCurrentUser() {
