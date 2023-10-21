@@ -22,6 +22,12 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
 
         },
+        address:{
+            type: Sequelize.STRING,
+        },
+        phone_number:{
+            type: Sequelize.STRING,
+        },
         isAdmin: {
             type: Sequelize.BOOLEAN,
         }
@@ -44,6 +50,10 @@ module.exports = (sequelize, Sequelize) => {
             password: Joi.string()
                 .min(5)
                 .required(),
+            national_id: Joi.string().required(),
+            address: Joi.string().required(),
+            phone_number: Joi.string().required(),
+
         });
         
         try {

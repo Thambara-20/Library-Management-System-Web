@@ -19,7 +19,6 @@ const Header = () => {
   const [isAdminLoggedIn, setAdminLoggedIn] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
 
-
   const openSignUpPopup = () => {
     setShowSignUpPopup(true);
   };
@@ -33,11 +32,11 @@ const Header = () => {
   };
 
   const changeIconLogOut = () => {
+
     auth.logout();
     setUserLogIn(false);
     setAdminLoggedIn(false);
   };
-
 
 
   const getMenuStyles = (menuOpen) => {
@@ -66,8 +65,6 @@ const Header = () => {
     }
   }, []);
 
-
- 
   
   return (
     <section className="h-wrapper">
@@ -97,7 +94,7 @@ const Header = () => {
             <Link>
               {isUserLogIn ?
               (<HeaderDropDown onLogout={changeIconLogOut}/> ) : 
-              (<button className="button" onClick={openSignUpPopup}>Sign Up</button>
+              (<button className="button" onClick={openSignUpPopup}>Login</button>
               )}
             </Link>
 
