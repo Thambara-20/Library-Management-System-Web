@@ -21,7 +21,7 @@ const UserUpdate = ({ user , setupdateUser}) => {
 
         <div style={{width:'100%', justifyContent:'center', height:'100%', alignItems:'center',  background: 'linear-gradient(to right, #000, #999)',
     }}>
-            <Button className='button-admin-user-update' variant="contained" color="primary" style={{top:'10px', left:'10px', backgroundColor:'white', color:'black' }}>Back</Button>
+            <Button onClick={()=>setupdateUser(false)}className='button-admin-user-update' variant="contained" color="primary" style={{top:'10px', left:'10px', backgroundColor:'white', color:'black' }}>Back</Button>
             <div className="ProfileInfo-wrapper-admin" data-aos="fade-up">
                 <form onSubmit={handleSubmit}>
                     <div className="ProfileInfo-content-admin">

@@ -116,7 +116,7 @@ const Users = () => {
 				setSearchQuery={setSearchQuery}
 				handleSearch={filterData}
 			/>
-			{userUpdate ? <UserUpdate user={currentUser} />: <TableBox filteredData={filteredData} topic="UserManager" columns={columns} id="name" />}
+			{userUpdate ? <UserUpdate user={currentUser} setupdateUser={setUserUpdate}/>: <TableBox filteredData={filteredData} topic="UserManager" columns={columns} id="name" />}
 			
 		</div>
 	);
