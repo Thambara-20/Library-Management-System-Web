@@ -62,7 +62,7 @@ const HeaderDropDown = ({ onLogout }) => {
           <MenuItem className="menuitem">Notifications
           </MenuItem>
         </Link>
-        <Link className="link">
+        <Link className="link" to="/">
           <MenuItem onClick={() => onLogout()} > Log Out
           </MenuItem>
         </Link>

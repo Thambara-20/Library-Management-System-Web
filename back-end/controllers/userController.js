@@ -121,12 +121,14 @@ exports.updateUser = async (req, res) => {
   try {
     const name = req.user.name; // Assuming you have user information in the request object
     const updates = req.body;
+    console.log(updates);
 
     if (!name) {
       return res.status(401).send("Unauthorized");
     }
 
     const user = await User.findOne({ where: { name: name } });
+    console.log(user);
 
     if (!user) {
       return res.status(404).send("User not found");
@@ -138,8 +140,10 @@ exports.updateUser = async (req, res) => {
     }
 
     // Check if the previous password matches
-    if (updates.password) {
-      const passwordMatch = await bcrypt.compare(updates.previousPassword, user.password);
+    if (updates.currentPassword) {
+     
+      const passwordMatch = await bcrypt.compare(updates.currentPassword, user.password);
+      console.log(updates.currentPassword);
       if (!passwordMatch) {
         return res.status(401).send("Previous password does not match.");
       }
@@ -149,24 +153,43 @@ exports.updateUser = async (req, res) => {
     if (updates.name) {
       user.name = updates.name;
     }
-    if (updates.password) {
-      const hash = await bcrypt.hash(updates.password, 10);
+    if (updates.newPassword) {
+      const hash = await bcrypt.hash(updates.newPassword, 10);
       user.password = hash;
     }
     if (updates.email) {
       user.email = updates.email;
     }
+    if (updates.national_id) {
+      user.national_id = updates.national_id;
+    }
+    if (updates.phone) {
+      user.phone_number = updates.phone;
+    }
+    if (updates.address) {
+      user.address = updates.address;
+    }
+
 
     // Save the updated user
     await user.save();
 
-    // You can also generate a new authentication token if needed
-    // const token = user.generateAuthToken();
-
     res.status(200).send("User updated successfully");
+
   } catch (error) {
     console.error("Error during user update:", error);
     res.status(500).send("An error occurred during user update");
   }
 };
+
+
+exports.usersCount= async (req, res) => {
+  try {
+    const count = await User.count();
+    res.status(200).send({ count });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("An error occurred while counting users");
+  }
+}
 

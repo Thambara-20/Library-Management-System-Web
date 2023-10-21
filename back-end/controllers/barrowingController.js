@@ -120,3 +120,17 @@ exports.findOne = async (req, res) => {
         });
     }
 }
+
+exports.borrowedCount= async (req,res)=>{
+    try {
+        const count = await Barrow.count(
+            {where : {
+                is_returned:false
+            }}
+        );
+        res.status(200).send({ count });
+      } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred while counting users");
+      }
+}

@@ -80,20 +80,20 @@ const ContactEmail = () => {
               <RegForm
                 name="user_name"
                 Label="First Name"
-                placeHolder="Rasindu"
+                placeHolder="Your name"
                 type="text"
               />
             </div>
             <RegForm
               name="subject"
               Label="Subject"
-              placeHolder="I want to borrow a book"
+              placeHolder="Subject"
             />
             <RegForm
               type="email"
               name="user_email"
               Label="Email"
-              placeHolder="SmartBook@gmail.com"
+              placeHolder="Your email address"
             />
             <textarea name="message"></textarea>
             <div className="reg-log-button">

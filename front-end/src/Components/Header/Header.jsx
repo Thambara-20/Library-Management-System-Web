@@ -19,7 +19,6 @@ const Header = () => {
   const [isAdminLoggedIn, setAdminLoggedIn] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
 
-
   const openSignUpPopup = () => {
     setShowSignUpPopup(true);
   };
@@ -33,11 +32,11 @@ const Header = () => {
   };
 
   const changeIconLogOut = () => {
+
     auth.logout();
     setUserLogIn(false);
     setAdminLoggedIn(false);
   };
-
 
 
   const getMenuStyles = (menuOpen) => {

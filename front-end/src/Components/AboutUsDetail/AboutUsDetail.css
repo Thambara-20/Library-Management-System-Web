@@ -19,9 +19,10 @@
 }
 .b-about{
     display: flex;
-    /* justify-content: center; */
-    align-items: center;
+    justify-content:flex-start;
+    align-items: flex-start;
     margin-top: 20px;
+ 
 }
 
 @media(max-width:640px) {

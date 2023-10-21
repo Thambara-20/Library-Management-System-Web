@@ -1,20 +1,20 @@
 import React from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
-const PieRechartComponent = () => {
+const PieRechartComponent = ({abc,prc,brc}) => {
   const COLORS = ["orange", "#82ca9d", "white"];
   const pieData = [
     {
       name: "Reserved",
-      value: 14.85,
+      value: prc,
     },
     {
       name: "Barrowed",
-      value: 47.91,
+      value: brc,
     },
     {
       name: "Available",
-      value: 16.85,
+      value:abc,
     }
   ];
 

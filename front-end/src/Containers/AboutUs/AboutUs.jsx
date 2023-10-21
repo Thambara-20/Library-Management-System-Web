@@ -2,6 +2,7 @@ import React from 'react'
 import AboutUsDetail from '../../Components/AboutUsDetail/AboutUsDetail'
 import Header from '../../Components/Header/Header';
 import AboutUsService from '../../Components/AboutUsServices/AboutUsService';
+import Footer from '../../Components/Footer/Footer';
 
 
 const AboutUs = () => {
@@ -10,6 +11,7 @@ const AboutUs = () => {
         <Header/>
       <AboutUsDetail />
       <AboutUsService/>
+      <Footer/>
     </div>
   )
 }
