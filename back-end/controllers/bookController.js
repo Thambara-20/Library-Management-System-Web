@@ -149,8 +149,15 @@ exports.getPopular = async (req, res) => {
       order: [["createdAt", "DESC"]],
       limit: 10,
     });
-
-    res.json(recentBooks);
+    const newList = recentBooks.map((item) => {
+      return {
+        name: item.title,
+        price: 1,
+        detail: item.author + " "+ item.category,
+        image :item.url
+      };
+    });
+    res.send(newList);
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send("Can't fetch new arriaval books");
