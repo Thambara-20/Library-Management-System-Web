@@ -116,6 +116,7 @@ exports.update = async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
   }
+
 };
 
 exports.getNewArrival = async (req, res) => {
@@ -156,3 +157,16 @@ exports.getPopular = async (req, res) => {
     res.status(500).send("Can't fetch new arriaval books");
   }
 };
+
+}
+
+exports.booksCount = async (req, res) => {
+  try {
+    const count = await Book.count();
+    res.status(200).json({ count });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+

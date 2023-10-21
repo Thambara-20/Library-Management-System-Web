@@ -14,11 +14,14 @@ module.exports = (app) => {
     
     router.post('/login', users.login);
 
-    router.get('/find', users.findAll);
+    router.get('/find', [auth,admin],users.findAll);
 
     router.delete('/delete',[auth,admin],users.deleteUser);
 
-  
+    router.put('/update',auth,users.updateUser);
+
+    router.get('/count',users.usersCount)
+
     app.use('/api/users', router);
   };
   

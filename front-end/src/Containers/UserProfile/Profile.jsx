@@ -23,6 +23,7 @@ import { countUnreadNotifications } from '../../services/notificationService';
 
 const Profile = () => {
     const currentUser =  auth.getCurrentUser();
+    const [name,setName] = useState(currentUser? currentUser.name :'User') 
     const navigate = useNavigate();
     const page = useParams()["page"];
     const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -42,7 +43,7 @@ const Profile = () => {
         }
       }
       fetchData();
-    }, [count]);
+    }, []);
   
   
 
@@ -50,8 +51,9 @@ const Profile = () => {
     const toggleSidebar = () => {
         setSidebarOpen(!isSidebarOpen);
     };
-
+    
     useEffect(() => {
+        
         const handleResize = () => {
             setSidebarOpen(window.innerWidth > 768);
         };
@@ -85,7 +87,7 @@ const Profile = () => {
                         <Avatar className='Profile-avatar'>
                             <PersonIcon fontSize='large' />
                         </Avatar>
-                        <h2 className='Profile-heading' style={{ marginLeft: '10px' }}>Hello {currentUser.name}</h2>
+                        <h2 className='Profile-heading' style={{ marginLeft: '10px' }}>Hello {name}</h2>
                     </div>
                     <h1 style={{ fontSize: '36px', fontWeight: 'bold', textAlign: 'center', margin: '15px 0', color: 'white' }}>{currentPageName[currentPage]}</h1>
                 </div>
@@ -127,12 +129,11 @@ const Profile = () => {
                                 </div>
                             </ListItem>
                             <Divider />
-                            <ListItem button className='custom-icon-list-item' onClick={() => setCurrentPage(4)}>
+                            <ListItem button className='custom-icon-list-item' onClick={() => { setCurrentPage(4); setCount(0); }}>
                                 <Badge badgeContent={count} color="secondary">
                                     <RateReviewIcon />
                                 </Badge>
                                 <div className={`menu-text ${isSidebarOpen ? '' : 'collapsed'}`}>
-
                                     Notifications
                                 </div>
                             </ListItem>
