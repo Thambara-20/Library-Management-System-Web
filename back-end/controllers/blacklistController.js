@@ -79,14 +79,10 @@ exports.delete = (req, res) => {
         });
 }
 
-exports.isBlacklisted = (req, res) => {
+exports.isBlacklisted = async(req, res) => {
     try {
         const name = req.params.name;
-        const finded = Blacklist.findOne({
-            where: {
-                name: name
-            }
-        })
+        const finded = await Blacklist.findByPk(name)
         if (finded) {
             res.send(true);
         } else {

@@ -31,7 +31,7 @@ const SignInPage = ({ onClose, onSuucessClose }) => {
 
     } catch (error) {
       console.error("Error during login:", error);
-      setErrorMessage("An error occurred during login.");
+      setErrorMessage(error.response.data);
     }
   };
 

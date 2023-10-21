@@ -65,8 +65,6 @@ const Header = () => {
     }
   }, []);
 
-
- 
   
   return (
     <section className="h-wrapper">
@@ -96,7 +94,7 @@ const Header = () => {
             <Link>
               {isUserLogIn ?
               (<HeaderDropDown onLogout={changeIconLogOut}/> ) : 
-              (<button className="button" onClick={openSignUpPopup}>Sign Up</button>
+              (<button className="button" onClick={openSignUpPopup}>Login</button>
               )}
             </Link>
 

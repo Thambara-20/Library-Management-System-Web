@@ -7,6 +7,7 @@ import { fetchReservationData } from '../../../services/reservationService';
 import { Button } from '@mui/material';
 import { approveReservation } from '../../../services/reservationService';
 import LoadingIcon from '../../../Components/LoadingIcon';
+import { cancelReservation } from '../../../services/reservationService';
 
 const ReservedBooks = () => {
     useEffect(() => {
@@ -39,6 +40,7 @@ const ReservedBooks = () => {
     }
 
     const filterData = (dataToFilter, query) => {
+		
         if (query) {
             const newFilteredData = dataToFilter.filter((reservation) => {
                 const idMatch = reservation.reservation_id.toString().toLowerCase().includes(query.toLowerCase());
@@ -51,17 +53,27 @@ const ReservedBooks = () => {
         }
     }
 
-    const handleReservation = async (bookId) => {
-        const isConfirmed = window.confirm('Are you sure you want to reserve this book?');
-        if (isConfirmed) {
-            try {
-                await approveReservation(bookId);
-                filterData(data.filter((reservation) => reservation.bookid !== bookId), searchQuery);
-            } catch (e) {
-                console.error(e);
-            }
-        }
-    }
+	const handleReservation = async (Id) => {
+		const isConfirmed = window.confirm('Are you sure you want to reserve this book?');
+		if (isConfirmed) {
+		  try {
+			await approveReservation(Id.bookid);
+			filterData(data.filter((reservation) => reservation.reservation_id !== Id.reservation_id), searchQuery);
+		  } catch (error) {
+			console.error(error);
+		  }
+		}
+	  };
+	  
+	  const denyReservation = async (Id) => {
+		try {
+		  await cancelReservation(Id.reservation_id);
+		  filterData(data.filter((reservation) => reservation.reservation_id !== Id.reservation_id), searchQuery);
+		} catch (error) {
+		  console.error(error);
+		}
+	  };
+	  
 
     useEffect(() => {
         fetchData();
@@ -98,12 +110,24 @@ const ReservedBooks = () => {
 				<Button
 					variant="contained"
 					style={{ backgroundColor: 'rgb(100, 100, 100)', color: 'white' }}
-					onClick={() => handleReservation(cellValues.row.bookid)}
+					onClick={() => handleReservation(cellValues.row)}
 				>
 					Approve
 				</Button>
 			),flex: 0.7,
 		},
+		{
+			field: 'Denial',
+			renderCell: (cellValues) => (
+				<Button
+					variant="contained"
+					style={{ backgroundColor: 'rgb(100, 100, 100)', color: 'white' }}
+					onClick={() => denyReservation(cellValues.row)}
+				>
+					Deny
+				</Button>
+			),flex: 0.7,
+		}
 		
 	];
 
