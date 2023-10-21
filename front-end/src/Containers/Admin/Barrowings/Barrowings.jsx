@@ -43,7 +43,7 @@ const Barrowings = () => {
     }
 
     const handleReturning = async (barrow_id) => {
-        const isConfirmed = window.confirm('Are you sure you want to borrow this book?');
+        const isConfirmed = window.confirm('Are you sure you the member returned this book?');
          if (isConfirmed) {
             try {
                 await returns(barrow_id);
