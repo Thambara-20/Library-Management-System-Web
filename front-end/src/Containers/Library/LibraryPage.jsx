@@ -79,10 +79,10 @@ const LibraryPage = () => {
     <Grid
       className="grid-item"
       item
-      xs={12} // Set to 12 for full width on mobile
-      sm={6} // 2 columns on small screens
-      md={4} // 3 columns on medium screens
-      lg={3} // 4 columns on large screens
+      xs={12} 
+      sm={6} 
+      md={4} 
+      lg={3} 
       key={book.id}
       data-aos-offset="100"
     >
@@ -96,7 +96,7 @@ const LibraryPage = () => {
   
         <Container   style={{display:'flex', minWidth:'100%',paddingTop:'10px', backgroundColor:'black'}}>
           <div className="library-container">
-            <div className="library-sidebar" data-aos="fade">
+            <div className="library-sidebar" data-aos-offset="200" data-aos="fade-left">
               <div className="category-dropdown">
                 <Select
                   className="selecter-item"
@@ -155,7 +155,7 @@ const LibraryPage = () => {
                 </div>
               </div>
               <div className="availability-toggle">
-                <label>
+                <label style={{width:'100%', textAlign:'center'}}>
                   Show Available Books
                   <input
                     type="checkbox"
