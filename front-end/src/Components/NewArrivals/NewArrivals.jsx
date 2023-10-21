@@ -27,7 +27,7 @@ const NewArrivals = () => {
 
   useEffect(() => {
     async function getNewArrivals() {
-      const result = await axios.get("http://localhost:8080/");
+      const result = await axios.get("http://localhost:8000/");
       setNewdata(result.data);
       console.log(result.data);
     console.log("hekjdkjf");

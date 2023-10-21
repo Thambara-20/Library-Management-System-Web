@@ -160,7 +160,7 @@ const BookDetails = ({ }) => {
                 </Button>
               </div>
             </div>
-            <ReadPage />
+            <ReadPage pageData={book.abstract} bookTitle={book.title}/>
           </CardContent>
         </Card>
         <div className='read-btn-wrapper'>
