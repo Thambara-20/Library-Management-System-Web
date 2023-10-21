@@ -15,6 +15,8 @@ module.exports = app => {
     router.delete("/delete/:id", [auth],reservations.deleteOne);
 
     router.get("/count",reservations.reservationsCount)
+
+    router.get("/userHistory",reservations.userReservationHistory)
   
     app.use('/api/reservations', router);
   };

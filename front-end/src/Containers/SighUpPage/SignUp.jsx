@@ -46,7 +46,6 @@ const SignUp = () => {
       const newO = {
         name: data.username,
         email: data.email,
-        username: data.username,
         password: data.FP,
         address: data.address,
         phone_number: data.phone_number,
@@ -102,11 +101,17 @@ const SignUp = () => {
       <div className="paddings innerWidth flexCenter reg-container">
         <div className="right">
           <form onSubmit={postData} action="" className="reg-form" name="reg-form">
-            <span className="primaryText">Register</span>
+            <span className="primaryText" style={{color:'black', fontWeight:400}}>Register</span>
             <div className="name">
               <RegForm onChange={e => handleF(e)} value={data.Fname} id="Fname" Label="First Name" placeHolder="First name" name='firstName' />
               <RegForm onChange={e => handleF(e)} value={data.Sname} id="Sname" Label="Last Name" placeHolder="Last name" name='lastName' />
             </div>
+            <RegForm
+             Label="Username"
+             type="username"
+             placeHolder="Username"
+             name='username'
+             onChange={e => handleF(e)} value={data.username} id="username"/>
             <RegForm
               Label="Address"
               placeHolder="Your address"
@@ -120,12 +125,6 @@ const SignUp = () => {
               name='email'
               onChange={e => handleF(e)} value={data.email} id="email"
             />
-             <RegForm
-              Label="Username"
-              type="username"
-              placeHolder="User name"
-              name='username'
-              onChange={e => handleF(e)} value={data.username} id="username"/>
 
             <RegForm
               Label="Phone Number"

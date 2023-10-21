@@ -4,6 +4,20 @@ import { Config } from './config.js';
 import authService from './authService';
 const apiUrl = Config.Url;
 
+export async function getBorrowingHistory(username) {
+  try {
+    const response = await axios.get(`${apiUrl}/api/barrows/userHistory?name=${username}`, {
+      headers: {
+        "x-auth-token": authService.getJwt(),
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
 export async function getBarrows() {
   try {
     const res = await axios.get(`${apiUrl}/api/barrows/find`, {
@@ -59,7 +73,7 @@ export async function returns(barrow_id) {
   }
 }
 
-export async function borrowingCount(){
+export async function borrowingCount() {
   try {
     const response = await axios.get(`${apiUrl}/api/barrows/count`);
     return response.data.count;
@@ -67,3 +81,4 @@ export async function borrowingCount(){
     throw error;
   }
 }
+

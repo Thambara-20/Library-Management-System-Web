@@ -15,6 +15,8 @@ module.exports = app => {
     router.get("/findone",[auth], barrows.findOne);
 
     router.get("/count",barrows.borrowedCount)
+
+    router.get("/userHistory",barrows.borrowingHistoryByUser)
     
     app.use('/api/barrows', router);
 

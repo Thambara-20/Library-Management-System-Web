@@ -8,6 +8,7 @@ const _ = require("lodash");
 
 
 exports.get = async (req, res) => {
+  console.log(req.body);
   console.log(req.user.name);
   const user = await User.findByPk(req.user.name);
   res.send(user)
@@ -27,7 +28,7 @@ exports.signup = async (req, res) => {
       });
     }
     const hash = await bcrypt.hash(req.body.password, 10);
-    const user = _.pick(req.body, ["name", "national_id", "email", "address"]);
+    const user = _.pick(req.body, ["name", "national_id", "email", "address", "phone_number"]);
 
     const newUser = await User.create({
     
