@@ -1,9 +1,10 @@
 import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import { fetchForumData } from "../../services/ForumService";
 import { AddComment } from "../../services/ForumService";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteComment } from "../../services/ForumService";
+import authService from "../../services/authService";
 
 const commentSectionStyle = {
   justifyContent: "center",
@@ -70,6 +71,14 @@ const commentStyle = {
 const CommentSection = ({ title }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+
+ const userCheck=()=> {
+    const user = authService.getCurrentUser();
+    if (user && user.isAdmin) {
+      setIsAdminLoggedIn(true);
+    }
+  }
 
   const handleCommentChange = (e) => {
     setNewComment(e.target.value);
@@ -96,6 +105,7 @@ const CommentSection = ({ title }) => {
     }
 
     fetchData();
+    userCheck();
   }, []);
 
   const handleDelete = async(id) => {
@@ -152,7 +162,7 @@ const CommentSection = ({ title }) => {
               <div style={commentStyle}>
                 {comment.text}
               </div>
-              <Button
+             { isAdminLoggedIn && <Button
                 aria-label="Delete"
                 color="secondary"
                 onClick={()=>handleDelete(comment.id)}
@@ -169,10 +179,7 @@ const CommentSection = ({ title }) => {
                 }}
               >
                 <DeleteIcon />
-              </Button>
-
-
-
+              </Button>}
             </div>
           ))}
 

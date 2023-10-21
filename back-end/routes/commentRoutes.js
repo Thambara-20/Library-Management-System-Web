@@ -11,7 +11,7 @@ module.exports = app => {
 
     router.get("/find", comments.findBookComment);
 
-    router.delete("/delete/:id",auth, comments.deleteComment);
+    router.delete("/delete/:id",[auth,admin], comments.deleteComment);
 
     app.use('/api/comments', router);
 }
