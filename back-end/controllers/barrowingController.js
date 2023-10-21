@@ -134,3 +134,27 @@ exports.borrowedCount= async (req,res)=>{
         res.status(500).send("An error occurred while counting users");
       }
 }
+
+exports.borrowingHistoryByUser= async (req,res)=>{
+
+    try {
+        const { name } = req.query;
+        const notReturned= await Barrow.count(
+            {where : {
+                name:name,
+                is_returned:false
+            }}
+        );
+        const returned= await Barrow.count(
+            {where : {
+                name:name,
+                is_returned:true
+            }}
+        );
+        res.send({notReturned,returned});
+    } catch (err) {
+        res.status(500).send({
+            message: "Some error occurred while retrieving barrows."
+        });
+    }
+}

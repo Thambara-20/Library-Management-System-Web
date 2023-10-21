@@ -50,6 +50,10 @@ module.exports = (sequelize, Sequelize) => {
             password: Joi.string()
                 .min(5)
                 .required(),
+            national_id: Joi.string().required(),
+            address: Joi.string().required(),
+            phone_number: Joi.string().required(),
+
         });
         
         try {

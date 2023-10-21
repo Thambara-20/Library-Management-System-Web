@@ -52,6 +52,7 @@ const Sidebar = () => {
                 '& .pro-menu-item.active': {
                     color: 'grey !important',
                 },
+                borderRight: '1px solid grey',
 
             }}
         >

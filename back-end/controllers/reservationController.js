@@ -142,8 +142,8 @@ exports.deleteOne = (req, res) => {
 
 }
   
-exports.reservationsCount=(req,res)=>{   
-    Reservation.count()
+exports.reservationsCount=async(req,res)=>{   
+    await Reservation.count()
     .then(data => {
         res.send(data.toString());
     })
@@ -154,3 +154,22 @@ exports.reservationsCount=(req,res)=>{
         });
     });
 }
+
+exports.userReservationHistory = async (req, res) => {
+    try {
+      const { name } = req.query;
+  
+      const reservationsCount = await Reservation.count( {where : {
+        name:name,
+        
+    }});
+    console.log(reservationsCount)
+  
+      res.json({ reservationsCount }); 
+    } catch (err) {
+      console.error(err); 
+      res.status(500).json({
+        message: "Some error occurred while retrieving data.",
+      });
+    }
+  };

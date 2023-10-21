@@ -4,10 +4,12 @@ const Op = db.Sequelize.Op;
 const config = require("config");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const Blacklist = db.blacklists;
 const _ = require("lodash");
 
 
 exports.get = async (req, res) => {
+  console.log(req.body);
   console.log(req.user.name);
   const user = await User.findByPk(req.user.name);
   res.send(user)
@@ -27,15 +29,17 @@ exports.signup = async (req, res) => {
       });
     }
     const hash = await bcrypt.hash(req.body.password, 10);
-    const user = _.pick(req.body, ["name", "national_id", "email"]);
+    const user = _.pick(req.body, ["name", "national_id", "email", "address", "phone_number"]);
 
     const newUser = await User.create({
     
       name: user.name,
       password: hash,
       email: user.email,
+      address: user.address,
       national_id: user.national_id,
       isAdmin: user.name === "administrator" ? true : false
+
     });
     
 
@@ -48,29 +52,28 @@ exports.signup = async (req, res) => {
   }
 };
 
-
 exports.login = async (req, res) => {
   try {
-    console.log(req.body);
     const { name, password } = req.body;
     const user = await User.findOne({ where: { name } });
 
     if (!user) {
       return res.status(401).send("Invalid credentials.");
     }
-
+    
+    const isBlacklisted = await Blacklist.findOne({ where: { name } });
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (passwordMatch) {
-
-      const role = name === "admin" ? "admin" : "user";
       console.log("Login successful for user:", user.name);
 
+      if (isBlacklisted) {
+        return res.status(403).send("User is blacklisted. Cannot login.");
+      }
       const token = user.generateAuthToken();
       return res.header("x-auth-token", token).status(200).send(token);
-
     } else {
-      console.log("Invalid credentials.", user.name);
+      console.log("Invalid credentials for user:", user.name);
       return res.status(401).send("Invalid credentials.");
     }
   } catch (error) {
@@ -78,6 +81,7 @@ exports.login = async (req, res) => {
     res.status(500).send("An error occurred during login.");
   }
 };
+
 
 exports.findAll = (req, res) => {
   const name = req.body.name;

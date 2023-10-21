@@ -45,11 +45,12 @@ require("./routes/bookRoutes")(app);
 require("./routes/userRoutes")(app);
 require("./routes/reservationRoutes")(app);
 require("./routes/notificationRoutes")(app);
+require("./routes/blacklistRoutes")(app);
 // Call checkOverdueItems to run it when the server starts
 
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`)
   setInterval(checkOverdueItems, 120000);

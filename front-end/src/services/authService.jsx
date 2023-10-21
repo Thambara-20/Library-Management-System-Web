@@ -19,6 +19,15 @@ export async function login(formData) {
   }
 }
 
+export async function signup(formData) {
+  try{
+    const response = await axios.post(`${Config.Url}/api/users/signup`, formData);
+  }
+  catch(error){
+    console.error("Signup failed:", error);
+    throw error;
+}}
+
 export async function getUser() {
   try {
     const response = await axios.get(`${Config.Url}/api/users/me`, {
@@ -58,6 +67,7 @@ export function loginWithJwt(jwt) {
 export function logout() {
 
   localStorage.removeItem(tokenKey);
+  localStorage.removeItem('x-auth-alpha-wishlist');
 }
 
 export function getCurrentUser() {
@@ -112,6 +122,7 @@ export default {
   login,
   loginWithJwt,
   logout,
+  signup,
   getCurrentUser,
   getJwt,
   getUser,
