@@ -1,21 +1,20 @@
 const admin = require("../middleware/admin.js");
 const auth = require("../middleware/auth.js");
 
-module.exports = app => {
-    const books = require("../controllers/bookController.js");
-  
-    var router = require("express").Router();
-  
-    router.post("/", [auth,admin],books.create);
-  
-    router.get("/find", books.findAll);
- 
-    router.get("/findone/:id", books.findOne);
-  
-    router.put("/update/:id",[auth,admin], books.update);
+module.exports = (app) => {
+  const books = require("../controllers/bookController.js");
 
-    router.delete("/delete/:id", [auth,admin],books.deleteBook);
+  var router = require("express").Router();
 
-    app.use('/api/books', router);
-  };
-  
+  router.post("/", [auth, admin], books.create);
+
+  router.get("/find", books.findAll);
+
+  router.get("/findone/:id", books.findOne);
+
+  router.put("/update/:id", [auth, admin], books.update);
+
+  router.delete("/delete/:id", [auth, admin], books.deleteBook);
+
+  app.use("/api/books", router);
+};

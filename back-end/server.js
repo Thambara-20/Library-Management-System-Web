@@ -45,7 +45,13 @@ require("./routes/bookRoutes")(app);
 require("./routes/userRoutes")(app);
 require("./routes/reservationRoutes")(app);
 require("./routes/notificationRoutes")(app);
+require("./routes/homeRoutes")(app);
 // Call checkOverdueItems to run it when the server starts
+
+// app.get("/", (req, res) => {
+//   console.log(req.body);
+//   res.send(req.body);
+// });
 
 
 // set port, listen for requests
