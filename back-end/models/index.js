@@ -26,6 +26,7 @@ db.users = require("./userModel.js")(sequelize, Sequelize);
 db.reservations = require("./reservationModel.js")(sequelize, Sequelize);
 db.notifications = require("./notificationModel.js")(sequelize, Sequelize);
 db.blacklists = require("./blacklistModel.js")(sequelize, Sequelize); 
+db.comments = require("./commentModel.js")(sequelize, Sequelize);
 
 const Book  = db.books;
 const Reservation  = db.reservations;
@@ -43,14 +44,14 @@ Reservation.belongsTo(Book, {
 });
 
 Barrow.belongsTo(Book, {
-  foreignKey: 'bookid', // Assuming the 'name' field in Reservation links to User's 'name' field
+  foreignKey: 'bookid', 
 });
 
 Barrow.belongsTo(User,{
   foreignKey:'name'
 })
 
-  
+ 
   
 User.hasMany(Barrow,{
     foreignKey:'name'
