@@ -6,9 +6,13 @@ module.exports = app => {
   
     var router = require("express").Router();
   
-    router.post("/", auth,blacklist.create);
+    router.post("/create", blacklist.create);
   
     router.get("/find", blacklist.findAll);
+    
+    router.get("/isBlacklisted/:name", blacklist.isBlacklisted);
+
+    router.delete("/delete/:name", blacklist.delete);
 
     app.use('/api/blacklist', router);
   };

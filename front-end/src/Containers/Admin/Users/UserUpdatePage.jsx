@@ -3,32 +3,42 @@ import "./UserUpdatePage.css"
 import { Button } from '@mui/material';
 import { getBorrowingHistory } from '../../../services/barrowingService';
 import { userReservationHistory } from '../../../services/reservationService';
+import BlacklistDialog from '../Blacklist/BlacklistPage'; // Import the BlacklistDialog component
+import { addToBlacklist } from '../../../services/BlacklistService';
 
 const UserUpdate = ({ user, setupdateUser }) => {
 
     const [returnedCount, setReturnedCount] = useState([]);
     const [notReturnedCount, setNotReturnedCount] = useState([]);
     const [reservedCount, setReservedCount] = useState([]);
+    const [isBlacklistDialogOpen, setIsBlacklistDialogOpen] = useState(false); 
 
+    const handleAddToBlacklist = async(reason) => {
+        try{
+        await addToBlacklist(reason, user);}
+        catch (error) {
+            console.error('Error adding to blacklist:', error);
+        }
+      };
     useEffect(() => {
         const getData = async () => {
-          try {
-            const data1 = await getBorrowingHistory(user.name);
-            console.log(data1);
-            setReturnedCount(data1.returned);
-            setNotReturnedCount(data1.notReturned);
-      
-            const data2 = await userReservationHistory(user.name);
-            setReservedCount(data2.reservationsCount);
-            console.log(data2);
-          } catch (error) {
-            console.error(error);
-          }
+            try {
+                const data1 = await getBorrowingHistory(user.name);
+                console.log(data1);
+                setReturnedCount(data1.returned);
+                setNotReturnedCount(data1.notReturned);
+
+                const data2 = await userReservationHistory(user.name);
+                setReservedCount(data2.reservationsCount);
+                console.log(data2);
+            } catch (error) {
+                console.error(error);
+            }
         };
-      
+
         getData();
-      }, []);
-      
+    }, []);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -79,18 +89,23 @@ const UserUpdate = ({ user, setupdateUser }) => {
                         {/* Right side */}
                         <div className="ProfileInfo-right-admin">
                             <div className="User-Data-admin">
-                                <h3>History</h3>
-                                <h5>Books Borrowed {returnedCount}</h5>
-                                <h5>Books Not Returned {notReturnedCount}</h5>
-                                <h5>Books Reserved {reservedCount}</h5>
-                                <button className="Button-root-admin" type="submit">
-                                    Add to Blacklist
-                                </button>
+                                <div>
+                                    <h3 style={{ color: 'blue' }}>History</h3>
+                                    <h5>Books Borrowed - <strong>{returnedCount}</strong></h5>
+                                    <h5>Current Lendings - <strong>{notReturnedCount}</strong></h5>
+                                    <h5>Books Reserved - <strong>{reservedCount}</strong></h5>
+                                    <button className="Button-root-admin" type="button" onClick={() => setIsBlacklistDialogOpen(true)}>
+                                        Add to Blacklist
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
+
+            {/* Render the BlacklistDialog component */}
+            <BlacklistDialog open={isBlacklistDialogOpen} onClose={() => setIsBlacklistDialogOpen(false)} onAddToBlacklist={handleAddToBlacklist} />
         </div>
     );
 };
