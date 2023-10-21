@@ -1,6 +1,7 @@
 const admin = require("../middleware/admin.js");
 const auth = require("../middleware/auth.js");
 
+
 module.exports = app => {
     const books = require("../controllers/bookController.js");
   
@@ -15,6 +16,8 @@ module.exports = app => {
     router.put("/update/:id",[auth,admin], books.update);
 
     router.delete("/delete/:id", [auth,admin],books.deleteBook);
+
+    router.get("/count",books.booksCount)
 
     app.use('/api/books', router);
   };

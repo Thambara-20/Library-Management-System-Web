@@ -13,8 +13,8 @@ const BookCard = ({ book }) => {
 
 
     return (
-        <Link to={bookUrl} className="book-card-link">
-        <Card className="book-card visible" style={{ marginBottom: "10px", minHeight:580, maxHeight:580,width: 270,
+        <Link to={bookUrl} className="book-card-link" style={{textDecoration:'none'}}>
+        <Card className="book-card visible" style={{ marginBottom: "10px", minHeight:560, maxHeight:560,width: 270,
                    }}>
             <CardContent className="card-content" >
                 <CardMedia className="image-content"
@@ -33,14 +33,7 @@ const BookCard = ({ book }) => {
                 <Typography variant="subtitle1" color="text.secondary">
                     Category: {book.category}
                 </Typography>
-                {/* <div className="whish-list" >
-                    <div className="wish">
-                        <BsFillBagHeartFill className="icon" style={{color:'#a34127',margin:15 }} size={5}/>
-                    </div>
-                    <div className="reserve">
-                        <FaBookMedical className="icon" style={{color:'#503299',margin:15}} size={5}/>
-                    </div>
-                </div> */}
+             
                 
             </CardContent>
         </Card>

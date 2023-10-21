@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ProfileInfo from './ProfileInfo';
-import { Button, ListItem, List, Divider, Avatar } from '@mui/material';
+import { Button, ListItem, List, Divider, Avatar, Badge } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AssignmentIcon from '@mui/icons-material/Assignment';
@@ -19,21 +19,41 @@ import auth from '../../services/authService';
 import { useParams } from 'react-router-dom';
 import Header from '../../Components/Header/Header';
 import { useNavigate } from 'react-router-dom';
-const Profile = () => {
+import { countUnreadNotifications } from '../../services/notificationService';
 
+const Profile = () => {
+    const currentUser =  auth.getCurrentUser();
+    const [name,setName] = useState(currentUser? currentUser.name :'User') 
     const navigate = useNavigate();
     const page = useParams()["page"];
     const [isSidebarOpen, setSidebarOpen] = useState(false);
     const currentPageName = ['My Info', 'My Reservations', 'My Borrowings', 'My Wishlist', 'Notifications']
     const pages = [<ProfileInfo />, <ReservedBooks />, <BarrowedBooks />, <WishList />, <Notifications />]
     const [currentPage, setCurrentPage] = useState();
+    const [count, setCount] = useState()
+  
+    useEffect(() => {
+      async function fetchData() {
+        try {
+          const response = await countUnreadNotifications();
+          console.log(response)
+          setCount(response);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      fetchData();
+    }, []);
+  
+  
 
 
     const toggleSidebar = () => {
         setSidebarOpen(!isSidebarOpen);
     };
-
+    
     useEffect(() => {
+        
         const handleResize = () => {
             setSidebarOpen(window.innerWidth > 768);
         };
@@ -54,7 +74,7 @@ const Profile = () => {
 
     useEffect(() => {
         setCurrentPage(page);
-        
+
     }, [page]);
 
     return (
@@ -63,11 +83,11 @@ const Profile = () => {
             <div className={`Profile-container ${isSidebarOpen ? '' : 'collapsed'}`} >
 
                 <div className='Profile-top' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div style={{ display: 'flex', alignItems: 'center',minWidth:'300px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', minWidth: '300px' }}>
                         <Avatar className='Profile-avatar'>
                             <PersonIcon fontSize='large' />
                         </Avatar>
-                        <h2 className='Profile-heading' style={{ marginLeft: '10px' }}>Hello User!</h2>
+                        <h2 className='Profile-heading' style={{ marginLeft: '10px' }}>Hello {name}</h2>
                     </div>
                     <h1 style={{ fontSize: '36px', fontWeight: 'bold', textAlign: 'center', margin: '15px 0', color: 'white' }}>{currentPageName[currentPage]}</h1>
                 </div>
@@ -109,15 +129,16 @@ const Profile = () => {
                                 </div>
                             </ListItem>
                             <Divider />
-                            <ListItem button className='custom-icon-list-item' onClick={() => setCurrentPage(4)}>
-                                <RateReviewIcon />
+                            <ListItem button className='custom-icon-list-item' onClick={() => { setCurrentPage(4); setCount(0); }}>
+                                <Badge badgeContent={count} color="secondary">
+                                    <RateReviewIcon />
+                                </Badge>
                                 <div className={`menu-text ${isSidebarOpen ? '' : 'collapsed'}`}>
-
                                     Notifications
                                 </div>
                             </ListItem>
                             <Divider />
-                            <ListItem button className='custom-icon-list-item' onClick={() => {auth.logout();navigate('/')}}>
+                            <ListItem button className='custom-icon-list-item' onClick={() => { auth.logout(); navigate('/') }}>
                                 <ExitToAppIcon />
                                 <div className={`menu-text ${isSidebarOpen ? '' : 'collapsed'}`}>
 

@@ -11,7 +11,7 @@ const AdminMainPage = () => {
         <main className="content" style={{
           height: "100%", width: "100%", fontFamily: 'Source Sans Pro'
         }}>
-          <Topbar/>
+          <Topbar isdashboard={true}/>
           <Dashboard/>
         </main>
       </div>

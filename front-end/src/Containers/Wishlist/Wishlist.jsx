@@ -1,18 +1,21 @@
-import React from 'react';
-
-import BookCardVertical from '../../Components/BookCardVertical'; 
-import { userReservedDummy as userReserved } from "../../Helpers/UserReservedDummy";
+import React, { useEffect, useState } from 'react';
+import WishlistCard from './WishlistCard';
 
 const WishList = () => {
-  
+  const [userWishlisted, setUserWishlisted] = useState([]);
+
+  useEffect(() => {
+    const userWishlistedData = JSON.parse(localStorage.getItem('x-auth-alpha-wishlist')) || [];
+    setUserWishlisted(userWishlistedData);
+  }, []);
+
   return (
     <div data-aos='fade-up'>
-      
-      <div >
-          {userReserved.map((book) => (
-            <BookCardVertical key={book.id} book={book} Wishlist={true} showCancellationButton={true}/>
-          ))}
-        </div>
+      <div>
+        {userWishlisted.map((bookId, index) => (
+          <WishlistCard key={index} bookId={bookId} />
+        ))}
+      </div>
     </div>
   );
 };

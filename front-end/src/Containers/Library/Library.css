@@ -1,66 +1,96 @@
-/* LibraryPage.css */
-.library-top {
+/* Library.css */
+
+.Library-page-wrapper {
   display: flex;
-  align-items: center;
-  margin-top: 16px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-  margin-left: 20px;
-  justify-content: space-evenly;
-}
-.book-card-link{
-  text-decoration: none !important;
-}
-
-.Library-page-wrapper{
-
-  min-height: 100vh;
-}
-
-.selecter-item {
-  background-color: #ffff; /* Light gray background */
-  border-radius: 5px;
-  color: #000 !important;
+  flex-direction: column;
+  height: 100%;
   width: 100%;
-  text-align: start;
-  padding-right: 10px !important;
+}
+
+.library-container {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  background-color: #060606;
+}
+
+.library-sidebar {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 5px 5px 0px 0px;
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+}
+
+.library-books {
+  flex: 4;
+  width: 100%;
+  padding: 20px;
+  border-radius: 0px 5px 5px 0px;
+  background: linear-gradient(30deg, #ffffff 0%, #000000 50%);
+  overflow-y: auto;
 }
 
 .category-dropdown {
-  min-width: 60px;
-  height: 100%;
-  background-color: #ffff; /* Light gray background */
-  border-radius: 5px;
-  padding: 5px;
-  color: #000;
+  margin-bottom: 20px;
 }
 
+.selecter-item {
+  width: 100%;
+}
+
+.serach-con {
+  margin-bottom: 20px;
+}
 
 .search-bar {
-  border-radius: 5px;
-  height: 100%;
-  background-color: #ffffff; 
-  color: #000000;
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-
-.what-btn{
-  background:none;
-  border: none;
-  color: rgb(0, 0, 0);
+.text-field {
   width: 100%;
-  height: 100%;
+}
+
+.availability-toggle {
+  display: flex;
+  align-items: center;
 }
 
 .grid-item {
-  /* ... (other styles) ... */
-   padding-bottom: 40px;
-  transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+  display: flex;
+  align-items: center;
 }
 
-.grid-item:hover {
-  transform: scale(1.05) !important; /* Increase the size by 10% on hover */
-  transition: transform 0.3s ease !important; /* Add a smooth transition effect */
+.grid-card {
+  width: 100%;
+  transition: 0.3s ease-in-out !important;
 }
 
+.grid-card:hover {
+  cursor: pointer;
+  transform: scale(1.05) !important;
+
+}
+/* Additional styles can be added as needed for other elements in your component. */
+
+/* Define media queries for responsive design if needed */
+@media (max-width: 768px) {
+  .library-container {
+    flex-direction: column;
+  }
+  
+  .library-sidebar {
+    width: 100%;
+    border-right: none;
+  }
+  
+  .library-books {
+    width: 100%;
+  }
+}

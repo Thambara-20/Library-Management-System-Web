@@ -169,3 +169,11 @@ export async function fetchImgdata(ISBN, retryCount = 3) {
   }
 }
 
+export async function getBooksCount() {
+  try {
+    const response = await axios.get(`${apiUrl}/api/books/count`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}

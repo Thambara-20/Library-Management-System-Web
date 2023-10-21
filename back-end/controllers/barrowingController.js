@@ -23,7 +23,7 @@ exports.create = async (req, res) => {
             } 
             else {
                 const barrow = {
-                    name: req.user.name,
+                    name: reservation.name,
                     bookid: req.body.bookid,
                     return_date: new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000), // Add 7 days to currentDate
                     is_returned: false,
@@ -113,6 +113,44 @@ exports.findOne = async (req, res) => {
             },
         });
         res.send(barrows);
+    } catch (err) {
+        res.status(500).send({
+            message: "Some error occurred while retrieving barrows."
+        });
+    }
+}
+
+exports.borrowedCount= async (req,res)=>{
+    try {
+        const count = await Barrow.count(
+            {where : {
+                is_returned:false
+            }}
+        );
+        res.status(200).send({ count });
+      } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred while counting users");
+      }
+}
+
+exports.borrowingHistoryByUser= async (req,res)=>{
+
+    try {
+        const { name } = req.query;
+        const notReturned= await Barrow.count(
+            {where : {
+                name:name,
+                is_returned:false
+            }}
+        );
+        const returned= await Barrow.count(
+            {where : {
+                name:name,
+                is_returned:true
+            }}
+        );
+        res.send({notReturned,returned});
     } catch (err) {
         res.status(500).send({
             message: "Some error occurred while retrieving barrows."

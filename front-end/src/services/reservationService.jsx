@@ -87,18 +87,30 @@ export async function approveReservation(bookid) {
   }
 }
 
-export async function notificationService() {
+export async function getReservationsCount() {
   try {
-    const response = await axios.get(`${apiUrl}/api/notification/notifications`, {
+    const response = await axios.get(`${apiUrl}/api/reservations/count`, {
       headers: {
         'x-auth-token': authService.getJwt(),
       },
     });
 
     return response.data;
-
   } catch (error) {
-    console.log(error)
+    throw error;
+  }
+}
 
+export async function userReservationHistory(name) {
+  try {
+    const response = await axios.get(`${apiUrl}/api/reservations/userHistory?name=${name}`, {
+      headers: {
+        'x-auth-token': authService.getJwt(),
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
   }
 }

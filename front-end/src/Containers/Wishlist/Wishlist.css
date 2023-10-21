@@ -1,0 +1,37 @@
+/* Add media queries for responsiveness */
+
+
+
+.icondelete:hover {
+    color: darkred ;
+    background-color: black !important;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.7);
+}
+
+.book-card:hover {
+    transition: transform 0.3s ease in out;
+    transform: scale(1.01);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.7);
+}
+
+
+@media screen and (max-width: 600px) {
+    .book-card {
+        
+        align-items: center;
+    }
+
+    .image-card {
+        flex: 0.4;
+        /* Full width on small screens */
+        width: 100%;
+    }
+
+    .rest {
+        flex: 1;
+        /* Full width on small screens */
+        margin-left: 0;
+    }
+}
+
+/* Rest of your CSS styles (unchanged) */
