@@ -45,6 +45,7 @@ require("./routes/bookRoutes")(app);
 require("./routes/userRoutes")(app);
 require("./routes/reservationRoutes")(app);
 require("./routes/notificationRoutes")(app);
+require("./routes/blacklistRoutes")(app);
 // Call checkOverdueItems to run it when the server starts
 
 
