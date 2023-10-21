@@ -52,7 +52,7 @@ const ReservedBooks = () => {
     }
 
     const handleReservation = async (bookId) => {
-        const isConfirmed = window.confirm('Are you sure you want to reserve this book?');
+        const isConfirmed = window.confirm('Are you sure you want to lend this book?');
         if (isConfirmed) {
             try {
                 await approveReservation(bookId);
