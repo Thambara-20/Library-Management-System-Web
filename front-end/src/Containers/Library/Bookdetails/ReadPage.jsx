@@ -6,7 +6,7 @@ const ReadPage = ({pageData, bookTitle}) => {
     <div style={{display:'flex',flexDirection:'column',width:'90%',height:'90%',backgroundColor:'white',borderRadius:'5px',color:'black',opacity:'0.8',justifyContent:'center',alignItems:'center'}}>
       
     <p style={{fontWeight:'bold', color:'black'}}>{bookTitle}</p>
-    <p>{[pageData]}</p>
+    <p style={{width:'50%', alignItems:'center',textAlign:'center'}}>{[pageData]}</p>
     <p></p>
     </div>
   </div>

@@ -68,12 +68,23 @@ const LibraryPage = () => {
 
   const categories = [...new Set(books.map((book) => book.category))];
 
-  const renderBooks = books
-  .filter((book) =>
+  const isbnCount = {};
+  const booksWithCount = [];
+  
+  books.forEach((book) => {
+    if (!isbnCount[book.ISBN]) {
+      isbnCount[book.ISBN] = 1;
+      booksWithCount.push({ ...book, count: 1 });
+    } else {
+      isbnCount[book.ISBN]++;
+    }
+  });
+  
+  const renderBooks = booksWithCount.filter((book) =>
     book.title.toLowerCase().includes(searchKeyword.toLowerCase()) &&
     (selectedCategory === "" || book.category === selectedCategory) &&
     (selectedAuthor === "" || book.author === selectedAuthor) &&
-    (showAvailable ? book.status : true) // Filter by availability
+    (showAvailable ? book.status : true)
   )
   .map((book) => (
     <Grid
@@ -86,10 +97,10 @@ const LibraryPage = () => {
       key={book.id}
       data-aos-offset="100"
     >
-      <BookCard book={book} className="grid-card" data-aos="fade-up" data-aos-offset="200"/>
+      <BookCard book={book} className="grid-card-book" data-aos="fade-up" data-aos-offset="200"/>
     </Grid>
   ));
-
+  
     return (
       <div className="Library-page-wrapper"  >
         <Header />

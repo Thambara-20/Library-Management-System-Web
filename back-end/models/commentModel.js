@@ -6,6 +6,10 @@ const Comment = sequelize.define('comment', {
         autoIncrement: true,
         allowNull: false,
     },
+    name:{
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
     ISBN: {
         type: Sequelize.STRING,
         allowNull: false,

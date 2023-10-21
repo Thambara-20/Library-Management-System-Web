@@ -47,6 +47,7 @@ require("./routes/reservationRoutes")(app);
 require("./routes/notificationRoutes")(app);
 require("./routes/homeRoutes")(app);
 require("./routes/blacklistRoutes")(app);
+require("./routes/commentRoutes")(app);
 // Call checkOverdueItems to run it when the server starts
 
 // app.get("/", (req, res) => {
