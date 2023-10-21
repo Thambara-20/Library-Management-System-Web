@@ -10,7 +10,7 @@ const Comment = sequelize.define('comment', {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    ISBN: {
+    title: {
         type: Sequelize.STRING,
         allowNull: false,
     },

@@ -1,5 +1,7 @@
 import { Button } from "@mui/material";
 import React, { useState } from "react";
+import { fetchForumData } from "../../services/ForumService";
+import { AddComment } from "../../services/ForumService";
 
 const commentSectionStyle = {
   justifyContent: "center",
@@ -51,10 +53,11 @@ const commentStyle = {
   padding: "10px",
   border: "1px solid #ddd",
   borderRadius: "5px",
+  width:'100%',
   marginBottom: "10px",
 };
 
-const CommentSection = () => {
+const CommentSection = ({ title }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
 
@@ -62,14 +65,33 @@ const CommentSection = () => {
     setNewComment(e.target.value);
   };
 
-  const handleCommentSubmit = () => {
+  const handleCommentSubmit = async () => {
     if (newComment) {
-      setComments([...comments, newComment]);
+      try {
+        await AddComment({ title: title, comment: newComment });
+      }
+      catch (err) {
+        console.log(err);
+      }
       setNewComment("");
     }
   };
+  useState(() => {
+    const fetchData = async () => {
+      fetchForumData(title).then((data) => {
+        setComments(data);
+
+      });
+    }
+
+    fetchData();
+  }, []);
+
+
 
   return (
+
+
     <div style={commentSectionStyle}>
       <div style={{ width: '80%' }}>
         <h2 style={{ color: 'white' }}>Comment Section</h2>
@@ -86,11 +108,35 @@ const CommentSection = () => {
         </Button>
         <div style={commentsStyle}>
           <h4 style={{ color: 'white' }}>Comments:</h4>
-          {comments.map((comment, index) => (
-            <div key={index} style={commentStyle}>
-              {comment}
+          {comments.map((comment) => (
+            <div key={comment.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px', width:'100%'}}>
+              <div
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  backgroundColor: 'blue', // You can choose a color
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontWeight: 'bold',
+                  fontSize: '18px',
+                  marginRight: '10px',
+                }}
+              >
+                {comment.name.substring(0, 2).toUpperCase()}
+              </div>
+
+              <div style={commentStyle}>
+                {comment.text}
+              </div>
+              
+
             </div>
           ))}
+
+
         </div>
       </div>
     </div>

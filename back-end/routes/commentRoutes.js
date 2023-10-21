@@ -7,7 +7,7 @@ module.exports = app => {
 
     var router = require("express").Router();
 
-    router.post("/", auth,comments.create);
+    router.post("/addComment", auth,comments.create);
 
     router.get("/find", comments.findBookComment);
 

@@ -1,6 +1,6 @@
 
 .book-wrapper-main{
-  height: 90vh;
+  height: 100vh;
   display: flex;
   width: 100%;
   justify-content: center;
@@ -145,6 +145,8 @@
 .read{
   background-color: #6b6b6b!important;
   width:99%;
+  margin-top: 5px;
+  margin-bottom: 5px;
   box-shadow:0px 0px 9px rgba(0,0,0,0.5)
 
 }
@@ -189,8 +191,8 @@
 } 
 
 .read-btn-wrapper{
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
   display: flex;
   width: 100%;
   justify-content: center;
@@ -199,10 +201,13 @@
 
 @media screen and (max-width: 900px) {
 
-
- 
   .cardcontent{
     flex-direction: column;
+  }
+
+  .right{
+    flex: 1;
+    padding: 20px 20px 20px 20px;
   }
 
 

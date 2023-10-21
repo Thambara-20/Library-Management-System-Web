@@ -3,7 +3,7 @@ const Comments = db.comments;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-    if (!req.body.text) {
+    if (!req.body.comment) {
         res.status(400).send({
             message: "Content can not be empty!",
         });
@@ -12,8 +12,8 @@ exports.create = (req, res) => {
 
     const comment = {
         name: req.user.name,
-        ISBN: req.body.ISBN,
-        text: req.body.text,
+        title: req.body.title,
+        text: req.body.comment,
     };
 
     Comments.create(comment)
@@ -29,9 +29,9 @@ exports.create = (req, res) => {
 }
 
 exports.findBookComment = (req, res) => {
-    const ISBN = req.query.ISBN;
+    const title = req.query.title;
 
-    Comments.findAll({ where: { ISBN: ISBN } })
+    Comments.findAll({ where: { title: title } })
         .then((data) => {
             res.send(data);
         })

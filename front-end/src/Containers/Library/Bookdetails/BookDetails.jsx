@@ -71,9 +71,7 @@ const BookDetails = ({ }) => {
 
     try {
       const data = await findBook(bookId);
-      console.log(data);
       setBook(data);
-      console.log(book.title);
     } catch (error) {
       console.error('Error fetching book details:', error);
     }
@@ -168,7 +166,7 @@ const BookDetails = ({ }) => {
             Read few pages {showPages ? '<' : '>'}
           </Button>
         </div>
-        <DefaultComponent />
+        <DefaultComponent key={book.bookid} title={book.title} />
 
       </div>
     </div>
