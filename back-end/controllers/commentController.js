@@ -41,3 +41,24 @@ exports.findBookComment = (req, res) => {
             });
         });
 };
+
+exports.deleteComment = (req, res) => {
+    const id = req.params.id;
+    Comments.destroy({ where: { id: id } })
+        .then((num) => {
+            if (num == 1) {
+                res.send({
+                message: "Comment was deleted successfully!",
+                });
+            } else {
+                res.send({
+                message: `Cannot delete Comment with id=${id}. Maybe Comment was not found!`,
+                });
+            }
+        })
+        .catch((err) => {
+            res.status(500).send({
+            message: "Could not delete Comment with id=" + id,
+            });
+        });
+}

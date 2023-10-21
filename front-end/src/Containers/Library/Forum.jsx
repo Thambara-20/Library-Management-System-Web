@@ -2,6 +2,8 @@ import { Button } from "@mui/material";
 import React, { useState } from "react";
 import { fetchForumData } from "../../services/ForumService";
 import { AddComment } from "../../services/ForumService";
+import DeleteIcon from '@mui/icons-material/Delete';
+import { deleteComment } from "../../services/ForumService";
 
 const commentSectionStyle = {
   justifyContent: "center",
@@ -46,6 +48,10 @@ const buttonStyle = {
 
 const commentsStyle = {
   marginTop: "20px",
+  transition: 'transform 0.2s', // Add a transition for smooth scaling
+  "&:hover": {
+    transform: 'scale(1.1)' // Scale up the element on hover
+  }
 };
 
 const commentStyle = {
@@ -53,9 +59,13 @@ const commentStyle = {
   padding: "10px",
   border: "1px solid #ddd",
   borderRadius: "5px",
-  width:'100%',
+  width: '100%',
   marginBottom: "10px",
+  marginRight: '10px',
+  boxShadow: "0 2px 5px rgba(0, 0, 0, 0.3)",
+
 };
+
 
 const CommentSection = ({ title }) => {
   const [comments, setComments] = useState([]);
@@ -69,6 +79,7 @@ const CommentSection = ({ title }) => {
     if (newComment) {
       try {
         await AddComment({ title: title, comment: newComment });
+        setComments([...comments, { text: newComment, name: "Me" }]);
       }
       catch (err) {
         console.log(err);
@@ -87,7 +98,16 @@ const CommentSection = ({ title }) => {
     fetchData();
   }, []);
 
-
+  const handleDelete = async(id) => {
+    try{
+      await deleteComment(id);
+      setComments(comments.filter((comment)=>comment.id!==id));
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
+  
 
   return (
 
@@ -109,20 +129,21 @@ const CommentSection = ({ title }) => {
         <div style={commentsStyle}>
           <h4 style={{ color: 'white' }}>Comments:</h4>
           {comments.map((comment) => (
-            <div key={comment.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px', width:'100%'}}>
+            <div  style={{ display: 'flex', alignItems: 'center', marginBottom: '10px', width: '100%' }}>
               <div
                 style={{
                   width: '40px',
                   height: '40px',
                   borderRadius: '50%',
-                  backgroundColor: 'blue', // You can choose a color
+                  backgroundColor: 'darkred', // You can choose a color
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   color: 'white',
                   fontWeight: 'bold',
-                  fontSize: '18px',
+                  fontSize: '16px',
                   marginRight: '10px',
+                  transition: 'transform 0.2s', // Add a transition for smooth scaling
                 }}
               >
                 {comment.name.substring(0, 2).toUpperCase()}
@@ -131,7 +152,26 @@ const CommentSection = ({ title }) => {
               <div style={commentStyle}>
                 {comment.text}
               </div>
-              
+              <Button
+                aria-label="Delete"
+                color="secondary"
+                onClick={()=>handleDelete(comment.id)}
+                style={{
+                  backgroundColor: 'black',
+                  marginTop: '0px',
+                  marginBottom: '10px',
+                  paddingRight: 0,
+                  boxShadow: "0 2px 5px rgba(0, 0, 0, 0.3)",
+                  transition: 'transform 0.2s', // Add a transition for smooth scaling
+                  "&:hover": {
+                    transform: 'scale(1.1)' // Scale up the element on hover
+                  }
+                }}
+              >
+                <DeleteIcon />
+              </Button>
+
+
 
             </div>
           ))}

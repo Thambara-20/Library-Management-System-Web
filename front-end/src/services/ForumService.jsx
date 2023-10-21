@@ -31,3 +31,17 @@ export async function AddComment(comment) {
         throw error;
     }
 }
+
+export async function deleteComment(id) {
+    try {
+        await axios.delete(`${apiUrl}/api/comments/delete/${id}`, {
+            headers: {
+                'x-auth-token': authService.getJwt(),
+            },
+        });
+        notification.showSuccess('Comment deleted successfully');
+    } catch (error) {
+        notification.showError('Error deleting comment');
+        throw error;
+    }
+}

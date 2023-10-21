@@ -44,14 +44,14 @@ Reservation.belongsTo(Book, {
 });
 
 Barrow.belongsTo(Book, {
-  foreignKey: 'bookid', // Assuming the 'name' field in Reservation links to User's 'name' field
+  foreignKey: 'bookid', 
 });
 
 Barrow.belongsTo(User,{
   foreignKey:'name'
 })
 
-  
+ 
   
 User.hasMany(Barrow,{
     foreignKey:'name'
