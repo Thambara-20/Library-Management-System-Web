@@ -1,12 +1,11 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const config = require("config");
 const app = express();
 const { checkOverdueItems } = require('./controllers/notificationController');
 
 
-if (!config.jwtPrivateKey) {
+if (!process.env.JWT_PRIVATE_KEY) {
   console.error("FATAL ERROR: jwtPrivateKey is not defined.");
   process.exit(1);
 }

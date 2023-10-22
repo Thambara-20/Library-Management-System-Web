@@ -25,7 +25,6 @@ export async function AddComment(comment) {
                 'x-auth-token': authService.getJwt(), 
             },
         });
-        notification.showSuccess('Comment added successfully');
     } catch (error) {
         notification.showError('Error adding comment');
         throw error;
@@ -39,7 +38,6 @@ export async function deleteComment(id) {
                 'x-auth-token': authService.getJwt(),
             },
         });
-        notification.showSuccess('Comment deleted successfully');
     } catch (error) {
         notification.showError('Error deleting comment');
         throw error;
