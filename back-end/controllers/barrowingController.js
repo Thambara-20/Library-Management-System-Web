@@ -58,7 +58,7 @@ exports.returnBook = async (req, res) => {
         const barrow = await Barrow.findByPk(id);
         if (!barrow) {
             res.status(404).send({
-                message: "Barrow not found"
+                message: "Borrow not found"
             });
             return;
         }
@@ -82,8 +82,7 @@ exports.returnBook = async (req, res) => {
     }
 };
 
-exports.find = async (req, res) => {
-    
+exports.find = async (req, res) => {    
 
     try {
         const barrows = await Barrow.findAll({
