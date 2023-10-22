@@ -49,8 +49,11 @@ const openEmailTab = url => {
                     <span className="secondaryText">+9476 3055 795</span>
                   </div>
                 </div>
-                <CopyToClipboard text="0763055795">
-                <div className="flexCenter button btn-color">Call Now</div>
+                <CopyToClipboard className="flexCenter button btn-color" text="0763055795">
+                  <Link style={{ textDecoration: 'none' }}className="flexCenter button btn-color">
+                  
+                <div  className="flexCenter button btn-color">Call Now</div>
+                  </Link>
                 </CopyToClipboard>
                
               </div>
@@ -65,7 +68,7 @@ const openEmailTab = url => {
                     <span>+9476 3055 795</span>
                   </div>
                 </div>
-                <div className="flexCenter button btn-color"><ReactWhatsapp className="what-btn" number="+94763055795" message="I want to know something about registration">Chat Now</ReactWhatsapp></div>
+                <div  className="flexCenter button btn-color"><ReactWhatsapp className="flexCenter button btn-color what-btn" number="+94763055795" message="I want to know something about registration">Chat Now</ReactWhatsapp></div>
               </div>
             </div>
 
@@ -85,7 +88,7 @@ const openEmailTab = url => {
                     </span>
                   </div>
                 </div>
-                <Link to={'/ContactUs'}> 
+                <Link style={{ textDecoration: 'none' }} className="flexCenter button btn-color" to={'/ContactUs'}> 
                 <div className="flexCenter button btn-color">Mail Now</div>
             </Link>
            
@@ -101,7 +104,10 @@ const openEmailTab = url => {
                     <span>Download App</span>
                   </div>
                 </div>
+                <Link style={{ textDecoration: 'none' }} className="flexCenter button btn-color">
+                
                 <div className="flexCenter button btn-color">Go Store</div>
+                </Link>
               </div>
             </div>
           </div>

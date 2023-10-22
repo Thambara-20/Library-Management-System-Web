@@ -9,6 +9,10 @@
     margin-bottom: 2rem;
     
 }
+#call{
+    background: #4066ff;
+    border: none;
+}
 .p-card{
     gap: 0.6rem;
     padding: 1rem;
