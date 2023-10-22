@@ -51,13 +51,7 @@ const Popular = () => {
                 <div className="flexColStart p-card" >
                   <img src={card.image} alt="book" />
                   <span className="secondaryText p-value">
-                    <span
-                      className="quantity"
-                      style={{ color: "orange", marginRight: 5 }}
-                    >
-                      Quantity
-                    </span>
-                    <span>{card.price}</span>
+                  
                   </span>
                   <span className="primaryText">{card.name}</span>
                   <span className="f-size ">{card.detail}</span>
