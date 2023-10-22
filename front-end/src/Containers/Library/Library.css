@@ -10,6 +10,7 @@
 .library-container {
   display: flex;
   flex: 1;
+  min-height: 100vh;
   height: 100%;
   width: 100%;
   background-color: #060606;
