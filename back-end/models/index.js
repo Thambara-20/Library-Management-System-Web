@@ -55,11 +55,11 @@ User.hasMany(Barrow,{
 
 
 User.hasMany(Reservation, {
-  foreignKey: 'name', // Assuming the 'name' field in Reservation links to User's 'name' field
+  foreignKey: 'name', 
 });
 
 Book.hasMany(Reservation, {
-  foreignKey: 'bookid', // Assuming the 'bookid' field in Reservation links to Book's 'bookid' field
+  foreignKey: 'bookid', 
 });
 
 Book.belongsTo(
