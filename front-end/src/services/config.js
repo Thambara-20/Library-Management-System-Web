@@ -1,3 +1,3 @@
 export const Config = {
-    Url : 'http://localhost:8080'
+    Url : 'https://lbms-server.onrender.com'
 }

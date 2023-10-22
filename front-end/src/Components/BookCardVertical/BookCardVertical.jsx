@@ -53,7 +53,7 @@ const BookCardVertical = ({ book, showCancellationButton = false, showIssueButto
                         alt="Book Cover"
                         height="100%"
                         image={book.url}
-                        style={{ maxWidth: "100%" }}
+                        style={{ height:'150px' }}
                     />
                 </div>
                 <div style={{ flex: 0.8, marginLeft: "40px", color: "white" }} className="rest">
