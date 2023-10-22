@@ -8,15 +8,21 @@ const apiUrl = Config.Url;
 export function showSuccess(message) {
     toast.success(message, {
         position: toast.POSITION.TOP_LEFT,
+        style: {
+            backgroundColor: 'black', 
+            color: 'white', 
+        },
     });
-    
 }
 
 export function showError(message) {
-  toast.error(message, {
-    position: toast.POSITION.TOP_LEFT,
-   
-  });
+    toast.error(message, {
+        position: toast.POSITION.TOP_LEFT,
+        style: {
+          backgroundColor: 'black', 
+          color: 'white', 
+      },
+    });
 }
 
 export async function notificationService() {

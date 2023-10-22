@@ -71,9 +71,7 @@ const BookDetails = ({ }) => {
 
     try {
       const data = await findBook(bookId);
-      console.log(data);
       setBook(data);
-      console.log(book.title);
     } catch (error) {
       console.error('Error fetching book details:', error);
     }
@@ -116,11 +114,11 @@ const BookDetails = ({ }) => {
   }
 
   return (
-    <div className="book-wrapper">
+    <div className="book-wrapper-main" style={{borderRadius:0}} >
       {showSignUpPopup && (
         <SignInPage onClose={closeSignUpPopup} onSuucessClose={closeSignUpPopup} />
       )}
-      <div className="book-details">
+      <div className="book-details-main">
         <Card>
           <CardContent style={containerStyle} data-aos='fade-up' className="cardcontent">
             <div style={contentStyle} className="image-wrapper">
@@ -131,7 +129,7 @@ const BookDetails = ({ }) => {
             </div>
             <div className="blurred-background"></div>
             <div className='right' data-aos='fade-up'>
-              z              <div className="right-data">
+           <div className="right-data">
                 <h2>Book Details</h2>
                 <Typography className='title' variant="h5">{book.title}</Typography>
                 <Typography className='author'>Author: {book.author}</Typography>
@@ -156,11 +154,11 @@ const BookDetails = ({ }) => {
                   onClick={toggleWishlist}
                 >
                   <BookIcon />
-                  {isBookInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+                  {isBookInWishlist ? "Unishlist" : "Add to Wishlist"}
                 </Button>
               </div>
             </div>
-            <ReadPage />
+            <ReadPage pageData={book.abstract} bookTitle={book.title}/>
           </CardContent>
         </Card>
         <div className='read-btn-wrapper'>
@@ -168,7 +166,7 @@ const BookDetails = ({ }) => {
             Read few pages {showPages ? '<' : '>'}
           </Button>
         </div>
-        <DefaultComponent />
+        <DefaultComponent key={book.bookid} title={book.title} />
 
       </div>
     </div>

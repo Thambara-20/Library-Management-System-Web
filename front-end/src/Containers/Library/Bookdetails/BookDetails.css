@@ -1,17 +1,20 @@
 
-.book-wrapper{
-  height: 90vh;
+.book-wrapper-main{
+  height: 100vh;
   display: flex;
-  margin: 6px;
   width: 100%;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(50deg, black 0%, rgb(117, 112, 112)45%);
+  border-radius: 0 0 0 0;
  
 }
 
-.book-details{
-  width: 99%;
-  border-radius: 5px;
+.book-details-main{
+  width: 100%;
   backdrop-filter: blur(5px);
   height: 100%;
+  border-radius: 0 0 0 0;
 }
 
 .cardContent {
@@ -140,8 +143,10 @@
   
 }
 .read{
-  background-color: #000000!important;
-  width:98%;
+  background-color: #6b6b6b!important;
+  width:99%;
+  margin-top: 5px;
+  margin-bottom: 5px;
   box-shadow:0px 0px 9px rgba(0,0,0,0.5)
 
 }
@@ -150,8 +155,7 @@
 
 }
 .read:hover{
-  background-color: #525252 !important;
-  scale: 1.001;
+  background-color: #000000 !important;
  
 }
 
@@ -187,19 +191,23 @@
 } 
 
 .read-btn-wrapper{
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
   display: flex;
   width: 100%;
   justify-content: center;
   align-items: center;
-  margin-top: 5px ;
 }
 
 @media screen and (max-width: 900px) {
 
-
- 
   .cardcontent{
     flex-direction: column;
+  }
+
+  .right{
+    flex: 1;
+    padding: 20px 20px 20px 20px;
   }
 
 
