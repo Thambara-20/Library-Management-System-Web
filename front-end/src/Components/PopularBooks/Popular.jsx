@@ -11,15 +11,29 @@ import "swiper/css";
 import data from "../../utils/slider.json";
 import { sliderSetting } from "../../utils/common";
 import { Link } from "react-router-dom";
-
+import axios from 'axios';
+import { Config } from '../../services/config';
+const apiUrl = Config.Url;
 
 
 const Popular = () => {
+  const [newdata, setNewdata] = useState([]);
   useEffect(() => {
     AOS.init({
       duration: 2000,
     });
   }, []);
+  useEffect(() => {
+    async function getNewArrivals() {
+      const result = await axios.get(`${apiUrl}/popular`);
+      setNewdata(result.data);
+      console.log(result.data);
+    console.log("hekjdkjf");
+    }
+    getNewArrivals();
+    
+  }, [])
+  data = [...newdata];
   return (
     <section className="popular-wrapper" data-aos="fade-up" data-aos-offset="200">
       <div className="paddings innerWidth popular-container">

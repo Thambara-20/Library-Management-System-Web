@@ -1,8 +1,12 @@
 const db = require("../models");
 const Book = db.books;
+const popular = db.popular;
+const barrows = db.barrows;
 const Op = db.Sequelize.Op;
 const storeImage = require("./firebaseImageController");
-
+let lisOfTitle = [];
+let bookTitles;
+let getCount;
 exports.create = async (req, res) => {
   // Validate request
   if (!req.body.title) {
@@ -135,26 +139,85 @@ exports.getNewArrival = async (req, res) => {
         image :item.url
       };
     });
-    res.send(newList);
+  res.send(newList);
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send("Can't fetch new arriaval books");
   }
+
+  try {
+      // Query to get all the titles of books in the "borrow book" table
+      const titles = await db.barrows.findAll({
+        attributes: [],
+        include: [
+          {
+            model: Book,
+            attributes: ['title'],
+          },
+        ],
+      });
+
+    bookTitles = titles.map((borrow) => borrow.book.title);
+    console.log('Book Titles in Borrow Book Table:', bookTitles);
+   // res.send(bookTitles);
+    } catch (error) {
+    console.error('Error getting book titles:', error);
+    //res.send({"no":"no"})
+  };
+
+
+
+
+  getCount = (arr, element)=> {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === element) {
+      count++;
+    }
+  }
+  return count;
+}
+
+  
+
+  try {
+      const titles = await Book.findAll({
+        attributes: ['title','ISBN','author','category','url'],
+      });
+      await popular.sync({ force: true });
+      // Insert the titles into the "new_table"
+      await popular.bulkCreate(titles.map((title) => ({ title: title.title,
+        ISBN: title.ISBN, author:title.author, category:title.category,url:title.url,count:getCount(bookTitles,title.title) })));
+      
+    console.log('Data copied successfully');
+    } catch (error) {
+      console.error('Error copying data:', error);
+  }
+
 };
 
 exports.getPopular = async (req, res) => {
   // console.log(req.body);
   // res.send(req.body);
   try {
-    const recentBooks = await Book.findAll({
-      order: [["createdAt", "DESC"]],
-      limit: 10,
+    const recentBooks = await popular.findAll({
+      order: [['count', "DESC"]],
+      limit: 9,
     });
-
-    res.json(recentBooks);
+    const newList = recentBooks.map((item) => {
+      return {
+        name: item.title,
+        price: item.count,
+        detail: item.author + " "+ item.category,
+        image :item.url
+      };
+    });
+    const arr = newList;
+    arr.reverse();
+    res.send(arr);
   } catch (error) {
     console.error("Error:", error);
-    res.status(500).send("Can't fetch new arriaval books");
+    res.status(500).send("Can't fetch popular books");
   }
 };
 

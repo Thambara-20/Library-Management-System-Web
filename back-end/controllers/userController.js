@@ -138,12 +138,10 @@ exports.updateUser = async (req, res) => {
       return res.status(404).send("User not found");
     }
 
-    // Ensure the user can only update their own information
     if (name !== user.name) {
       return res.status(403).send("Permission denied");
     }
 
-    // Check if the previous password matches
     if (updates.currentPassword) {
      
       const passwordMatch = await bcrypt.compare(updates.currentPassword, user.password);
