@@ -24,8 +24,7 @@ const BookCard = ({ book }) => {
                     <CardMedia className="image-content"
                         component="img"
                         alt="Book Cover"
-                        min-height="210"
-                        max-height="210"
+                        style={{ height: '350px' }}
                         image={book.url} // Use the img prop as the image source
                     />
                     <Typography variant="h6" component="div" style={{ fontWeight: 'bold', fontSize: '1.2rem', marginTop: '10px' }}>
