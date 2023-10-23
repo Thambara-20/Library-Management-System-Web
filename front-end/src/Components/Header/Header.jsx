@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "./smart_logo.png";
+import logo from "./logo.png";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
@@ -17,7 +17,7 @@ const Header = () => {
   const [showSignUpPopup, setShowSignUpPopup] = useState(false);
   const [isUserLogIn, setUserLogIn] = useState(true);
   const [isAdminLoggedIn, setAdminLoggedIn] = useState(true);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(true);
 
   const openSignUpPopup = () => {
     setShowSignUpPopup(true);

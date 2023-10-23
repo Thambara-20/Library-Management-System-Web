@@ -1,15 +1,15 @@
-.c-container{
+.paddings.innerWidth.flexCenter.c-container{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     height: 90%;
-
+    flex-wrap: wrap;
 }
 
 .c-right{
     width: 100%;
 }
 
-.c-left{
+.flexColStart.c-left{
     gap: 0.5rem;
 }
 
@@ -81,4 +81,14 @@
 .flexCenter.button.btn-color {
     background-color: #4066ff;
     color: white;
+}
+
+@media(max-width:640px) {
+    .flexCenter.contact-right{
+        display: none;
+    }
+    .flexStart.row{
+        width: 100%;
+        justify-content: center;
+    }
 }
