@@ -54,14 +54,14 @@
 
 .serach-con {
   margin-bottom: 20px;
-  color: #000000;
+  color: #ffffff;
 }
 
 .search-bar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #ffffff ;
+  color: #ffffff !important; ;
   border: none;
   border-radius: 5px;
 }
@@ -70,7 +70,7 @@
   width: 100%;
   outline: none; /* Remove the default outline */
   border: none;
-  color: #ffffff ;
+  color: #ffffff !important; ;
   margin: 7; /* Set the outline color to match the background color */
 }
 

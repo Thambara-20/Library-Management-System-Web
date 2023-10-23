@@ -157,11 +157,12 @@ const LibraryPage = () => {
             </div>
 
             <div className="serach-con">
-              <div className="search-bar">
+              <div className="search-bar" style={{backgroundColor:'white'}}>
                 <TextField
                   className="text-field"
                   label={switchLabel}
                   variant="outlined"
+                  style={{color:'white'}}
                   onChange={handleSearchChange}
                 />
               </div>
