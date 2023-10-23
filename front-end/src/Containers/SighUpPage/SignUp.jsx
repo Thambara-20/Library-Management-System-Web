@@ -98,7 +98,7 @@ const SignUp = () => {
       </div>
 
 
-      <div className="paddings innerWidth flexCenter reg-container">
+      <div className="paddings innerWidth flexCenter reg-container-signup">
         <div className="right">
           <form onSubmit={postData} action="" className="reg-form" name="reg-form">
             <span className="primaryText" style={{color:'black', fontWeight:400}}>Register</span>
@@ -160,11 +160,13 @@ const SignUp = () => {
         </div>
 
         {/* right side */}
-        <div className="left">
-          <div className="image-container" id="re-con">
-            <img src={imgage} alt="left image of registraion" id="reg-img" />
+          <div className="image-container-signup" id="re-con" style={{justifyContent:'center',  display:'flex'}}>
+              <h2 className="text-set"style={{justifyContent:'center', alignItems:"center", width:"80%", textAlign:'center',fontWeight:'500', color:'white' }}>
+              Welcome to our <br/>Library Management System! <br/>To get started,<br/> please complete the registration <br/>process.</h2>
+
+            <img src={imgage} alt="left image of registraion" id="reg-img" className="image-signup"/>
           </div>
-        </div>
+      
       </div>
     </section>
 
