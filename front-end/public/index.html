@@ -47,5 +47,27 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- <script>
+      let isMobile = window.innerWidth <= 800; // Adjust the width threshold as needed
+        let hasReloaded = false;
+
+        function checkForResize() {
+          const newIsMobile = window.innerWidth <= 800; // Adjust the width threshold as needed
+
+          if (isMobile && !newIsMobile && !hasReloaded) {
+            // Transitioned from mobile to desktop
+            window.location.reload();
+            hasReloaded = true;
+          }
+
+          isMobile = newIsMobile;
+        }
+
+        // Add an event listener to check for window resize
+        window.addEventListener('resize', checkForResize);
+
+        // Call checkForResize initially to handle the initial page load
+        checkForResize();
+    </script> -->
   </body>
 </html>

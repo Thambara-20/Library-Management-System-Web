@@ -40,14 +40,23 @@ const Header = () => {
 
 
   const getMenuStyles = (menuOpen) => {
+    // if (document.documentElement.clientWidth <= 800) {
+    //   return { right: !menuOpen && "-100%" };
+    // }
     if (document.documentElement.clientWidth <= 800) {
-      return { right: !menuOpen && "-100%" };
-    }
+    return { visibility: menuOpen ? "visible" : "hidden" };
+  }
   };
 
-  const handleTogleButton = (event)=>{
-    const temp = !menuOpen;
-    setMenuOpen(temp);
+
+
+
+  const handleTogleButton = (event) => {
+    if (menuOpen) {
+      const temp = !menuOpen;
+      setMenuOpen(temp);
+      console.log(temp);
+    }
   };
 
   useEffect(() => {
@@ -99,11 +108,11 @@ const Header = () => {
             </Link>
 
           </div>
-        </OutsideClickHandler>
         <div className="menu-icon" onClick={() => setMenuOpen((prev) => !prev)}>
 
           <BiMenuAltRight size={30} />
         </div>
+        </OutsideClickHandler>
        
         {showSignUpPopup && (
           <SignInPage onClose={closeSignUpPopup} onSuucessClose={changeIconLogIn} />
