@@ -28,6 +28,7 @@ const NewArrivals = () => {
   useEffect(() => {
     async function getNewArrivals() {
       const result = await axios.get(`${apiUrl}`);
+
       setNewdata(result.data);
       console.log(result.data);
     console.log("hekjdkjf");

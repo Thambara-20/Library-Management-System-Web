@@ -1,12 +1,11 @@
+require("dotenv").config();
 const express = require("express");
-const userDetails = require('./routes/registerRoutes')
 const cors = require("cors");
-const config = require("config");
 const app = express();
 const { checkOverdueItems } = require('./controllers/notificationController');
 
 
-if (!config.jwtPrivateKey) {
+if (!process.env.JWT_PRIVATE_KEY) {
   console.error("FATAL ERROR: jwtPrivateKey is not defined.");
   process.exit(1);
 }
@@ -47,6 +46,9 @@ require("./routes/reservationRoutes")(app);
 require("./routes/notificationRoutes")(app);
 require("./routes/homeRoutes")(app);
 require("./routes/blacklistRoutes")(app);
+require("./routes/commentRoutes")(app);
+require('./routes/registerRoutes')
+
 // Call checkOverdueItems to run it when the server starts
 
 // app.get("/", (req, res) => {
@@ -59,7 +61,8 @@ require("./routes/blacklistRoutes")(app);
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`)
-  setInterval(checkOverdueItems, 120000);
+  setInterval(checkOverdueItems, 1200000);
+  
 });
 
 
