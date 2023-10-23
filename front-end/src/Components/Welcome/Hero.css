@@ -2,17 +2,18 @@
     color: white;
     position: ralative;
     padding-bottom: 2rem;
+    justify-content: space-around;
     /* background-color: var(--black); */
 }
 
 .w-container {
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-end;
 }
 
 #welco {
     align-items: flex-end;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 /*left side of the welcome*/
@@ -132,7 +133,15 @@
         font-size: 2.5rem;
     }
     .image-container{
+        width: 65%;
+        height: 15rem;
+    }
+    #img-container{
+        height: 23rem;
         width: 95%;
-        line-height: 25rem;
+    }
+    .welcome-right{
+        width: 100%;
+        padding:3rem;
     }
 }
