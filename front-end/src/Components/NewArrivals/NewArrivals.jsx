@@ -49,7 +49,7 @@ const NewArrivals = () => {
           <SliderButtons />
           {data.map((card, i) => {
             return (
-              <SwiperSlide key={i}>
+              <SwiperSlide key={i} className="swiper-s">
                 <Link to={'/Register'} id="link">
                 <div className="flexColStart p-card">
                   <img src={card.image} alt="book" />
@@ -62,7 +62,7 @@ const NewArrivals = () => {
                     </span>
                     <span>{card.price}</span>
                   </span>
-                  <span className="primaryText">{card.name}</span>
+                  <span className="primaryText">{card.name.slice(0, 16)}...</span>
                   <span className="f-size ">{card.detail}</span>
                 </div>
                 </Link>
@@ -85,15 +85,18 @@ const SliderButtons = () => {
   return (
     <div className="flexCenter p-buttons">
       <button
-        className="slide-button"
+        className="slide-button-left"
         onClick={() => {
           Swiper.slidePrev();
         }}
       >
         &lt;
       </button>
+      <div className="space-between-buttons">
+        
+      </div>
       <button
-        className="slide-button"
+        className="slide-button-right"
         onClick={() => {
           Swiper.slideNext();
         }}

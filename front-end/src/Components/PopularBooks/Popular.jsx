@@ -47,13 +47,12 @@ const Popular = () => {
           {data.map((card, i) => {
             return (
               <SwiperSlide className="swiper-s" key={i}>
-                <Link to={'/Register'} id="link">
+                <Link to={`/book/${i}`} id="link">
                 <div className="flexColStart p-card" >
                   <img src={card.image} alt="book" />
                   <span className="secondaryText p-value">
-                  
                   </span>
-                  <span className="primaryText">{card.name}</span>
+                  <span className="primaryText">{card.name.slice(0, 16)}...</span>
                   <span className="f-size ">{card.detail}</span>
                 </div>
                 </Link>
@@ -76,7 +75,7 @@ const SliderButtons = () => {
   return (
     <div className="flexCenter p-buttons">
       <button
-        className="slide-button"
+        className="slide-button-left"
         onClick={() => {
           Swiper.slidePrev();
         }}
@@ -84,7 +83,7 @@ const SliderButtons = () => {
         &lt;
       </button>
       <button
-        className="slide-button"
+        className="slide-button-right"
         onClick={() => {
           Swiper.slideNext();
         }}

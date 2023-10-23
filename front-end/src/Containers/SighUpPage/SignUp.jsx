@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import imgage from "./register-image.jpg";
+import imgage from "./imagelbms.jpeg";
 import RegForm from "../../Components/RegForm/RegForm";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
 import popImage from "./otp.png";
 import axios from 'axios';
 import authService from "../../services/authService";
+import { Button } from "@mui/material";
 const SignUp = () => {
 
   const [popupState, setPopupState] = useState("");
@@ -99,8 +100,11 @@ const SignUp = () => {
 
 
       <div className="paddings innerWidth flexCenter reg-container-signup">
-        <div className="right">
-          <form onSubmit={postData} action="" className="reg-form" name="reg-form">
+       <Link to="/">
+       <Button style={{position:'fixed',top:5, left:5,color:'white' ,background:'black'}}>Back</Button>
+       </Link>
+        <div className="right-signup">
+          <form onSubmit={postData} action="" className="reg-form-signup" name="reg-form">
             <span className="primaryText" style={{color:'black', fontWeight:400}}>Register</span>
             <div className="name">
               <RegForm onChange={e => handleF(e)} value={data.Fname} id="Fname" Label="First Name" placeHolder="First name" name='firstName' />
@@ -160,12 +164,9 @@ const SignUp = () => {
         </div>
 
         {/* right side */}
-          <div className="image-container-signup" id="re-con" style={{justifyContent:'center',  display:'flex'}}>
-              <h2 className="text-set"style={{justifyContent:'center', alignItems:"center", width:"80%", textAlign:'center',fontWeight:'500', color:'white' }}>
-              Welcome to our <br/>Library Management System! <br/>To get started,<br/> please complete the registration <br/>process.</h2>
-
+             
             <img src={imgage} alt="left image of registraion" id="reg-img" className="image-signup"/>
-          </div>
+       
       
       </div>
     </section>
