@@ -134,6 +134,9 @@
     .flexColStart.welcome-left{
         width:80%
     }
+    .paddings.innerWidth.flexCenter.w-container{
+        justify-content: center;
+    }
     .image-container{
         justify-content: center;
         align-items: center;

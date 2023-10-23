@@ -25,7 +25,7 @@ body {
     padding: 10px;
     height: 100%;
     background: linear-gradient(50deg, black 0%, rgb(117, 112, 112)45%,black 0%,rgb(97, 94, 94) 90%  ); 
-    min-height: 115vh;
+    min-height: 200vh;
     
   }
 
@@ -118,11 +118,7 @@ body {
   .MuiListItem-root:hover {
     color: #000000; /* Change to desired hover color */
   }
-  
-  .MuiSvgIcon-root {
-    color: #fff;
-    margin-right: 10px;
-  }
+
   @media screen and (max-width: 600px) {
     .Sidebar.collapsed{
       width: 11vh;

@@ -24,7 +24,7 @@ const AboutUsDetail = () => {
               <br /> Together, we'll shape the future of library management.
             </span>
           <div className="b-about">
-            <button className="button">Get Start</button>
+            <button className="button">Get Started</button>
 
           </div>
           </div>

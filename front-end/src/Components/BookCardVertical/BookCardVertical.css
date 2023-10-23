@@ -63,9 +63,14 @@
     .image-card {
       flex: 0.3;
       max-width: 200px;
+      min-height: 300px;
+
       margin-left: 0 !important;
     
     }
+    .image-card img {
+      min-height: 300px;
+      }
   
     .rest {
      justify-content: flex-start;
