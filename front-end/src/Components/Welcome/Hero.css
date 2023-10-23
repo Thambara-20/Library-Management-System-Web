@@ -97,7 +97,7 @@
     }
     
     #img-container {
-        width: 30rem;
+    width: 30rem;
     height: 35rem;
     overflow: hidden;
     /* border-radius: 15rem 15rem 0 0; */
@@ -116,7 +116,7 @@
 }
 
 .image-container:hover {
-    transform: scale(1.02);
+    transform: scale(1.02) !important;
 }
 
 .image-container>img {
@@ -131,8 +131,18 @@
     .welcome-title>h1{
         font-size: 2.5rem;
     }
+    .flexColStart.welcome-left{
+        width:80%
+    }
     .image-container{
-        width: 95%;
+        justify-content: center;
+        align-items: center;
+        width: 100% !important;
         line-height: 25rem;
+    }
+    .l-image{
+        min-width: 100% !important;
+        justify-content: center;
+        align-items: center;
     }
 }

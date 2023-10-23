@@ -38,9 +38,9 @@ const Welcome = () => {
 
   return (
     <section className="welcome-wrapper">
-      <div className="paddings innerWidth flexCenter w-container" id="welco">
+      <div className="paddings innerWidth flexCenter w-container" id="welco" style={{justifyContent:'space-around', alignItems:'center', padding:'10px 0 0 0 '}}>
         {/* this is left side of main content */}
-        <div className=" flexColStart welcome-left">
+        <div className=" flexColStart welcome-left" >
           <div className="welcome-title">
             <motion.div initial={{ y: "7rem",x:'7rem', opacity: 0 }}
               animate={{ y: 0,x:0, opacity: 1 }}
