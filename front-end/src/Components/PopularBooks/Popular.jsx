@@ -46,7 +46,7 @@ const Popular = () => {
           <SliderButtons />
           {data.map((card, i) => {
             return (
-              <SwiperSlide key={i}>
+              <SwiperSlide className="swiper-s" key={i}>
                 <Link to={'/Register'} id="link">
                 <div className="flexColStart p-card" >
                   <img src={card.image} alt="book" />
