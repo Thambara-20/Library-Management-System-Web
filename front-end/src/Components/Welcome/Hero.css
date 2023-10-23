@@ -98,7 +98,7 @@
     }
     
     #img-container {
-        width: 30rem;
+    width: 30rem;
     height: 35rem;
     overflow: hidden;
     /* border-radius: 15rem 15rem 0 0; */
@@ -117,7 +117,7 @@
 }
 
 .image-container:hover {
-    transform: scale(1.02);
+    transform: scale(1.02) !important;
 }
 
 .image-container>img {
@@ -132,6 +132,16 @@
     .welcome-title>h1{
         font-size: 2.5rem;
     }
+    .flexColStart.welcome-left{
+        width:80%
+    }
+    .flexCenter.welcome-right{
+        width: 85%;
+        padding: 0;
+    }
+    .paddings.innerWidth.flexCenter.w-container{
+        justify-content: center;
+    }
     .image-container{
         width: 65%;
         height: 15rem;
@@ -143,5 +153,12 @@
     .welcome-right{
         width: 100%;
         padding:3rem;
+    }
+    .l-image{
+        min-width: 100% !important;
+        border-radius: 5px;
+        min-height: 100%;
+        justify-content: center;
+        align-items: center;
     }
 }

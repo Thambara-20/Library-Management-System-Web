@@ -44,38 +44,53 @@ class App extends Component {
 
   render() {
     const { isAdminLoggedIn } = this.state;
-
+    const isSmallScreen = window.innerWidth <= 1200; // You can adjust the screen width as needed
+  
     return (
       <div>
-          <ToastContainer />
+        <ToastContainer />
         <div>
           <Routes>
-
             <Route path="/ContactUs" element={<CustomerSupportPage />} />
-            <Route path='Register' element = {<SignUp/>}/>
-            <Route path="/"element={ <Home /> }/>
+            <Route path="Register" element={<SignUp />} />
+            <Route path="/" element={<Home />} />
             <Route path="/Library" element={<LibraryPage />} />
-            <Route path="/AboutUs" element = {<AboutUs/>}/>
-
-            <Route path="/Profile/:page" element={<Profile/>} />
-            <Route path="/book/:bookId" element={<BookDetails/>} />
-
-            {isAdminLoggedIn ? <Route path="/admin" element={<AdminMainPage />} /> : <Route path="/" />}
-            {isAdminLoggedIn ? <Route path="/admin/userManagement" element={<UserManagement />} /> : <Route path="/" />}
-            {isAdminLoggedIn ? <Route path="/admin/bookManagement" element={<BookManagement />} /> : <Route path="/" />}
-            {isAdminLoggedIn ? <Route path="/admin/bookManagement/addbook" element={<AddBook />} /> : <Route path="/" />}
-            {isAdminLoggedIn ? <Route path="/admin/bookManagement/updatebook/:bookid" element={<BookUpdate />} /> : <Route path="/" />}
-            {isAdminLoggedIn ? <Route path="/admin/bookManagement/Reservations" element={<ReservedBooksPage />} /> : <Route path="/" />}
-            {isAdminLoggedIn ? <Route path="/admin/bookManagement/PendingApprovals" element={<PendingApprovalsPage />} /> : <Route path="/" />}
-            {isAdminLoggedIn ? <Route path="/admin/bookManagement/Barrowings" element={<BarrowingsPage />} /> : <Route path="/" />}
-         
-
+            <Route path="/AboutUs" element={<AboutUs />} />
+  
+            <Route path="/Profile/:page" element={<Profile />} />
+            <Route path="/book/:bookId" element={<BookDetails />} />
+  
+            {/* Conditional rendering of admin routes */}
+            {!isSmallScreen && isAdminLoggedIn && (
+              <>
+                <Route path="/admin" element={<AdminMainPage />} />
+                <Route path="/admin/userManagement" element={<UserManagement />} />
+                <Route path="/admin/bookManagement" element={<BookManagement />} />
+                <Route path="/admin/bookManagement/addbook" element={<AddBook />} />
+                <Route
+                  path="/admin/bookManagement/updatebook/:bookid"
+                  element={<BookUpdate />}
+                />
+                <Route
+                  path="/admin/bookManagement/Reservations"
+                  element={<ReservedBooksPage />}
+                />
+                <Route
+                  path="/admin/bookManagement/PendingApprovals"
+                  element={<PendingApprovalsPage />}
+                />
+                <Route
+                  path="/admin/bookManagement/Barrowings"
+                  element={<BarrowingsPage />}
+                />
+              </>
+            )}
           </Routes>
         </div>
       </div>
     );
-
   }
 }
+  
 
 export default App;

@@ -103,11 +103,12 @@
 
   .library-container {
     flex-direction: column;
+    background: #000000 !important;
   }
   
   .library-sidebar {
     width: 100%;
-   
+    background: #000000 !important;
 
   }
   
