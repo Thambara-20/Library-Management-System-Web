@@ -8,7 +8,6 @@ import Rating from "react-rating-stars-component"
 import { findBook } from "../../../services/bookService";
 import LoadingIcon from "../../../Components/LoadingIcon";
 import ReadPage from "./ReadPage";
-import { booksDummy as books } from "../../../Helpers/BooksDummy";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import BookIcon from '@mui/icons-material/Book';
 import DefaultComponent from "../Forum";
@@ -89,7 +88,6 @@ const BookDetails = ({ }) => {
 
   }, [book.status]);
 
-  const selectedBook = books.find((book) => book.id == bookId);
 
   const containerStyle = {
     display: "flex",

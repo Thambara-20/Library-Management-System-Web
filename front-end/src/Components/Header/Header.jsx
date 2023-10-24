@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "./smart_logo.png";
+import logo from "./logo.png";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
@@ -17,7 +17,7 @@ const Header = () => {
   const [showSignUpPopup, setShowSignUpPopup] = useState(false);
   const [isUserLogIn, setUserLogIn] = useState(true);
   const [isAdminLoggedIn, setAdminLoggedIn] = useState(true);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(true);
 
   const openSignUpPopup = () => {
     setShowSignUpPopup(true);
@@ -40,14 +40,23 @@ const Header = () => {
 
 
   const getMenuStyles = (menuOpen) => {
+    // if (document.documentElement.clientWidth <= 800) {
+    //   return { right: !menuOpen && "-100%" };
+    // }
     if (document.documentElement.clientWidth <= 800) {
-      return { right: !menuOpen && "-100%" };
-    }
+    return { visibility: menuOpen ? "visible" : "hidden" };
+  }
   };
 
-  const handleTogleButton = (event)=>{
-    const temp = !menuOpen;
-    setMenuOpen(temp);
+
+
+
+  const handleTogleButton = (event) => {
+    if (menuOpen) {
+      const temp = !menuOpen;
+      setMenuOpen(temp);
+      console.log(temp);
+    }
   };
 
   useEffect(() => {
@@ -99,11 +108,11 @@ const Header = () => {
             </Link>
 
           </div>
-        </OutsideClickHandler>
         <div className="menu-icon" onClick={() => setMenuOpen((prev) => !prev)}>
 
           <BiMenuAltRight size={30} />
         </div>
+        </OutsideClickHandler>
        
         {showSignUpPopup && (
           <SignInPage onClose={closeSignUpPopup} onSuucessClose={changeIconLogIn} />

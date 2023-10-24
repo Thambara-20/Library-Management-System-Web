@@ -26,7 +26,6 @@
     "react-accessible-accordion": "^5.0.0",
     "react-admin": "^4.1.2",
     "react-bootstrap": "^2.8.0",
-    "react-comments-section": "^2.0.10",
     "react-confirm-alert": "^3.0.6",
     "react-copy-to-clipboard": "^5.1.0",
     "react-countup": "^6.4.2",
@@ -71,7 +70,7 @@
   },
   "proxy": "http://localhost:8080",
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "postcss": "^8.4.31"
   }
-
 }

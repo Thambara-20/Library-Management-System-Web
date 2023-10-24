@@ -1,7 +1,7 @@
 /* Add some general styling to improve readability */
 .ProfileInfo-wrapper {
     width: 90%;
-    min-height: 60vh; 
+    min-height: 30vh; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);/* Set the width to 100% to make it span the entire width of its container */
   }
   
@@ -16,7 +16,7 @@
     padding: auto;
     overflow: hidden;
     margin: 0 auto; 
-    min-height: 60vh;/* Center the content horizontally */
+    min-height: 30vh;/* Center the content horizontally */
 }
 
 .ProfileInfo-left {
@@ -79,6 +79,9 @@
   
   .Button-root:hover {
     background-color: #000000;
+  }
+  .profile-info.collapsed{
+    background-color: none;
   }
   
   /* Media query for responsiveness */

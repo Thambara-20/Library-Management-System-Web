@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import imgage from "./register-image.jpg";
+import imgage from "./imagelbms.jpeg";
 import RegForm from "../../Components/RegForm/RegForm";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
 import popImage from "./otp.png";
 import axios from 'axios';
 import authService from "../../services/authService";
+import { Button } from "@mui/material";
 const SignUp = () => {
 
   const [popupState, setPopupState] = useState("");
@@ -98,9 +99,12 @@ const SignUp = () => {
       </div>
 
 
-      <div className="paddings innerWidth flexCenter reg-container">
-        <div className="right">
-          <form onSubmit={postData} action="" className="reg-form" name="reg-form">
+      <div className="paddings innerWidth flexCenter reg-container-signup">
+       <Link to="/">
+       <Button style={{position:'fixed',top:5, left:5,color:'white' ,background:'black'}}>Back</Button>
+       </Link>
+        <div className="right-signup">
+          <form onSubmit={postData} action="" className="reg-form-signup" name="reg-form">
             <span className="primaryText" style={{color:'black', fontWeight:400}}>Register</span>
             <div className="name">
               <RegForm onChange={e => handleF(e)} value={data.Fname} id="Fname" Label="First Name" placeHolder="First name" name='firstName' />
@@ -160,11 +164,10 @@ const SignUp = () => {
         </div>
 
         {/* right side */}
-        <div className="left">
-          <div className="image-container" id="re-con">
-            <img src={imgage} alt="left image of registraion" id="reg-img" />
-          </div>
-        </div>
+             
+            <img src={imgage} alt="left image of registraion" id="reg-img" className="image-signup"/>
+       
+      
       </div>
     </section>
 

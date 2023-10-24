@@ -88,11 +88,11 @@ const LibraryPage = () => {
   )
     .map((book) => (
       <Grid
-        style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' , }}
         className="grid-item"
         item
-        xs={12}
-        sm={6}
+        xs={6}
+        sm={5}
         md={6}
         lg={3}
         key={book.id}
@@ -157,11 +157,12 @@ const LibraryPage = () => {
             </div>
 
             <div className="serach-con">
-              <div className="search-bar">
+              <div className="search-bar" style={{backgroundColor:'white'}}>
                 <TextField
                   className="text-field"
                   label={switchLabel}
                   variant="outlined"
+                  style={{color:'white'}}
                   onChange={handleSearchChange}
                 />
               </div>

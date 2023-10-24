@@ -5,6 +5,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+
   background-color: rgb(0, 0, 0, 0.5); 
   display: flex;
   flex-direction: column;
@@ -26,20 +27,12 @@
   outline: none;
 }
 
-.frame {
-    background:none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    min-width: 100vh;
-  }
+
   
   .frame .overlap-group-wrapper {
-    width: 80vh;
     max-width: 1200px;
-    min-width: 500px;
-    min-height: 90%;
+    min-width: 550px;
+
   }
   
   .frame .overlap-group {
@@ -152,29 +145,7 @@
 }
 
 
-.google-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  background-color: rgb(255, 255, 255);
-  border-radius: 5px;
-  padding: 10px;
-  margin-top: 10px;
-  border: none;
-  cursor: pointer;
-}
 
-/* CSS for Google icon */
-.google-icon {
-  margin-right: 10px; /* Add spacing between the icon and text */
-  color: rgb(0, 0, 0) !important; /* Set the icon color */
-}
-
-
-.google-button:hover {
-  background-color: #4d91ff; /* Change color on hover to Google's blue */
-}
 
 
 
@@ -233,7 +204,8 @@
   }
   
   .wrapper {
-    width: 100%;
+    width: 70%;
+
     display: flex;
     justify-content: space-between; 
     align-items: center;
@@ -269,10 +241,11 @@
       width: auto;
       
     }
+   
     .frame .overlap-group-wrapper {
-      width: 70%;
-      
-      
+      max-width: 1200px;
+      min-width: 400px;
+  
     }
     
     .frame .text-wrapper {
@@ -306,7 +279,7 @@
       display: flex;
       justify-content: space-between; 
       align-items: center;
-      width: 100%;
+      width: 80%;
 
     }
     
@@ -361,38 +334,3 @@
     }
 
   }
-
-  @media (max-width: 300px) {
-    .frame .overlap-group {
-      padding: 20px;
-      width: auto;
-
-    }
-    .frame .overlap-group-wrapper {
-      width: 90%;
-
-
-    }
-
-
-    .frame .input-container {
-      width: 100%;
-      margin-bottom: 20px;
-
-    }
-
-    .frame .login-button{
-      font-size: 0.9rem;
-      padding: 15px 10% 15px 10%;
-      text-align: center; /* Aligns button text to the center */
-    }
-
-
-    .frame .register-button {
-      font-size: 0.9rem;
-      padding: 15px 10% 15px 10%;
-      text-align: center; /* Aligns button text to the center */
-    }
-
-  }
-  
