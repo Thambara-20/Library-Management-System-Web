@@ -152,7 +152,7 @@ const BookDetails = ({ }) => {
                   onClick={toggleWishlist}
                 >
                   <BookIcon />
-                  {isBookInWishlist ? "Unishlist" : "Add to Wishlist"}
+                  {isBookInWishlist ? "Unwishlist" : "Add to Wishlist"}
                 </Button>
               </div>
             </div>
