@@ -10,7 +10,7 @@ import "font-awesome/css/font-awesome.css";
 
 
 ReactDOM.render(
-  <HashRouter>
+  <HashRouter >
     <App />
   </HashRouter>,
   document.getElementById("root")

@@ -78,9 +78,9 @@ const Header = () => {
   return (
     <section className="h-wrapper">
       <div className="flexCenter padding innerWidth h-container" id="h-container">
-        <a href="">
+        <Link to="/">
           <img src={logo} alt="logo" className="img" height={80} />
-        </a>
+        </Link>
         <OutsideClickHandler onOutsideClick={handleTogleButton}>
           <div className="flexCenter h-menu" style={getMenuStyles(menuOpen)}>
             <Link to="/" className="navbar-elements" style={{ textDecoration: "none" }}>

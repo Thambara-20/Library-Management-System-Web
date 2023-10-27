@@ -2,6 +2,7 @@ import React from "react";
 import "./AboutUsDetail.css";
 import aboutImg from "./aboutUs.jpeg";
 import Aos from "aos";
+import { Link } from "react-router-dom";
 
 const AboutUsDetail = () => {
   return (
@@ -24,7 +25,9 @@ const AboutUsDetail = () => {
               <br /> Together, we'll shape the future of library management.
             </span>
           <div className="b-about">
+            <Link to="/">
             <button className="button">Get Started</button>
+            </Link>
 
           </div>
           </div>
