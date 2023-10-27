@@ -23,7 +23,7 @@ const BarrowedBooks = () => {
             <BookCardVertical key={barrowed.barrow_id} book={barrowed.book} showReturn={false} id ={barrowed.barrow_id} item = {barrowed}/>
           ))}
         </div>
-        {userBarrowed.length === 0 && <div style={{color:'white', zIndex:10, height:100 }}>No Barrowed Books</div>}
+        {userBarrowed.length === 0 && <div style={{color:'white', zIndex:10, height:100 }}>No Borrowed Books</div>}
     </div>
   );
 };
