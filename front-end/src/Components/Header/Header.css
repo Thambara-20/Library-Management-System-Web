@@ -11,14 +11,21 @@
     justify-content: space-between;
     color: var(--secondary)
 }
-.h-menu{
-    gap:2rem;
-    justify-content: space-between;
+.h-menu {
+    position: fixed;
+    gap: 2rem;
     display: flex;
-    flex-direction: row;
-    align-items: Top;
-    
-}
+    justify-content: flex-end;
+    flex-direction: column; /* Change to a column layout */
+    align-items: flex-end; /* Align items to the top-right corner */
+    top: 0;
+    right: -10opx; /* Adjust right instead of left */
+    background-color: var(--blackx); /* Optionally, set a background color */
+    padding: 2px; /* Add some padding to the dropdown */
+    z-index: 999; /* Ensure it's above other elements */
+  }
+  
+
 .navbar-elements{
     color: white;
 }

@@ -112,11 +112,11 @@ const BookDetails = ({ }) => {
   }
 
   return (
-    <div className="book-wrapper-main" style={{borderRadius:0}} >
+    <div className="book-wrapper-main" style={{borderRadius:0}}  data-aos='fade-up' >
       {showSignUpPopup && (
         <SignInPage onClose={closeSignUpPopup} onSuucessClose={closeSignUpPopup} />
       )}
-      <div className="book-details-main">
+      <div className="book-details-main"  data-aos='fade-up'>
         <Card>
           <CardContent style={containerStyle} data-aos='fade-up' className="cardcontent">
             <div style={contentStyle} className="image-wrapper">
@@ -127,7 +127,7 @@ const BookDetails = ({ }) => {
             </div>
             <div className="blurred-background"></div>
             <div className='right' data-aos='fade-up'>
-           <div className="right-data">
+           <div className="right-data"  data-aos='fade-up'>
                 <h2>Book Details</h2>
                 <Typography className='title' variant="h5">{book.title}</Typography>
                 <Typography className='author'>Author: {book.author}</Typography>
@@ -136,7 +136,7 @@ const BookDetails = ({ }) => {
                 <p>Page Count: {book.pageCount}</p>
                 <p>Publisher: {book.publisher}</p>
                 <p>Published Date: {book.publishedDate}</p>
-                <p>Ratings Count: {book.ratingsCount}</p>
+                <p data-aos='fade-up'>Ratings Count: {book.ratingsCount}</p>
                 <a href={book.previewLink} target="_blank" rel="noopener noreferrer">Preview Link</a>
               </div>
               <div className="buttons">

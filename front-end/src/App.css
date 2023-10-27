@@ -1,8 +1,7 @@
  .App{
  
-	padding: 0px 2%;
 	align-items: center;
-   
+    padding-right: 0;
 	justify-content : center;
 	text-align: center;
   }
