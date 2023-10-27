@@ -18,6 +18,7 @@ import BookDetails from './Containers/Library/Bookdetails/BookDetails';
 import ReservedBooksPage from './Containers/Admin/Reservations/ReservedBookspage';
 import PendingApprovalsPage from './Containers/Admin/Approvals/PendingApprovalsPage';
 import BarrowingsPage from './Containers/Admin/Barrowings/BarrowingsPage';
+import NotFoundPage from './Components/Notfound/NotFoundPage';
 
 class App extends Component {
   constructor(props) {
@@ -52,13 +53,15 @@ class App extends Component {
         <div>
           <Routes>
             <Route path="/ContactUs" element={<CustomerSupportPage />} />
-            <Route path="Register" element={<SignUp />} />
+            <Route path="/Register" element={<SignUp />} />
             <Route path="/" element={<Home />} />
             <Route path="/Library" element={<LibraryPage />} />
             <Route path="/AboutUs" element={<AboutUs />} />
   
             <Route path="/Profile/:page" element={<Profile />} />
             <Route path="/book/:bookId" element={<BookDetails />} />
+            <Route path="*" element={<NotFoundPage />} />
+
   
             {/* Conditional rendering of admin routes */}
             {!isSmallScreen && isAdminLoggedIn && (
