@@ -42,14 +42,18 @@ async function countunRead(req,res){
 
 async function checkOverdueItems() {
     const currentDate = new Date();
+    const overdueDate = new Date(currentDate);
+    overdueDate.setDate(currentDate.getDate() - 4); // Calculate the date 4 days ago (the due date)
+
     console.log("Checking for overdue items.");
     await Notification.sync({ force: true });
+
     const overdueBarrows = await Barrow.findAll({
         where: {
             return_date: {
-                [Op.gt]: currentDate, // Find items with return_date less than the current date
+                [Op.lt]: overdueDate, 
             },
-            is_returned: false, 
+            is_returned: false,
         },
         include: [{
             model: User,
