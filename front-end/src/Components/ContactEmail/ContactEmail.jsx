@@ -111,11 +111,7 @@ const ContactEmail = () => {
         </div>
 
         {/* right-side */}
-        <div className="left">
-          <div className="image-container" id="re-con">
-            <img src={imgage} alt="left image of registraion" id="reg-img" />
-          </div>
-        </div>
+      
       </div>
     </section>
   );
