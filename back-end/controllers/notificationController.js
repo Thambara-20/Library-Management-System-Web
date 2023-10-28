@@ -43,7 +43,7 @@ async function countunRead(req,res){
 async function checkOverdueItems() {
     const currentDate = new Date();
     const overdueDate = new Date(currentDate);
-    overdueDate.setDate(currentDate.getDate() - 4); // Calculate the date 4 days ago (the due date)
+    overdueDate.setDate(currentDate.getDate() + 4); // Calculate the date 4 days ago (the due date)
 
     console.log("Checking for overdue items.");
     await Notification.sync({ force: true });
