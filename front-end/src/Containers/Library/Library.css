@@ -9,6 +9,7 @@
 
 .library-container {
   display: flex;
+  flex: 1;
   min-height: 100vh;
   height: 100%;
   width: 100%;
@@ -44,8 +45,6 @@
 }
 
 .selecter-item {
-  font-size: 12px; /* Reduce font size */
-  padding: 6px 12px; /* Adjust padding to make the dropdown smaller */
   width: 100%;
   background-color:#e4e4e4;
   border-radius: 5px;
@@ -108,7 +107,6 @@
   }
   
   .library-sidebar {
-    position: relative;
     width: 100%;
     background: #000000 !important;
 
@@ -122,22 +120,10 @@
   }
 
   .grid-item{
-    transform: scale(0.71) !important;
+    transform: scale(0.67) !important;
     margin-top: 0;
     margin-bottom: 0;
-    height: 50vh;
-
-  }
-}
-
-@media (max-height: 700px) {
-
-
-  .grid-item{
-    transform: scale(0.70) !important;
-    margin-top: 0;
-    margin-bottom: 0;
-    height: 65vh;
+    height: 59vh;
 
   }
 }
