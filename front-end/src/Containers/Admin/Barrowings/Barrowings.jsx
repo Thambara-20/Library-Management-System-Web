@@ -74,13 +74,8 @@ const Barrowings = () => {
 		},
 
 		{
-			field: 'title',
-			headerName: 'Book Title',
-			flex: 0.7,
-		},
-		{
-			field: 'email',
-			headerName: 'Email',
+			field: 'return_date',
+			headerName: 'Return Date',
 			flex: 0.7,
 		},
 		{
