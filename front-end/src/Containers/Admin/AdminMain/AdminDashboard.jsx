@@ -68,7 +68,7 @@ const Dashboard = () => {
                 {/* Grid */}
                 <Box data-aos="fade-up" display="grid" gridTemplateColumns="repeat(12, 1fr)" gridAutoRows="120px" gap="20px" marginBottom="40px">
 
-                    <MiniBox title={"unread Emails Count"} icon={EmailOutlinedIcon} count={unreadEmailsCount} />
+                    <MiniBox title={"Unread Emails Count"} icon={EmailOutlinedIcon} count={unreadEmailsCount} />
                     <MiniBox title={"Users Count"} icon={PersonOutlineOutlinedIcon} count={usersCount} />
                     <MiniBox title={"Books"} icon={LibraryBooksIcon} count={booksCount} />
                     <MiniBox title={"Pending reservations"} icon={PendingActionsOutlinedIcon} count={pendingReservationsCount} />
