@@ -107,9 +107,6 @@ exports.findOne = async (req, res) => {
 
     try {
         const barrows = await Barrow.findAll({
-            include: [{
-                model: Book,
-            }],
             where: {
                 name: name,
                 is_returned: false
